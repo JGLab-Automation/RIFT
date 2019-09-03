@@ -15,6 +15,7 @@ import re
 
 logger = logging.getLogger(__name__)
 
+
 def log(text, level='debug'):
     if level.lower() == 'debug':
         logger.debug(text)
@@ -29,11 +30,14 @@ def log(text, level='debug'):
         logger.warning(text)
     print (text)
 
+
 def log_info(text):
     log(text, 'info')
 
+
 def log_debug(text):
     log(text, 'debug')
+
 
 def log_error(text):
     log(text, 'error')
@@ -47,6 +51,7 @@ def create_operational_url(lp_addr, api):
         log_info(e)
         raise
 
+
 def create_operations_url(lp_addr, api):
     try:
         url = f'https://{lp_addr}:8008/api/operations/{api}'
@@ -54,12 +59,14 @@ def create_operations_url(lp_addr, api):
     except BaseException as e:
         log_info(e)
 
+
 def create_running_url(lp_addr, api):
     try:
         url = f'https://{lp_addr}:8008/api/running/{api}'
         return str(url).strip()
     except BaseException as e:
         log_info(e)
+
 
 def create_http_basic_auth(uname, passwd):
     try:
@@ -70,10 +77,10 @@ def create_http_basic_auth(uname, passwd):
         raise
 
 
-def get_request(url, header, payload=""):
+def get_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        response = requests.request("GET", url, headers=header, verify=False)
+        response = requests.request("GET", url=url, headers=header, verify=False)
         if response.status_code != 200:
             assert response.status_code == 200, f'Response is: {response.status_code}.'
         else:
@@ -83,10 +90,11 @@ def get_request(url, header, payload=""):
         log_info(e)
         raise
 
-def post_request(url, header, payload):
+
+def create_config(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        response = requests.request("POST", url, headers=header, data=payload, verify=False)
+        response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
             assert response.status_code == 201, f'Response is: {response.status_code}.'
         else:
@@ -96,11 +104,26 @@ def post_request(url, header, payload):
         log_info(e)
         raise
 
-def delete_request(url, header, payload=""):
+
+def edit_config(url, header, payload):
+    try:
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
+        if response.status_code != 201:
+            assert response.status_code == 201, f'Response is: {response.status_code}.'
+        else:
+            data = response.json()
+            return (data)
+    except BaseException as e:
+        log_info(e)
+        raise
+
+
+def delete_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-        response = requests.request("DELETE", url, headers=header, data=payload, verify=False)
+        response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
             assert response.status_code == 201, f'Response is: {response.status_code}.'
         else:

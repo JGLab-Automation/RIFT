@@ -9,12 +9,19 @@ def project_create():
     api = "rw-project:project"
     return str(api)
 
+
 def project_config(proj_name):
     pass
 
+
 def project_delete(proj_name):
-    api = "rw-project:project/{}".format(proj_name)
+    api = f"rw-project:project/{proj_name}"
     return str(api)
+
+
+def account_create(proj_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud"
+    return api
 
 
 cloud_account = '/rw-project:project/STRING/rwcal:cloud-accounts'

@@ -1,0 +1,2583 @@
+Programmer's API documentation for yang module rw-restconf-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-restconf-log                                                       2
+  rw-restconf-log notification                                             2.1
+    notification rw-restconf-log:generic-debug                           2.1.1
+      container rw-restconf-log:template_params                        2.1.1.1
+        list rw-restconf-log:debug-details                           2.1.1.1.1
+        list rw-restconf-log:additional-data                         2.1.1.1.2
+        container rw-restconf-log:call-identifier                    2.1.1.1.3
+        container rw-restconf-log:session-params                     2.1.1.1.4
+    notification rw-restconf-log:generic-info                            2.1.2
+      container rw-restconf-log:template_params                        2.1.2.1
+        list rw-restconf-log:debug-details                           2.1.2.1.1
+        list rw-restconf-log:additional-data                         2.1.2.1.2
+        container rw-restconf-log:call-identifier                    2.1.2.1.3
+        container rw-restconf-log:session-params                     2.1.2.1.4
+    notification rw-restconf-log:generic-notice                          2.1.3
+      container rw-restconf-log:template_params                        2.1.3.1
+        list rw-restconf-log:debug-details                           2.1.3.1.1
+        list rw-restconf-log:additional-data                         2.1.3.1.2
+        container rw-restconf-log:call-identifier                    2.1.3.1.3
+        container rw-restconf-log:session-params                     2.1.3.1.4
+    notification rw-restconf-log:generic-warning                         2.1.4
+      container rw-restconf-log:template_params                        2.1.4.1
+        list rw-restconf-log:debug-details                           2.1.4.1.1
+        list rw-restconf-log:additional-data                         2.1.4.1.2
+        container rw-restconf-log:call-identifier                    2.1.4.1.3
+        container rw-restconf-log:session-params                     2.1.4.1.4
+    notification rw-restconf-log:internal-error                          2.1.5
+      container rw-restconf-log:template_params                        2.1.5.1
+        list rw-restconf-log:debug-details                           2.1.5.1.1
+        list rw-restconf-log:additional-data                         2.1.5.1.2
+        container rw-restconf-log:call-identifier                    2.1.5.1.3
+        container rw-restconf-log:session-params                     2.1.5.1.4
+    notification rw-restconf-log:restconf-error                          2.1.6
+      container rw-restconf-log:template_params                        2.1.6.1
+        list rw-restconf-log:debug-details                           2.1.6.1.1
+        list rw-restconf-log:additional-data                         2.1.6.1.2
+        container rw-restconf-log:call-identifier                    2.1.6.1.3
+        container rw-restconf-log:session-params                     2.1.6.1.4
+    notification rw-restconf-log:restconf-conn-mgmt-error                2.1.7
+      container rw-restconf-log:template_params                        2.1.7.1
+        list rw-restconf-log:debug-details                           2.1.7.1.1
+        list rw-restconf-log:additional-data                         2.1.7.1.2
+        container rw-restconf-log:call-identifier                    2.1.7.1.3
+        container rw-restconf-log:session-params                     2.1.7.1.4
+    notification rw-restconf-log:connection-failure                      2.1.8
+      container rw-restconf-log:template_params                        2.1.8.1
+        list rw-restconf-log:debug-details                           2.1.8.1.1
+        list rw-restconf-log:additional-data                         2.1.8.1.2
+        container rw-restconf-log:call-identifier                    2.1.8.1.3
+        container rw-restconf-log:session-params                     2.1.8.1.4
+    notification rw-restconf-log:authentication-failure                  2.1.9
+      container rw-restconf-log:template_params                        2.1.9.1
+        list rw-restconf-log:debug-details                           2.1.9.1.1
+        list rw-restconf-log:additional-data                         2.1.9.1.2
+        container rw-restconf-log:call-identifier                    2.1.9.1.3
+        container rw-restconf-log:session-params                     2.1.9.1.4
+    notification rw-restconf-log:restconf-conn-mgmt-warning             2.1.10
+      container rw-restconf-log:template_params                       2.1.10.1
+        list rw-restconf-log:debug-details                          2.1.10.1.1
+        list rw-restconf-log:additional-data                        2.1.10.1.2
+        container rw-restconf-log:call-identifier                   2.1.10.1.3
+        container rw-restconf-log:session-params                    2.1.10.1.4
+    notification rw-restconf-log:restconf-conn-mgmt-debug               2.1.11
+      container rw-restconf-log:template_params                       2.1.11.1
+        list rw-restconf-log:debug-details                          2.1.11.1.1
+        list rw-restconf-log:additional-data                        2.1.11.1.2
+        container rw-restconf-log:call-identifier                   2.1.11.1.3
+        container rw-restconf-log:session-params                    2.1.11.1.4
+    notification rw-restconf-log:json-conversion-error                  2.1.12
+      container rw-restconf-log:template_params                       2.1.12.1
+        list rw-restconf-log:debug-details                          2.1.12.1.1
+        list rw-restconf-log:additional-data                        2.1.12.1.2
+        container rw-restconf-log:call-identifier                   2.1.12.1.3
+        container rw-restconf-log:session-params                    2.1.12.1.4
+    notification rw-restconf-log:json-conversion-warning                2.1.13
+      container rw-restconf-log:template_params                       2.1.13.1
+        list rw-restconf-log:debug-details                          2.1.13.1.1
+        list rw-restconf-log:additional-data                        2.1.13.1.2
+        container rw-restconf-log:call-identifier                   2.1.13.1.3
+        container rw-restconf-log:session-params                    2.1.13.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwRestconfLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwRestconfLog_g_schema
+2  module rw-restconf-log
+
+2.1  rw-restconf-log notification
+
+2.1.1  notification rw-restconf-log:generic-debug
+  Description
+    generic debug
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:generic-debug
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug
+    RwRestconfLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug
+
+2.1.1.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams
+    RwRestconfLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_DebugDetails
+    RwRestconfLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_AdditionalData
+    RwRestconfLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_SessionParams
+    RwRestconfLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification rw-restconf-log:generic-info
+  Description
+    generic info
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:generic-info
+  XPath Keyed Path
+    /rw-restconf-log:generic-info
+  RW.REST URI Path
+    /rw-restconf-log:generic-info
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo
+    RwRestconfLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo
+
+2.1.2.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams
+    RwRestconfLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_DebugDetails
+    RwRestconfLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_AdditionalData
+    RwRestconfLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-info/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_SessionParams
+    RwRestconfLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification rw-restconf-log:generic-notice
+  Description
+    generic notice
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:generic-notice
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice
+    RwRestconfLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice
+
+2.1.3.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams
+    RwRestconfLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_DebugDetails
+    RwRestconfLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_AdditionalData
+    RwRestconfLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-notice/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_SessionParams
+    RwRestconfLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification rw-restconf-log:generic-warning
+  Description
+    generic warning
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:generic-warning
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning
+    RwRestconfLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning
+
+2.1.4.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams
+    RwRestconfLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_DebugDetails
+    RwRestconfLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_AdditionalData
+    RwRestconfLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:generic-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_SessionParams
+    RwRestconfLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification rw-restconf-log:internal-error
+  Description
+    internal error to restconf
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:internal-error
+  XPath Keyed Path
+    /rw-restconf-log:internal-error
+  RW.REST URI Path
+    /rw-restconf-log:internal-error
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError
+    RwRestconfLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError
+
+2.1.5.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams
+    RwRestconfLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams
+
+2.1.5.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_DebugDetails
+    RwRestconfLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_AdditionalData
+    RwRestconfLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:internal-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_SessionParams
+    RwRestconfLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.6  notification rw-restconf-log:restconf-error
+  Description
+    restconf error
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:restconf-error
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError
+    RwRestconfLog_notif_RestconfError
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError
+
+2.1.6.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams
+    RwRestconfLog_notif_RestconfError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams
+
+2.1.6.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_DebugDetails
+    RwRestconfLog_notif_RestconfError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_DebugDetails
+
+2.1.6.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_AdditionalData
+    RwRestconfLog_notif_RestconfError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_AdditionalData
+
+2.1.6.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_RestconfError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_SessionParams
+    RwRestconfLog_notif_RestconfError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfError_TemplateParams_SessionParams
+
+2.1.7  notification rw-restconf-log:restconf-conn-mgmt-error
+  Description
+    restconf connection management error
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: user_info, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError
+    RwRestconfLog_notif_RestconfConnMgmtError
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError
+
+2.1.7.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams
+    RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams
+
+2.1.7.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_DebugDetails
+    RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_DebugDetails
+
+2.1.7.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_AdditionalData
+    RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_AdditionalData
+
+2.1.7.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_SessionParams
+    RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtError_TemplateParams_SessionParams
+
+2.1.8  notification rw-restconf-log:connection-failure
+  Description
+    restconf connection failure
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+    name: error-msg, type: STRING
+  XPath Path
+    /rw-restconf-log:connection-failure
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure
+    RwRestconfLog_notif_ConnectionFailure
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure
+
+2.1.8.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams
+    RwRestconfLog_notif_ConnectionFailure_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams
+
+2.1.8.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_DebugDetails
+    RwRestconfLog_notif_ConnectionFailure_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_DebugDetails
+
+2.1.8.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_AdditionalData
+    RwRestconfLog_notif_ConnectionFailure_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_AdditionalData
+
+2.1.8.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_ConnectionFailure_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:connection-failure/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:connection-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.ConnectionFailure.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_ConnectionFailure_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__ConnectionFailure__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_SessionParams
+    RwRestconfLog_notif_ConnectionFailure_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_ConnectionFailure_TemplateParams_SessionParams
+
+2.1.9  notification rw-restconf-log:authentication-failure
+  Description
+    restconf authentication failure
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:authentication-failure
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure
+    RwRestconfLog_notif_AuthenticationFailure
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure
+
+2.1.9.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams
+    RwRestconfLog_notif_AuthenticationFailure_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams
+
+2.1.9.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_DebugDetails
+    RwRestconfLog_notif_AuthenticationFailure_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_DebugDetails
+
+2.1.9.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_AdditionalData
+    RwRestconfLog_notif_AuthenticationFailure_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_AdditionalData
+
+2.1.9.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_AuthenticationFailure_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:authentication-failure/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:authentication-failure/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.AuthenticationFailure.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_AuthenticationFailure_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__AuthenticationFailure__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_SessionParams
+    RwRestconfLog_notif_AuthenticationFailure_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_AuthenticationFailure_TemplateParams_SessionParams
+
+2.1.10  notification rw-restconf-log:restconf-conn-mgmt-warning
+  Description
+    restconf connection management warning
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: user_info, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning
+    RwRestconfLog_notif_RestconfConnMgmtWarning
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning
+
+2.1.10.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams
+    RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams
+
+2.1.10.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_DebugDetails
+    RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_DebugDetails
+
+2.1.10.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_AdditionalData
+    RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_AdditionalData
+
+2.1.10.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_SessionParams
+    RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtWarning_TemplateParams_SessionParams
+
+2.1.11  notification rw-restconf-log:restconf-conn-mgmt-debug
+  Description
+    restconf connection management debug
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: user_info, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug
+    RwRestconfLog_notif_RestconfConnMgmtDebug
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug
+
+2.1.11.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams
+    RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams
+
+2.1.11.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_DebugDetails
+    RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_DebugDetails
+
+2.1.11.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_AdditionalData
+    RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_AdditionalData
+
+2.1.11.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_CallIdentifier
+
+2.1.11.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:restconf-conn-mgmt-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:restconf-conn-mgmt-debug/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.RestconfConnMgmtDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_RestconfConnMgmtDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__RestconfConnMgmtDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_SessionParams
+    RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_RestconfConnMgmtDebug_TemplateParams_SessionParams
+
+2.1.12  notification rw-restconf-log:json-conversion-error
+  Description
+    convert payload to json error
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:json-conversion-error
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError
+    RwRestconfLog_notif_JsonConversionError
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError
+
+2.1.12.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams
+    RwRestconfLog_notif_JsonConversionError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams
+
+2.1.12.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_DebugDetails
+    RwRestconfLog_notif_JsonConversionError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_DebugDetails
+
+2.1.12.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_AdditionalData
+    RwRestconfLog_notif_JsonConversionError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_AdditionalData
+
+2.1.12.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_JsonConversionError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_CallIdentifier
+
+2.1.12.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-error/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_SessionParams
+    RwRestconfLog_notif_JsonConversionError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionError_TemplateParams_SessionParams
+
+2.1.13  notification rw-restconf-log:json-conversion-warning
+  Description
+    convert payload to json warning
+  Leaves
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: message, type: STRING
+  XPath Path
+    /rw-restconf-log:json-conversion-warning
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning
+    RwRestconfLog_notif_JsonConversionWarning
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning
+
+2.1.13.1  container rw-restconf-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning.TemplateParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning__TemplateParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams
+    RwRestconfLog_notif_JsonConversionWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams
+
+2.1.13.1.1  list rw-restconf-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:debug-details[rw-restconf-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_DebugDetails
+    RwRestconfLog_notif_JsonConversionWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_DebugDetails
+
+2.1.13.1.2  list rw-restconf-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:additional-data[rw-restconf-log:attribute='STRING']
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_AdditionalData
+    RwRestconfLog_notif_JsonConversionWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_AdditionalData
+
+2.1.13.1.3  container rw-restconf-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:call-identifier
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_CallIdentifier
+    RwRestconfLog_notif_JsonConversionWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_CallIdentifier
+
+2.1.13.1.4  container rw-restconf-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  XPath Keyed Path
+    /rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW.REST URI Path
+    /rw-restconf-log:json-conversion-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-restconf-log:json-conversion-warning/rw-restconf-log:template_params/rw-restconf-log:session-params
+  Protobuf Type
+    .rw_restconf_log.YangNotif.RwRestconfLog.JsonConversionWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwRestconfLogYang.YangNotif_RwRestconfLog_JsonConversionWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwRestconfLog__YangNotif__RwRestconfLog__JsonConversionWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_SessionParams
+    RwRestconfLog_notif_JsonConversionWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwRestconfLog_RwRestconfLog_notif_JsonConversionWarning_TemplateParams_SessionParams
+

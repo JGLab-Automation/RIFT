@@ -1,0 +1,1556 @@
+Programmer's API documentation for yang module sol003.yang
+
+
+
+Schema Globals                                                               1
+
+module sol003                                                                2
+  sol003 rpc input                                                         2.1
+    rpc input sol003:grants                                              2.1.1
+      list sol003:addResourcesRequest                                  2.1.1.1
+        list sol003:resource                                         2.1.1.1.1
+      list sol003:tempResourcesRequest                                 2.1.1.2
+        list sol003:resource                                         2.1.1.2.1
+      list sol003:removeResourcesRequest                               2.1.1.3
+        list sol003:resource                                         2.1.1.3.1
+      list sol003:updateResourcesRequest                               2.1.1.4
+        list sol003:resource                                         2.1.1.4.1
+      container sol003:placementConstraints                            2.1.1.5
+        list sol003:resource                                         2.1.1.5.1
+      list sol003:vimConstraints                                       2.1.1.6
+        list sol003:resource                                         2.1.1.6.1
+      container sol003:additionalParams                                2.1.1.7
+      container sol003:linksRequest                                    2.1.1.8
+    rpc input sol003:alarm                                               2.1.2
+    rpc input sol003:lcm-notification                                    2.1.3
+  sol003 rpc output                                                        2.2
+    rpc output sol003:grants                                             2.2.1
+      list sol003:vimConnections                                       2.2.1.1
+        container sol003:interfaceInfo                               2.2.1.1.1
+        container sol003:accessInfo                                  2.2.1.1.2
+        list sol003:extra                                            2.2.1.1.3
+      list sol003:zones                                                2.2.1.2
+      list sol003:zoneGroups                                           2.2.1.3
+      list sol003:addResources                                         2.2.1.4
+      list sol003:tempResources                                        2.2.1.5
+      list sol003:removeResources                                      2.2.1.6
+      list sol003:updateResources                                      2.2.1.7
+      container sol003:vimAssets                                       2.2.1.8
+        list sol003:computeResourceFlavours                          2.2.1.8.1
+        list sol003:softwareImages                                   2.2.1.8.2
+      list sol003:extVirtualLinks                                      2.2.1.9
+        list sol003:extCps                                           2.2.1.9.1
+          list sol003:cpConfig                                     2.2.1.9.1.1
+            list sol003:cpProtocolData                           2.2.1.9.1.1.1
+              container sol003:ipOverEthernet                  2.2.1.9.1.1.1.1
+                list sol003:ipAddresses                      2.2.1.9.1.1.1.1.1
+                  leaf-list sol003:fixedAddresses          2.2.1.9.1.1.1.1.1.1
+                  container sol003:addressRange            2.2.1.9.1.1.1.1.1.2
+      list sol003:extManagedVirtualLinks                              2.2.1.10
+      container sol003:links                                          2.2.1.11
+        container sol003:self                                       2.2.1.11.1
+        container sol003:vnfLcmOpOcc                                2.2.1.11.2
+        container sol003:vnfInstance                                2.2.1.11.3
+    rpc output sol003:alarm                                              2.2.2
+    rpc output sol003:lcm-notification                                   2.2.3
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_Sol003_t_schema
+  Global Schema Pointer
+    rw_ypbc_Sol003_g_schema
+2  module sol003
+
+2.1  sol003 rpc input
+
+2.1.1  rpc input sol003:grants
+  Leaves
+    name: project-name, type: LEAFREF, description: Project to which this belongs
+    name: client-ip, type: STRING, description: Ip of the SVNFM
+    name: vnfInstanceId, type: STRING, description: Identifier of the VNF instance which this grant request
+    is related to. Shall also be provided for VNFs that not
+    yet exist but are planned to exist in the future,
+    i.e. if the grant is requested for InstantiateVNF.
+    name: vnfLcmOpOccId, type: STRING, description: The identifier of the VNF lifecycle management operation
+    occurrence associated to the GrantRequest.
+    name: vnfdId, type: STRING, description: Identifier of the VNFD that defines the VNF for which
+    the LCM operation is to be granted.
+    name: flavourId, type: STRING, description: Identifier of the VNF deployment flavour of the VNFD
+    that defines the VNF for which the LCM operation is
+    to be granted. Shall be provided when instantiating the
+    VNF or changing the deployment flavour of the VNF
+    instance.
+    name: operation, type: ENUM, description: The lifecycle management operation for which granting
+    is requested
+    name: isAutomaticInvocation, type: BOOLEAN, description: Set to true if this VNF LCM operation occurrence has
+    been triggered by an automated procedure inside the
+    VNFM  (i.e. ScaleVnf / ScaleVnfToLevel triggered by
+    auto-scale, or HealVnf triggered by auto-heal).
+    Set to false otherwise.
+    name: instantiationLevelId, type: STRING, description: If operation=INSTANTIATE, the identifier of the
+    instantiation level may be provided as an alternative
+    way to define the resources to be added. This attribute
+    shall only be used if operation=INSTANTIATE.
+  XPath Path
+    /sol003:grants
+  XPath Keyed Path
+    /sol003:grants
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/sol003:grants
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants
+    Sol003_input_Grants
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants
+
+2.1.1.1  list sol003:addResourcesRequest
+  Leaves
+    name: id, type: STRING, description: Identifier of this 'ResourceDefinition' structure,
+    unique at least within the scope of the 'GrantRequest'
+    structure.
+    name: type, type: ENUM, description: Type of the resource definition referenced,
+    - COMPUTE
+    - VL
+    - STORAGE
+    - LINKPORT
+    name: vduId, type: STRING, description: Reference to the related VDU in the VNFD applicable
+    to this resource. Shall only be present if a VDU is
+    applicable to this resource.
+    name: resourceTemplateId, type: STRING, description: Reference to a resource template (VnfVirtualLinkDesc,
+    VirtualComputeDesc, VnfExtCpd, VirtualStorageDesc) in
+    the VNFD. Shall be present for the planned creation of
+    new resources, including temporary resources, and for
+    the modification of existing resources. Shall be absent
+    otherwise
+  XPath Path
+    /sol003:grants/sol003:addResourcesRequest
+  XPath Keyed Path
+    /sol003:grants/sol003:addResourcesRequest[sol003:id='STRING']
+  RW.REST URI Path
+    /input/addResourcesRequest/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:addResourcesRequest
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:addResourcesRequest[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.AddResourcesRequest
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_AddResourcesRequest
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__AddResourcesRequest
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_AddResourcesRequest
+    Sol003_input_Grants_AddResourcesRequest
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_AddResourcesRequest
+
+2.1.1.1.1  list sol003:resource
+  Description
+    Resource container
+  Leaves
+    name: resourceId, type: STRING, description: Identifier of the resource in the scope of the VIM or
+    the resource provider.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to manage the resource.
+    This attribute shall only be supported and present if
+    VNF-related resource management in direct mode is applicable.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    name: resourceProviderId, type: STRING, description: Identifier of the entity responsible for the management
+    of the resource. This attribute shall only be supported
+    and present when VNF-related resource management in indirect
+    mode is applicable. The identification scheme is outside
+    the scope of the present document.
+    name: vimLevelResourceType, type: STRING, description: Type of the resource in the scope of the VIM or the
+    resource provider.
+  XPath Path
+    /sol003:grants/sol003:addResourcesRequest/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:addResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/addResourcesRequest/STRING/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:addResourcesRequest/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:addResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.AddResourcesRequest.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_AddResourcesRequest_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__AddResourcesRequest__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_AddResourcesRequest_Resource
+    Sol003_input_Grants_AddResourcesRequest_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_AddResourcesRequest_Resource
+
+2.1.1.2  list sol003:tempResourcesRequest
+  Leaves
+    name: id, type: STRING, description: Identifier of this 'ResourceDefinition' structure,
+    unique at least within the scope of the 'GrantRequest'
+    structure.
+    name: type, type: ENUM, description: Type of the resource definition referenced,
+    - COMPUTE
+    - VL
+    - STORAGE
+    - LINKPORT
+    name: vduId, type: STRING, description: Reference to the related VDU in the VNFD applicable
+    to this resource. Shall only be present if a VDU is
+    applicable to this resource.
+    name: resourceTemplateId, type: STRING, description: Reference to a resource template (VnfVirtualLinkDesc,
+    VirtualComputeDesc, VnfExtCpd, VirtualStorageDesc) in
+    the VNFD. Shall be present for the planned creation of
+    new resources, including temporary resources, and for
+    the modification of existing resources. Shall be absent
+    otherwise
+  XPath Path
+    /sol003:grants/sol003:tempResourcesRequest
+  XPath Keyed Path
+    /sol003:grants/sol003:tempResourcesRequest[sol003:id='STRING']
+  RW.REST URI Path
+    /input/tempResourcesRequest/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:tempResourcesRequest
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:tempResourcesRequest[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.TempResourcesRequest
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_TempResourcesRequest
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__TempResourcesRequest
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_TempResourcesRequest
+    Sol003_input_Grants_TempResourcesRequest
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_TempResourcesRequest
+
+2.1.1.2.1  list sol003:resource
+  Description
+    Resource container
+  Leaves
+    name: resourceId, type: STRING, description: Identifier of the resource in the scope of the VIM or
+    the resource provider.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to manage the resource.
+    This attribute shall only be supported and present if
+    VNF-related resource management in direct mode is applicable.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    name: resourceProviderId, type: STRING, description: Identifier of the entity responsible for the management
+    of the resource. This attribute shall only be supported
+    and present when VNF-related resource management in indirect
+    mode is applicable. The identification scheme is outside
+    the scope of the present document.
+    name: vimLevelResourceType, type: STRING, description: Type of the resource in the scope of the VIM or the
+    resource provider.
+  XPath Path
+    /sol003:grants/sol003:tempResourcesRequest/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:tempResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/tempResourcesRequest/STRING/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:tempResourcesRequest/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:tempResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.TempResourcesRequest.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_TempResourcesRequest_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__TempResourcesRequest__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_TempResourcesRequest_Resource
+    Sol003_input_Grants_TempResourcesRequest_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_TempResourcesRequest_Resource
+
+2.1.1.3  list sol003:removeResourcesRequest
+  Leaves
+    name: id, type: STRING, description: Identifier of this 'ResourceDefinition' structure,
+    unique at least within the scope of the 'GrantRequest'
+    structure.
+    name: type, type: ENUM, description: Type of the resource definition referenced,
+    - COMPUTE
+    - VL
+    - STORAGE
+    - LINKPORT
+    name: vduId, type: STRING, description: Reference to the related VDU in the VNFD applicable
+    to this resource. Shall only be present if a VDU is
+    applicable to this resource.
+    name: resourceTemplateId, type: STRING, description: Reference to a resource template (VnfVirtualLinkDesc,
+    VirtualComputeDesc, VnfExtCpd, VirtualStorageDesc) in
+    the VNFD. Shall be present for the planned creation of
+    new resources, including temporary resources, and for
+    the modification of existing resources. Shall be absent
+    otherwise
+  XPath Path
+    /sol003:grants/sol003:removeResourcesRequest
+  XPath Keyed Path
+    /sol003:grants/sol003:removeResourcesRequest[sol003:id='STRING']
+  RW.REST URI Path
+    /input/removeResourcesRequest/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:removeResourcesRequest
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:removeResourcesRequest[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.RemoveResourcesRequest
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_RemoveResourcesRequest
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__RemoveResourcesRequest
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_RemoveResourcesRequest
+    Sol003_input_Grants_RemoveResourcesRequest
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_RemoveResourcesRequest
+
+2.1.1.3.1  list sol003:resource
+  Description
+    Resource container
+  Leaves
+    name: resourceId, type: STRING, description: Identifier of the resource in the scope of the VIM or
+    the resource provider.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to manage the resource.
+    This attribute shall only be supported and present if
+    VNF-related resource management in direct mode is applicable.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    name: resourceProviderId, type: STRING, description: Identifier of the entity responsible for the management
+    of the resource. This attribute shall only be supported
+    and present when VNF-related resource management in indirect
+    mode is applicable. The identification scheme is outside
+    the scope of the present document.
+    name: vimLevelResourceType, type: STRING, description: Type of the resource in the scope of the VIM or the
+    resource provider.
+  XPath Path
+    /sol003:grants/sol003:removeResourcesRequest/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:removeResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/removeResourcesRequest/STRING/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:removeResourcesRequest/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:removeResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.RemoveResourcesRequest.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_RemoveResourcesRequest_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__RemoveResourcesRequest__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_RemoveResourcesRequest_Resource
+    Sol003_input_Grants_RemoveResourcesRequest_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_RemoveResourcesRequest_Resource
+
+2.1.1.4  list sol003:updateResourcesRequest
+  Leaves
+    name: id, type: STRING, description: Identifier of this 'ResourceDefinition' structure,
+    unique at least within the scope of the 'GrantRequest'
+    structure.
+    name: type, type: ENUM, description: Type of the resource definition referenced,
+    - COMPUTE
+    - VL
+    - STORAGE
+    - LINKPORT
+    name: vduId, type: STRING, description: Reference to the related VDU in the VNFD applicable
+    to this resource. Shall only be present if a VDU is
+    applicable to this resource.
+    name: resourceTemplateId, type: STRING, description: Reference to a resource template (VnfVirtualLinkDesc,
+    VirtualComputeDesc, VnfExtCpd, VirtualStorageDesc) in
+    the VNFD. Shall be present for the planned creation of
+    new resources, including temporary resources, and for
+    the modification of existing resources. Shall be absent
+    otherwise
+  XPath Path
+    /sol003:grants/sol003:updateResourcesRequest
+  XPath Keyed Path
+    /sol003:grants/sol003:updateResourcesRequest[sol003:id='STRING']
+  RW.REST URI Path
+    /input/updateResourcesRequest/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:updateResourcesRequest
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:updateResourcesRequest[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.UpdateResourcesRequest
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_UpdateResourcesRequest
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__UpdateResourcesRequest
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_UpdateResourcesRequest
+    Sol003_input_Grants_UpdateResourcesRequest
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_UpdateResourcesRequest
+
+2.1.1.4.1  list sol003:resource
+  Description
+    Resource container
+  Leaves
+    name: resourceId, type: STRING, description: Identifier of the resource in the scope of the VIM or
+    the resource provider.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to manage the resource.
+    This attribute shall only be supported and present if
+    VNF-related resource management in direct mode is applicable.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    name: resourceProviderId, type: STRING, description: Identifier of the entity responsible for the management
+    of the resource. This attribute shall only be supported
+    and present when VNF-related resource management in indirect
+    mode is applicable. The identification scheme is outside
+    the scope of the present document.
+    name: vimLevelResourceType, type: STRING, description: Type of the resource in the scope of the VIM or the
+    resource provider.
+  XPath Path
+    /sol003:grants/sol003:updateResourcesRequest/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:updateResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/updateResourcesRequest/STRING/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:updateResourcesRequest/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:updateResourcesRequest[sol003:id='STRING']/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.UpdateResourcesRequest.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_UpdateResourcesRequest_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__UpdateResourcesRequest__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_UpdateResourcesRequest_Resource
+    Sol003_input_Grants_UpdateResourcesRequest_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_UpdateResourcesRequest_Resource
+
+2.1.1.5  container sol003:placementConstraints
+  Description
+    Placement constraints that the VNFM may send to the NFVO
+    in order to influence the resource placement decision.
+    If sent, the NFVO shall take the constraints into
+    consideration when making resource placement decisions,
+    and shall reject the grant if they cannot be honoured.
+  Leaves
+    name: affinityOrAntiAffinity, type: ENUM, description: The type of the constraint.
+
+    Permitted values are,
+    - AFFINITY
+    - ANTI_AFFINITY
+    name: scope, type: ENUM, description: The scope of the placement constraint indicating the
+    category of the 'place' where the constraint applies.
+
+    Permitted values are,
+    - NFVI_POP
+    - ZONE
+    - ZONE_GROUP
+    - NFVI_NODE
+  XPath Path
+    /sol003:grants/sol003:placementConstraints
+  XPath Keyed Path
+    /sol003:grants/sol003:placementConstraints
+  RW.REST URI Path
+    /input/placementConstraints
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:placementConstraints
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:placementConstraints
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.PlacementConstraints
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_PlacementConstraints
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__PlacementConstraints
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_PlacementConstraints
+    Sol003_input_Grants_PlacementConstraints
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_PlacementConstraints
+
+2.1.1.5.1  list sol003:resource
+  Description
+    This type references a resource either by its VIM-level identifier
+    for existing resources
+  Leaves
+    name: idType, type: ENUM, description: The type of the identifier.
+
+    Permitted values:
+    - RES_MGMT: Resource-management-level identifier;
+      this identifier is managed by the VIM in the direct
+      mode of VNF-related resource management, and is
+      managed by the NFVO in the indirect mode)
+    - GRANT: Reference to the identifier of a 'ResourceDefinition'
+      structure in the 'GrantRequest' structure.
+    name: resourceId, type: STRING, description: An actual resource-management-level identifier (idType=RES_MGMT),
+    or an identifier that references a 'ResourceDefinition' structure
+    in the related 'GrantRequest' structure (idType=GRANT).
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection for managing the resource.
+    It shall only be present when idType = RES_MGMT.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    This attribute shall only be supported when VNF- related
+    resource management in direct mode is applicable.
+    name: resourceProviderId, type: STRING, description: Identifier of the resource provider. It shall only be present
+    when idType = RES_MGMT. This attribute shall only be supported
+    when VNF- related resource management in indirect mode is
+    applicable. The identification scheme is outside the scope of
+    the present document.
+  XPath Path
+    /sol003:grants/sol003:placementConstraints/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:placementConstraints/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/placementConstraints/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:placementConstraints/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:placementConstraints/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.PlacementConstraints.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_PlacementConstraints_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__PlacementConstraints__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_PlacementConstraints_Resource
+    Sol003_input_Grants_PlacementConstraints_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_PlacementConstraints_Resource
+
+2.1.1.6  list sol003:vimConstraints
+  Leaves
+    name: sameResourceGroup, type: BOOLEAN, description: If present and set to true, this signals that the
+    applies not only to the same VIM connection,
+    also to the same infrastructure resource group.
+  XPath Path
+    /sol003:grants/sol003:vimConstraints
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConstraints
+  RW.REST URI Path
+    /input/vimConstraints
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:vimConstraints
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:vimConstraints
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.VimConstraints
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_VimConstraints
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__VimConstraints
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_VimConstraints
+    Sol003_input_Grants_VimConstraints
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_VimConstraints
+
+2.1.1.6.1  list sol003:resource
+  Description
+    This type references a resource either by its VIM-level identifier
+    for existing resources
+  Leaves
+    name: idType, type: ENUM, description: The type of the identifier.
+
+    Permitted values:
+    - RES_MGMT: Resource-management-level identifier;
+      this identifier is managed by the VIM in the direct
+      mode of VNF-related resource management, and is
+      managed by the NFVO in the indirect mode)
+    - GRANT: Reference to the identifier of a 'ResourceDefinition'
+      structure in the 'GrantRequest' structure.
+    name: resourceId, type: STRING, description: An actual resource-management-level identifier (idType=RES_MGMT),
+    or an identifier that references a 'ResourceDefinition' structure
+    in the related 'GrantRequest' structure (idType=GRANT).
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection for managing the resource.
+    It shall only be present when idType = RES_MGMT.
+    The applicable 'VimConnectionInfo' structure, which is
+    referenced by vimConnectionId, can be obtained from the
+    'vimConnectionInfo' attribute of the 'VnfInstance' structure.
+    This attribute shall only be supported when VNF- related
+    resource management in direct mode is applicable.
+    name: resourceProviderId, type: STRING, description: Identifier of the resource provider. It shall only be present
+    when idType = RES_MGMT. This attribute shall only be supported
+    when VNF- related resource management in indirect mode is
+    applicable. The identification scheme is outside the scope of
+    the present document.
+  XPath Path
+    /sol003:grants/sol003:vimConstraints/sol003:resource
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConstraints/sol003:resource[sol003:resourceId='STRING']
+  RW.REST URI Path
+    /input/vimConstraints/resource/STRING
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:vimConstraints/sol003:resource
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:vimConstraints/sol003:resource[sol003:resourceId='STRING']
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.VimConstraints.Resource
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_VimConstraints_Resource
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__VimConstraints__Resource
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_VimConstraints_Resource
+    Sol003_input_Grants_VimConstraints_Resource
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_VimConstraints_Resource
+
+2.1.1.7  container sol003:additionalParams
+  Leaves
+    name: key, type: STRING, description: key
+    name: value, type: STRING, description: value
+  XPath Path
+    /sol003:grants/sol003:additionalParams
+  XPath Keyed Path
+    /sol003:grants/sol003:additionalParams
+  RW.REST URI Path
+    /input/additionalParams
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:additionalParams
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:additionalParams
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.AdditionalParams
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_AdditionalParams
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__AdditionalParams
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_AdditionalParams
+    Sol003_input_Grants_AdditionalParams
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_AdditionalParams
+
+2.1.1.8  container sol003:linksRequest
+  Leaves
+    name: vnfLcmOpOcc, type: STRING, description: Link to related lifecycle management
+    operation occurrence.
+    name: vnfInstance, type: STRING, description: Link to related VNF instance.
+  XPath Path
+    /sol003:grants/sol003:linksRequest
+  XPath Keyed Path
+    /sol003:grants/sol003:linksRequest
+  RW.REST URI Path
+    /input/linksRequest
+  RW Keyspec XPath Path
+    I,/sol003:grants/sol003:linksRequest
+  RW Keyspec XPath Keyed Path
+    I,/sol003:grants/sol003:linksRequest
+  Protobuf Type
+    .sol003.YangInput.Sol003.Grants.LinksRequest
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Grants_LinksRequest
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Grants__LinksRequest
+  C RWPB Identifiers
+    Sol003_Sol003_input_Grants_LinksRequest
+    Sol003_input_Grants_LinksRequest
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Grants_LinksRequest
+
+2.1.2  rpc input sol003:alarm
+  Leaves
+    name: vnfrid, type: STRING
+    name: vimid, type: STRING
+    name: alarm-id, type: STRING
+  XPath Path
+    /sol003:alarm
+  XPath Keyed Path
+    /sol003:alarm
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/sol003:alarm
+  RW Keyspec XPath Keyed Path
+    I,/sol003:alarm
+  Protobuf Type
+    .sol003.YangInput.Sol003.Alarm
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_Alarm
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__Alarm
+  C RWPB Identifiers
+    Sol003_Sol003_input_Alarm
+    Sol003_input_Alarm
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_Alarm
+
+2.1.3  rpc input sol003:lcm-notification
+  Leaves
+    name: project-name, type: LEAFREF, description: Project to which this belongs
+    name: account-name, type: STRING
+    name: vnfinstanceid, type: STRING
+    name: notificationstatus, type: STRING
+    name: operationstate, type: STRING
+    name: operation, type: STRING
+    name: vnflcmopoccid, type: STRING
+  XPath Path
+    /sol003:lcm-notification
+  XPath Keyed Path
+    /sol003:lcm-notification
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/sol003:lcm-notification
+  RW Keyspec XPath Keyed Path
+    I,/sol003:lcm-notification
+  Protobuf Type
+    .sol003.YangInput.Sol003.LcmNotification
+  Python Proto-GI Type
+    Sol003Yang.YangInput_Sol003_LcmNotification
+  C Protobuf-C Struct Type
+    Sol003__YangInput__Sol003__LcmNotification
+  C RWPB Identifiers
+    Sol003_Sol003_input_LcmNotification
+    Sol003_input_LcmNotification
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_input_LcmNotification
+
+2.2  sol003 rpc output
+
+2.2.1  rpc output sol003:grants
+  Leaves
+    name: id, type: STRING, description: Identifier of the grant
+    name: vnfInstanceId, type: STRING, description: Instance id of this VNF instance
+    name: vnfLcmOpOccId, type: STRING, description: Identifier of the related VNF lifecycle
+    management operation occurrence.
+    name: computeReservationId, type: STRING, description: Compute reservation identifier
+    name: networkReservationId, type: STRING, description: Network reservation identifier
+    name: storageReservationId, type: STRING, description: Storage reservation identifier
+    name: additionalParamsResponse, type: STRING, description: Additional parameters
+  XPath Path
+    /sol003:grants
+  XPath Keyed Path
+    /sol003:grants
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/sol003:grants
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants
+    Sol003_output_Grants
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants
+
+2.2.1.1  list sol003:vimConnections
+  Leaves
+    name: id, type: STRING, description: Identifier of the VIM Connection.
+    This identifier is managed by the NFVO.
+    name: vimId, type: STRING, description: The identifier of the VIM instance. This identifier is
+    managed by the NFVO.
+
+    Shall be present to address additional information about
+    the VIM if such information has been configured into the
+    VNFM by means outside the scope of the present
+    document, and should be absent otherwise.
+    name: vimType, type: STRING, description: Discriminator for the different types of the VIM
+    information. The value of this attribute determines the
+    structure of the 'interfaceInfo' and 'accessInfo'
+    attributes, based on the type of the VIM. The set of
+    permitted values is expected to change over time as new
+    types or versions of VIMs become available.
+  XPath Path
+    /sol003:grants/sol003:vimConnections
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConnections[sol003:id='STRING']
+  RW.REST URI Path
+    /output/vimConnections/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimConnections
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimConnections[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimConnections
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimConnections
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimConnections
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimConnections
+    Sol003_output_Grants_VimConnections
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimConnections
+
+2.2.1.1.1  container sol003:interfaceInfo
+  Description
+    Information about the interface or interfaces to the VIM,
+    if applicable, such as the URI of an interface endpoint to
+    communicate with the VIM. The applicable keys are dependent
+    on the content of vimType
+  Leaves
+    name: auth_url, type: STRING, description: auth_url
+  XPath Path
+    /sol003:grants/sol003:vimConnections/sol003:interfaceInfo
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:interfaceInfo
+  RW.REST URI Path
+    /output/vimConnections/STRING/interfaceInfo
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimConnections/sol003:interfaceInfo
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:interfaceInfo
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimConnections.InterfaceInfo
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimConnections_InterfaceInfo
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimConnections__InterfaceInfo
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimConnections_InterfaceInfo
+    Sol003_output_Grants_VimConnections_InterfaceInfo
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimConnections_InterfaceInfo
+
+2.2.1.1.2  container sol003:accessInfo
+  Description
+    Authentication credentials for accessing the VIM, and other
+    access-related information such as tenants or infrastructure resource groups.
+    applicable keys are dependent on the content of vimType.
+  Leaves
+    name: key, type: STRING, description: key
+    name: secret, type: STRING, description: secret
+    name: tenant, type: STRING, description: tenant
+    name: region, type: STRING, description: region
+  XPath Path
+    /sol003:grants/sol003:vimConnections/sol003:accessInfo
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:accessInfo
+  RW.REST URI Path
+    /output/vimConnections/STRING/accessInfo
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimConnections/sol003:accessInfo
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:accessInfo
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimConnections.AccessInfo
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimConnections_AccessInfo
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimConnections__AccessInfo
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimConnections_AccessInfo
+    Sol003_output_Grants_VimConnections_AccessInfo
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimConnections_AccessInfo
+
+2.2.1.1.3  list sol003:extra
+  Description
+    VIM type specific additional information. The applicable structure, and
+    whether or not this attribute is available, is dependent on the content
+    of vimType.
+  Leaves
+    name: key, type: STRING, description: key
+    name: value, type: STRING, description: value
+  XPath Path
+    /sol003:grants/sol003:vimConnections/sol003:extra
+  XPath Keyed Path
+    /sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:extra[sol003:key='STRING']
+  RW.REST URI Path
+    /output/vimConnections/STRING/extra/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimConnections/sol003:extra
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimConnections[sol003:id='STRING']/sol003:extra[sol003:key='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimConnections.Extra
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimConnections_Extra
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimConnections__Extra
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimConnections_Extra
+    Sol003_output_Grants_VimConnections_Extra
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimConnections_Extra
+
+2.2.1.2  list sol003:zones
+  Leaves
+    name: id, type: STRING, description: The identifier of this ZoneInfo instance
+    name: zoneId, type: STRING, description: The identifier of the resource zone, as managed by
+    the resource management layer (typically, the VIM).
+    name: vimConnectionid, type: STRING, description: Identifier of the connection to the VIM that manages
+    the resource zone.
+
+    The applicable 'VimConnectionInfo' structure, which
+    is referenced by vimConnectionId, can be obtained
+    from the 'vimConnectionInfo' attribute of the
+    'VnfInstance' structure.
+    name: resourceProviderId, type: STRING, description: Identifies the entity responsible for the management the resource zone.
+  XPath Path
+    /sol003:grants/sol003:zones
+  XPath Keyed Path
+    /sol003:grants/sol003:zones[sol003:id='STRING']
+  RW.REST URI Path
+    /output/zones/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:zones
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:zones[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.Zones
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_Zones
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__Zones
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_Zones
+    Sol003_output_Grants_Zones
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_Zones
+
+2.2.1.3  list sol003:zoneGroups
+  Leaves
+    name: zoneId, type: STRING, description: Zone Id
+  XPath Path
+    /sol003:grants/sol003:zoneGroups
+  XPath Keyed Path
+    /sol003:grants/sol003:zoneGroups[sol003:zoneId='STRING']
+  RW.REST URI Path
+    /output/zoneGroups/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:zoneGroups
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:zoneGroups[sol003:zoneId='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ZoneGroups
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ZoneGroups
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ZoneGroups
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ZoneGroups
+    Sol003_output_Grants_ZoneGroups
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ZoneGroups
+
+2.2.1.4  list sol003:addResources
+  Leaves
+    name: resourceDefinitionId, type: STRING, description: Identifier of the related 'ResourceDefinition' structure
+    from the related 'GrantRequest' structure
+    name: reservationId, type: STRING, description: Identifier of the VIM connection to be used to manage this
+    resource. Shall be present for new resources, and shall be
+    absent for resources that have already been allocated.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to be used to manage this resource
+    name: resourceProviderId, type: STRING, description: Identifies the entity responsible for the management of the virtualised resource.
+    name: zoneId, type: STRING, description: Reference to the identifier of the 'ZoneInfo' structure in the 'Grant' structure
+    defining the resource zone into which this resource is to be placed
+    name: resourceGroupId, type: STRING, description: Identifier of the 'infrastructure resource group', logical grouping of
+    virtual resources assigned to a tenant within an Infrastructure Domain,
+    to be provided when allocating the resource
+  XPath Path
+    /sol003:grants/sol003:addResources
+  XPath Keyed Path
+    /sol003:grants/sol003:addResources[sol003:resourceDefinitionId='STRING']
+  RW.REST URI Path
+    /output/addResources/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:addResources
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:addResources[sol003:resourceDefinitionId='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.AddResources
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_AddResources
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__AddResources
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_AddResources
+    Sol003_output_Grants_AddResources
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_AddResources
+
+2.2.1.5  list sol003:tempResources
+  Leaves
+    name: resourceDefinitionId, type: STRING, description: Identifier of the related 'ResourceDefinition' structure
+    from the related 'GrantRequest' structure
+    name: reservationId, type: STRING, description: Identifier of the VIM connection to be used to manage this
+    resource. Shall be present for new resources, and shall be
+    absent for resources that have already been allocated.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to be used to manage this resource
+    name: resourceProviderId, type: STRING, description: Identifies the entity responsible for the management of the virtualised resource.
+    name: zoneId, type: STRING, description: Reference to the identifier of the 'ZoneInfo' structure in the 'Grant' structure
+    defining the resource zone into which this resource is to be placed
+    name: resourceGroupId, type: STRING, description: Identifier of the 'infrastructure resource group', logical grouping of
+    virtual resources assigned to a tenant within an Infrastructure Domain,
+    to be provided when allocating the resource
+  XPath Path
+    /sol003:grants/sol003:tempResources
+  XPath Keyed Path
+    /sol003:grants/sol003:tempResources[sol003:resourceDefinitionId='STRING']
+  RW.REST URI Path
+    /output/tempResources/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:tempResources
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:tempResources[sol003:resourceDefinitionId='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.TempResources
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_TempResources
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__TempResources
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_TempResources
+    Sol003_output_Grants_TempResources
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_TempResources
+
+2.2.1.6  list sol003:removeResources
+  Leaves
+    name: resourceDefinitionId, type: STRING, description: Identifier of the related 'ResourceDefinition' structure
+    from the related 'GrantRequest' structure
+    name: reservationId, type: STRING, description: Identifier of the VIM connection to be used to manage this
+    resource. Shall be present for new resources, and shall be
+    absent for resources that have already been allocated.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to be used to manage this resource
+    name: resourceProviderId, type: STRING, description: Identifies the entity responsible for the management of the virtualised resource.
+    name: zoneId, type: STRING, description: Reference to the identifier of the 'ZoneInfo' structure in the 'Grant' structure
+    defining the resource zone into which this resource is to be placed
+    name: resourceGroupId, type: STRING, description: Identifier of the 'infrastructure resource group', logical grouping of
+    virtual resources assigned to a tenant within an Infrastructure Domain,
+    to be provided when allocating the resource
+  XPath Path
+    /sol003:grants/sol003:removeResources
+  XPath Keyed Path
+    /sol003:grants/sol003:removeResources[sol003:resourceDefinitionId='STRING']
+  RW.REST URI Path
+    /output/removeResources/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:removeResources
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:removeResources[sol003:resourceDefinitionId='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.RemoveResources
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_RemoveResources
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__RemoveResources
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_RemoveResources
+    Sol003_output_Grants_RemoveResources
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_RemoveResources
+
+2.2.1.7  list sol003:updateResources
+  Leaves
+    name: resourceDefinitionId, type: STRING, description: Identifier of the related 'ResourceDefinition' structure
+    from the related 'GrantRequest' structure
+    name: reservationId, type: STRING, description: Identifier of the VIM connection to be used to manage this
+    resource. Shall be present for new resources, and shall be
+    absent for resources that have already been allocated.
+    name: vimConnectionId, type: STRING, description: Identifier of the VIM connection to be used to manage this resource
+    name: resourceProviderId, type: STRING, description: Identifies the entity responsible for the management of the virtualised resource.
+    name: zoneId, type: STRING, description: Reference to the identifier of the 'ZoneInfo' structure in the 'Grant' structure
+    defining the resource zone into which this resource is to be placed
+    name: resourceGroupId, type: STRING, description: Identifier of the 'infrastructure resource group', logical grouping of
+    virtual resources assigned to a tenant within an Infrastructure Domain,
+    to be provided when allocating the resource
+  XPath Path
+    /sol003:grants/sol003:updateResources
+  XPath Keyed Path
+    /sol003:grants/sol003:updateResources[sol003:resourceDefinitionId='STRING']
+  RW.REST URI Path
+    /output/updateResources/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:updateResources
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:updateResources[sol003:resourceDefinitionId='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.UpdateResources
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_UpdateResources
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__UpdateResources
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_UpdateResources
+    Sol003_output_Grants_UpdateResources
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_UpdateResources
+
+2.2.1.8  container sol003:vimAssets
+  XPath Path
+    /sol003:grants/sol003:vimAssets
+  XPath Keyed Path
+    /sol003:grants/sol003:vimAssets
+  RW.REST URI Path
+    /output/vimAssets
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimAssets
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimAssets
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimAssets
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimAssets
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimAssets
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimAssets
+    Sol003_output_Grants_VimAssets
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimAssets
+
+2.2.1.8.1  list sol003:computeResourceFlavours
+  Leaves
+    name: vimConnectionId, type: STRING, description: VIM connection id
+    name: resourceProviderId, type: STRING, description: Resource Provider Identifier
+    name: vnfdVirtualComputeDescId, type: STRING, description: Vnfd Virtual Compute Desc Identifier
+    name: vimFlavourId, type: STRING, description: VIM Flavour Identifier
+  XPath Path
+    /sol003:grants/sol003:vimAssets/sol003:computeResourceFlavours
+  XPath Keyed Path
+    /sol003:grants/sol003:vimAssets/sol003:computeResourceFlavours
+  RW.REST URI Path
+    /output/vimAssets/computeResourceFlavours
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimAssets/sol003:computeResourceFlavours
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimAssets/sol003:computeResourceFlavours
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimAssets.ComputeResourceFlavours
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimAssets_ComputeResourceFlavours
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimAssets__ComputeResourceFlavours
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimAssets_ComputeResourceFlavours
+    Sol003_output_Grants_VimAssets_ComputeResourceFlavours
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimAssets_ComputeResourceFlavours
+
+2.2.1.8.2  list sol003:softwareImages
+  Leaves
+    name: vimConnectionId, type: STRING, description: VIM connection id
+    name: resourceProviderId, type: STRING, description: Resource Provider Identifier
+    name: vnfdSoftwareImageId, type: STRING, description: Vnfd Software Image Identifier
+    name: vimSoftwareImageId, type: STRING, description: VIM Software Image Identifier
+  XPath Path
+    /sol003:grants/sol003:vimAssets/sol003:softwareImages
+  XPath Keyed Path
+    /sol003:grants/sol003:vimAssets/sol003:softwareImages
+  RW.REST URI Path
+    /output/vimAssets/softwareImages
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:vimAssets/sol003:softwareImages
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:vimAssets/sol003:softwareImages
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.VimAssets.SoftwareImages
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_VimAssets_SoftwareImages
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__VimAssets__SoftwareImages
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_VimAssets_SoftwareImages
+    Sol003_output_Grants_VimAssets_SoftwareImages
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_VimAssets_SoftwareImages
+
+2.2.1.9  list sol003:extVirtualLinks
+  Leaves
+    name: id, type: STRING, description: Id
+    name: vimConnectionId, type: STRING, description: VIM Connection identifier
+    name: resourceProviderId, type: STRING, description: Resource Provider identifier
+    name: resourceId, type: STRING, description: Resource identifier
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks
+    Sol003_output_Grants_ExtVirtualLinks
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks
+
+2.2.1.9.1  list sol003:extCps
+  Leaves
+    name: cpdId, type: STRING, description: CP Descriptor identifier
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps
+
+2.2.1.9.1.1  list sol003:cpConfig
+  Leaves
+    name: cpInstanceId, type: STRING
+    name: linkPortId, type: STRING
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig
+
+2.2.1.9.1.1.1  list sol003:cpProtocolData
+  Leaves
+    name: layerProtocol, type: STRING
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig/cpProtocolData
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig.CpProtocolData
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig__CpProtocolData
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData
+
+2.2.1.9.1.1.1.1  container sol003:ipOverEthernet
+  Leaves
+    name: macAddress, type: STRING
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig/cpProtocolData/ipOverEthernet
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig.CpProtocolData.IpOverEthernet
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig__CpProtocolData__IpOverEthernet
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet
+
+2.2.1.9.1.1.1.1.1  list sol003:ipAddresses
+  Leaves
+    name: type, type: STRING
+    name: numDynamicAddresses, type: UINT64
+    name: subnetId, type: STRING
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig/cpProtocolData/ipOverEthernet/ipAddresses
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig.CpProtocolData.IpOverEthernet.IpAddresses
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig__CpProtocolData__IpOverEthernet__IpAddresses
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses
+
+2.2.1.9.1.1.1.1.1.1  leaf-list sol003:fixedAddresses
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:fixedAddresses
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:fixedAddresses
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig/cpProtocolData/ipOverEthernet/ipAddresses/fixedAddresses
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:fixedAddresses
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:fixedAddresses
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig.CpProtocolData.IpOverEthernet.IpAddresses.FixedAddresses
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_FixedAddresses
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig__CpProtocolData__IpOverEthernet__IpAddresses__FixedAddresses
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_FixedAddresses
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_FixedAddresses
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_FixedAddresses
+
+2.2.1.9.1.1.1.1.1.2  container sol003:addressRange
+  Leaves
+    name: minAddress, type: STRING
+    name: maxAddress, type: STRING
+  XPath Path
+    /sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:addressRange
+  XPath Keyed Path
+    /sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:addressRange
+  RW.REST URI Path
+    /output/extVirtualLinks/STRING/extCps/cpConfig/cpProtocolData/ipOverEthernet/ipAddresses/addressRange
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extVirtualLinks/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:addressRange
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extVirtualLinks[sol003:id='STRING']/sol003:extCps/sol003:cpConfig/sol003:cpProtocolData/sol003:ipOverEthernet/sol003:ipAddresses/sol003:addressRange
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtVirtualLinks.ExtCps.CpConfig.CpProtocolData.IpOverEthernet.IpAddresses.AddressRange
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_AddressRange
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtVirtualLinks__ExtCps__CpConfig__CpProtocolData__IpOverEthernet__IpAddresses__AddressRange
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_AddressRange
+    Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_AddressRange
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtVirtualLinks_ExtCps_CpConfig_CpProtocolData_IpOverEthernet_IpAddresses_AddressRange
+
+2.2.1.10  list sol003:extManagedVirtualLinks
+  Leaves
+    name: id, type: STRING, description: Id
+    name: virtualLinkDescId, type: STRING, description: Virtual Link Desc Identifier
+    name: vimConnectionId, type: STRING, description: VIM Connection Identifier
+    name: resourceProviderId, type: STRING, description: Resource Provider Identifier
+    name: resourceId, type: STRING, description: resource Identifier
+  XPath Path
+    /sol003:grants/sol003:extManagedVirtualLinks
+  XPath Keyed Path
+    /sol003:grants/sol003:extManagedVirtualLinks
+  RW.REST URI Path
+    /output/extManagedVirtualLinks
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:extManagedVirtualLinks
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:extManagedVirtualLinks
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.ExtManagedVirtualLinks
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_ExtManagedVirtualLinks
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__ExtManagedVirtualLinks
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_ExtManagedVirtualLinks
+    Sol003_output_Grants_ExtManagedVirtualLinks
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_ExtManagedVirtualLinks
+
+2.2.1.11  container sol003:links
+  XPath Path
+    /sol003:grants/sol003:links
+  XPath Keyed Path
+    /sol003:grants/sol003:links
+  RW.REST URI Path
+    /output/links
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:links
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:links
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.Links
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_Links
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__Links
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_Links
+    Sol003_output_Grants_Links
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_Links
+
+2.2.1.11.1  container sol003:self
+  Leaves
+    name: href, type: STRING, description: self
+  XPath Path
+    /sol003:grants/sol003:links/sol003:self
+  XPath Keyed Path
+    /sol003:grants/sol003:links/sol003:self
+  RW.REST URI Path
+    /output/links/self
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:links/sol003:self
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:links/sol003:self
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.Links.Self
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_Links_Self
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__Links__Self
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_Links_Self
+    Sol003_output_Grants_Links_Self
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_Links_Self
+
+2.2.1.11.2  container sol003:vnfLcmOpOcc
+  Leaves
+    name: href, type: STRING, description: vnfLcmOpOcc
+  XPath Path
+    /sol003:grants/sol003:links/sol003:vnfLcmOpOcc
+  XPath Keyed Path
+    /sol003:grants/sol003:links/sol003:vnfLcmOpOcc
+  RW.REST URI Path
+    /output/links/vnfLcmOpOcc
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:links/sol003:vnfLcmOpOcc
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:links/sol003:vnfLcmOpOcc
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.Links.VnfLcmOpOcc
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_Links_VnfLcmOpOcc
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__Links__VnfLcmOpOcc
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_Links_VnfLcmOpOcc
+    Sol003_output_Grants_Links_VnfLcmOpOcc
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_Links_VnfLcmOpOcc
+
+2.2.1.11.3  container sol003:vnfInstance
+  Leaves
+    name: href, type: STRING, description: vnfInstance
+  XPath Path
+    /sol003:grants/sol003:links/sol003:vnfInstance
+  XPath Keyed Path
+    /sol003:grants/sol003:links/sol003:vnfInstance
+  RW.REST URI Path
+    /output/links/vnfInstance
+  RW Keyspec XPath Path
+    O,/sol003:grants/sol003:links/sol003:vnfInstance
+  RW Keyspec XPath Keyed Path
+    O,/sol003:grants/sol003:links/sol003:vnfInstance
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Grants.Links.VnfInstance
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Grants_Links_VnfInstance
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Grants__Links__VnfInstance
+  C RWPB Identifiers
+    Sol003_Sol003_output_Grants_Links_VnfInstance
+    Sol003_output_Grants_Links_VnfInstance
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Grants_Links_VnfInstance
+
+2.2.2  rpc output sol003:alarm
+  XPath Path
+    /sol003:alarm
+  XPath Keyed Path
+    /sol003:alarm
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/sol003:alarm
+  RW Keyspec XPath Keyed Path
+    O,/sol003:alarm
+  Protobuf Type
+    .sol003.YangOutput.Sol003.Alarm
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_Alarm
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__Alarm
+  C RWPB Identifiers
+    Sol003_Sol003_output_Alarm
+    Sol003_output_Alarm
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_Alarm
+
+2.2.3  rpc output sol003:lcm-notification
+  Leaves
+    name: status-code, type: UINT32
+    name: details, type: STRING
+  XPath Path
+    /sol003:lcm-notification
+  XPath Keyed Path
+    /sol003:lcm-notification
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/sol003:lcm-notification
+  RW Keyspec XPath Keyed Path
+    O,/sol003:lcm-notification
+  Protobuf Type
+    .sol003.YangOutput.Sol003.LcmNotification
+  Python Proto-GI Type
+    Sol003Yang.YangOutput_Sol003_LcmNotification
+  C Protobuf-C Struct Type
+    Sol003__YangOutput__Sol003__LcmNotification
+  C RWPB Identifiers
+    Sol003_Sol003_output_LcmNotification
+    Sol003_output_LcmNotification
+  YPBC Base Identifier
+    rw_ypbc_Sol003_Sol003_output_LcmNotification
+

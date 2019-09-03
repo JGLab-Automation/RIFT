@@ -1,0 +1,586 @@
+Programmer's API documentation for yang module rw-restconf.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-restconf                                                           2
+  rw-restconf data                                                         2.1
+    container rw-restconf:rwrestconf-configuration                       2.1.1
+    container rw-restconf:log-download-state                             2.1.2
+      list rw-restconf:log-detail                                      2.1.2.1
+    container rw-restconf:rwrestconf-statistics                          2.1.3
+      container rw-restconf:eventsource-statistics                     2.1.3.1
+      container rw-restconf:user-info                                  2.1.3.2
+        list rw-restconf:active-users                                2.1.3.2.1
+        container rw-restconf:last-user-activity                     2.1.3.2.2
+          list rw-restconf:user-list                               2.1.3.2.2.1
+      container rw-restconf:connection-info                            2.1.3.3
+        list rw-restconf:pool                                        2.1.3.3.1
+          list rw-restconf:connection                              2.1.3.3.1.1
+      container rw-restconf:http-transaction-statistics                2.1.3.4
+        list rw-restconf:transcation-stat-by-duration                2.1.3.4.1
+      container rw-restconf:sb-transaction-statistics                  2.1.3.5
+        list rw-restconf:transcation-stat-by-duration                2.1.3.5.1
+  rw-restconf rpc input                                                    2.2
+    rpc input rw-restconf:rwrestconf-commands                            2.2.1
+  rw-restconf rpc output                                                   2.3
+    rpc output rw-restconf:rwrestconf-commands                           2.3.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwRestconf_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwRestconf_g_schema
+2  module rw-restconf
+
+2.1  rw-restconf data
+  Description
+    Rift RestConf Data Model
+
+2.1.1  container rw-restconf:rwrestconf-configuration
+  Description
+    configure behaviour of restconf
+  Leaves
+    name: log-timing, type: BOOLEAN, description: enable/disable transaction time measurement
+    name: use-https, type: BOOLEAN, description: enable/disable usage of https
+    name: rest-audit, type: BOOLEAN, description: enable/disable restconf audit
+  XPath Path
+    /rw-restconf:rwrestconf-configuration
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-configuration
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-configuration
+  RW Keyspec XPath Path
+    C,/rw-restconf:rwrestconf-configuration
+  RW Keyspec XPath Keyed Path
+    C,/rw-restconf:rwrestconf-configuration
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfConfiguration
+  Python Proto-GI Type
+    RwRestconfYang.RestconfConfig
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfConfiguration
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfConfiguration
+    RwRestconf_data_RwrestconfConfiguration
+    RwRestconf_RestconfConfig
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfConfiguration
+
+2.1.2  container rw-restconf:log-download-state
+  Description
+    shows the status of Log/Sysdump/SSI creation and download state.
+  XPath Path
+    /rw-restconf:log-download-state
+  XPath Keyed Path
+    /rw-restconf:log-download-state
+  RW.REST URI Path
+    /rw-restconf:log-download-state
+  RW Keyspec XPath Path
+    D,/rw-restconf:log-download-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:log-download-state
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.LogDownloadState
+  Python Proto-GI Type
+    RwRestconfYang.YangData_RwRestconf_LogDownloadState
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__LogDownloadState
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_LogDownloadState
+    RwRestconf_data_LogDownloadState
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_LogDownloadState
+
+2.1.2.1  list rw-restconf:log-detail
+  Description
+    profile of each logs download status
+  Leaves
+    name: status, type: STRING
+    name: log-name, type: STRING
+    name: url, type: STRING
+    name: timestamp, type: STRING
+  XPath Path
+    /rw-restconf:log-download-state/rw-restconf:log-detail
+  XPath Keyed Path
+    /rw-restconf:log-download-state/rw-restconf:log-detail[rw-restconf:log-name='STRING']
+  RW.REST URI Path
+    /rw-restconf:log-download-state/log-detail/STRING
+  RW Keyspec XPath Path
+    D,/rw-restconf:log-download-state/rw-restconf:log-detail
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:log-download-state/rw-restconf:log-detail[rw-restconf:log-name='STRING']
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.LogDownloadState.LogDetail
+  Python Proto-GI Type
+    RwRestconfYang.YangData_RwRestconf_LogDownloadState_LogDetail
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__LogDownloadState__LogDetail
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_LogDownloadState_LogDetail
+    RwRestconf_data_LogDownloadState_LogDetail
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_LogDownloadState_LogDetail
+
+2.1.3  container rw-restconf:rwrestconf-statistics
+  Description
+    Restconf statistics
+  Leaves
+    name: get-req, type: UINT64
+    name: put-req, type: UINT64
+    name: post-req, type: UINT64
+    name: del-req, type: UINT64
+    name: patch-req, type: UINT64
+    name: get-200-rsp, type: UINT64
+    name: get-204-rsp, type: UINT64
+    name: get-401-rsp, type: UINT64
+    name: get-404-rsp, type: UINT64
+    name: get-500-rsp, type: UINT64
+    name: put-200-rsp, type: UINT64
+    name: put-201-rsp, type: UINT64
+    name: put-401-rsp, type: UINT64
+    name: put-404-rsp, type: UINT64
+    name: put-405-rsp, type: UINT64
+    name: put-409-rsp, type: UINT64
+    name: put-500-rsp, type: UINT64
+    name: post-200-rsp, type: UINT64
+    name: post-201-rsp, type: UINT64
+    name: post-401-rsp, type: UINT64
+    name: post-404-rsp, type: UINT64
+    name: post-405-rsp, type: UINT64
+    name: post-409-rsp, type: UINT64
+    name: post-500-rsp, type: UINT64
+    name: patch-200-rsp, type: UINT64
+    name: patch-201-rsp, type: UINT64
+    name: patch-401-rsp, type: UINT64
+    name: patch-404-rsp, type: UINT64
+    name: patch-405-rsp, type: UINT64
+    name: patch-500-rsp, type: UINT64
+    name: del-200-rsp, type: UINT64
+    name: del-201-rsp, type: UINT64
+    name: del-401-rsp, type: UINT64
+    name: del-404-rsp, type: UINT64
+    name: del-405-rsp, type: UINT64
+    name: del-500-rsp, type: UINT64
+  XPath Path
+    /rw-restconf:rwrestconf-statistics
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics
+    RwRestconf_data_RwrestconfStatistics
+    RwRestconf_Restconfstats
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics
+
+2.1.3.1  container rw-restconf:eventsource-statistics
+  Description
+    Statistics for RESTCONF event notifications
+  Leaves
+    name: websocket-stream-open, type: UINT64, description: Number of Websocket event streams opened/subscribed.
+    name: websocket-stream-close, type: UINT64, description: Number of Websocket event streams closed/unsubscribed.
+    name: websocket-events, type: UINT64, description: Number of Websocket events notified.
+    name: http-stream-open, type: UINT64, description: Number of HTTP event streams opened.
+    name: http-stream-close, type: UINT64, description: Number of HTTP event streams closed.
+    name: http-events, type: UINT64, description: Number of HTTP events notified.
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:eventsource-statistics
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:eventsource-statistics
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/eventsource-statistics
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:eventsource-statistics
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:eventsource-statistics
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.EventsourceStatistics
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_EventsourceStatistics
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__EventsourceStatistics
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_EventsourceStatistics
+    RwRestconf_data_RwrestconfStatistics_EventsourceStatistics
+    RwRestconf_Restconfstats_EventsourceStatistics
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_EventsourceStatistics
+
+2.1.3.2  container rw-restconf:user-info
+  Description
+    User info in restconf
+  Leaves
+    name: active-user-count, type: UINT64, description: Number of Current Logged in users in the system
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/user-info
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.UserInfo
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_UserInfo
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__UserInfo
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo
+    RwRestconf_data_RwrestconfStatistics_UserInfo
+    RwRestconf_Restconfstats_UserInfo
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo
+
+2.1.3.2.1  list rw-restconf:active-users
+  Leaves
+    name: user-name, type: STRING, description: User name
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:active-users
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:active-users[rw-restconf:user-name='STRING']
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/user-info/active-users/STRING
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:active-users
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:active-users[rw-restconf:user-name='STRING']
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.UserInfo.ActiveUsers
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_UserInfo_ActiveUsers
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__UserInfo__ActiveUsers
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_ActiveUsers
+    RwRestconf_data_RwrestconfStatistics_UserInfo_ActiveUsers
+    RwRestconf_Restconfstats_UserInfo_ActiveUsers
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_ActiveUsers
+
+2.1.3.2.2  container rw-restconf:last-user-activity
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/user-info/last-user-activity
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.UserInfo.LastUserActivity
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_UserInfo_LastUserActivity
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__UserInfo__LastUserActivity
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity
+    RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity
+    RwRestconf_Restconfstats_UserInfo_LastUserActivity
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity
+
+2.1.3.2.2.1  list rw-restconf:user-list
+  Leaves
+    name: user-name, type: STRING
+    name: time-stamp, type: STRING
+    name: operation, type: STRING
+    name: ip-address, type: STRING
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity/rw-restconf:user-list
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity/rw-restconf:user-list[rw-restconf:user-name='STRING']
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/user-info/last-user-activity/user-list/STRING
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity/rw-restconf:user-list
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:user-info/rw-restconf:last-user-activity/rw-restconf:user-list[rw-restconf:user-name='STRING']
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.UserInfo.LastUserActivity.UserList
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_UserInfo_LastUserActivity_UserList
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__UserInfo__LastUserActivity__UserList
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity_UserList
+    RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity_UserList
+    RwRestconf_Restconfstats_UserInfo_LastUserActivity_UserList
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_UserInfo_LastUserActivity_UserList
+
+2.1.3.3  container rw-restconf:connection-info
+  Description
+    Connection info in restconf
+  Leaves
+    name: pool-count, type: UINT64, description: Number of connection pools
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/connection-info
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.ConnectionInfo
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_ConnectionInfo
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__ConnectionInfo
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo
+    RwRestconf_data_RwrestconfStatistics_ConnectionInfo
+    RwRestconf_Restconfstats_ConnectionInfo
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo
+
+2.1.3.3.1  list rw-restconf:pool
+  Leaves
+    name: conn-count, type: UINT64, description: Connection count
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/connection-info/pool
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.ConnectionInfo.Pool
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_ConnectionInfo_Pool
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__ConnectionInfo__Pool
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool
+    RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool
+    RwRestconf_Restconfstats_ConnectionInfo_Pool
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool
+
+2.1.3.3.1.1  list rw-restconf:connection
+  Description
+    Connection detail
+  Leaves
+    name: user-name, type: STRING, description: User name
+    name: transaction-count, type: UINT64, description: Number of Transactions over connection
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool/rw-restconf:connection
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool/rw-restconf:connection
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/connection-info/pool/connection
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool/rw-restconf:connection
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:connection-info/rw-restconf:pool/rw-restconf:connection
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.ConnectionInfo.Pool.Connection
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_ConnectionInfo_Pool_Connection
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__ConnectionInfo__Pool__Connection
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool_Connection
+    RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool_Connection
+    RwRestconf_Restconfstats_ConnectionInfo_Pool_Connection
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_ConnectionInfo_Pool_Connection
+
+2.1.3.4  container rw-restconf:http-transaction-statistics
+  Description
+    HTTP Transaction statistics
+  Leaves
+    name: transaction-count, type: UINT64, description: Number of Transactions handled
+    name: avarage-transaction-time, type: DECIMAL64, description: Avarage Transactions time in ms
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/http-transaction-statistics
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.HttpTransactionStatistics
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_HttpTransactionStatistics
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__HttpTransactionStatistics
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics
+    RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics
+    RwRestconf_Restconfstats_HttpTransactionStatistics
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics
+
+2.1.3.4.1  list rw-restconf:transcation-stat-by-duration
+  Leaves
+    name: duration-bucket, type: UINT64, description: Transaction duration in ms
+    name: count, type: UINT64, description: Number of Transactions handled
+    name: avarage-time, type: DECIMAL64, description: Avarage Transactions time in ms
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics/rw-restconf:transcation-stat-by-duration
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics/rw-restconf:transcation-stat-by-duration[rw-restconf:duration-bucket='0']
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/http-transaction-statistics/transcation-stat-by-duration/0
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics/rw-restconf:transcation-stat-by-duration
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:http-transaction-statistics/rw-restconf:transcation-stat-by-duration[rw-restconf:duration-bucket='0']
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.HttpTransactionStatistics.TranscationStatByDuration
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_HttpTransactionStatistics_TranscationStatByDuration
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__HttpTransactionStatistics__TranscationStatByDuration
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics_TranscationStatByDuration
+    RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics_TranscationStatByDuration
+    RwRestconf_Restconfstats_HttpTransactionStatistics_TranscationStatByDuration
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_HttpTransactionStatistics_TranscationStatByDuration
+
+2.1.3.5  container rw-restconf:sb-transaction-statistics
+  Description
+    SB Transaction statistics
+  Leaves
+    name: transaction-count, type: UINT64, description: Number of Transactions handled
+    name: avarage-transaction-time, type: DECIMAL64, description: Avarage Transactions time in ms
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/sb-transaction-statistics
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.SbTransactionStatistics
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_SbTransactionStatistics
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__SbTransactionStatistics
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics
+    RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics
+    RwRestconf_Restconfstats_SbTransactionStatistics
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics
+
+2.1.3.5.1  list rw-restconf:transcation-stat-by-duration
+  Leaves
+    name: duration-bucket, type: UINT64, description: Transaction duration in ms
+    name: count, type: UINT64, description: Number of Transactions handled
+    name: avarage-time, type: DECIMAL64, description: Avarage Transactions time in ms
+  XPath Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics/rw-restconf:transcation-stat-by-duration
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics/rw-restconf:transcation-stat-by-duration[rw-restconf:duration-bucket='0']
+  RW.REST URI Path
+    /rw-restconf:rwrestconf-statistics/sb-transaction-statistics/transcation-stat-by-duration/0
+  RW Keyspec XPath Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics/rw-restconf:transcation-stat-by-duration
+  RW Keyspec XPath Keyed Path
+    D,/rw-restconf:rwrestconf-statistics/rw-restconf:sb-transaction-statistics/rw-restconf:transcation-stat-by-duration[rw-restconf:duration-bucket='0']
+  Protobuf Type
+    .rw_restconf.YangData.RwRestconf.RwrestconfStatistics.SbTransactionStatistics.TranscationStatByDuration
+  Python Proto-GI Type
+    RwRestconfYang.Restconfstats_SbTransactionStatistics_TranscationStatByDuration
+  C Protobuf-C Struct Type
+    RwRestconf__YangData__RwRestconf__RwrestconfStatistics__SbTransactionStatistics__TranscationStatByDuration
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics_TranscationStatByDuration
+    RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics_TranscationStatByDuration
+    RwRestconf_Restconfstats_SbTransactionStatistics_TranscationStatByDuration
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_data_RwrestconfStatistics_SbTransactionStatistics_TranscationStatByDuration
+
+2.2  rw-restconf rpc input
+  Description
+    Rift RestConf Data Model
+
+2.2.1  rpc input rw-restconf:rwrestconf-commands
+  Leaves
+    name: clear-stats, type: STRING
+  XPath Path
+    /rw-restconf:rwrestconf-commands
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-commands
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-restconf:rwrestconf-commands
+  RW Keyspec XPath Keyed Path
+    I,/rw-restconf:rwrestconf-commands
+  Protobuf Type
+    .rw_restconf.YangInput.RwRestconf.RwrestconfCommands
+  Python Proto-GI Type
+    RwRestconfYang.RestconfCommandsInput
+  C Protobuf-C Struct Type
+    RwRestconf__YangInput__RwRestconf__RwrestconfCommands
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_input_RwrestconfCommands
+    RwRestconf_input_RwrestconfCommands
+    RwRestconf_RestconfCommandsInput
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_input_RwrestconfCommands
+
+2.3  rw-restconf rpc output
+  Description
+    Rift RestConf Data Model
+
+2.3.1  rpc output rw-restconf:rwrestconf-commands
+  Leaves
+    name: result, type: STRING
+  XPath Path
+    /rw-restconf:rwrestconf-commands
+  XPath Keyed Path
+    /rw-restconf:rwrestconf-commands
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-restconf:rwrestconf-commands
+  RW Keyspec XPath Keyed Path
+    O,/rw-restconf:rwrestconf-commands
+  Protobuf Type
+    .rw_restconf.YangOutput.RwRestconf.RwrestconfCommands
+  Python Proto-GI Type
+    RwRestconfYang.RestconfCommandsOutput
+  C Protobuf-C Struct Type
+    RwRestconf__YangOutput__RwRestconf__RwrestconfCommands
+  C RWPB Identifiers
+    RwRestconf_RwRestconf_output_RwrestconfCommands
+    RwRestconf_output_RwrestconfCommands
+    RwRestconf_RestconfCommandsOutput
+  YPBC Base Identifier
+    rw_ypbc_RwRestconf_RwRestconf_output_RwrestconfCommands
+

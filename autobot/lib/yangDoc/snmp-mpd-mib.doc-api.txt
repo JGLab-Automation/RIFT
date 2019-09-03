@@ -1,0 +1,71 @@
+Programmer's API documentation for yang module snmp-mpd-mib.yang
+
+
+
+Schema Globals                                                               1
+
+module snmp-mpd-mib                                                          2
+  snmp-mpd-mib data                                                        2.1
+    container snmp-mpd-mib:SNMP-MPD-MIB                                  2.1.1
+      container snmp-mpd-mib:snmpMPDStats                              2.1.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_SnmpMpdMib_t_schema
+  Global Schema Pointer
+    rw_ypbc_SnmpMpdMib_g_schema
+2  module snmp-mpd-mib
+
+2.1  snmp-mpd-mib data
+
+2.1.1  container snmp-mpd-mib:SNMP-MPD-MIB
+  XPath Path
+    /snmp-mpd-mib:SNMP-MPD-MIB
+  XPath Keyed Path
+    /snmp-mpd-mib:SNMP-MPD-MIB
+  RW.REST URI Path
+    /snmp-mpd-mib:SNMP-MPD-MIB
+  RW Keyspec XPath Path
+    D,/snmp-mpd-mib:SNMP-MPD-MIB
+  RW Keyspec XPath Keyed Path
+    D,/snmp-mpd-mib:SNMP-MPD-MIB
+  Protobuf Type
+    .snmp_mpd_mib.YangData.SnmpMpdMib.SNMPMPDMIB
+  Python Proto-GI Type
+    SnmpMpdMibYang.YangData_SnmpMpdMib_SNMPMPDMIB
+  C Protobuf-C Struct Type
+    SnmpMpdMib__YangData__SnmpMpdMib__SNMPMPDMIB
+  C RWPB Identifiers
+    SnmpMpdMib_SnmpMpdMib_data_SNMPMPDMIB
+    SnmpMpdMib_data_SNMPMPDMIB
+  YPBC Base Identifier
+    rw_ypbc_SnmpMpdMib_SnmpMpdMib_data_SNMPMPDMIB
+
+2.1.1.1  container snmp-mpd-mib:snmpMPDStats
+  Leaves
+    name: snmpUnknownSecurityModels, type: UINT32
+    name: snmpInvalidMsgs, type: UINT32
+    name: snmpUnknownPDUHandlers, type: UINT32
+  XPath Path
+    /snmp-mpd-mib:SNMP-MPD-MIB/snmp-mpd-mib:snmpMPDStats
+  XPath Keyed Path
+    /snmp-mpd-mib:SNMP-MPD-MIB/snmp-mpd-mib:snmpMPDStats
+  RW.REST URI Path
+    /snmp-mpd-mib:SNMP-MPD-MIB/snmpMPDStats
+  RW Keyspec XPath Path
+    D,/snmp-mpd-mib:SNMP-MPD-MIB/snmp-mpd-mib:snmpMPDStats
+  RW Keyspec XPath Keyed Path
+    D,/snmp-mpd-mib:SNMP-MPD-MIB/snmp-mpd-mib:snmpMPDStats
+  Protobuf Type
+    .snmp_mpd_mib.YangData.SnmpMpdMib.SNMPMPDMIB.SnmpMPDStats
+  Python Proto-GI Type
+    SnmpMpdMibYang.YangData_SnmpMpdMib_SNMPMPDMIB_SnmpMPDStats
+  C Protobuf-C Struct Type
+    SnmpMpdMib__YangData__SnmpMpdMib__SNMPMPDMIB__SnmpMPDStats
+  C RWPB Identifiers
+    SnmpMpdMib_SnmpMpdMib_data_SNMPMPDMIB_SnmpMPDStats
+    SnmpMpdMib_data_SNMPMPDMIB_SnmpMPDStats
+  YPBC Base Identifier
+    rw_ypbc_SnmpMpdMib_SnmpMpdMib_data_SNMPMPDMIB_SnmpMPDStats
+

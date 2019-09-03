@@ -1,0 +1,1326 @@
+Programmer's API documentation for yang module rw-vcs.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-vcs                                                                2
+  rw-vcs data                                                              2.1
+    list rw-vcs:rw-env-variable                                          2.1.1
+  rw-vcs rpc input                                                         2.2
+    rpc input rw-vcs:rw-set-env-var                                      2.2.1
+    rpc input rw-vcs:rw-delete-env-var                                   2.2.2
+    rpc input rw-vcs:vstart                                              2.2.3
+    rpc input rw-vcs:vstop                                               2.2.4
+    rpc input rw-vcs:vcrash                                              2.2.5
+    rpc input rw-vcs:vsnap                                               2.2.6
+    rpc input rw-vcs:reboot                                              2.2.7
+    rpc input rw-vcs:shutdown                                            2.2.8
+  rw-vcs rpc output                                                        2.3
+    rpc output rw-vcs:rw-set-env-var                                     2.3.1
+    rpc output rw-vcs:rw-delete-env-var                                  2.3.2
+    rpc output rw-vcs:vstart                                             2.3.3
+    rpc output rw-vcs:vstop                                              2.3.4
+    rpc output rw-vcs:vcrash                                             2.3.5
+    rpc output rw-vcs:vsnap                                              2.3.6
+    rpc output rw-vcs:reboot                                             2.3.7
+    rpc output rw-vcs:shutdown                                           2.3.8
+  rw-vcs notification                                                      2.4
+    notification rw-vcs:vtasklet_start                                   2.4.1
+      container rw-vcs:template_params                                 2.4.1.1
+        list rw-vcs:debug-details                                    2.4.1.1.1
+        list rw-vcs:additional-data                                  2.4.1.1.2
+        container rw-vcs:call-identifier                             2.4.1.1.3
+        container rw-vcs:session-params                              2.4.1.1.4
+    notification rw-vcs:core_reporter_starting                           2.4.2
+      container rw-vcs:template_params                                 2.4.2.1
+        list rw-vcs:debug-details                                    2.4.2.1.1
+        list rw-vcs:additional-data                                  2.4.2.1.2
+        container rw-vcs:call-identifier                             2.4.2.1.3
+        container rw-vcs:session-params                              2.4.2.1.4
+    notification rw-vcs:core_found                                       2.4.3
+      container rw-vcs:template_params                                 2.4.3.1
+        list rw-vcs:debug-details                                    2.4.3.1.1
+        list rw-vcs:additional-data                                  2.4.3.1.2
+        container rw-vcs:call-identifier                             2.4.3.1.3
+        container rw-vcs:session-params                              2.4.3.1.4
+    notification rw-vcs:start_serf                                       2.4.4
+      container rw-vcs:template_params                                 2.4.4.1
+        list rw-vcs:debug-details                                    2.4.4.1.1
+        list rw-vcs:additional-data                                  2.4.4.1.2
+        container rw-vcs:call-identifier                             2.4.4.1.3
+        container rw-vcs:session-params                              2.4.4.1.4
+    notification rw-vcs:heartbeat-alarm                                  2.4.5
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwVcs_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwVcs_g_schema
+2  module rw-vcs
+
+2.1  rw-vcs data
+
+2.1.1  list rw-vcs:rw-env-variable
+  Description
+    List of riftware environment variables
+  Leaves
+    name: name, type: STRING, description: Name of the environment variable.
+    name: value, type: STRING, description: Corresponding value for the environment variable.
+  XPath Path
+    /rw-vcs:rw-env-variable
+  XPath Keyed Path
+    /rw-vcs:rw-env-variable[rw-vcs:name='STRING']
+  RW.REST URI Path
+    /rw-vcs:rw-env-variable/STRING
+  RW Keyspec XPath Path
+    D,/rw-vcs:rw-env-variable
+  RW Keyspec XPath Keyed Path
+    D,/rw-vcs:rw-env-variable[rw-vcs:name='STRING']
+  Protobuf Type
+    .rw_vcs.YangData.RwVcs.RwEnvVariable
+  Python Proto-GI Type
+    RwVcsYang.YangData_RwVcs_RwEnvVariable
+  C Protobuf-C Struct Type
+    RwVcs__YangData__RwVcs__RwEnvVariable
+  C RWPB Identifiers
+    RwVcs_RwVcs_data_RwEnvVariable
+    RwVcs_data_RwEnvVariable
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_data_RwEnvVariable
+
+2.2  rw-vcs rpc input
+
+2.2.1  rpc input rw-vcs:rw-set-env-var
+  Leaves
+    name: name, type: STRING, description: The name of the environment variable.
+    name: value, type: STRING, description: The corresponding value of the environment variable.
+  XPath Path
+    /rw-vcs:rw-set-env-var
+  XPath Keyed Path
+    /rw-vcs:rw-set-env-var
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:rw-set-env-var
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:rw-set-env-var
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.RwSetEnvVar
+  Python Proto-GI Type
+    RwVcsYang.RwSetEnvVarInp
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__RwSetEnvVar
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_RwSetEnvVar
+    RwVcs_input_RwSetEnvVar
+    RwVcs_RwSetEnvVarInp
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_RwSetEnvVar
+
+2.2.2  rpc input rw-vcs:rw-delete-env-var
+  Leaves
+    name: name, type: STRING, description: The name of the environment variable to delete.
+  XPath Path
+    /rw-vcs:rw-delete-env-var
+  XPath Keyed Path
+    /rw-vcs:rw-delete-env-var
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:rw-delete-env-var
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:rw-delete-env-var
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.RwDeleteEnvVar
+  Python Proto-GI Type
+    RwVcsYang.RwDelEnvVarInp
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__RwDeleteEnvVar
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_RwDeleteEnvVar
+    RwVcs_input_RwDeleteEnvVar
+    RwVcs_RwDelEnvVarInp
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_RwDeleteEnvVar
+
+2.2.3  rpc input rw-vcs:vstart
+  Leaves
+    name: component-name, type: STRING, description: Name of the component to create a new instance of
+    name: instance-id, type: UINT32, description: Instance-id requested for the component to be started
+    name: parent-instance, type: STRING, description: Instance-name of the parent of the new instance
+    name: recover, type: BOOLEAN, description: Recover the component
+  XPath Path
+    /rw-vcs:vstart
+  XPath Keyed Path
+    /rw-vcs:vstart
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:vstart
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:vstart
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Vstart
+  Python Proto-GI Type
+    RwVcsYang.VStartInput
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Vstart
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Vstart
+    RwVcs_input_Vstart
+    RwVcs_VStartInput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Vstart
+
+2.2.4  rpc input rw-vcs:vstop
+  Leaves
+    name: instance-name, type: STRING, description: Instance-name of instance to stop
+  XPath Path
+    /rw-vcs:vstop
+  XPath Keyed Path
+    /rw-vcs:vstop
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:vstop
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:vstop
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Vstop
+  Python Proto-GI Type
+    RwVcsYang.VStopInput
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Vstop
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Vstop
+    RwVcs_input_Vstop
+    RwVcs_VStopInput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Vstop
+
+2.2.5  rpc input rw-vcs:vcrash
+  Leaves
+    name: instance-name, type: STRING, description: Instance-name of instance to crash
+    name: skip-heartbeat, type: EMPTY, description: Skip heartbeats from publisher - used for unit testing
+  XPath Path
+    /rw-vcs:vcrash
+  XPath Keyed Path
+    /rw-vcs:vcrash
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:vcrash
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:vcrash
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Vcrash
+  Python Proto-GI Type
+    RwVcsYang.VCrashInput
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Vcrash
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Vcrash
+    RwVcs_input_Vcrash
+    RwVcs_VCrashInput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Vcrash
+
+2.2.6  rpc input rw-vcs:vsnap
+  Leaves
+    name: instance-name, type: STRING, description: Instance-name of instance to grab a Snap
+  XPath Path
+    /rw-vcs:vsnap
+  XPath Keyed Path
+    /rw-vcs:vsnap
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:vsnap
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:vsnap
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Vsnap
+  Python Proto-GI Type
+    RwVcsYang.VSnapInput
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Vsnap
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Vsnap
+    RwVcs_input_Vsnap
+    RwVcs_VSnapInput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Vsnap
+
+2.2.7  rpc input rw-vcs:reboot
+  Leaves
+    name: system, type: EMPTY
+    name: ui, type: EMPTY
+    name: events, type: EMPTY
+    name: instance-name, type: STRING
+  XPath Path
+    /rw-vcs:reboot
+  XPath Keyed Path
+    /rw-vcs:reboot
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:reboot
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:reboot
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Reboot
+  Python Proto-GI Type
+    RwVcsYang.YangInput_RwVcs_Reboot
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Reboot
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Reboot
+    RwVcs_input_Reboot
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Reboot
+
+2.2.8  rpc input rw-vcs:shutdown
+  Leaves
+    name: shutdown_flag, type: EMPTY
+  XPath Path
+    /rw-vcs:shutdown
+  XPath Keyed Path
+    /rw-vcs:shutdown
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-vcs:shutdown
+  RW Keyspec XPath Keyed Path
+    I,/rw-vcs:shutdown
+  Protobuf Type
+    .rw_vcs.YangInput.RwVcs.Shutdown
+  Python Proto-GI Type
+    RwVcsYang.YangInput_RwVcs_Shutdown
+  C Protobuf-C Struct Type
+    RwVcs__YangInput__RwVcs__Shutdown
+  C RWPB Identifiers
+    RwVcs_RwVcs_input_Shutdown
+    RwVcs_input_Shutdown
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_input_Shutdown
+
+2.3  rw-vcs rpc output
+
+2.3.1  rpc output rw-vcs:rw-set-env-var
+  Leaves
+    name: rw-status, type: UINT32, description: The status of the operation. 0 is returned for successful operation.
+    name: error, type: STRING, description: Detailed error information.
+  XPath Path
+    /rw-vcs:rw-set-env-var
+  XPath Keyed Path
+    /rw-vcs:rw-set-env-var
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:rw-set-env-var
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:rw-set-env-var
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.RwSetEnvVar
+  Python Proto-GI Type
+    RwVcsYang.RwSetEnvVarOut
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__RwSetEnvVar
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_RwSetEnvVar
+    RwVcs_output_RwSetEnvVar
+    RwVcs_RwSetEnvVarOut
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_RwSetEnvVar
+
+2.3.2  rpc output rw-vcs:rw-delete-env-var
+  Leaves
+    name: rw-status, type: UINT32, description: The status of the operation. 0 is returned for successful operation.
+    name: error, type: STRING, description: Detailed error information.
+  XPath Path
+    /rw-vcs:rw-delete-env-var
+  XPath Keyed Path
+    /rw-vcs:rw-delete-env-var
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:rw-delete-env-var
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:rw-delete-env-var
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.RwDeleteEnvVar
+  Python Proto-GI Type
+    RwVcsYang.RwDelEnvVarOut
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__RwDeleteEnvVar
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_RwDeleteEnvVar
+    RwVcs_output_RwDeleteEnvVar
+    RwVcs_RwDelEnvVarOut
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_RwDeleteEnvVar
+
+2.3.3  rpc output rw-vcs:vstart
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the start operation
+    name: instance-name, type: STRING, description: On success, the instance-name of the started component
+  XPath Path
+    /rw-vcs:vstart
+  XPath Keyed Path
+    /rw-vcs:vstart
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:vstart
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:vstart
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Vstart
+  Python Proto-GI Type
+    RwVcsYang.VStartOutput
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Vstart
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Vstart
+    RwVcs_output_Vstart
+    RwVcs_VStartOutput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Vstart
+
+2.3.4  rpc output rw-vcs:vstop
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the stop operation
+  XPath Path
+    /rw-vcs:vstop
+  XPath Keyed Path
+    /rw-vcs:vstop
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:vstop
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:vstop
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Vstop
+  Python Proto-GI Type
+    RwVcsYang.VStopOutput
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Vstop
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Vstop
+    RwVcs_output_Vstop
+    RwVcs_VStopOutput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Vstop
+
+2.3.5  rpc output rw-vcs:vcrash
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the stop operation
+  XPath Path
+    /rw-vcs:vcrash
+  XPath Keyed Path
+    /rw-vcs:vcrash
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:vcrash
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:vcrash
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Vcrash
+  Python Proto-GI Type
+    RwVcsYang.VCrashOutput
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Vcrash
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Vcrash
+    RwVcs_output_Vcrash
+    RwVcs_VCrashOutput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Vcrash
+
+2.3.6  rpc output rw-vcs:vsnap
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the stop operation
+  XPath Path
+    /rw-vcs:vsnap
+  XPath Keyed Path
+    /rw-vcs:vsnap
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:vsnap
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:vsnap
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Vsnap
+  Python Proto-GI Type
+    RwVcsYang.VSnapOutput
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Vsnap
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Vsnap
+    RwVcs_output_Vsnap
+    RwVcs_VSnapOutput
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Vsnap
+
+2.3.7  rpc output rw-vcs:reboot
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the reboot operation
+  XPath Path
+    /rw-vcs:reboot
+  XPath Keyed Path
+    /rw-vcs:reboot
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:reboot
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:reboot
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Reboot
+  Python Proto-GI Type
+    RwVcsYang.YangOutput_RwVcs_Reboot
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Reboot
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Reboot
+    RwVcs_output_Reboot
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Reboot
+
+2.3.8  rpc output rw-vcs:shutdown
+  Leaves
+    name: rw_status, type: UINT32, description: Return status of the shutdown operation
+  XPath Path
+    /rw-vcs:shutdown
+  XPath Keyed Path
+    /rw-vcs:shutdown
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-vcs:shutdown
+  RW Keyspec XPath Keyed Path
+    O,/rw-vcs:shutdown
+  Protobuf Type
+    .rw_vcs.YangOutput.RwVcs.Shutdown
+  Python Proto-GI Type
+    RwVcsYang.YangOutput_RwVcs_Shutdown
+  C Protobuf-C Struct Type
+    RwVcs__YangOutput__RwVcs__Shutdown
+  C RWPB Identifiers
+    RwVcs_RwVcs_output_Shutdown
+    RwVcs_output_Shutdown
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_output_Shutdown
+
+2.4  rw-vcs notification
+
+2.4.1  notification rw-vcs:vtasklet_start
+  Description
+    Tasklet started
+  Leaves
+    name: tasklet-name, type: STRING, description: Tasklet name
+    name: tasklet-instance, type: UINT32, description: Tasklet instance
+  XPath Path
+    /rw-vcs:vtasklet_start
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart
+    RwVcs_notif_VtaskletStart
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart
+
+2.4.1.1  container rw-vcs:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start/template_params
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart.TemplateParams
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart_TemplateParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart__TemplateParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart_TemplateParams
+    RwVcs_notif_VtaskletStart_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart_TemplateParams
+
+2.4.1.1.1  list rw-vcs:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:debug-details
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_DebugDetails
+    RwVcs_notif_VtaskletStart_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_DebugDetails
+
+2.4.1.1.2  list rw-vcs:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:additional-data
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_AdditionalData
+    RwVcs_notif_VtaskletStart_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_AdditionalData
+
+2.4.1.1.3  container rw-vcs:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:call-identifier
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:call-identifier
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:call-identifier
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_CallIdentifier
+    RwVcs_notif_VtaskletStart_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_CallIdentifier
+
+2.4.1.1.4  container rw-vcs:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:session-params
+  XPath Keyed Path
+    /rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:session-params
+  RW.REST URI Path
+    /rw-vcs:vtasklet_start/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:vtasklet_start/rw-vcs:template_params/rw-vcs:session-params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.VtaskletStart.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_VtaskletStart_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__VtaskletStart__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_SessionParams
+    RwVcs_notif_VtaskletStart_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_VtaskletStart_TemplateParams_SessionParams
+
+2.4.2  notification rw-vcs:core_reporter_starting
+  Description
+    Core report scanner starting
+  Leaves
+    name: coredir, type: STRING, description: Scan directory
+  XPath Path
+    /rw-vcs:core_reporter_starting
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting
+    RwVcs_notif_CoreReporterStarting
+    RwVcs_CoreReporterStarting
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting
+
+2.4.2.1  container rw-vcs:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting/template_params
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting.TemplateParams
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting_TemplateParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting__TemplateParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams
+    RwVcs_notif_CoreReporterStarting_TemplateParams
+    RwVcs_CoreReporterStarting_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams
+
+2.4.2.1.1  list rw-vcs:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:debug-details
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_DebugDetails
+    RwVcs_notif_CoreReporterStarting_TemplateParams_DebugDetails
+    RwVcs_CoreReporterStarting_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_DebugDetails
+
+2.4.2.1.2  list rw-vcs:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:additional-data
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_AdditionalData
+    RwVcs_notif_CoreReporterStarting_TemplateParams_AdditionalData
+    RwVcs_CoreReporterStarting_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_AdditionalData
+
+2.4.2.1.3  container rw-vcs:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:call-identifier
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:call-identifier
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:call-identifier
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_CallIdentifier
+    RwVcs_notif_CoreReporterStarting_TemplateParams_CallIdentifier
+    RwVcs_CoreReporterStarting_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_CallIdentifier
+
+2.4.2.1.4  container rw-vcs:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:session-params
+  XPath Keyed Path
+    /rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:session-params
+  RW.REST URI Path
+    /rw-vcs:core_reporter_starting/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_reporter_starting/rw-vcs:template_params/rw-vcs:session-params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreReporterStarting.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwVcsYang.CoreReporterStarting_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreReporterStarting__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_SessionParams
+    RwVcs_notif_CoreReporterStarting_TemplateParams_SessionParams
+    RwVcs_CoreReporterStarting_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreReporterStarting_TemplateParams_SessionParams
+
+2.4.3  notification rw-vcs:core_found
+  Description
+    Core file found
+  Leaves
+    name: corefile, type: STRING, description: Core filename
+    name: coredesc, type: STRING, description: Core description
+    name: coretime, type: STRING, description: Core timestamp
+    name: backtrace, type: STRING, description: Core backtrace
+  XPath Path
+    /rw-vcs:core_found
+  XPath Keyed Path
+    /rw-vcs:core_found
+  RW.REST URI Path
+    /rw-vcs:core_found
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound
+  Python Proto-GI Type
+    RwVcsYang.CoreFound
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound
+    RwVcs_notif_CoreFound
+    RwVcs_CoreFound
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound
+
+2.4.3.1  container rw-vcs:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-vcs:core_found/rw-vcs:template_params
+  XPath Keyed Path
+    /rw-vcs:core_found/rw-vcs:template_params
+  RW.REST URI Path
+    /rw-vcs:core_found/template_params
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found/rw-vcs:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found/rw-vcs:template_params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound.TemplateParams
+  Python Proto-GI Type
+    RwVcsYang.CoreFound_TemplateParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound__TemplateParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound_TemplateParams
+    RwVcs_notif_CoreFound_TemplateParams
+    RwVcs_CoreFound_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound_TemplateParams
+
+2.4.3.1.1  list rw-vcs:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:debug-details
+  XPath Keyed Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-vcs:core_found/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwVcsYang.CoreFound_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound_TemplateParams_DebugDetails
+    RwVcs_notif_CoreFound_TemplateParams_DebugDetails
+    RwVcs_CoreFound_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound_TemplateParams_DebugDetails
+
+2.4.3.1.2  list rw-vcs:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:additional-data
+  XPath Keyed Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  RW.REST URI Path
+    /rw-vcs:core_found/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwVcsYang.CoreFound_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound_TemplateParams_AdditionalData
+    RwVcs_notif_CoreFound_TemplateParams_AdditionalData
+    RwVcs_CoreFound_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound_TemplateParams_AdditionalData
+
+2.4.3.1.3  container rw-vcs:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:call-identifier
+  XPath Keyed Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:call-identifier
+  RW.REST URI Path
+    /rw-vcs:core_found/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:call-identifier
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwVcsYang.CoreFound_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound_TemplateParams_CallIdentifier
+    RwVcs_notif_CoreFound_TemplateParams_CallIdentifier
+    RwVcs_CoreFound_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound_TemplateParams_CallIdentifier
+
+2.4.3.1.4  container rw-vcs:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:session-params
+  XPath Keyed Path
+    /rw-vcs:core_found/rw-vcs:template_params/rw-vcs:session-params
+  RW.REST URI Path
+    /rw-vcs:core_found/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:core_found/rw-vcs:template_params/rw-vcs:session-params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.CoreFound.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwVcsYang.CoreFound_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__CoreFound__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_CoreFound_TemplateParams_SessionParams
+    RwVcs_notif_CoreFound_TemplateParams_SessionParams
+    RwVcs_CoreFound_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_CoreFound_TemplateParams_SessionParams
+
+2.4.4  notification rw-vcs:start_serf
+  Description
+    Serf start log
+  Leaves
+    name: instance_name, type: STRING
+    name: vm_ip_address, type: STRING
+    name: lead_vm_ip_address, type: STRING
+  XPath Path
+    /rw-vcs:start_serf
+  XPath Keyed Path
+    /rw-vcs:start_serf
+  RW.REST URI Path
+    /rw-vcs:start_serf
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf
+    RwVcs_notif_StartSerf
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf
+
+2.4.4.1  container rw-vcs:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-vcs:start_serf/rw-vcs:template_params
+  XPath Keyed Path
+    /rw-vcs:start_serf/rw-vcs:template_params
+  RW.REST URI Path
+    /rw-vcs:start_serf/template_params
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf.TemplateParams
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf_TemplateParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf__TemplateParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf_TemplateParams
+    RwVcs_notif_StartSerf_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf_TemplateParams
+
+2.4.4.1.1  list rw-vcs:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:debug-details
+  XPath Keyed Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-vcs:start_serf/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:debug-details[rw-vcs:type='generic-debug-detail']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf_TemplateParams_DebugDetails
+    RwVcs_notif_StartSerf_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf_TemplateParams_DebugDetails
+
+2.4.4.1.2  list rw-vcs:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:additional-data
+  XPath Keyed Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  RW.REST URI Path
+    /rw-vcs:start_serf/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:additional-data[rw-vcs:attribute='STRING']
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf_TemplateParams_AdditionalData
+    RwVcs_notif_StartSerf_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf_TemplateParams_AdditionalData
+
+2.4.4.1.3  container rw-vcs:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:call-identifier
+  XPath Keyed Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:call-identifier
+  RW.REST URI Path
+    /rw-vcs:start_serf/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:call-identifier
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf_TemplateParams_CallIdentifier
+    RwVcs_notif_StartSerf_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf_TemplateParams_CallIdentifier
+
+2.4.4.1.4  container rw-vcs:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:session-params
+  XPath Keyed Path
+    /rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:session-params
+  RW.REST URI Path
+    /rw-vcs:start_serf/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:start_serf/rw-vcs:template_params/rw-vcs:session-params
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.StartSerf.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_StartSerf_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__StartSerf__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_StartSerf_TemplateParams_SessionParams
+    RwVcs_notif_StartSerf_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_StartSerf_TemplateParams_SessionParams
+
+2.4.5  notification rw-vcs:heartbeat-alarm
+  Description
+    Tasklet heartbeat failed
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /rw-vcs:heartbeat-alarm
+  XPath Keyed Path
+    /rw-vcs:heartbeat-alarm
+  RW.REST URI Path
+    /rw-vcs:heartbeat-alarm
+  RW Keyspec XPath Path
+    N,/rw-vcs:heartbeat-alarm
+  RW Keyspec XPath Keyed Path
+    N,/rw-vcs:heartbeat-alarm
+  Protobuf Type
+    .rw_vcs.YangNotif.RwVcs.HeartbeatAlarm
+  Python Proto-GI Type
+    RwVcsYang.YangNotif_RwVcs_HeartbeatAlarm
+  C Protobuf-C Struct Type
+    RwVcs__YangNotif__RwVcs__HeartbeatAlarm
+  C RWPB Identifiers
+    RwVcs_RwVcs_notif_HeartbeatAlarm
+    RwVcs_notif_HeartbeatAlarm
+  YPBC Base Identifier
+    rw_ypbc_RwVcs_RwVcs_notif_HeartbeatAlarm
+

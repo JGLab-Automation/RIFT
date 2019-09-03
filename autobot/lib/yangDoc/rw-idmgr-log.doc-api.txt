@@ -1,0 +1,2578 @@
+Programmer's API documentation for yang module rw-idmgr-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-idmgr-log                                                          2
+  rw-idmgr-log notification                                                2.1
+    notification rw-idmgr-log:generic-debug                              2.1.1
+      container rw-idmgr-log:template_params                           2.1.1.1
+        list rw-idmgr-log:debug-details                              2.1.1.1.1
+        list rw-idmgr-log:additional-data                            2.1.1.1.2
+        container rw-idmgr-log:call-identifier                       2.1.1.1.3
+        container rw-idmgr-log:session-params                        2.1.1.1.4
+    notification rw-idmgr-log:user-debug                                 2.1.2
+      container rw-idmgr-log:template_params                           2.1.2.1
+        list rw-idmgr-log:debug-details                              2.1.2.1.1
+        list rw-idmgr-log:additional-data                            2.1.2.1.2
+        container rw-idmgr-log:call-identifier                       2.1.2.1.3
+        container rw-idmgr-log:session-params                        2.1.2.1.4
+    notification rw-idmgr-log:role-debug                                 2.1.3
+      container rw-idmgr-log:template_params                           2.1.3.1
+        list rw-idmgr-log:debug-details                              2.1.3.1.1
+        list rw-idmgr-log:additional-data                            2.1.3.1.2
+        container rw-idmgr-log:call-identifier                       2.1.3.1.3
+        container rw-idmgr-log:session-params                        2.1.3.1.4
+    notification rw-idmgr-log:generic-info                               2.1.4
+      container rw-idmgr-log:template_params                           2.1.4.1
+        list rw-idmgr-log:debug-details                              2.1.4.1.1
+        list rw-idmgr-log:additional-data                            2.1.4.1.2
+        container rw-idmgr-log:call-identifier                       2.1.4.1.3
+        container rw-idmgr-log:session-params                        2.1.4.1.4
+    notification rw-idmgr-log:generic-notice                             2.1.5
+      container rw-idmgr-log:template_params                           2.1.5.1
+        list rw-idmgr-log:debug-details                              2.1.5.1.1
+        list rw-idmgr-log:additional-data                            2.1.5.1.2
+        container rw-idmgr-log:call-identifier                       2.1.5.1.3
+        container rw-idmgr-log:session-params                        2.1.5.1.4
+    notification rw-idmgr-log:generic-warning                            2.1.6
+      container rw-idmgr-log:template_params                           2.1.6.1
+        list rw-idmgr-log:debug-details                              2.1.6.1.1
+        list rw-idmgr-log:additional-data                            2.1.6.1.2
+        container rw-idmgr-log:call-identifier                       2.1.6.1.3
+        container rw-idmgr-log:session-params                        2.1.6.1.4
+    notification rw-idmgr-log:user-config-error                          2.1.7
+      container rw-idmgr-log:template_params                           2.1.7.1
+        list rw-idmgr-log:debug-details                              2.1.7.1.1
+        list rw-idmgr-log:additional-data                            2.1.7.1.2
+        container rw-idmgr-log:call-identifier                       2.1.7.1.3
+        container rw-idmgr-log:session-params                        2.1.7.1.4
+    notification rw-idmgr-log:user-config-warning                        2.1.8
+      container rw-idmgr-log:template_params                           2.1.8.1
+        list rw-idmgr-log:debug-details                              2.1.8.1.1
+        list rw-idmgr-log:additional-data                            2.1.8.1.2
+        container rw-idmgr-log:call-identifier                       2.1.8.1.3
+        container rw-idmgr-log:session-params                        2.1.8.1.4
+    notification rw-idmgr-log:role-config-debug                          2.1.9
+      container rw-idmgr-log:template_params                           2.1.9.1
+        list rw-idmgr-log:debug-details                              2.1.9.1.1
+        list rw-idmgr-log:additional-data                            2.1.9.1.2
+        container rw-idmgr-log:call-identifier                       2.1.9.1.3
+        container rw-idmgr-log:session-params                        2.1.9.1.4
+    notification rw-idmgr-log:role-config-error                         2.1.10
+      container rw-idmgr-log:template_params                          2.1.10.1
+        list rw-idmgr-log:debug-details                             2.1.10.1.1
+        list rw-idmgr-log:additional-data                           2.1.10.1.2
+        container rw-idmgr-log:call-identifier                      2.1.10.1.3
+        container rw-idmgr-log:session-params                       2.1.10.1.4
+    notification rw-idmgr-log:internal-error                            2.1.11
+      container rw-idmgr-log:template_params                          2.1.11.1
+        list rw-idmgr-log:debug-details                             2.1.11.1.1
+        list rw-idmgr-log:additional-data                           2.1.11.1.2
+        container rw-idmgr-log:call-identifier                      2.1.11.1.3
+        container rw-idmgr-log:session-params                       2.1.11.1.4
+    notification rw-idmgr-log:tasklet-error                             2.1.12
+      container rw-idmgr-log:template_params                          2.1.12.1
+        list rw-idmgr-log:debug-details                             2.1.12.1.1
+        list rw-idmgr-log:additional-data                           2.1.12.1.2
+        container rw-idmgr-log:call-identifier                      2.1.12.1.3
+        container rw-idmgr-log:session-params                       2.1.12.1.4
+    notification rw-idmgr-log:tasklet-event                             2.1.13
+      container rw-idmgr-log:template_params                          2.1.13.1
+        list rw-idmgr-log:debug-details                             2.1.13.1.1
+        list rw-idmgr-log:additional-data                           2.1.13.1.2
+        container rw-idmgr-log:call-identifier                      2.1.13.1.3
+        container rw-idmgr-log:session-params                       2.1.13.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwIdmgrLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwIdmgrLog_g_schema
+2  module rw-idmgr-log
+
+2.1  rw-idmgr-log notification
+
+2.1.1  notification rw-idmgr-log:generic-debug
+  Description
+    generic debug
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:generic-debug
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug
+    RwIdmgrLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug
+
+2.1.1.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams
+    RwIdmgrLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_SessionParams
+    RwIdmgrLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification rw-idmgr-log:user-debug
+  Description
+    user debug
+  Leaves
+    name: user_name, type: STRING
+    name: domain, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:user-debug
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug
+    RwIdmgrLog_notif_UserDebug
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug
+
+2.1.2.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams
+    RwIdmgrLog_notif_UserDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams
+
+2.1.2.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_UserDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_UserDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_UserDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:user-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_SessionParams
+    RwIdmgrLog_notif_UserDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserDebug_TemplateParams_SessionParams
+
+2.1.3  notification rw-idmgr-log:role-debug
+  Description
+    role debug
+  Leaves
+    name: role, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:role-debug
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug
+    RwIdmgrLog_notif_RoleDebug
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug
+
+2.1.3.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams
+    RwIdmgrLog_notif_RoleDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams
+
+2.1.3.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_RoleDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_RoleDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_RoleDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:role-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_SessionParams
+    RwIdmgrLog_notif_RoleDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleDebug_TemplateParams_SessionParams
+
+2.1.4  notification rw-idmgr-log:generic-info
+  Description
+    generic info
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:generic-info
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo
+    RwIdmgrLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo
+
+2.1.4.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams
+    RwIdmgrLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams
+
+2.1.4.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-info/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_SessionParams
+    RwIdmgrLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.5  notification rw-idmgr-log:generic-notice
+  Description
+    generic notice
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:generic-notice
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice
+    RwIdmgrLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice
+
+2.1.5.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams
+    RwIdmgrLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams
+
+2.1.5.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.5.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.5.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-notice/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_SessionParams
+    RwIdmgrLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.6  notification rw-idmgr-log:generic-warning
+  Description
+    generic warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:generic-warning
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning
+    RwIdmgrLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning
+
+2.1.6.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams
+    RwIdmgrLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams
+
+2.1.6.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.6.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.6.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:generic-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_SessionParams
+    RwIdmgrLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.7  notification rw-idmgr-log:user-config-error
+  Description
+    user config error
+  Leaves
+    name: user_name, type: STRING
+    name: domain, type: STRING
+    name: role, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:user-config-error
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError
+    RwIdmgrLog_notif_UserConfigError
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError
+
+2.1.7.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams
+    RwIdmgrLog_notif_UserConfigError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams
+
+2.1.7.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_UserConfigError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_DebugDetails
+
+2.1.7.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_UserConfigError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_AdditionalData
+
+2.1.7.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_UserConfigError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_SessionParams
+    RwIdmgrLog_notif_UserConfigError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigError_TemplateParams_SessionParams
+
+2.1.8  notification rw-idmgr-log:user-config-warning
+  Description
+    user config warning
+  Leaves
+    name: user_name, type: STRING
+    name: domain, type: STRING
+    name: role, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:user-config-warning
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning
+    RwIdmgrLog_notif_UserConfigWarning
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning
+
+2.1.8.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams
+    RwIdmgrLog_notif_UserConfigWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams
+
+2.1.8.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_UserConfigWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_DebugDetails
+
+2.1.8.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_UserConfigWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_AdditionalData
+
+2.1.8.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_UserConfigWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:user-config-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:user-config-warning/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.UserConfigWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_UserConfigWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__UserConfigWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_SessionParams
+    RwIdmgrLog_notif_UserConfigWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_UserConfigWarning_TemplateParams_SessionParams
+
+2.1.9  notification rw-idmgr-log:role-config-debug
+  Description
+    role config debug
+  Leaves
+    name: role, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:role-config-debug
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug
+    RwIdmgrLog_notif_RoleConfigDebug
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug
+
+2.1.9.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams
+    RwIdmgrLog_notif_RoleConfigDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams
+
+2.1.9.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_DebugDetails
+
+2.1.9.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_AdditionalData
+
+2.1.9.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-debug/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_SessionParams
+    RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigDebug_TemplateParams_SessionParams
+
+2.1.10  notification rw-idmgr-log:role-config-error
+  Description
+    role config error
+  Leaves
+    name: role, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:role-config-error
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError
+    RwIdmgrLog_notif_RoleConfigError
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError
+
+2.1.10.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams
+    RwIdmgrLog_notif_RoleConfigError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams
+
+2.1.10.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_RoleConfigError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_DebugDetails
+
+2.1.10.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_RoleConfigError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_AdditionalData
+
+2.1.10.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_RoleConfigError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:role-config-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:role-config-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.RoleConfigError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_RoleConfigError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__RoleConfigError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_SessionParams
+    RwIdmgrLog_notif_RoleConfigError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_RoleConfigError_TemplateParams_SessionParams
+
+2.1.11  notification rw-idmgr-log:internal-error
+  Description
+    internal error rw-idmgr
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:internal-error
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError
+    RwIdmgrLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError
+
+2.1.11.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams
+    RwIdmgrLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams
+
+2.1.11.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.11.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.11.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.11.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:internal-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_SessionParams
+    RwIdmgrLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.12  notification rw-idmgr-log:tasklet-error
+  Description
+    IDMgr Tasklet Error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:tasklet-error
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError
+    RwIdmgrLog_notif_TaskletError
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError
+
+2.1.12.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams
+    RwIdmgrLog_notif_TaskletError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams
+
+2.1.12.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_TaskletError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_DebugDetails
+
+2.1.12.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_TaskletError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_AdditionalData
+
+2.1.12.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_TaskletError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_CallIdentifier
+
+2.1.12.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-error/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_SessionParams
+    RwIdmgrLog_notif_TaskletError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletError_TemplateParams_SessionParams
+
+2.1.13  notification rw-idmgr-log:tasklet-event
+  Description
+    IDMgr Tasklet Event
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-idmgr-log:tasklet-event
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent
+    RwIdmgrLog_notif_TaskletEvent
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent
+
+2.1.13.1  container rw-idmgr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event/template_params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent.TemplateParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent_TemplateParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent__TemplateParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams
+    RwIdmgrLog_notif_TaskletEvent_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams
+
+2.1.13.1.1  list rw-idmgr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:debug-details[rw-idmgr-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_DebugDetails
+    RwIdmgrLog_notif_TaskletEvent_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_DebugDetails
+
+2.1.13.1.2  list rw-idmgr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:additional-data[rw-idmgr-log:attribute='STRING']
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_AdditionalData
+    RwIdmgrLog_notif_TaskletEvent_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_AdditionalData
+
+2.1.13.1.3  container rw-idmgr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:call-identifier
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+    RwIdmgrLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+
+2.1.13.1.4  container rw-idmgr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  XPath Keyed Path
+    /rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW.REST URI Path
+    /rw-idmgr-log:tasklet-event/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-idmgr-log:tasklet-event/rw-idmgr-log:template_params/rw-idmgr-log:session-params
+  Protobuf Type
+    .rw_idmgr_log.YangNotif.RwIdmgrLog.TaskletEvent.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwIdmgrLogYang.YangNotif_RwIdmgrLog_TaskletEvent_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwIdmgrLog__YangNotif__RwIdmgrLog__TaskletEvent__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_SessionParams
+    RwIdmgrLog_notif_TaskletEvent_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwIdmgrLog_RwIdmgrLog_notif_TaskletEvent_TemplateParams_SessionParams
+

@@ -1,0 +1,45 @@
+Programmer's API documentation for yang module rw-resource-naming.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-resource-naming                                                    2
+  rw-resource-naming data                                                  2.1
+    container rw-resource-naming:resource-naming                         2.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwResourceNaming_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwResourceNaming_g_schema
+2  module rw-resource-naming
+
+2.1  rw-resource-naming data
+
+2.1.1  container rw-resource-naming:resource-naming
+  Leaves
+    name: rule-set, type: STRING
+  XPath Path
+    /rw-resource-naming:resource-naming
+  XPath Keyed Path
+    /rw-resource-naming:resource-naming
+  RW.REST URI Path
+    /rw-resource-naming:resource-naming
+  RW Keyspec XPath Path
+    C,/rw-resource-naming:resource-naming
+  RW Keyspec XPath Keyed Path
+    C,/rw-resource-naming:resource-naming
+  Protobuf Type
+    .rw_resource_naming.YangData.RwResourceNaming.ResourceNaming
+  Python Proto-GI Type
+    RwResourceNamingYang.YangData_RwResourceNaming_ResourceNaming
+  C Protobuf-C Struct Type
+    RwResourceNaming__YangData__RwResourceNaming__ResourceNaming
+  C RWPB Identifiers
+    RwResourceNaming_RwResourceNaming_data_ResourceNaming
+    RwResourceNaming_data_ResourceNaming
+  YPBC Base Identifier
+    rw_ypbc_RwResourceNaming_RwResourceNaming_data_ResourceNaming
+

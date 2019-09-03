@@ -1,0 +1,2780 @@
+Programmer's API documentation for yang module rw-license.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-license                                                            2
+  rw-license data                                                          2.1
+    container rw-license:license-config                                  2.1.1
+      list rw-license:license                                          2.1.1.1
+    container rw-license:license-state                                   2.1.2
+      list rw-license:license                                          2.1.2.1
+      list rw-license:feature                                          2.1.2.2
+  rw-license notification                                                  2.2
+    notification rw-license:generic-debug                                2.2.1
+      container rw-license:template_params                             2.2.1.1
+        list rw-license:debug-details                                2.2.1.1.1
+        list rw-license:additional-data                              2.2.1.1.2
+        container rw-license:call-identifier                         2.2.1.1.3
+        container rw-license:session-params                          2.2.1.1.4
+    notification rw-license:generic-info                                 2.2.2
+      container rw-license:template_params                             2.2.2.1
+        list rw-license:debug-details                                2.2.2.1.1
+        list rw-license:additional-data                              2.2.2.1.2
+        container rw-license:call-identifier                         2.2.2.1.3
+        container rw-license:session-params                          2.2.2.1.4
+    notification rw-license:generic-notice                               2.2.3
+      container rw-license:template_params                             2.2.3.1
+        list rw-license:debug-details                                2.2.3.1.1
+        list rw-license:additional-data                              2.2.3.1.2
+        container rw-license:call-identifier                         2.2.3.1.3
+        container rw-license:session-params                          2.2.3.1.4
+    notification rw-license:generic-warning                              2.2.4
+      container rw-license:template_params                             2.2.4.1
+        list rw-license:debug-details                                2.2.4.1.1
+        list rw-license:additional-data                              2.2.4.1.2
+        container rw-license:call-identifier                         2.2.4.1.3
+        container rw-license:session-params                          2.2.4.1.4
+    notification rw-license:compliance-change                            2.2.5
+      container rw-license:template_params                             2.2.5.1
+        list rw-license:debug-details                                2.2.5.1.1
+        list rw-license:additional-data                              2.2.5.1.2
+        container rw-license:call-identifier                         2.2.5.1.3
+        container rw-license:session-params                          2.2.5.1.4
+    notification rw-license:licensing-error                              2.2.6
+      container rw-license:template_params                             2.2.6.1
+        list rw-license:debug-details                                2.2.6.1.1
+        list rw-license:additional-data                              2.2.6.1.2
+        container rw-license:call-identifier                         2.2.6.1.3
+        container rw-license:session-params                          2.2.6.1.4
+    notification rw-license:internal-error                               2.2.7
+      container rw-license:template_params                             2.2.7.1
+        list rw-license:debug-details                                2.2.7.1.1
+        list rw-license:additional-data                              2.2.7.1.2
+        container rw-license:call-identifier                         2.2.7.1.3
+        container rw-license:session-params                          2.2.7.1.4
+    notification rw-license:license-error                                2.2.8
+      container rw-license:template_params                             2.2.8.1
+        list rw-license:debug-details                                2.2.8.1.1
+        list rw-license:additional-data                              2.2.8.1.2
+        container rw-license:call-identifier                         2.2.8.1.3
+        container rw-license:session-params                          2.2.8.1.4
+    notification rw-license:license-expired                              2.2.9
+      container rw-license:template_params                             2.2.9.1
+        list rw-license:debug-details                                2.2.9.1.1
+        list rw-license:additional-data                              2.2.9.1.2
+        container rw-license:call-identifier                         2.2.9.1.3
+        container rw-license:session-params                          2.2.9.1.4
+    notification rw-license:license-warning                             2.2.10
+      container rw-license:template_params                            2.2.10.1
+        list rw-license:debug-details                               2.2.10.1.1
+        list rw-license:additional-data                             2.2.10.1.2
+        container rw-license:call-identifier                        2.2.10.1.3
+        container rw-license:session-params                         2.2.10.1.4
+    notification rw-license:feature-licensed                            2.2.11
+      container rw-license:template_params                            2.2.11.1
+        list rw-license:debug-details                               2.2.11.1.1
+        list rw-license:additional-data                             2.2.11.1.2
+        container rw-license:call-identifier                        2.2.11.1.3
+        container rw-license:session-params                         2.2.11.1.4
+    notification rw-license:feature-revoked                             2.2.12
+      container rw-license:template_params                            2.2.12.1
+        list rw-license:debug-details                               2.2.12.1.1
+        list rw-license:additional-data                             2.2.12.1.2
+        container rw-license:call-identifier                        2.2.12.1.3
+        container rw-license:session-params                         2.2.12.1.4
+    notification rw-license:feature-limit-change                        2.2.13
+      container rw-license:template_params                            2.2.13.1
+        list rw-license:debug-details                               2.2.13.1.1
+        list rw-license:additional-data                             2.2.13.1.2
+        container rw-license:call-identifier                        2.2.13.1.3
+        container rw-license:session-params                         2.2.13.1.4
+    notification rw-license:lp-license-inactive                         2.2.14
+    notification rw-license:lp-license-active                           2.2.15
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwLicense_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwLicense_g_schema
+2  module rw-license
+
+2.1  rw-license data
+  Description
+    This module defines the RIFT.ware license management.
+
+2.1.1  container rw-license:license-config
+  Description
+    Configuration for RIFT.ware licenses.
+  XPath Path
+    /rw-license:license-config
+  XPath Keyed Path
+    /rw-license:license-config
+  RW.REST URI Path
+    /rw-license:license-config
+  RW Keyspec XPath Path
+    C,/rw-license:license-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-license:license-config
+  Protobuf Type
+    .rw_license.YangData.RwLicense.LicenseConfig
+  Python Proto-GI Type
+    RwLicenseYang.YangData_RwLicense_LicenseConfig
+  C Protobuf-C Struct Type
+    RwLicense__YangData__RwLicense__LicenseConfig
+  C RWPB Identifiers
+    RwLicense_RwLicense_data_LicenseConfig
+    RwLicense_data_LicenseConfig
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_data_LicenseConfig
+
+2.1.1.1  list rw-license:license
+  Description
+    The Licenses configured for this instance of RIFT.ware.
+  Leaves
+    name: license, type: STRING, description: A license.
+  XPath Path
+    /rw-license:license-config/rw-license:license
+  XPath Keyed Path
+    /rw-license:license-config/rw-license:license[rw-license:license='STRING']
+  RW.REST URI Path
+    /rw-license:license-config/license/STRING
+  RW Keyspec XPath Path
+    C,/rw-license:license-config/rw-license:license
+  RW Keyspec XPath Keyed Path
+    C,/rw-license:license-config/rw-license:license[rw-license:license='STRING']
+  Protobuf Type
+    .rw_license.YangData.RwLicense.LicenseConfig.License
+  Python Proto-GI Type
+    RwLicenseYang.YangData_RwLicense_LicenseConfig_License
+  C Protobuf-C Struct Type
+    RwLicense__YangData__RwLicense__LicenseConfig__License
+  C RWPB Identifiers
+    RwLicense_RwLicense_data_LicenseConfig_License
+    RwLicense_data_LicenseConfig_License
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_data_LicenseConfig_License
+
+2.1.2  container rw-license:license-state
+  Description
+    Operational state for RIFT.ware licenses.
+  Leaves
+    name: compliance, type: ENUM
+    name: host-key, type: STRING, description: The unique installation key for this RIFT.ware instance.
+    Installed licenses must be bound to this key.
+  XPath Path
+    /rw-license:license-state
+  XPath Keyed Path
+    /rw-license:license-state
+  RW.REST URI Path
+    /rw-license:license-state
+  RW Keyspec XPath Path
+    D,/rw-license:license-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-license:license-state
+  Protobuf Type
+    .rw_license.YangData.RwLicense.LicenseState
+  Python Proto-GI Type
+    RwLicenseYang.YangData_RwLicense_LicenseState
+  C Protobuf-C Struct Type
+    RwLicense__YangData__RwLicense__LicenseState
+  C RWPB Identifiers
+    RwLicense_RwLicense_data_LicenseState
+    RwLicense_data_LicenseState
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_data_LicenseState
+
+2.1.2.1  list rw-license:license
+  Description
+    The state of configured licenses.
+  Leaves
+    name: license, type: STRING, description: The configured license.
+    name: serial-number, type: UINT64, description: The license serial number.
+    name: status, type: ENUM, description: The license state.
+  XPath Path
+    /rw-license:license-state/rw-license:license
+  XPath Keyed Path
+    /rw-license:license-state/rw-license:license[rw-license:license='STRING']
+  RW.REST URI Path
+    /rw-license:license-state/license/STRING
+  RW Keyspec XPath Path
+    D,/rw-license:license-state/rw-license:license
+  RW Keyspec XPath Keyed Path
+    D,/rw-license:license-state/rw-license:license[rw-license:license='STRING']
+  Protobuf Type
+    .rw_license.YangData.RwLicense.LicenseState.License
+  Python Proto-GI Type
+    RwLicenseYang.YangData_RwLicense_LicenseState_License
+  C Protobuf-C Struct Type
+    RwLicense__YangData__RwLicense__LicenseState__License
+  C RWPB Identifiers
+    RwLicense_RwLicense_data_LicenseState_License
+    RwLicense_data_LicenseState_License
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_data_LicenseState_License
+
+2.1.2.2  list rw-license:feature
+  Description
+    The state of licensed features.
+  Leaves
+    name: feature, type: STRING, description: The name of the licensed feature.
+    name: limit, type: UINT64, description: The licensed limit, if any.  If multiple licenses enable the
+    feature, the highest limit is used.
+  XPath Path
+    /rw-license:license-state/rw-license:feature
+  XPath Keyed Path
+    /rw-license:license-state/rw-license:feature[rw-license:feature='STRING']
+  RW.REST URI Path
+    /rw-license:license-state/feature/STRING
+  RW Keyspec XPath Path
+    D,/rw-license:license-state/rw-license:feature
+  RW Keyspec XPath Keyed Path
+    D,/rw-license:license-state/rw-license:feature[rw-license:feature='STRING']
+  Protobuf Type
+    .rw_license.YangData.RwLicense.LicenseState.Feature
+  Python Proto-GI Type
+    RwLicenseYang.YangData_RwLicense_LicenseState_Feature
+  C Protobuf-C Struct Type
+    RwLicense__YangData__RwLicense__LicenseState__Feature
+  C RWPB Identifiers
+    RwLicense_RwLicense_data_LicenseState_Feature
+    RwLicense_data_LicenseState_Feature
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_data_LicenseState_Feature
+
+2.2  rw-license notification
+  Description
+    This module defines the RIFT.ware license management.
+
+2.2.1  notification rw-license:generic-debug
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:generic-debug
+  XPath Keyed Path
+    /rw-license:generic-debug
+  RW.REST URI Path
+    /rw-license:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug
+    RwLicense_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug
+
+2.2.1.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:generic-debug/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:generic-debug/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug_TemplateParams
+    RwLicense_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug_TemplateParams
+
+2.2.1.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug_TemplateParams_DebugDetails
+    RwLicense_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.2.1.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug_TemplateParams_AdditionalData
+    RwLicense_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.2.1.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwLicense_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.2.1.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:generic-debug/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-debug/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericDebug_TemplateParams_SessionParams
+    RwLicense_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericDebug_TemplateParams_SessionParams
+
+2.2.2  notification rw-license:generic-info
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:generic-info
+  XPath Keyed Path
+    /rw-license:generic-info
+  RW.REST URI Path
+    /rw-license:generic-info
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo
+    RwLicense_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo
+
+2.2.2.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:generic-info/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:generic-info/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo_TemplateParams
+    RwLicense_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo_TemplateParams
+
+2.2.2.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo_TemplateParams_DebugDetails
+    RwLicense_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.2.2.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo_TemplateParams_AdditionalData
+    RwLicense_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.2.2.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwLicense_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.2.2.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:generic-info/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-info/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericInfo_TemplateParams_SessionParams
+    RwLicense_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericInfo_TemplateParams_SessionParams
+
+2.2.3  notification rw-license:generic-notice
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:generic-notice
+  XPath Keyed Path
+    /rw-license:generic-notice
+  RW.REST URI Path
+    /rw-license:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice
+    RwLicense_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice
+
+2.2.3.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:generic-notice/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:generic-notice/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice_TemplateParams
+    RwLicense_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice_TemplateParams
+
+2.2.3.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice_TemplateParams_DebugDetails
+    RwLicense_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.2.3.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice_TemplateParams_AdditionalData
+    RwLicense_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.2.3.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwLicense_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.2.3.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:generic-notice/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-notice/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericNotice_TemplateParams_SessionParams
+    RwLicense_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericNotice_TemplateParams_SessionParams
+
+2.2.4  notification rw-license:generic-warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:generic-warning
+  XPath Keyed Path
+    /rw-license:generic-warning
+  RW.REST URI Path
+    /rw-license:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning
+    RwLicense_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning
+
+2.2.4.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:generic-warning/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:generic-warning/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning_TemplateParams
+    RwLicense_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning_TemplateParams
+
+2.2.4.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning_TemplateParams_DebugDetails
+    RwLicense_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.2.4.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning_TemplateParams_AdditionalData
+    RwLicense_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.2.4.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwLicense_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.2.4.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:generic-warning/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:generic-warning/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_GenericWarning_TemplateParams_SessionParams
+    RwLicense_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_GenericWarning_TemplateParams_SessionParams
+
+2.2.5  notification rw-license:compliance-change
+  Description
+    Licensing compliance change.
+  Leaves
+    name: previous-status, type: ENUM
+    name: new-status, type: ENUM
+  XPath Path
+    /rw-license:compliance-change
+  XPath Keyed Path
+    /rw-license:compliance-change
+  RW.REST URI Path
+    /rw-license:compliance-change
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange
+    RwLicense_notif_ComplianceChange
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange
+
+2.2.5.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:compliance-change/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:compliance-change/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:compliance-change/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange_TemplateParams
+    RwLicense_notif_ComplianceChange_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange_TemplateParams
+
+2.2.5.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:compliance-change/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_DebugDetails
+    RwLicense_notif_ComplianceChange_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_DebugDetails
+
+2.2.5.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:compliance-change/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_AdditionalData
+    RwLicense_notif_ComplianceChange_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_AdditionalData
+
+2.2.5.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:compliance-change/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_CallIdentifier
+    RwLicense_notif_ComplianceChange_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_CallIdentifier
+
+2.2.5.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:compliance-change/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:compliance-change/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:compliance-change/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.ComplianceChange.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_ComplianceChange_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__ComplianceChange__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_SessionParams
+    RwLicense_notif_ComplianceChange_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_ComplianceChange_TemplateParams_SessionParams
+
+2.2.6  notification rw-license:licensing-error
+  Description
+    There is an error with license management.  License compliance
+    cannot be verified.
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:licensing-error
+  XPath Keyed Path
+    /rw-license:licensing-error
+  RW.REST URI Path
+    /rw-license:licensing-error
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError
+    RwLicense_notif_LicensingError
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError
+
+2.2.6.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:licensing-error/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:licensing-error/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:licensing-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError_TemplateParams
+    RwLicense_notif_LicensingError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError_TemplateParams
+
+2.2.6.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:licensing-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError_TemplateParams_DebugDetails
+    RwLicense_notif_LicensingError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError_TemplateParams_DebugDetails
+
+2.2.6.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:licensing-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError_TemplateParams_AdditionalData
+    RwLicense_notif_LicensingError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError_TemplateParams_AdditionalData
+
+2.2.6.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:licensing-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError_TemplateParams_CallIdentifier
+    RwLicense_notif_LicensingError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError_TemplateParams_CallIdentifier
+
+2.2.6.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:licensing-error/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:licensing-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:licensing-error/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicensingError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicensingError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicensingError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicensingError_TemplateParams_SessionParams
+    RwLicense_notif_LicensingError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicensingError_TemplateParams_SessionParams
+
+2.2.7  notification rw-license:internal-error
+  Description
+    Internal error in license manager.
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-license:internal-error
+  XPath Keyed Path
+    /rw-license:internal-error
+  RW.REST URI Path
+    /rw-license:internal-error
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError
+    RwLicense_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError
+
+2.2.7.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:internal-error/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:internal-error/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError_TemplateParams
+    RwLicense_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError_TemplateParams
+
+2.2.7.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError_TemplateParams_DebugDetails
+    RwLicense_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError_TemplateParams_DebugDetails
+
+2.2.7.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError_TemplateParams_AdditionalData
+    RwLicense_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError_TemplateParams_AdditionalData
+
+2.2.7.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError_TemplateParams_CallIdentifier
+    RwLicense_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError_TemplateParams_CallIdentifier
+
+2.2.7.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:internal-error/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:internal-error/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_InternalError_TemplateParams_SessionParams
+    RwLicense_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_InternalError_TemplateParams_SessionParams
+
+2.2.8  notification rw-license:license-error
+  Description
+    There is an error with a license.  The license is not
+    compliant.
+  Leaves
+    name: serial-number, type: UINT64
+    name: message, type: STRING
+  XPath Path
+    /rw-license:license-error
+  XPath Keyed Path
+    /rw-license:license-error
+  RW.REST URI Path
+    /rw-license:license-error
+  RW Keyspec XPath Path
+    N,/rw-license:license-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError
+    RwLicense_notif_LicenseError
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError
+
+2.2.8.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:license-error/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:license-error/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:license-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:license-error/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError_TemplateParams
+    RwLicense_notif_LicenseError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError_TemplateParams
+
+2.2.8.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:license-error/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:license-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:license-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError_TemplateParams_DebugDetails
+    RwLicense_notif_LicenseError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError_TemplateParams_DebugDetails
+
+2.2.8.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:license-error/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:license-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:license-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError_TemplateParams_AdditionalData
+    RwLicense_notif_LicenseError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError_TemplateParams_AdditionalData
+
+2.2.8.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:license-error/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:license-error/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:license-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError_TemplateParams_CallIdentifier
+    RwLicense_notif_LicenseError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError_TemplateParams_CallIdentifier
+
+2.2.8.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:license-error/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:license-error/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:license-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-error/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseError_TemplateParams_SessionParams
+    RwLicense_notif_LicenseError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseError_TemplateParams_SessionParams
+
+2.2.9  notification rw-license:license-expired
+  Description
+    The license has expired.  The license is not compliant.
+  Leaves
+    name: serial-number, type: UINT64
+    name: message, type: STRING
+  XPath Path
+    /rw-license:license-expired
+  XPath Keyed Path
+    /rw-license:license-expired
+  RW.REST URI Path
+    /rw-license:license-expired
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired
+    RwLicense_notif_LicenseExpired
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired
+
+2.2.9.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:license-expired/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:license-expired/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:license-expired/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired_TemplateParams
+    RwLicense_notif_LicenseExpired_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired_TemplateParams
+
+2.2.9.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:license-expired/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_DebugDetails
+    RwLicense_notif_LicenseExpired_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_DebugDetails
+
+2.2.9.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:license-expired/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_AdditionalData
+    RwLicense_notif_LicenseExpired_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_AdditionalData
+
+2.2.9.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:license-expired/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_CallIdentifier
+    RwLicense_notif_LicenseExpired_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_CallIdentifier
+
+2.2.9.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:license-expired/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:license-expired/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-expired/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseExpired.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseExpired_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseExpired__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_SessionParams
+    RwLicense_notif_LicenseExpired_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseExpired_TemplateParams_SessionParams
+
+2.2.10  notification rw-license:license-warning
+  Description
+    License warning.  The license is compliant.
+  Leaves
+    name: serial-number, type: UINT64
+    name: message, type: STRING
+  XPath Path
+    /rw-license:license-warning
+  XPath Keyed Path
+    /rw-license:license-warning
+  RW.REST URI Path
+    /rw-license:license-warning
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning
+    RwLicense_notif_LicenseWarning
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning
+
+2.2.10.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:license-warning/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:license-warning/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:license-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning_TemplateParams
+    RwLicense_notif_LicenseWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning_TemplateParams
+
+2.2.10.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:license-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_DebugDetails
+    RwLicense_notif_LicenseWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_DebugDetails
+
+2.2.10.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:license-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_AdditionalData
+    RwLicense_notif_LicenseWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_AdditionalData
+
+2.2.10.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:license-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_CallIdentifier
+    RwLicense_notif_LicenseWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_CallIdentifier
+
+2.2.10.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:license-warning/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:license-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:license-warning/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LicenseWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LicenseWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LicenseWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_SessionParams
+    RwLicense_notif_LicenseWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LicenseWarning_TemplateParams_SessionParams
+
+2.2.11  notification rw-license:feature-licensed
+  Description
+    The feature has been licensed.
+  Leaves
+    name: feature, type: STRING
+    name: new-limit, type: UINT64, description: The new licensed limit, if any.
+  XPath Path
+    /rw-license:feature-licensed
+  XPath Keyed Path
+    /rw-license:feature-licensed
+  RW.REST URI Path
+    /rw-license:feature-licensed
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed
+    RwLicense_notif_FeatureLicensed
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed
+
+2.2.11.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:feature-licensed/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:feature-licensed/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:feature-licensed/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams
+    RwLicense_notif_FeatureLicensed_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams
+
+2.2.11.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:feature-licensed/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_DebugDetails
+    RwLicense_notif_FeatureLicensed_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_DebugDetails
+
+2.2.11.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:feature-licensed/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_AdditionalData
+    RwLicense_notif_FeatureLicensed_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_AdditionalData
+
+2.2.11.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:feature-licensed/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_CallIdentifier
+    RwLicense_notif_FeatureLicensed_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_CallIdentifier
+
+2.2.11.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:feature-licensed/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:feature-licensed/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-licensed/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLicensed.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLicensed_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLicensed__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_SessionParams
+    RwLicense_notif_FeatureLicensed_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLicensed_TemplateParams_SessionParams
+
+2.2.12  notification rw-license:feature-revoked
+  Description
+    Feature licensing has been revoked.
+  Leaves
+    name: feature, type: STRING
+    name: old-limit, type: UINT64, description: The old licensed limit, if any.
+  XPath Path
+    /rw-license:feature-revoked
+  XPath Keyed Path
+    /rw-license:feature-revoked
+  RW.REST URI Path
+    /rw-license:feature-revoked
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked
+    RwLicense_notif_FeatureRevoked
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked
+
+2.2.12.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:feature-revoked/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:feature-revoked/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:feature-revoked/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams
+    RwLicense_notif_FeatureRevoked_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams
+
+2.2.12.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:feature-revoked/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_DebugDetails
+    RwLicense_notif_FeatureRevoked_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_DebugDetails
+
+2.2.12.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:feature-revoked/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_AdditionalData
+    RwLicense_notif_FeatureRevoked_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_AdditionalData
+
+2.2.12.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:feature-revoked/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_CallIdentifier
+    RwLicense_notif_FeatureRevoked_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_CallIdentifier
+
+2.2.12.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:feature-revoked/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:feature-revoked/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-revoked/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureRevoked.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureRevoked_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureRevoked__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_SessionParams
+    RwLicense_notif_FeatureRevoked_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureRevoked_TemplateParams_SessionParams
+
+2.2.13  notification rw-license:feature-limit-change
+  Description
+    The feature Licensed has has been revoked.
+  Leaves
+    name: feature, type: STRING
+    name: old-limit, type: UINT64, description: The old licensed limit, if any.
+    name: new-limit, type: UINT64, description: The new licensed limit, if any.
+  XPath Path
+    /rw-license:feature-limit-change
+  XPath Keyed Path
+    /rw-license:feature-limit-change
+  RW.REST URI Path
+    /rw-license:feature-limit-change
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange
+    RwLicense_notif_FeatureLimitChange
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange
+
+2.2.13.1  container rw-license:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-license:feature-limit-change/rw-license:template_params
+  XPath Keyed Path
+    /rw-license:feature-limit-change/rw-license:template_params
+  RW.REST URI Path
+    /rw-license:feature-limit-change/template_params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change/rw-license:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change/rw-license:template_params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange.TemplateParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange_TemplateParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange__TemplateParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams
+    RwLicense_notif_FeatureLimitChange_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams
+
+2.2.13.1.1  list rw-license:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:debug-details
+  XPath Keyed Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-license:feature-limit-change/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:debug-details[rw-license:type='generic-debug-detail']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_DebugDetails
+    RwLicense_notif_FeatureLimitChange_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_DebugDetails
+
+2.2.13.1.2  list rw-license:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:additional-data
+  XPath Keyed Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  RW.REST URI Path
+    /rw-license:feature-limit-change/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:additional-data[rw-license:attribute='STRING']
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_AdditionalData
+    RwLicense_notif_FeatureLimitChange_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_AdditionalData
+
+2.2.13.1.3  container rw-license:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:call-identifier
+  XPath Keyed Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:call-identifier
+  RW.REST URI Path
+    /rw-license:feature-limit-change/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:call-identifier
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_CallIdentifier
+    RwLicense_notif_FeatureLimitChange_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_CallIdentifier
+
+2.2.13.1.4  container rw-license:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:session-params
+  XPath Keyed Path
+    /rw-license:feature-limit-change/rw-license:template_params/rw-license:session-params
+  RW.REST URI Path
+    /rw-license:feature-limit-change/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:feature-limit-change/rw-license:template_params/rw-license:session-params
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.FeatureLimitChange.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_FeatureLimitChange_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__FeatureLimitChange__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_SessionParams
+    RwLicense_notif_FeatureLimitChange_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_FeatureLimitChange_TemplateParams_SessionParams
+
+2.2.14  notification rw-license:lp-license-inactive
+  Description
+    The license has expired or not compliant
+  Leaves
+    name: license, type: STRING
+    name: serial-number, type: UINT64
+    name: message, type: STRING
+  XPath Path
+    /rw-license:lp-license-inactive
+  XPath Keyed Path
+    /rw-license:lp-license-inactive
+  RW.REST URI Path
+    /rw-license:lp-license-inactive
+  RW Keyspec XPath Path
+    N,/rw-license:lp-license-inactive
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:lp-license-inactive
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LpLicenseInactive
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LpLicenseInactive
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LpLicenseInactive
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LpLicenseInactive
+    RwLicense_notif_LpLicenseInactive
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LpLicenseInactive
+
+2.2.15  notification rw-license:lp-license-active
+  Description
+    The license is compliant.
+  Leaves
+    name: license, type: STRING
+    name: serial-number, type: UINT64
+    name: message, type: STRING
+  XPath Path
+    /rw-license:lp-license-active
+  XPath Keyed Path
+    /rw-license:lp-license-active
+  RW.REST URI Path
+    /rw-license:lp-license-active
+  RW Keyspec XPath Path
+    N,/rw-license:lp-license-active
+  RW Keyspec XPath Keyed Path
+    N,/rw-license:lp-license-active
+  Protobuf Type
+    .rw_license.YangNotif.RwLicense.LpLicenseActive
+  Python Proto-GI Type
+    RwLicenseYang.YangNotif_RwLicense_LpLicenseActive
+  C Protobuf-C Struct Type
+    RwLicense__YangNotif__RwLicense__LpLicenseActive
+  C RWPB Identifiers
+    RwLicense_RwLicense_notif_LpLicenseActive
+    RwLicense_notif_LpLicenseActive
+  YPBC Base Identifier
+    rw_ypbc_RwLicense_RwLicense_notif_LpLicenseActive
+

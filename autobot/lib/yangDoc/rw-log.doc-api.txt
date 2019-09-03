@@ -1,0 +1,1793 @@
+Programmer's API documentation for yang module rw-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-log                                                                2
+  rw-log data                                                              2.1
+    container rwlog:ev_template                                          2.1.1
+      container rwlog:template_params                                  2.1.1.1
+        list rwlog:debug-details                                     2.1.1.1.1
+        list rwlog:additional-data                                   2.1.1.1.2
+        container rwlog:call-identifier                              2.1.1.1.3
+        container rwlog:session-params                               2.1.1.1.4
+    container rwlog:binary_event                                         2.1.2
+      container rwlog:pkt-info                                         2.1.2.1
+    container rwlog:rwlogd-instance                                      2.1.3
+      list rwlog:task-id                                               2.1.3.1
+  rw-log rpc input                                                         2.2
+    rpc input rwlog:create-internal-log-sink                             2.2.1
+      leaf-list rwlog:category                                         2.2.1.1
+  rw-log rpc output                                                        2.3
+    rpc output rwlog:create-internal-log-sink                            2.3.1
+  rw-log notification                                                      2.4
+    notification rwlog:unknown-event                                     2.4.1
+      container rwlog:template_params                                  2.4.1.1
+        list rwlog:debug-details                                     2.4.1.1.1
+        list rwlog:additional-data                                   2.4.1.1.2
+        container rwlog:call-identifier                              2.4.1.1.3
+        container rwlog:session-params                               2.4.1.1.4
+    notification rwlog:generic-debug                                     2.4.2
+      container rwlog:template_params                                  2.4.2.1
+        list rwlog:debug-details                                     2.4.2.1.1
+        list rwlog:additional-data                                   2.4.2.1.2
+        container rwlog:call-identifier                              2.4.2.1.3
+        container rwlog:session-params                               2.4.2.1.4
+    notification rwlog:generic-info                                      2.4.3
+      container rwlog:template_params                                  2.4.3.1
+        list rwlog:debug-details                                     2.4.3.1.1
+        list rwlog:additional-data                                   2.4.3.1.2
+        container rwlog:call-identifier                              2.4.3.1.3
+        container rwlog:session-params                               2.4.3.1.4
+    notification rwlog:generic-notice                                    2.4.4
+      container rwlog:template_params                                  2.4.4.1
+        list rwlog:debug-details                                     2.4.4.1.1
+        list rwlog:additional-data                                   2.4.4.1.2
+        container rwlog:call-identifier                              2.4.4.1.3
+        container rwlog:session-params                               2.4.4.1.4
+    notification rwlog:generic-warning                                   2.4.5
+      container rwlog:template_params                                  2.4.5.1
+        list rwlog:debug-details                                     2.4.5.1.1
+        list rwlog:additional-data                                   2.4.5.1.2
+        container rwlog:call-identifier                              2.4.5.1.3
+        container rwlog:session-params                               2.4.5.1.4
+    notification rwlog:tasklet-error                                     2.4.6
+      container rwlog:template_params                                  2.4.6.1
+        list rwlog:debug-details                                     2.4.6.1.1
+        list rwlog:additional-data                                   2.4.6.1.2
+        container rwlog:call-identifier                              2.4.6.1.3
+        container rwlog:session-params                               2.4.6.1.4
+    notification rwlog:tasklet-event                                     2.4.7
+      container rwlog:template_params                                  2.4.7.1
+        list rwlog:debug-details                                     2.4.7.1.1
+        list rwlog:additional-data                                   2.4.7.1.2
+        container rwlog:call-identifier                              2.4.7.1.3
+        container rwlog:session-params                               2.4.7.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwLog_g_schema
+2  module rw-log
+
+2.1  rw-log data
+
+2.1.1  container rwlog:ev_template
+  Description
+    EventLog for pretty Print
+  XPath Path
+    /rwlog:ev_template
+  XPath Keyed Path
+    /rwlog:ev_template
+  RW.REST URI Path
+    /rw-log:ev_template
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate
+  Python Proto-GI Type
+    RwLogYang.EvTemplate
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate
+    RwLog_data_EvTemplate
+    RwLog_EvTemplate
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate
+
+2.1.1.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:ev_template/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:ev_template/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:ev_template/template_params
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.EvTemplate_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate_TemplateParams
+    RwLog_data_EvTemplate_TemplateParams
+    RwLog_EvTemplate_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate_TemplateParams
+
+2.1.1.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:ev_template/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.EvTemplate_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate_TemplateParams_DebugDetails
+    RwLog_data_EvTemplate_TemplateParams_DebugDetails
+    RwLog_EvTemplate_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:ev_template/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.EvTemplate_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate_TemplateParams_AdditionalData
+    RwLog_data_EvTemplate_TemplateParams_AdditionalData
+    RwLog_EvTemplate_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:ev_template/template_params/call-identifier
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.EvTemplate_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate_TemplateParams_CallIdentifier
+    RwLog_data_EvTemplate_TemplateParams_CallIdentifier
+    RwLog_EvTemplate_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:ev_template/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:ev_template/template_params/session-params
+  RW Keyspec XPath Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:ev_template/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangData.RwLog.EvTemplate.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.EvTemplate_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__EvTemplate__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_data_EvTemplate_TemplateParams_SessionParams
+    RwLog_data_EvTemplate_TemplateParams_SessionParams
+    RwLog_EvTemplate_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_EvTemplate_TemplateParams_SessionParams
+
+2.1.2  container rwlog:binary_event
+  Description
+    Packet info fields
+  XPath Path
+    /rwlog:binary_event
+  XPath Keyed Path
+    /rwlog:binary_event
+  RW.REST URI Path
+    /rw-log:binary_event
+  RW Keyspec XPath Path
+    C,/rwlog:binary_event
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:binary_event
+  Protobuf Type
+    .rw_log.YangData.RwLog.BinaryEvent
+  Python Proto-GI Type
+    RwLogYang.BinaryEvent
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__BinaryEvent
+  C RWPB Identifiers
+    RwLog_RwLog_data_BinaryEvent
+    RwLog_data_BinaryEvent
+    RwLog_BinaryEvent
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_BinaryEvent
+
+2.1.2.1  container rwlog:pkt-info
+  Description
+    Different protocol prints need different arguments. This
+    container holds all the fields needed by various protocol print
+    functions
+  Leaves
+    name: packet-direction, type: ENUM, description: Either inbound or outbound direction
+    name: packet-type, type: ENUM, description: Packet protocol type
+    name: packet-data, type: BINARY, description: Packet data
+    name: sport, type: UINT16, description: Source port needed for GTP print
+    name: dport, type: UINT16, description: Destination port for GTP print
+    name: ip-header, type: UINT64, description: IP header pointer needed for TCP/UDP prints
+    name: fragment, type: UINT32, description: Whether packet is fragmented or not. Needed for tcp and udp
+    prints
+  XPath Path
+    /rwlog:binary_event/rwlog:pkt-info
+  XPath Keyed Path
+    /rwlog:binary_event/rwlog:pkt-info
+  RW.REST URI Path
+    /rw-log:binary_event/pkt-info
+  RW Keyspec XPath Path
+    C,/rwlog:binary_event/rwlog:pkt-info
+  RW Keyspec XPath Keyed Path
+    C,/rwlog:binary_event/rwlog:pkt-info
+  Protobuf Type
+    .rw_log.YangData.RwLog.BinaryEvent.PktInfo
+  Python Proto-GI Type
+    RwLogYang.BinaryEvent_PktInfo
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__BinaryEvent__PktInfo
+  C RWPB Identifiers
+    RwLog_RwLog_data_BinaryEvent_PktInfo
+    RwLog_data_BinaryEvent_PktInfo
+    RwLog_BinaryEvent_PktInfo
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_BinaryEvent_PktInfo
+
+2.1.3  container rwlog:rwlogd-instance
+  XPath Path
+    /rwlog:rwlogd-instance
+  XPath Keyed Path
+    /rwlog:rwlogd-instance
+  RW.REST URI Path
+    /rw-log:rwlogd-instance
+  RW Keyspec XPath Path
+    D,/rwlog:rwlogd-instance
+  RW Keyspec XPath Keyed Path
+    D,/rwlog:rwlogd-instance
+  Protobuf Type
+    .rw_log.YangData.RwLog.RwlogdInstance
+  Python Proto-GI Type
+    RwLogYang.YangData_RwLog_RwlogdInstance
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__RwlogdInstance
+  C RWPB Identifiers
+    RwLog_RwLog_data_RwlogdInstance
+    RwLog_data_RwlogdInstance
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_RwlogdInstance
+
+2.1.3.1  list rwlog:task-id
+  Leaves
+    name: id, type: UINT32, description: RwLogD Instance
+  XPath Path
+    /rwlog:rwlogd-instance/rwlog:task-id
+  XPath Keyed Path
+    /rwlog:rwlogd-instance/rwlog:task-id[rwlog:id='0']
+  RW.REST URI Path
+    /rw-log:rwlogd-instance/task-id/0
+  RW Keyspec XPath Path
+    D,/rwlog:rwlogd-instance/rwlog:task-id
+  RW Keyspec XPath Keyed Path
+    D,/rwlog:rwlogd-instance/rwlog:task-id[rwlog:id='0']
+  Protobuf Type
+    .rw_log.YangData.RwLog.RwlogdInstance.TaskId
+  Python Proto-GI Type
+    RwLogYang.YangData_RwLog_RwlogdInstance_TaskId
+  C Protobuf-C Struct Type
+    RwLog__YangData__RwLog__RwlogdInstance__TaskId
+  C RWPB Identifiers
+    RwLog_RwLog_data_RwlogdInstance_TaskId
+    RwLog_data_RwlogdInstance_TaskId
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_data_RwlogdInstance_TaskId
+
+2.2  rw-log rpc input
+
+2.2.1  rpc input rwlog:create-internal-log-sink
+  Leaves
+    name: sink-name, type: STRING
+    name: file-name, type: STRING
+    name: enable_raw_dump, type: BOOLEAN, description: Rest trace is based on this enabled
+  XPath Path
+    /rwlog:create-internal-log-sink
+  XPath Keyed Path
+    /rwlog:create-internal-log-sink
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rwlog:create-internal-log-sink
+  RW Keyspec XPath Keyed Path
+    I,/rwlog:create-internal-log-sink
+  Protobuf Type
+    .rw_log.YangInput.RwLog.CreateInternalLogSink
+  Python Proto-GI Type
+    RwLogYang.YangInput_RwLog_CreateInternalLogSink
+  C Protobuf-C Struct Type
+    RwLog__YangInput__RwLog__CreateInternalLogSink
+  C RWPB Identifiers
+    RwLog_RwLog_input_CreateInternalLogSink
+    RwLog_input_CreateInternalLogSink
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_input_CreateInternalLogSink
+
+2.2.1.1  leaf-list rwlog:category
+  XPath Path
+    /rwlog:create-internal-log-sink/rwlog:category
+  XPath Keyed Path
+    /rwlog:create-internal-log-sink/rwlog:category
+  RW.REST URI Path
+    /input/category
+  RW Keyspec XPath Path
+    I,/rwlog:create-internal-log-sink/rwlog:category
+  RW Keyspec XPath Keyed Path
+    I,/rwlog:create-internal-log-sink/rwlog:category
+  Protobuf Type
+    .rw_log.YangInput.RwLog.CreateInternalLogSink.Category
+  Python Proto-GI Type
+    RwLogYang.YangInput_RwLog_CreateInternalLogSink_Category
+  C Protobuf-C Struct Type
+    RwLog__YangInput__RwLog__CreateInternalLogSink__Category
+  C RWPB Identifiers
+    RwLog_RwLog_input_CreateInternalLogSink_Category
+    RwLog_input_CreateInternalLogSink_Category
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_input_CreateInternalLogSink_Category
+
+2.3  rw-log rpc output
+
+2.3.1  rpc output rwlog:create-internal-log-sink
+  XPath Path
+    /rwlog:create-internal-log-sink
+  XPath Keyed Path
+    /rwlog:create-internal-log-sink
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rwlog:create-internal-log-sink
+  RW Keyspec XPath Keyed Path
+    O,/rwlog:create-internal-log-sink
+  Protobuf Type
+    .rw_log.YangOutput.RwLog.CreateInternalLogSink
+  Python Proto-GI Type
+    RwLogYang.YangOutput_RwLog_CreateInternalLogSink
+  C Protobuf-C Struct Type
+    RwLog__YangOutput__RwLog__CreateInternalLogSink
+  C RWPB Identifiers
+    RwLog_RwLog_output_CreateInternalLogSink
+    RwLog_output_CreateInternalLogSink
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_output_CreateInternalLogSink
+
+2.4  rw-log notification
+
+2.4.1  notification rwlog:unknown-event
+  Description
+    An unknown event was recorded.
+  Leaves
+    name: event-name, type: STRING, description: The unknown event name.
+  XPath Path
+    /rwlog:unknown-event
+  XPath Keyed Path
+    /rwlog:unknown-event
+  RW.REST URI Path
+    /rw-log:unknown-event
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent
+    RwLog_notif_UnknownEvent
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent
+
+2.4.1.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:unknown-event/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:unknown-event/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:unknown-event/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent_TemplateParams
+    RwLog_notif_UnknownEvent_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent_TemplateParams
+
+2.4.1.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:unknown-event/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent_TemplateParams_DebugDetails
+    RwLog_notif_UnknownEvent_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent_TemplateParams_DebugDetails
+
+2.4.1.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:unknown-event/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent_TemplateParams_AdditionalData
+    RwLog_notif_UnknownEvent_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent_TemplateParams_AdditionalData
+
+2.4.1.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:unknown-event/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent_TemplateParams_CallIdentifier
+    RwLog_notif_UnknownEvent_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent_TemplateParams_CallIdentifier
+
+2.4.1.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:unknown-event/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:unknown-event/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:unknown-event/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.UnknownEvent.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_UnknownEvent_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__UnknownEvent__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_UnknownEvent_TemplateParams_SessionParams
+    RwLog_notif_UnknownEvent_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_UnknownEvent_TemplateParams_SessionParams
+
+2.4.2  notification rwlog:generic-debug
+  Description
+    Generic debug message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rwlog:generic-debug
+  XPath Keyed Path
+    /rwlog:generic-debug
+  RW.REST URI Path
+    /rw-log:generic-debug
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug
+    RwLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug
+
+2.4.2.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:generic-debug/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:generic-debug/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug_TemplateParams
+    RwLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug_TemplateParams
+
+2.4.2.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug_TemplateParams_DebugDetails
+    RwLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.4.2.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug_TemplateParams_AdditionalData
+    RwLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.4.2.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.4.2.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:generic-debug/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-debug/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericDebug_TemplateParams_SessionParams
+    RwLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.4.3  notification rwlog:generic-info
+  Description
+    Generic info message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rwlog:generic-info
+  XPath Keyed Path
+    /rwlog:generic-info
+  RW.REST URI Path
+    /rw-log:generic-info
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo
+    RwLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo
+
+2.4.3.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:generic-info/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:generic-info/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo_TemplateParams
+    RwLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo_TemplateParams
+
+2.4.3.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo_TemplateParams_DebugDetails
+    RwLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.4.3.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo_TemplateParams_AdditionalData
+    RwLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.4.3.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.4.3.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:generic-info/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-info/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericInfo_TemplateParams_SessionParams
+    RwLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.4.4  notification rwlog:generic-notice
+  Description
+    Generic notice message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rwlog:generic-notice
+  XPath Keyed Path
+    /rwlog:generic-notice
+  RW.REST URI Path
+    /rw-log:generic-notice
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice
+    RwLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice
+
+2.4.4.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:generic-notice/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:generic-notice/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice_TemplateParams
+    RwLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice_TemplateParams
+
+2.4.4.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice_TemplateParams_DebugDetails
+    RwLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.4.4.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice_TemplateParams_AdditionalData
+    RwLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.4.4.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.4.4.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:generic-notice/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-notice/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericNotice_TemplateParams_SessionParams
+    RwLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.4.5  notification rwlog:generic-warning
+  Description
+    Generic warning message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rwlog:generic-warning
+  XPath Keyed Path
+    /rwlog:generic-warning
+  RW.REST URI Path
+    /rw-log:generic-warning
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning
+    RwLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning
+
+2.4.5.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:generic-warning/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:generic-warning/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning_TemplateParams
+    RwLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning_TemplateParams
+
+2.4.5.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning_TemplateParams_DebugDetails
+    RwLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.4.5.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning_TemplateParams_AdditionalData
+    RwLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.4.5.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.4.5.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:generic-warning/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:generic-warning/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_GenericWarning_TemplateParams_SessionParams
+    RwLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.4.6  notification rwlog:tasklet-error
+  Description
+    Tasklet Error
+  Leaves
+    name: message, type: STRING
+    name: tasklet-name, type: STRING
+  XPath Path
+    /rwlog:tasklet-error
+  XPath Keyed Path
+    /rwlog:tasklet-error
+  RW.REST URI Path
+    /rw-log:tasklet-error
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError
+    RwLog_notif_TaskletError
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError
+
+2.4.6.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:tasklet-error/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:tasklet-error/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:tasklet-error/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError_TemplateParams
+    RwLog_notif_TaskletError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError_TemplateParams
+
+2.4.6.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:tasklet-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError_TemplateParams_DebugDetails
+    RwLog_notif_TaskletError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError_TemplateParams_DebugDetails
+
+2.4.6.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:tasklet-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError_TemplateParams_AdditionalData
+    RwLog_notif_TaskletError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError_TemplateParams_AdditionalData
+
+2.4.6.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:tasklet-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError_TemplateParams_CallIdentifier
+    RwLog_notif_TaskletError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError_TemplateParams_CallIdentifier
+
+2.4.6.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:tasklet-error/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:tasklet-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-error/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletError_TemplateParams_SessionParams
+    RwLog_notif_TaskletError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletError_TemplateParams_SessionParams
+
+2.4.7  notification rwlog:tasklet-event
+  Description
+    Tasklet Event
+  Leaves
+    name: message, type: STRING
+    name: tasklet-name, type: STRING
+  XPath Path
+    /rwlog:tasklet-event
+  XPath Keyed Path
+    /rwlog:tasklet-event
+  RW.REST URI Path
+    /rw-log:tasklet-event
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent
+    RwLog_notif_TaskletEvent
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent
+
+2.4.7.1  container rwlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwlog:tasklet-event/rwlog:template_params
+  XPath Keyed Path
+    /rwlog:tasklet-event/rwlog:template_params
+  RW.REST URI Path
+    /rw-log:tasklet-event/template_params
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event/rwlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event/rwlog:template_params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent.TemplateParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent_TemplateParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent__TemplateParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent_TemplateParams
+    RwLog_notif_TaskletEvent_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent_TemplateParams
+
+2.4.7.1.1  list rwlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:debug-details
+  XPath Keyed Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-log:tasklet-event/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:debug-details[rwlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent_TemplateParams_DebugDetails
+    RwLog_notif_TaskletEvent_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent_TemplateParams_DebugDetails
+
+2.4.7.1.2  list rwlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:additional-data
+  XPath Keyed Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-log:tasklet-event/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:additional-data[rwlog:attribute='STRING']
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent_TemplateParams_AdditionalData
+    RwLog_notif_TaskletEvent_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent_TemplateParams_AdditionalData
+
+2.4.7.1.3  container rwlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:call-identifier
+  XPath Keyed Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:call-identifier
+  RW.REST URI Path
+    /rw-log:tasklet-event/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:call-identifier
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+    RwLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent_TemplateParams_CallIdentifier
+
+2.4.7.1.4  container rwlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:session-params
+  XPath Keyed Path
+    /rwlog:tasklet-event/rwlog:template_params/rwlog:session-params
+  RW.REST URI Path
+    /rw-log:tasklet-event/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwlog:tasklet-event/rwlog:template_params/rwlog:session-params
+  Protobuf Type
+    .rw_log.YangNotif.RwLog.TaskletEvent.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwLogYang.YangNotif_RwLog_TaskletEvent_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwLog__YangNotif__RwLog__TaskletEvent__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwLog_RwLog_notif_TaskletEvent_TemplateParams_SessionParams
+    RwLog_notif_TaskletEvent_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwLog_RwLog_notif_TaskletEvent_TemplateParams_SessionParams
+

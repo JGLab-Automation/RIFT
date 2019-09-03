@@ -1,0 +1,108 @@
+Programmer's API documentation for yang module notif.yang
+
+
+
+Schema Globals                                                               1
+
+module notif                                                                 2
+  notif notification                                                       2.1
+    notification notif:new-route                                         2.1.1
+    notification notif:temp-alarm                                        2.1.2
+    notification notif:test-tasklet-failed                               2.1.3
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_Notif_t_schema
+  Global Schema Pointer
+    rw_ypbc_Notif_g_schema
+2  module notif
+
+2.1  notif notification
+  Description
+    System notification
+
+2.1.1  notification notif:new-route
+  Description
+    Notification for new route
+  Leaves
+    name: name, type: STRING, description: Route name
+    name: id, type: UINT16, description: Route ID
+  XPath Path
+    /notif:new-route
+  XPath Keyed Path
+    /notif:new-route
+  RW.REST URI Path
+    /notif:new-route
+  RW Keyspec XPath Path
+    N,/notif:new-route
+  RW Keyspec XPath Keyed Path
+    N,/notif:new-route
+  Protobuf Type
+    .notif.YangNotif.Notif.NewRoute
+  Python Proto-GI Type
+    NotifYang.YangNotif_Notif_NewRoute
+  C Protobuf-C Struct Type
+    Notif__YangNotif__Notif__NewRoute
+  C RWPB Identifiers
+    Notif_Notif_notif_NewRoute
+    Notif_notif_NewRoute
+  YPBC Base Identifier
+    rw_ypbc_Notif_Notif_notif_NewRoute
+
+2.1.2  notification notif:temp-alarm
+  Description
+    Temperature threshold alarm
+  Leaves
+    name: message, type: STRING, description: Alarm message
+    name: curr-temp, type: UINT16, description: Current temperature
+    name: thresh-temp, type: UINT16, description: Threshold temperature
+  XPath Path
+    /notif:temp-alarm
+  XPath Keyed Path
+    /notif:temp-alarm
+  RW.REST URI Path
+    /notif:temp-alarm
+  RW Keyspec XPath Path
+    N,/notif:temp-alarm
+  RW Keyspec XPath Keyed Path
+    N,/notif:temp-alarm
+  Protobuf Type
+    .notif.YangNotif.Notif.TempAlarm
+  Python Proto-GI Type
+    NotifYang.YangNotif_Notif_TempAlarm
+  C Protobuf-C Struct Type
+    Notif__YangNotif__Notif__TempAlarm
+  C RWPB Identifiers
+    Notif_Notif_notif_TempAlarm
+    Notif_notif_TempAlarm
+  YPBC Base Identifier
+    rw_ypbc_Notif_Notif_notif_TempAlarm
+
+2.1.3  notification notif:test-tasklet-failed
+  Description
+    Tasklet failed
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /notif:test-tasklet-failed
+  XPath Keyed Path
+    /notif:test-tasklet-failed
+  RW.REST URI Path
+    /notif:test-tasklet-failed
+  RW Keyspec XPath Path
+    N,/notif:test-tasklet-failed
+  RW Keyspec XPath Keyed Path
+    N,/notif:test-tasklet-failed
+  Protobuf Type
+    .notif.YangNotif.Notif.TestTaskletFailed
+  Python Proto-GI Type
+    NotifYang.YangNotif_Notif_TestTaskletFailed
+  C Protobuf-C Struct Type
+    Notif__YangNotif__Notif__TestTaskletFailed
+  C RWPB Identifiers
+    Notif_Notif_notif_TestTaskletFailed
+    Notif_notif_TestTaskletFailed
+  YPBC Base Identifier
+    rw_ypbc_Notif_Notif_notif_TestTaskletFailed
+

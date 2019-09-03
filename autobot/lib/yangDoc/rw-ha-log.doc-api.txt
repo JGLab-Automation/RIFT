@@ -1,0 +1,1979 @@
+Programmer's API documentation for yang module rw-ha-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-ha-log                                                             2
+  rw-ha-log notification                                                   2.1
+    notification rw-ha-log:generic-debug                                 2.1.1
+      container rw-ha-log:template_params                              2.1.1.1
+        list rw-ha-log:debug-details                                 2.1.1.1.1
+        list rw-ha-log:additional-data                               2.1.1.1.2
+        container rw-ha-log:call-identifier                          2.1.1.1.3
+        container rw-ha-log:session-params                           2.1.1.1.4
+    notification rw-ha-log:generic-info                                  2.1.2
+      container rw-ha-log:template_params                              2.1.2.1
+        list rw-ha-log:debug-details                                 2.1.2.1.1
+        list rw-ha-log:additional-data                               2.1.2.1.2
+        container rw-ha-log:call-identifier                          2.1.2.1.3
+        container rw-ha-log:session-params                           2.1.2.1.4
+    notification rw-ha-log:generic-notice                                2.1.3
+      container rw-ha-log:template_params                              2.1.3.1
+        list rw-ha-log:debug-details                                 2.1.3.1.1
+        list rw-ha-log:additional-data                               2.1.3.1.2
+        container rw-ha-log:call-identifier                          2.1.3.1.3
+        container rw-ha-log:session-params                           2.1.3.1.4
+    notification rw-ha-log:generic-warning                               2.1.4
+      container rw-ha-log:template_params                              2.1.4.1
+        list rw-ha-log:debug-details                                 2.1.4.1.1
+        list rw-ha-log:additional-data                               2.1.4.1.2
+        container rw-ha-log:call-identifier                          2.1.4.1.3
+        container rw-ha-log:session-params                           2.1.4.1.4
+    notification rw-ha-log:internal-error                                2.1.5
+      container rw-ha-log:template_params                              2.1.5.1
+        list rw-ha-log:debug-details                                 2.1.5.1.1
+        list rw-ha-log:additional-data                               2.1.5.1.2
+        container rw-ha-log:call-identifier                          2.1.5.1.3
+        container rw-ha-log:session-params                           2.1.5.1.4
+    notification rw-ha-log:ha-debug                                      2.1.6
+      container rw-ha-log:template_params                              2.1.6.1
+        list rw-ha-log:debug-details                                 2.1.6.1.1
+        list rw-ha-log:additional-data                               2.1.6.1.2
+        container rw-ha-log:call-identifier                          2.1.6.1.3
+        container rw-ha-log:session-params                           2.1.6.1.4
+    notification rw-ha-log:ha-info                                       2.1.7
+      container rw-ha-log:template_params                              2.1.7.1
+        list rw-ha-log:debug-details                                 2.1.7.1.1
+        list rw-ha-log:additional-data                               2.1.7.1.2
+        container rw-ha-log:call-identifier                          2.1.7.1.3
+        container rw-ha-log:session-params                           2.1.7.1.4
+    notification rw-ha-log:ha-notice                                     2.1.8
+      container rw-ha-log:template_params                              2.1.8.1
+        list rw-ha-log:debug-details                                 2.1.8.1.1
+        list rw-ha-log:additional-data                               2.1.8.1.2
+        container rw-ha-log:call-identifier                          2.1.8.1.3
+        container rw-ha-log:session-params                           2.1.8.1.4
+    notification rw-ha-log:ha-warning                                    2.1.9
+      container rw-ha-log:template_params                              2.1.9.1
+        list rw-ha-log:debug-details                                 2.1.9.1.1
+        list rw-ha-log:additional-data                               2.1.9.1.2
+        container rw-ha-log:call-identifier                          2.1.9.1.3
+        container rw-ha-log:session-params                           2.1.9.1.4
+    notification rw-ha-log:ha-critical                                  2.1.10
+      container rw-ha-log:template_params                             2.1.10.1
+        list rw-ha-log:debug-details                                2.1.10.1.1
+        list rw-ha-log:additional-data                              2.1.10.1.2
+        container rw-ha-log:call-identifier                         2.1.10.1.3
+        container rw-ha-log:session-params                          2.1.10.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwHaLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwHaLog_g_schema
+2  module rw-ha-log
+
+2.1  rw-ha-log notification
+
+2.1.1  notification rw-ha-log:generic-debug
+  Description
+    generic debug
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:generic-debug
+  XPath Keyed Path
+    /rw-ha-log:generic-debug
+  RW.REST URI Path
+    /rw-ha-log:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug
+    RwHaLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug
+
+2.1.1.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams
+    RwHaLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_DebugDetails
+    RwHaLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_AdditionalData
+    RwHaLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwHaLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_SessionParams
+    RwHaLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification rw-ha-log:generic-info
+  Description
+    generic info
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:generic-info
+  XPath Keyed Path
+    /rw-ha-log:generic-info
+  RW.REST URI Path
+    /rw-ha-log:generic-info
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo
+    RwHaLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo
+
+2.1.2.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams
+    RwHaLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_DebugDetails
+    RwHaLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_AdditionalData
+    RwHaLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwHaLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-info/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_SessionParams
+    RwHaLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification rw-ha-log:generic-notice
+  Description
+    generic notice
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:generic-notice
+  XPath Keyed Path
+    /rw-ha-log:generic-notice
+  RW.REST URI Path
+    /rw-ha-log:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice
+    RwHaLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice
+
+2.1.3.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams
+    RwHaLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_DebugDetails
+    RwHaLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_AdditionalData
+    RwHaLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwHaLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_SessionParams
+    RwHaLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification rw-ha-log:generic-warning
+  Description
+    generic warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:generic-warning
+  XPath Keyed Path
+    /rw-ha-log:generic-warning
+  RW.REST URI Path
+    /rw-ha-log:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning
+    RwHaLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning
+
+2.1.4.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams
+    RwHaLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_DebugDetails
+    RwHaLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_AdditionalData
+    RwHaLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwHaLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:generic-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_SessionParams
+    RwHaLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification rw-ha-log:internal-error
+  Description
+    internal error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:internal-error
+  XPath Keyed Path
+    /rw-ha-log:internal-error
+  RW.REST URI Path
+    /rw-ha-log:internal-error
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError
+    RwHaLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError
+
+2.1.5.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError_TemplateParams
+    RwHaLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError_TemplateParams
+
+2.1.5.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError_TemplateParams_DebugDetails
+    RwHaLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError_TemplateParams_AdditionalData
+    RwHaLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError_TemplateParams_CallIdentifier
+    RwHaLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:internal-error/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_InternalError_TemplateParams_SessionParams
+    RwHaLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.6  notification rw-ha-log:ha-debug
+  Description
+    ha debug log
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:ha-debug
+  XPath Keyed Path
+    /rw-ha-log:ha-debug
+  RW.REST URI Path
+    /rw-ha-log:ha-debug
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug
+    RwHaLog_notif_HaDebug
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug
+
+2.1.6.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:ha-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug_TemplateParams
+    RwHaLog_notif_HaDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug_TemplateParams
+
+2.1.6.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:ha-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_DebugDetails
+    RwHaLog_notif_HaDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_DebugDetails
+
+2.1.6.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:ha-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_AdditionalData
+    RwHaLog_notif_HaDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_AdditionalData
+
+2.1.6.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:ha-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_CallIdentifier
+    RwHaLog_notif_HaDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:ha-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-debug/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_SessionParams
+    RwHaLog_notif_HaDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaDebug_TemplateParams_SessionParams
+
+2.1.7  notification rw-ha-log:ha-info
+  Description
+    ha info log
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:ha-info
+  XPath Keyed Path
+    /rw-ha-log:ha-info
+  RW.REST URI Path
+    /rw-ha-log:ha-info
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo
+    RwHaLog_notif_HaInfo
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo
+
+2.1.7.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:ha-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo_TemplateParams
+    RwHaLog_notif_HaInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo_TemplateParams
+
+2.1.7.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:ha-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_DebugDetails
+    RwHaLog_notif_HaInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_DebugDetails
+
+2.1.7.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:ha-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_AdditionalData
+    RwHaLog_notif_HaInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_AdditionalData
+
+2.1.7.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:ha-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_CallIdentifier
+    RwHaLog_notif_HaInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:ha-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-info/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_SessionParams
+    RwHaLog_notif_HaInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaInfo_TemplateParams_SessionParams
+
+2.1.8  notification rw-ha-log:ha-notice
+  Description
+    ha notice log
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:ha-notice
+  XPath Keyed Path
+    /rw-ha-log:ha-notice
+  RW.REST URI Path
+    /rw-ha-log:ha-notice
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice
+    RwHaLog_notif_HaNotice
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice
+
+2.1.8.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:ha-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice_TemplateParams
+    RwHaLog_notif_HaNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice_TemplateParams
+
+2.1.8.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:ha-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_DebugDetails
+    RwHaLog_notif_HaNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_DebugDetails
+
+2.1.8.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:ha-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_AdditionalData
+    RwHaLog_notif_HaNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_AdditionalData
+
+2.1.8.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:ha-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_CallIdentifier
+    RwHaLog_notif_HaNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:ha-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-notice/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_SessionParams
+    RwHaLog_notif_HaNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaNotice_TemplateParams_SessionParams
+
+2.1.9  notification rw-ha-log:ha-warning
+  Description
+    ha warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:ha-warning
+  XPath Keyed Path
+    /rw-ha-log:ha-warning
+  RW.REST URI Path
+    /rw-ha-log:ha-warning
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning
+    RwHaLog_notif_HaWarning
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning
+
+2.1.9.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:ha-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning_TemplateParams
+    RwHaLog_notif_HaWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning_TemplateParams
+
+2.1.9.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:ha-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_DebugDetails
+    RwHaLog_notif_HaWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_DebugDetails
+
+2.1.9.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:ha-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_AdditionalData
+    RwHaLog_notif_HaWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_AdditionalData
+
+2.1.9.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:ha-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_CallIdentifier
+    RwHaLog_notif_HaWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:ha-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-warning/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_SessionParams
+    RwHaLog_notif_HaWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaWarning_TemplateParams_SessionParams
+
+2.1.10  notification rw-ha-log:ha-critical
+  Description
+    ha critical
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ha-log:ha-critical
+  XPath Keyed Path
+    /rw-ha-log:ha-critical
+  RW.REST URI Path
+    /rw-ha-log:ha-critical
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical
+    RwHaLog_notif_HaCritical
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical
+
+2.1.10.1  container rw-ha-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params
+  XPath Keyed Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params
+  RW.REST URI Path
+    /rw-ha-log:ha-critical/template_params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical.TemplateParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical_TemplateParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical__TemplateParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical_TemplateParams
+    RwHaLog_notif_HaCritical_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical_TemplateParams
+
+2.1.10.1.1  list rw-ha-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:debug-details
+  XPath Keyed Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ha-log:ha-critical/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:debug-details[rw-ha-log:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_DebugDetails
+    RwHaLog_notif_HaCritical_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_DebugDetails
+
+2.1.10.1.2  list rw-ha-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:additional-data
+  XPath Keyed Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  RW.REST URI Path
+    /rw-ha-log:ha-critical/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:additional-data[rw-ha-log:attribute='STRING']
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_AdditionalData
+    RwHaLog_notif_HaCritical_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_AdditionalData
+
+2.1.10.1.3  container rw-ha-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:call-identifier
+  XPath Keyed Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW.REST URI Path
+    /rw-ha-log:ha-critical/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:call-identifier
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_CallIdentifier
+    RwHaLog_notif_HaCritical_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container rw-ha-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:session-params
+  XPath Keyed Path
+    /rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:session-params
+  RW.REST URI Path
+    /rw-ha-log:ha-critical/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ha-log:ha-critical/rw-ha-log:template_params/rw-ha-log:session-params
+  Protobuf Type
+    .rw_ha_log.YangNotif.RwHaLog.HaCritical.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwHaLogYang.YangNotif_RwHaLog_HaCritical_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwHaLog__YangNotif__RwHaLog__HaCritical__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_SessionParams
+    RwHaLog_notif_HaCritical_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwHaLog_RwHaLog_notif_HaCritical_TemplateParams_SessionParams
+

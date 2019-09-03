@@ -1,0 +1,336 @@
+Programmer's API documentation for yang module rbac-role-test.yang
+
+
+
+Schema Globals                                                               1
+
+module rbac-role-test                                                        2
+  rbac-role-test data                                                      2.1
+    container role-test:project-config                                   2.1.1
+      list role-test:projects                                          2.1.1.1
+        container role-test:test-catalogs                            2.1.1.1.1
+          list role-test:test-catalog                              2.1.1.1.1.1
+    list role-test:config1                                               2.1.2
+      list role-test:port                                              2.1.2.1
+    list role-test:config2                                               2.1.3
+      container role-test:port-group                                   2.1.3.1
+        container role-test:start-port                               2.1.3.1.1
+        container role-test:end-port                                 2.1.3.1.2
+  rbac-role-test rpc input                                                 2.2
+    rpc input role-test:test-a                                           2.2.1
+  rbac-role-test rpc output                                                2.3
+    rpc output role-test:test-a                                          2.3.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RbacRoleTest_t_schema
+  Global Schema Pointer
+    rw_ypbc_RbacRoleTest_g_schema
+2  module rbac-role-test
+
+2.1  rbac-role-test data
+  Description
+    Role test for rbac
+
+2.1.1  container role-test:project-config
+  XPath Path
+    /role-test:project-config
+  XPath Keyed Path
+    /role-test:project-config
+  RW.REST URI Path
+    /rbac-role-test:project-config
+  RW Keyspec XPath Path
+    C,/role-test:project-config
+  RW Keyspec XPath Keyed Path
+    C,/role-test:project-config
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.ProjectConfig
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_ProjectConfig
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__ProjectConfig
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_ProjectConfig
+    RbacRoleTest_data_ProjectConfig
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_ProjectConfig
+
+2.1.1.1  list role-test:projects
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /role-test:project-config/role-test:projects
+  XPath Keyed Path
+    /role-test:project-config/role-test:projects[role-test:name='STRING']
+  RW.REST URI Path
+    /rbac-role-test:project-config/projects/STRING
+  RW Keyspec XPath Path
+    C,/role-test:project-config/role-test:projects
+  RW Keyspec XPath Keyed Path
+    C,/role-test:project-config/role-test:projects[role-test:name='STRING']
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.ProjectConfig.Projects
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_ProjectConfig_Projects
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__ProjectConfig__Projects
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects
+    RbacRoleTest_data_ProjectConfig_Projects
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects
+
+2.1.1.1.1  container role-test:test-catalogs
+  XPath Path
+    /role-test:project-config/role-test:projects/role-test:test-catalogs
+  XPath Keyed Path
+    /role-test:project-config/role-test:projects[role-test:name='STRING']/role-test:test-catalogs
+  RW.REST URI Path
+    /rbac-role-test:project-config/projects/STRING/test-catalogs
+  RW Keyspec XPath Path
+    C,/role-test:project-config/role-test:projects/role-test:test-catalogs
+  RW Keyspec XPath Keyed Path
+    C,/role-test:project-config/role-test:projects[role-test:name='STRING']/role-test:test-catalogs
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.ProjectConfig.Projects.TestCatalogs
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_ProjectConfig_Projects_TestCatalogs
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__ProjectConfig__Projects__TestCatalogs
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs
+    RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs
+
+2.1.1.1.1.1  list role-test:test-catalog
+  Leaves
+    name: id, type: STRING
+    name: type, type: STRING
+  XPath Path
+    /role-test:project-config/role-test:projects/role-test:test-catalogs/role-test:test-catalog
+  XPath Keyed Path
+    /role-test:project-config/role-test:projects[role-test:name='STRING']/role-test:test-catalogs/role-test:test-catalog[role-test:id='STRING'][role-test:type='STRING']
+  RW.REST URI Path
+    /rbac-role-test:project-config/projects/STRING/test-catalogs/test-catalog/STRING,STRING
+  RW Keyspec XPath Path
+    C,/role-test:project-config/role-test:projects/role-test:test-catalogs/role-test:test-catalog
+  RW Keyspec XPath Keyed Path
+    C,/role-test:project-config/role-test:projects[role-test:name='STRING']/role-test:test-catalogs/role-test:test-catalog[role-test:id='STRING'][role-test:type='STRING']
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.ProjectConfig.Projects.TestCatalogs.TestCatalog
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_ProjectConfig_Projects_TestCatalogs_TestCatalog
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__ProjectConfig__Projects__TestCatalogs__TestCatalog
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs_TestCatalog
+    RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs_TestCatalog
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_ProjectConfig_Projects_TestCatalogs_TestCatalog
+
+2.1.2  list role-test:config1
+  Leaves
+    name: ip, type: STRING
+  XPath Path
+    /role-test:config1
+  XPath Keyed Path
+    /role-test:config1[role-test:ip='STRING']
+  RW.REST URI Path
+    /rbac-role-test:config1/STRING
+  RW Keyspec XPath Path
+    C,/role-test:config1
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config1[role-test:ip='STRING']
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config1
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config1
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config1
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config1
+    RbacRoleTest_data_Config1
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config1
+
+2.1.2.1  list role-test:port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /role-test:config1/role-test:port
+  XPath Keyed Path
+    /role-test:config1[role-test:ip='STRING']/role-test:port[role-test:port='0']
+  RW.REST URI Path
+    /rbac-role-test:config1/STRING/port/0
+  RW Keyspec XPath Path
+    C,/role-test:config1/role-test:port
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config1[role-test:ip='STRING']/role-test:port[role-test:port='0']
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config1.Port
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config1_Port
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config1__Port
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config1_Port
+    RbacRoleTest_data_Config1_Port
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config1_Port
+
+2.1.3  list role-test:config2
+  Leaves
+    name: ip, type: STRING
+  XPath Path
+    /role-test:config2
+  XPath Keyed Path
+    /role-test:config2[role-test:ip='STRING']
+  RW.REST URI Path
+    /rbac-role-test:config2/STRING
+  RW Keyspec XPath Path
+    C,/role-test:config2
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config2[role-test:ip='STRING']
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config2
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config2
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config2
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config2
+    RbacRoleTest_data_Config2
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config2
+
+2.1.3.1  container role-test:port-group
+  XPath Path
+    /role-test:config2/role-test:port-group
+  XPath Keyed Path
+    /role-test:config2[role-test:ip='STRING']/role-test:port-group
+  RW.REST URI Path
+    /rbac-role-test:config2/STRING/port-group
+  RW Keyspec XPath Path
+    C,/role-test:config2/role-test:port-group
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config2[role-test:ip='STRING']/role-test:port-group
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config2.PortGroup
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config2_PortGroup
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config2__PortGroup
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config2_PortGroup
+    RbacRoleTest_data_Config2_PortGroup
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config2_PortGroup
+
+2.1.3.1.1  container role-test:start-port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /role-test:config2/role-test:port-group/role-test:start-port
+  XPath Keyed Path
+    /role-test:config2[role-test:ip='STRING']/role-test:port-group/role-test:start-port
+  RW.REST URI Path
+    /rbac-role-test:config2/STRING/port-group/start-port
+  RW Keyspec XPath Path
+    C,/role-test:config2/role-test:port-group/role-test:start-port
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config2[role-test:ip='STRING']/role-test:port-group/role-test:start-port
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config2.PortGroup.StartPort
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config2_PortGroup_StartPort
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config2__PortGroup__StartPort
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config2_PortGroup_StartPort
+    RbacRoleTest_data_Config2_PortGroup_StartPort
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config2_PortGroup_StartPort
+
+2.1.3.1.2  container role-test:end-port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /role-test:config2/role-test:port-group/role-test:end-port
+  XPath Keyed Path
+    /role-test:config2[role-test:ip='STRING']/role-test:port-group/role-test:end-port
+  RW.REST URI Path
+    /rbac-role-test:config2/STRING/port-group/end-port
+  RW Keyspec XPath Path
+    C,/role-test:config2/role-test:port-group/role-test:end-port
+  RW Keyspec XPath Keyed Path
+    C,/role-test:config2[role-test:ip='STRING']/role-test:port-group/role-test:end-port
+  Protobuf Type
+    .rbac_role_test.YangData.RbacRoleTest.Config2.PortGroup.EndPort
+  Python Proto-GI Type
+    RbacRoleTestYang.YangData_RbacRoleTest_Config2_PortGroup_EndPort
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangData__RbacRoleTest__Config2__PortGroup__EndPort
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_data_Config2_PortGroup_EndPort
+    RbacRoleTest_data_Config2_PortGroup_EndPort
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_data_Config2_PortGroup_EndPort
+
+2.2  rbac-role-test rpc input
+  Description
+    Role test for rbac
+
+2.2.1  rpc input role-test:test-a
+  Leaves
+    name: project-name, type: STRING
+  XPath Path
+    /role-test:test-a
+  XPath Keyed Path
+    /role-test:test-a
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/role-test:test-a
+  RW Keyspec XPath Keyed Path
+    I,/role-test:test-a
+  Protobuf Type
+    .rbac_role_test.YangInput.RbacRoleTest.TestA
+  Python Proto-GI Type
+    RbacRoleTestYang.YangInput_RbacRoleTest_TestA
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangInput__RbacRoleTest__TestA
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_input_TestA
+    RbacRoleTest_input_TestA
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_input_TestA
+
+2.3  rbac-role-test rpc output
+  Description
+    Role test for rbac
+
+2.3.1  rpc output role-test:test-a
+  XPath Path
+    /role-test:test-a
+  XPath Keyed Path
+    /role-test:test-a
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/role-test:test-a
+  RW Keyspec XPath Keyed Path
+    O,/role-test:test-a
+  Protobuf Type
+    .rbac_role_test.YangOutput.RbacRoleTest.TestA
+  Python Proto-GI Type
+    RbacRoleTestYang.YangOutput_RbacRoleTest_TestA
+  C Protobuf-C Struct Type
+    RbacRoleTest__YangOutput__RbacRoleTest__TestA
+  C RWPB Identifiers
+    RbacRoleTest_RbacRoleTest_output_TestA
+    RbacRoleTest_output_TestA
+  YPBC Base Identifier
+    rw_ypbc_RbacRoleTest_RbacRoleTest_output_TestA
+

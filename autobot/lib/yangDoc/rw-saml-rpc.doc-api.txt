@@ -1,0 +1,79 @@
+Programmer's API documentation for yang module rw-saml-rpc.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-saml-rpc                                                           2
+  rw-saml-rpc rpc input                                                    2.1
+    rpc input rw-saml-rpc:revert-saml-config                             2.1.1
+  rw-saml-rpc rpc output                                                   2.2
+    rpc output rw-saml-rpc:revert-saml-config                            2.2.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwSamlRpc_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwSamlRpc_g_schema
+2  module rw-saml-rpc
+
+2.1  rw-saml-rpc rpc input
+  Description
+    Definition of SAML related rpcs.
+
+2.1.1  rpc input rw-saml-rpc:revert-saml-config
+  Leaves
+    name: do_reboot, type: BOOLEAN, description: perform ui reboot if there is config change
+  XPath Path
+    /rw-saml-rpc:revert-saml-config
+  XPath Keyed Path
+    /rw-saml-rpc:revert-saml-config
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-saml-rpc:revert-saml-config
+  RW Keyspec XPath Keyed Path
+    I,/rw-saml-rpc:revert-saml-config
+  Protobuf Type
+    .rw_saml_rpc.YangInput.RwSamlRpc.RevertSamlConfig
+  Python Proto-GI Type
+    RwSamlRpcYang.YangInput_RwSamlRpc_RevertSamlConfig
+  C Protobuf-C Struct Type
+    RwSamlRpc__YangInput__RwSamlRpc__RevertSamlConfig
+  C RWPB Identifiers
+    RwSamlRpc_RwSamlRpc_input_RevertSamlConfig
+    RwSamlRpc_input_RevertSamlConfig
+  YPBC Base Identifier
+    rw_ypbc_RwSamlRpc_RwSamlRpc_input_RevertSamlConfig
+
+2.2  rw-saml-rpc rpc output
+  Description
+    Definition of SAML related rpcs.
+
+2.2.1  rpc output rw-saml-rpc:revert-saml-config
+  Leaves
+    name: op-status, type: STRING, description: Status of the requested operation success/failure
+    name: error, type: STRING, description: Description of the error in case of operation failure
+  XPath Path
+    /rw-saml-rpc:revert-saml-config
+  XPath Keyed Path
+    /rw-saml-rpc:revert-saml-config
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-saml-rpc:revert-saml-config
+  RW Keyspec XPath Keyed Path
+    O,/rw-saml-rpc:revert-saml-config
+  Protobuf Type
+    .rw_saml_rpc.YangOutput.RwSamlRpc.RevertSamlConfig
+  Python Proto-GI Type
+    RwSamlRpcYang.YangOutput_RwSamlRpc_RevertSamlConfig
+  C Protobuf-C Struct Type
+    RwSamlRpc__YangOutput__RwSamlRpc__RevertSamlConfig
+  C RWPB Identifiers
+    RwSamlRpc_RwSamlRpc_output_RevertSamlConfig
+    RwSamlRpc_output_RevertSamlConfig
+  YPBC Base Identifier
+    rw_ypbc_RwSamlRpc_RwSamlRpc_output_RevertSamlConfig
+

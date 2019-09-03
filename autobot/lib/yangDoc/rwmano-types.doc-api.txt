@@ -1,0 +1,16 @@
+Programmer's API documentation for yang module rwmano-types.yang
+
+
+
+Schema Globals                                                               1
+
+module rwmano-types                                                          2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwmanoTypes_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwmanoTypes_g_schema
+2  module rwmano-types
+

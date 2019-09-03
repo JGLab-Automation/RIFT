@@ -1,0 +1,2001 @@
+Programmer's API documentation for yang module monparam-log.yang
+
+
+
+Schema Globals                                                               1
+
+module monparam-log                                                          2
+  monparam-log notification                                                2.1
+    notification monparam-log:generic-debug                              2.1.1
+      container monparam-log:template_params                           2.1.1.1
+        list monparam-log:debug-details                              2.1.1.1.1
+        list monparam-log:additional-data                            2.1.1.1.2
+        container monparam-log:call-identifier                       2.1.1.1.3
+        container monparam-log:session-params                        2.1.1.1.4
+    notification monparam-log:generic-info                               2.1.2
+      container monparam-log:template_params                           2.1.2.1
+        list monparam-log:debug-details                              2.1.2.1.1
+        list monparam-log:additional-data                            2.1.2.1.2
+        container monparam-log:call-identifier                       2.1.2.1.3
+        container monparam-log:session-params                        2.1.2.1.4
+    notification monparam-log:generic-notice                             2.1.3
+      container monparam-log:template_params                           2.1.3.1
+        list monparam-log:debug-details                              2.1.3.1.1
+        list monparam-log:additional-data                            2.1.3.1.2
+        container monparam-log:call-identifier                       2.1.3.1.3
+        container monparam-log:session-params                        2.1.3.1.4
+    notification monparam-log:generic-warning                            2.1.4
+      container monparam-log:template_params                           2.1.4.1
+        list monparam-log:debug-details                              2.1.4.1.1
+        list monparam-log:additional-data                            2.1.4.1.2
+        container monparam-log:call-identifier                       2.1.4.1.3
+        container monparam-log:session-params                        2.1.4.1.4
+    notification monparam-log:monparam-debug                             2.1.5
+      container monparam-log:template_params                           2.1.5.1
+        list monparam-log:debug-details                              2.1.5.1.1
+        list monparam-log:additional-data                            2.1.5.1.2
+        container monparam-log:call-identifier                       2.1.5.1.3
+        container monparam-log:session-params                        2.1.5.1.4
+    notification monparam-log:alarm-recvd-info                           2.1.6
+      container monparam-log:template_params                           2.1.6.1
+        list monparam-log:debug-details                              2.1.6.1.1
+        list monparam-log:additional-data                            2.1.6.1.2
+        container monparam-log:call-identifier                       2.1.6.1.3
+        container monparam-log:session-params                        2.1.6.1.4
+    notification monparam-log:monparam-info                              2.1.7
+      container monparam-log:template_params                           2.1.7.1
+        list monparam-log:debug-details                              2.1.7.1.1
+        list monparam-log:additional-data                            2.1.7.1.2
+        container monparam-log:call-identifier                       2.1.7.1.3
+        container monparam-log:session-params                        2.1.7.1.4
+    notification monparam-log:internal-error                             2.1.8
+      container monparam-log:template_params                           2.1.8.1
+        list monparam-log:debug-details                              2.1.8.1.1
+        list monparam-log:additional-data                            2.1.8.1.2
+        container monparam-log:call-identifier                       2.1.8.1.3
+        container monparam-log:session-params                        2.1.8.1.4
+    notification monparam-log:monparam-error                             2.1.9
+      container monparam-log:template_params                           2.1.9.1
+        list monparam-log:debug-details                              2.1.9.1.1
+        list monparam-log:additional-data                            2.1.9.1.2
+        container monparam-log:call-identifier                       2.1.9.1.3
+        container monparam-log:session-params                        2.1.9.1.4
+    notification monparam-log:monparam-warning                          2.1.10
+      container monparam-log:template_params                          2.1.10.1
+        list monparam-log:debug-details                             2.1.10.1.1
+        list monparam-log:additional-data                           2.1.10.1.2
+        container monparam-log:call-identifier                      2.1.10.1.3
+        container monparam-log:session-params                       2.1.10.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_MonparamLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_MonparamLog_g_schema
+2  module monparam-log
+
+2.1  monparam-log notification
+
+2.1.1  notification monparam-log:generic-debug
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:generic-debug
+  XPath Keyed Path
+    /monparam-log:generic-debug
+  RW.REST URI Path
+    /monparam-log:generic-debug
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug
+    MonparamLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug
+
+2.1.1.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:generic-debug/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:generic-debug/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams
+    MonparamLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_DebugDetails
+    MonparamLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_AdditionalData
+    MonparamLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    MonparamLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:generic-debug/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-debug/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_SessionParams
+    MonparamLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification monparam-log:generic-info
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:generic-info
+  XPath Keyed Path
+    /monparam-log:generic-info
+  RW.REST URI Path
+    /monparam-log:generic-info
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo
+    MonparamLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo
+
+2.1.2.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:generic-info/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:generic-info/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams
+    MonparamLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_DebugDetails
+    MonparamLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_AdditionalData
+    MonparamLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    MonparamLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:generic-info/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-info/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_SessionParams
+    MonparamLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification monparam-log:generic-notice
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:generic-notice
+  XPath Keyed Path
+    /monparam-log:generic-notice
+  RW.REST URI Path
+    /monparam-log:generic-notice
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice
+    MonparamLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice
+
+2.1.3.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:generic-notice/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:generic-notice/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams
+    MonparamLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_DebugDetails
+    MonparamLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_AdditionalData
+    MonparamLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    MonparamLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:generic-notice/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-notice/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_SessionParams
+    MonparamLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification monparam-log:generic-warning
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:generic-warning
+  XPath Keyed Path
+    /monparam-log:generic-warning
+  RW.REST URI Path
+    /monparam-log:generic-warning
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning
+    MonparamLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning
+
+2.1.4.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:generic-warning/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:generic-warning/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams
+    MonparamLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_DebugDetails
+    MonparamLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_AdditionalData
+    MonparamLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    MonparamLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:generic-warning/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:generic-warning/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_SessionParams
+    MonparamLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification monparam-log:monparam-debug
+  Description
+    Monitoring params Debug
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:monparam-debug
+  XPath Keyed Path
+    /monparam-log:monparam-debug
+  RW.REST URI Path
+    /monparam-log:monparam-debug
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug
+    MonparamLog_notif_MonparamDebug
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug
+
+2.1.5.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:monparam-debug/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:monparam-debug/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:monparam-debug/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams
+    MonparamLog_notif_MonparamDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams
+
+2.1.5.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:monparam-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_DebugDetails
+    MonparamLog_notif_MonparamDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_DebugDetails
+
+2.1.5.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:monparam-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_AdditionalData
+    MonparamLog_notif_MonparamDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_AdditionalData
+
+2.1.5.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:monparam-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_CallIdentifier
+    MonparamLog_notif_MonparamDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:monparam-debug/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:monparam-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-debug/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_SessionParams
+    MonparamLog_notif_MonparamDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamDebug_TemplateParams_SessionParams
+
+2.1.6  notification monparam-log:alarm-recvd-info
+  Description
+    Alarm received from alarm services such as AODH etc
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:alarm-recvd-info
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo
+    MonparamLog_notif_AlarmRecvdInfo
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo
+
+2.1.6.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams
+    MonparamLog_notif_AlarmRecvdInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams
+
+2.1.6.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_DebugDetails
+    MonparamLog_notif_AlarmRecvdInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_DebugDetails
+
+2.1.6.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_AdditionalData
+    MonparamLog_notif_AlarmRecvdInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_AdditionalData
+
+2.1.6.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_CallIdentifier
+    MonparamLog_notif_AlarmRecvdInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:alarm-recvd-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:alarm-recvd-info/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.AlarmRecvdInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_AlarmRecvdInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__AlarmRecvdInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_SessionParams
+    MonparamLog_notif_AlarmRecvdInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_AlarmRecvdInfo_TemplateParams_SessionParams
+
+2.1.7  notification monparam-log:monparam-info
+  Description
+    Monitoring params info
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:monparam-info
+  XPath Keyed Path
+    /monparam-log:monparam-info
+  RW.REST URI Path
+    /monparam-log:monparam-info
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo
+    MonparamLog_notif_MonparamInfo
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo
+
+2.1.7.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:monparam-info/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:monparam-info/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:monparam-info/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams
+    MonparamLog_notif_MonparamInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams
+
+2.1.7.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:monparam-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_DebugDetails
+    MonparamLog_notif_MonparamInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_DebugDetails
+
+2.1.7.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:monparam-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_AdditionalData
+    MonparamLog_notif_MonparamInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_AdditionalData
+
+2.1.7.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:monparam-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_CallIdentifier
+    MonparamLog_notif_MonparamInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:monparam-info/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:monparam-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-info/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_SessionParams
+    MonparamLog_notif_MonparamInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamInfo_TemplateParams_SessionParams
+
+2.1.8  notification monparam-log:internal-error
+  Description
+    Monitoring Param Internal Error
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:internal-error
+  XPath Keyed Path
+    /monparam-log:internal-error
+  RW.REST URI Path
+    /monparam-log:internal-error
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError
+    MonparamLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError
+
+2.1.8.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:internal-error/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:internal-error/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError_TemplateParams
+    MonparamLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError_TemplateParams
+
+2.1.8.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError_TemplateParams_DebugDetails
+    MonparamLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.8.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError_TemplateParams_AdditionalData
+    MonparamLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.8.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError_TemplateParams_CallIdentifier
+    MonparamLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:internal-error/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:internal-error/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_InternalError_TemplateParams_SessionParams
+    MonparamLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.9  notification monparam-log:monparam-error
+  Description
+    Monitoring params Error
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:monparam-error
+  XPath Keyed Path
+    /monparam-log:monparam-error
+  RW.REST URI Path
+    /monparam-log:monparam-error
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError
+    MonparamLog_notif_MonparamError
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError
+
+2.1.9.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:monparam-error/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:monparam-error/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:monparam-error/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError_TemplateParams
+    MonparamLog_notif_MonparamError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError_TemplateParams
+
+2.1.9.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:monparam-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_DebugDetails
+    MonparamLog_notif_MonparamError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_DebugDetails
+
+2.1.9.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:monparam-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_AdditionalData
+    MonparamLog_notif_MonparamError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_AdditionalData
+
+2.1.9.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:monparam-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_CallIdentifier
+    MonparamLog_notif_MonparamError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:monparam-error/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:monparam-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-error/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_SessionParams
+    MonparamLog_notif_MonparamError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamError_TemplateParams_SessionParams
+
+2.1.10  notification monparam-log:monparam-warning
+  Description
+    Monitoring params warning
+  Leaves
+    name: project-name, type: STRING
+    name: monparam-id, type: STRING
+    name: monparam-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /monparam-log:monparam-warning
+  XPath Keyed Path
+    /monparam-log:monparam-warning
+  RW.REST URI Path
+    /monparam-log:monparam-warning
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning
+    MonparamLog_notif_MonparamWarning
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning
+
+2.1.10.1  container monparam-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /monparam-log:monparam-warning/monparam-log:template_params
+  XPath Keyed Path
+    /monparam-log:monparam-warning/monparam-log:template_params
+  RW.REST URI Path
+    /monparam-log:monparam-warning/template_params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning.TemplateParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning_TemplateParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning__TemplateParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams
+    MonparamLog_notif_MonparamWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams
+
+2.1.10.1.1  list monparam-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:debug-details
+  XPath Keyed Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /monparam-log:monparam-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:debug-details[monparam-log:type='generic-debug-detail']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_DebugDetails
+    MonparamLog_notif_MonparamWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_DebugDetails
+
+2.1.10.1.2  list monparam-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:additional-data
+  XPath Keyed Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  RW.REST URI Path
+    /monparam-log:monparam-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:additional-data[monparam-log:attribute='STRING']
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_AdditionalData
+    MonparamLog_notif_MonparamWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_AdditionalData
+
+2.1.10.1.3  container monparam-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:call-identifier
+  XPath Keyed Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:call-identifier
+  RW.REST URI Path
+    /monparam-log:monparam-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:call-identifier
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_CallIdentifier
+    MonparamLog_notif_MonparamWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container monparam-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:session-params
+  XPath Keyed Path
+    /monparam-log:monparam-warning/monparam-log:template_params/monparam-log:session-params
+  RW.REST URI Path
+    /monparam-log:monparam-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/monparam-log:monparam-warning/monparam-log:template_params/monparam-log:session-params
+  Protobuf Type
+    .monparam_log.YangNotif.MonparamLog.MonparamWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    MonparamLogYang.YangNotif_MonparamLog_MonparamWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    MonparamLog__YangNotif__MonparamLog__MonparamWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_SessionParams
+    MonparamLog_notif_MonparamWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_MonparamLog_MonparamLog_notif_MonparamWarning_TemplateParams_SessionParams
+

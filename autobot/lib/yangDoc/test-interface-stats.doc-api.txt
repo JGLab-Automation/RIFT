@@ -1,0 +1,178 @@
+Programmer's API documentation for yang module test-interface-stats.yang
+
+
+
+Schema Globals                                                               1
+
+module test-interface-stats                                                  2
+  test-interface-stats data                                                2.1
+    container test-interface-stats:interfaces                            2.1.1
+      list test-interface-stats:interface                              2.1.1.1
+        container test-interface-stats:status                        2.1.1.1.1
+          container test-interface-stats:receive                   2.1.1.1.1.1
+          container test-interface-stats:transmit                  2.1.1.1.1.2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_TestInterfaceStats_t_schema
+  Global Schema Pointer
+    rw_ypbc_TestInterfaceStats_g_schema
+2  module test-interface-stats
+
+2.1  test-interface-stats data
+  Description
+    Interface stats collection model
+
+2.1.1  container test-interface-stats:interfaces
+  XPath Path
+    /test-interface-stats:interfaces
+  XPath Keyed Path
+    /test-interface-stats:interfaces
+  RW.REST URI Path
+    /test-interface-stats:interfaces
+  RW Keyspec XPath Path
+    C,/test-interface-stats:interfaces
+  RW Keyspec XPath Keyed Path
+    C,/test-interface-stats:interfaces
+  RW Keyspec XPath Path
+    D,/test-interface-stats:interfaces
+  RW Keyspec XPath Keyed Path
+    D,/test-interface-stats:interfaces
+  Protobuf Type
+    .test_interface_stats.YangData.TestInterfaceStats.Interfaces
+  Python Proto-GI Type
+    TestInterfaceStatsYang.YangData_TestInterfaceStats_Interfaces
+  C Protobuf-C Struct Type
+    TestInterfaceStats__YangData__TestInterfaceStats__Interfaces
+  C RWPB Identifiers
+    TestInterfaceStats_TestInterfaceStats_data_Interfaces
+    TestInterfaceStats_data_Interfaces
+  YPBC Base Identifier
+    rw_ypbc_TestInterfaceStats_TestInterfaceStats_data_Interfaces
+
+2.1.1.1  list test-interface-stats:interface
+  Leaves
+    name: name, type: STRING
+    name: description, type: STRING
+    name: enabled, type: BOOLEAN
+    name: speed, type: ENUM, description: not supported for all types of interfaces
+    name: duplex, type: ENUM, description: not supported for all types of interfaces
+    name: mtu, type: INT16
+    name: mac, type: STRING
+  XPath Path
+    /test-interface-stats:interfaces/test-interface-stats:interface
+  XPath Keyed Path
+    /test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']
+  RW.REST URI Path
+    /test-interface-stats:interfaces/interface/STRING
+  RW Keyspec XPath Path
+    C,/test-interface-stats:interfaces/test-interface-stats:interface
+  RW Keyspec XPath Keyed Path
+    C,/test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']
+  RW Keyspec XPath Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface
+  RW Keyspec XPath Keyed Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']
+  Protobuf Type
+    .test_interface_stats.YangData.TestInterfaceStats.Interfaces.Interface
+  Python Proto-GI Type
+    TestInterfaceStatsYang.Interface
+  C Protobuf-C Struct Type
+    TestInterfaceStats__YangData__TestInterfaceStats__Interfaces__Interface
+  C RWPB Identifiers
+    TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface
+    TestInterfaceStats_data_Interfaces_Interface
+    TestInterfaceStats_Interface
+  YPBC Base Identifier
+    rw_ypbc_TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface
+
+2.1.1.1.1  container test-interface-stats:status
+  Leaves
+    name: link, type: ENUM
+    name: speed, type: ENUM
+    name: duplex, type: ENUM
+    name: mtu, type: INT32
+    name: mac, type: STRING
+  XPath Path
+    /test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status
+  XPath Keyed Path
+    /test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status
+  RW.REST URI Path
+    /test-interface-stats:interfaces/interface/STRING/status
+  RW Keyspec XPath Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status
+  RW Keyspec XPath Keyed Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status
+  Protobuf Type
+    .test_interface_stats.YangData.TestInterfaceStats.Interfaces.Interface.Status
+  Python Proto-GI Type
+    TestInterfaceStatsYang.Interface_Status
+  C Protobuf-C Struct Type
+    TestInterfaceStats__YangData__TestInterfaceStats__Interfaces__Interface__Status
+  C RWPB Identifiers
+    TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status
+    TestInterfaceStats_data_Interfaces_Interface_Status
+    TestInterfaceStats_Interface_Status
+  YPBC Base Identifier
+    rw_ypbc_TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status
+
+2.1.1.1.1.1  container test-interface-stats:receive
+  Leaves
+    name: bytes, type: UINT64
+    name: packets, type: UINT64
+    name: errors, type: UINT32
+    name: dropped, type: UINT32
+  XPath Path
+    /test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status/test-interface-stats:receive
+  XPath Keyed Path
+    /test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status/test-interface-stats:receive
+  RW.REST URI Path
+    /test-interface-stats:interfaces/interface/STRING/status/receive
+  RW Keyspec XPath Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status/test-interface-stats:receive
+  RW Keyspec XPath Keyed Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status/test-interface-stats:receive
+  Protobuf Type
+    .test_interface_stats.YangData.TestInterfaceStats.Interfaces.Interface.Status.Receive
+  Python Proto-GI Type
+    TestInterfaceStatsYang.Interface_Status_Receive
+  C Protobuf-C Struct Type
+    TestInterfaceStats__YangData__TestInterfaceStats__Interfaces__Interface__Status__Receive
+  C RWPB Identifiers
+    TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status_Receive
+    TestInterfaceStats_data_Interfaces_Interface_Status_Receive
+    TestInterfaceStats_Interface_Status_Receive
+  YPBC Base Identifier
+    rw_ypbc_TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status_Receive
+
+2.1.1.1.1.2  container test-interface-stats:transmit
+  Leaves
+    name: bytes, type: UINT64
+    name: packets, type: UINT64
+    name: errors, type: UINT32
+    name: dropped, type: UINT32
+    name: collisions, type: UINT32
+  XPath Path
+    /test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status/test-interface-stats:transmit
+  XPath Keyed Path
+    /test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status/test-interface-stats:transmit
+  RW.REST URI Path
+    /test-interface-stats:interfaces/interface/STRING/status/transmit
+  RW Keyspec XPath Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface/test-interface-stats:status/test-interface-stats:transmit
+  RW Keyspec XPath Keyed Path
+    D,/test-interface-stats:interfaces/test-interface-stats:interface[test-interface-stats:name='STRING']/test-interface-stats:status/test-interface-stats:transmit
+  Protobuf Type
+    .test_interface_stats.YangData.TestInterfaceStats.Interfaces.Interface.Status.Transmit
+  Python Proto-GI Type
+    TestInterfaceStatsYang.Interface_Status_Transmit
+  C Protobuf-C Struct Type
+    TestInterfaceStats__YangData__TestInterfaceStats__Interfaces__Interface__Status__Transmit
+  C RWPB Identifiers
+    TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status_Transmit
+    TestInterfaceStats_data_Interfaces_Interface_Status_Transmit
+    TestInterfaceStats_Interface_Status_Transmit
+  YPBC Base Identifier
+    rw_ypbc_TestInterfaceStats_TestInterfaceStats_data_Interfaces_Interface_Status_Transmit
+

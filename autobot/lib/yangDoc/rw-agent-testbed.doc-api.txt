@@ -1,0 +1,594 @@
+Programmer's API documentation for yang module rw-agent-testbed.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-agent-testbed                                                      2
+  rw-agent-testbed rpc input                                               2.1
+    rpc input agt-tb:agent-tests                                         2.1.1
+      container agt-tb:all                                             2.1.1.1
+      container agt-tb:netconf-tests                                   2.1.1.2
+        container agt-tb:all                                         2.1.1.2.1
+        container agt-tb:edit-config                                 2.1.1.2.2
+        container agt-tb:notif                                       2.1.1.2.3
+        container agt-tb:large-binary-blob                           2.1.1.2.4
+      container agt-tb:pb-request-tests                                2.1.1.3
+        container agt-tb:ec-merge                                    2.1.1.3.1
+        container agt-tb:ec-delete                                   2.1.1.3.2
+        container agt-tb:all                                         2.1.1.3.3
+      container agt-tb:rbac-tests                                      2.1.1.4
+        container agt-tb:all                                         2.1.1.4.1
+        container agt-tb:create-users                                2.1.1.4.2
+        container agt-tb:query-users                                 2.1.1.4.3
+        container agt-tb:delete-users                                2.1.1.4.4
+        container agt-tb:change-password                             2.1.1.4.5
+        container agt-tb:check-domain                                2.1.1.4.6
+        container agt-tb:duplicate-users                             2.1.1.4.7
+        container agt-tb:project-tests                               2.1.1.4.8
+  rw-agent-testbed rpc output                                              2.2
+    rpc output agt-tb:agent-tests                                        2.2.1
+      leaf-list agt-tb:failed_tests                                    2.2.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwAgentTestbed_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwAgentTestbed_g_schema
+2  module rw-agent-testbed
+
+2.1  rw-agent-testbed rpc input
+
+2.1.1  rpc input agt-tb:agent-tests
+  XPath Path
+    /agt-tb:agent-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests
+    RwAgentTestbed_input_AgentTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests
+
+2.1.1.1  container agt-tb:all
+  Description
+    Run all tests
+  Leaves
+    name: continue-on-failure, type: BOOLEAN, description: Continue execution on failure
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:all
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:all
+  RW.REST URI Path
+    /input/all
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:all
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:all
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.All
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_All
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__All
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_All
+    RwAgentTestbed_input_AgentTests_All
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_All
+
+2.1.1.2  container agt-tb:netconf-tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests
+  RW.REST URI Path
+    /input/netconf-tests
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.NetconfTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_NetconfTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__NetconfTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests
+    RwAgentTestbed_input_AgentTests_NetconfTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests
+
+2.1.1.2.1  container agt-tb:all
+  Description
+    Run all netconf-tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:all
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:all
+  RW.REST URI Path
+    /input/netconf-tests/all
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:all
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:all
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.NetconfTests.All
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_NetconfTests_All
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__NetconfTests__All
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_All
+    RwAgentTestbed_input_AgentTests_NetconfTests_All
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_All
+
+2.1.1.2.2  container agt-tb:edit-config
+  Description
+    Test Edit config via NETCONF
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:edit-config
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:edit-config
+  RW.REST URI Path
+    /input/netconf-tests/edit-config
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:edit-config
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:edit-config
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.NetconfTests.EditConfig
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_NetconfTests_EditConfig
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__NetconfTests__EditConfig
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_EditConfig
+    RwAgentTestbed_input_AgentTests_NetconfTests_EditConfig
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_EditConfig
+
+2.1.1.2.3  container agt-tb:notif
+  Description
+    Test notification via NETCONF
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:notif
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:notif
+  RW.REST URI Path
+    /input/netconf-tests/notif
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:notif
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:notif
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.NetconfTests.Notif
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_NetconfTests_Notif
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__NetconfTests__Notif
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_Notif
+    RwAgentTestbed_input_AgentTests_NetconfTests_Notif
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_Notif
+
+2.1.1.2.4  container agt-tb:large-binary-blob
+  Description
+    Test large binary data
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:large-binary-blob
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:large-binary-blob
+  RW.REST URI Path
+    /input/netconf-tests/large-binary-blob
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:large-binary-blob
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:netconf-tests/agt-tb:large-binary-blob
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.NetconfTests.LargeBinaryBlob
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_NetconfTests_LargeBinaryBlob
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__NetconfTests__LargeBinaryBlob
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_LargeBinaryBlob
+    RwAgentTestbed_input_AgentTests_NetconfTests_LargeBinaryBlob
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_NetconfTests_LargeBinaryBlob
+
+2.1.1.3  container agt-tb:pb-request-tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests
+  RW.REST URI Path
+    /input/pb-request-tests
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.PbRequestTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_PbRequestTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__PbRequestTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests
+    RwAgentTestbed_input_AgentTests_PbRequestTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests
+
+2.1.1.3.1  container agt-tb:ec-merge
+  Description
+    Test PB-REQUEST edit-conf merge
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-merge
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-merge
+  RW.REST URI Path
+    /input/pb-request-tests/ec-merge
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-merge
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-merge
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.PbRequestTests.EcMerge
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_PbRequestTests_EcMerge
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__PbRequestTests__EcMerge
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_EcMerge
+    RwAgentTestbed_input_AgentTests_PbRequestTests_EcMerge
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_EcMerge
+
+2.1.1.3.2  container agt-tb:ec-delete
+  Description
+    Test PB-REQUEST edit-conf delete
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-delete
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-delete
+  RW.REST URI Path
+    /input/pb-request-tests/ec-delete
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-delete
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:ec-delete
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.PbRequestTests.EcDelete
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_PbRequestTests_EcDelete
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__PbRequestTests__EcDelete
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_EcDelete
+    RwAgentTestbed_input_AgentTests_PbRequestTests_EcDelete
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_EcDelete
+
+2.1.1.3.3  container agt-tb:all
+  Description
+    Run all pb-request-tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:all
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:all
+  RW.REST URI Path
+    /input/pb-request-tests/all
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:all
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:pb-request-tests/agt-tb:all
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.PbRequestTests.All
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_PbRequestTests_All
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__PbRequestTests__All
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_All
+    RwAgentTestbed_input_AgentTests_PbRequestTests_All
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_PbRequestTests_All
+
+2.1.1.4  container agt-tb:rbac-tests
+  Description
+    Run all RBAC related tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests
+  RW.REST URI Path
+    /input/rbac-tests
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests
+    RwAgentTestbed_input_AgentTests_RbacTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests
+
+2.1.1.4.1  container agt-tb:all
+  Description
+    Run all rbac CRUD tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:all
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:all
+  RW.REST URI Path
+    /input/rbac-tests/all
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:all
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:all
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.All
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_All
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__All
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_All
+    RwAgentTestbed_input_AgentTests_RbacTests_All
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_All
+
+2.1.1.4.2  container agt-tb:create-users
+  Description
+    Test creation of users
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:create-users
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:create-users
+  RW.REST URI Path
+    /input/rbac-tests/create-users
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:create-users
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:create-users
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.CreateUsers
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_CreateUsers
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__CreateUsers
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_CreateUsers
+    RwAgentTestbed_input_AgentTests_RbacTests_CreateUsers
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_CreateUsers
+
+2.1.1.4.3  container agt-tb:query-users
+  Description
+    Test querying of users
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:query-users
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:query-users
+  RW.REST URI Path
+    /input/rbac-tests/query-users
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:query-users
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:query-users
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.QueryUsers
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_QueryUsers
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__QueryUsers
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_QueryUsers
+    RwAgentTestbed_input_AgentTests_RbacTests_QueryUsers
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_QueryUsers
+
+2.1.1.4.4  container agt-tb:delete-users
+  Description
+    Test deletion of users
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:delete-users
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:delete-users
+  RW.REST URI Path
+    /input/rbac-tests/delete-users
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:delete-users
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:delete-users
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.DeleteUsers
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_DeleteUsers
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__DeleteUsers
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_DeleteUsers
+    RwAgentTestbed_input_AgentTests_RbacTests_DeleteUsers
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_DeleteUsers
+
+2.1.1.4.5  container agt-tb:change-password
+  Description
+    Test user's password can be changed
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:change-password
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:change-password
+  RW.REST URI Path
+    /input/rbac-tests/change-password
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:change-password
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:change-password
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.ChangePassword
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_ChangePassword
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__ChangePassword
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_ChangePassword
+    RwAgentTestbed_input_AgentTests_RbacTests_ChangePassword
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_ChangePassword
+
+2.1.1.4.6  container agt-tb:check-domain
+  Description
+    Test users can be created in system domain only
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:check-domain
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:check-domain
+  RW.REST URI Path
+    /input/rbac-tests/check-domain
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:check-domain
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:check-domain
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.CheckDomain
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_CheckDomain
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__CheckDomain
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_CheckDomain
+    RwAgentTestbed_input_AgentTests_RbacTests_CheckDomain
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_CheckDomain
+
+2.1.1.4.7  container agt-tb:duplicate-users
+  Description
+    Test user cannot be duplicated
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:duplicate-users
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:duplicate-users
+  RW.REST URI Path
+    /input/rbac-tests/duplicate-users
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:duplicate-users
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:duplicate-users
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.DuplicateUsers
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_DuplicateUsers
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__DuplicateUsers
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_DuplicateUsers
+    RwAgentTestbed_input_AgentTests_RbacTests_DuplicateUsers
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_DuplicateUsers
+
+2.1.1.4.8  container agt-tb:project-tests
+  Description
+    All project related tests are executed here
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:project-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:project-tests
+  RW.REST URI Path
+    /input/rbac-tests/project-tests
+  RW Keyspec XPath Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:project-tests
+  RW Keyspec XPath Keyed Path
+    I,/agt-tb:agent-tests/agt-tb:rbac-tests/agt-tb:project-tests
+  Protobuf Type
+    .rw_agent_testbed.YangInput.RwAgentTestbed.AgentTests.RbacTests.ProjectTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.YangInput_RwAgentTestbed_AgentTests_RbacTests_ProjectTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangInput__RwAgentTestbed__AgentTests__RbacTests__ProjectTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_ProjectTests
+    RwAgentTestbed_input_AgentTests_RbacTests_ProjectTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_input_AgentTests_RbacTests_ProjectTests
+
+2.2  rw-agent-testbed rpc output
+
+2.2.1  rpc output agt-tb:agent-tests
+  Leaves
+    name: total_tests, type: UINT64, description: Total tests in the testbed
+    name: passed_count, type: UINT64, description: Number of failed tests
+    name: failed_count, type: UINT64, description: Number of failed tests
+  XPath Path
+    /agt-tb:agent-tests
+  XPath Keyed Path
+    /agt-tb:agent-tests
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/agt-tb:agent-tests
+  RW Keyspec XPath Keyed Path
+    O,/agt-tb:agent-tests
+  Protobuf Type
+    .rw_agent_testbed.YangOutput.RwAgentTestbed.AgentTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.AgentTestsOp
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangOutput__RwAgentTestbed__AgentTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_output_AgentTests
+    RwAgentTestbed_output_AgentTests
+    RwAgentTestbed_AgentTestsOp
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_output_AgentTests
+
+2.2.1.1  leaf-list agt-tb:failed_tests
+  Description
+    List of failed tests
+  XPath Path
+    /agt-tb:agent-tests/agt-tb:failed_tests
+  XPath Keyed Path
+    /agt-tb:agent-tests/agt-tb:failed_tests
+  RW.REST URI Path
+    /output/failed_tests
+  RW Keyspec XPath Path
+    O,/agt-tb:agent-tests/agt-tb:failed_tests
+  RW Keyspec XPath Keyed Path
+    O,/agt-tb:agent-tests/agt-tb:failed_tests
+  Protobuf Type
+    .rw_agent_testbed.YangOutput.RwAgentTestbed.AgentTests.FailedTests
+  Python Proto-GI Type
+    RwAgentTestbedYang.AgentTestsOp_FailedTests
+  C Protobuf-C Struct Type
+    RwAgentTestbed__YangOutput__RwAgentTestbed__AgentTests__FailedTests
+  C RWPB Identifiers
+    RwAgentTestbed_RwAgentTestbed_output_AgentTests_FailedTests
+    RwAgentTestbed_output_AgentTests_FailedTests
+    RwAgentTestbed_AgentTestsOp_FailedTests
+  YPBC Base Identifier
+    rw_ypbc_RwAgentTestbed_RwAgentTestbed_output_AgentTests_FailedTests
+

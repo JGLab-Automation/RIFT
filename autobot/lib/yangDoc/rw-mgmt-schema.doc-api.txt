@@ -1,0 +1,290 @@
+Programmer's API documentation for yang module rw-mgmt-schema.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-mgmt-schema                                                        2
+  rw-mgmt-schema data                                                      2.1
+    container rw-mgmt-schema:rw-mgmt-schema                              2.1.1
+      container rw-mgmt-schema:schema-version                          2.1.1.1
+      list rw-mgmt-schema:modules                                      2.1.1.2
+      list rw-mgmt-schema:packages                                     2.1.1.3
+        list rw-mgmt-schema:modules                                  2.1.1.3.1
+    container rw-mgmt-schema:rw-mgmt-schema-state                        2.1.2
+      list rw-mgmt-schema:dynamic-modules                              2.1.2.1
+      list rw-mgmt-schema:listening-apps                               2.1.2.2
+        container rw-mgmt-schema:error-message                       2.1.2.2.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMgmtSchema_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMgmtSchema_g_schema
+2  module rw-mgmt-schema
+
+2.1  rw-mgmt-schema data
+  Description
+    Defines and configures the NETCONF schema of RIFT.ware.  RIFT.ware
+    supports a dynamic schema, which may change to reflect the network
+    services that are running under the RIFT.ware instance.  This
+    module provides the configuration needed to control the schema, as
+    well as the state necessary to monitor the schema as it changes.
+
+2.1.1  container rw-mgmt-schema:rw-mgmt-schema
+  Description
+    The configuration for the RIFT.ware external schema.  This
+    defines which yang files are externally visible and where they
+    are located.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema
+  RW Keyspec XPath Path
+    C,/rw-mgmt-schema:rw-mgmt-schema
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmt-schema:rw-mgmt-schema
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchema
+  Python Proto-GI Type
+    RwMgmtSchemaYang.RwMgmtSchema
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchema
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema
+    RwMgmtSchema_data_RwMgmtSchema
+    RwMgmtSchema_RwMgmtSchema
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema
+
+2.1.1.1  container rw-mgmt-schema:schema-version
+  Leaves
+    name: yang-schema-version, type: UINT32, description: Schema version number known by agent.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:schema-version
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:schema-version
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema/schema-version
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:schema-version
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:schema-version
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchema.SchemaVersion
+  Python Proto-GI Type
+    RwMgmtSchemaYang.RwMgmtSchema_SchemaVersion
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchema__SchemaVersion
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_SchemaVersion
+    RwMgmtSchema_data_RwMgmtSchema_SchemaVersion
+    RwMgmtSchema_RwMgmtSchema_SchemaVersion
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_SchemaVersion
+
+2.1.1.2  list rw-mgmt-schema:modules
+  Leaves
+    name: name, type: STRING, description: The name of the yang module (from the module statement).
+    name: revision, type: STRING, description: The yang revision of the module.  Multiple revisions may be
+    loaded, although only one will be exposed.  Empty string is
+    valid, in which case the revision statement must not exist in
+    the module.
+    name: exported, type: BOOLEAN, description: Determines whether the module will be exported via the
+    RIFT.ware northbound interfaces.  Only one revision of a
+    module may be exported at the same time.  A module must be
+    exported for any part of the config or operational data to be
+    accessible, for the rpcs to be usable, for notifications to
+    be generated, or for augments to be applied.  However, a
+    module does not need to be exported in order for its types or
+    groupings to be used by other modules.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:modules
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema/modules/STRING,STRING
+  RW Keyspec XPath Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:modules
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchema.Modules
+  Python Proto-GI Type
+    RwMgmtSchemaYang.RwMgmtSchema_Modules
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchema__Modules
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Modules
+    RwMgmtSchema_data_RwMgmtSchema_Modules
+    RwMgmtSchema_RwMgmtSchema_Modules
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Modules
+
+2.1.1.3  list rw-mgmt-schema:packages
+  Leaves
+    name: vnf-id, type: STRING, description: The uuid of the vnfd that 'owns' the package.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages[rw-mgmt-schema:vnf-id='STRING']
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema/packages/STRING
+  RW Keyspec XPath Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages[rw-mgmt-schema:vnf-id='STRING']
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchema.Packages
+  Python Proto-GI Type
+    RwMgmtSchemaYang.RwMgmtSchema_Packages
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchema__Packages
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Packages
+    RwMgmtSchema_data_RwMgmtSchema_Packages
+    RwMgmtSchema_RwMgmtSchema_Packages
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Packages
+
+2.1.1.3.1  list rw-mgmt-schema:modules
+  Leaves
+    name: name, type: LEAFREF
+    name: revision, type: LEAFREF
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages/rw-mgmt-schema:modules
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages[rw-mgmt-schema:vnf-id='STRING']/rw-mgmt-schema:modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema/packages/STRING/modules/STRING,STRING
+  RW Keyspec XPath Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages/rw-mgmt-schema:modules
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmt-schema:rw-mgmt-schema/rw-mgmt-schema:packages[rw-mgmt-schema:vnf-id='STRING']/rw-mgmt-schema:modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchema.Packages.Modules
+  Python Proto-GI Type
+    RwMgmtSchemaYang.RwMgmtSchema_Packages_Modules
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchema__Packages__Modules
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Packages_Modules
+    RwMgmtSchema_data_RwMgmtSchema_Packages_Modules
+    RwMgmtSchema_RwMgmtSchema_Packages_Modules
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchema_Packages_Modules
+
+2.1.2  container rw-mgmt-schema:rw-mgmt-schema-state
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema-state
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema-state
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema-state
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchemaState
+  Python Proto-GI Type
+    RwMgmtSchemaYang.YangData_RwMgmtSchema_RwMgmtSchemaState
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchemaState
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState
+    RwMgmtSchema_data_RwMgmtSchemaState
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState
+
+2.1.2.1  list rw-mgmt-schema:dynamic-modules
+  Leaves
+    name: name, type: STRING, description: The name of the yang module (from the module statement).
+    name: revision, type: STRING, description: The yang revision of the module.  Multiple revisions may be
+    loaded, although only one will be exposed.  Empty string is
+    valid, in which case the revision statement must not exist in
+    the module.
+    name: exported, type: BOOLEAN, description: Determines whether the module will be exported via the
+    RIFT.ware northbound interfaces.
+    name: state, type: ENUM, description: Where the module is in it's lifecycle of being loaded.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:dynamic-modules
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:dynamic-modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/dynamic-modules/STRING,STRING
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:dynamic-modules
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:dynamic-modules[rw-mgmt-schema:name='STRING'][rw-mgmt-schema:revision='STRING']
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchemaState.DynamicModules
+  Python Proto-GI Type
+    RwMgmtSchemaYang.YangData_RwMgmtSchema_RwMgmtSchemaState_DynamicModules
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchemaState__DynamicModules
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_DynamicModules
+    RwMgmtSchema_data_RwMgmtSchemaState_DynamicModules
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_DynamicModules
+
+2.1.2.2  list rw-mgmt-schema:listening-apps
+  Leaves
+    name: name, type: STRING
+    name: app-type, type: ENUM
+    name: state, type: ENUM, description: Where the module is in it's lifecycle of being loaded.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps[rw-mgmt-schema:name='STRING']
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/listening-apps/STRING
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps[rw-mgmt-schema:name='STRING']
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchemaState.ListeningApps
+  Python Proto-GI Type
+    RwMgmtSchemaYang.YangData_RwMgmtSchema_RwMgmtSchemaState_ListeningApps
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchemaState__ListeningApps
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps
+    RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps
+
+2.1.2.2.1  container rw-mgmt-schema:error-message
+  Leaves
+    name: message, type: STRING, description: A description of the error that occured while loading the dynamic modules.
+  XPath Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps/rw-mgmt-schema:error-message
+  XPath Keyed Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps[rw-mgmt-schema:name='STRING']/rw-mgmt-schema:error-message
+  RW.REST URI Path
+    /rw-mgmt-schema:rw-mgmt-schema-state/listening-apps/STRING/error-message
+  RW Keyspec XPath Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps/rw-mgmt-schema:error-message
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmt-schema:rw-mgmt-schema-state/rw-mgmt-schema:listening-apps[rw-mgmt-schema:name='STRING']/rw-mgmt-schema:error-message
+  Protobuf Type
+    .rw_mgmt_schema.YangData.RwMgmtSchema.RwMgmtSchemaState.ListeningApps.ErrorMessage
+  Python Proto-GI Type
+    RwMgmtSchemaYang.YangData_RwMgmtSchema_RwMgmtSchemaState_ListeningApps_ErrorMessage
+  C Protobuf-C Struct Type
+    RwMgmtSchema__YangData__RwMgmtSchema__RwMgmtSchemaState__ListeningApps__ErrorMessage
+  C RWPB Identifiers
+    RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps_ErrorMessage
+    RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps_ErrorMessage
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtSchema_RwMgmtSchema_data_RwMgmtSchemaState_ListeningApps_ErrorMessage
+

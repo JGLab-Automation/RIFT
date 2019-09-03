@@ -1,0 +1,1277 @@
+Programmer's API documentation for yang module rwmano-cloud.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-project                                                            2
+  rw-project data                                                          2.1
+    list rw-project:project                                              2.1.1
+      container rw-project:project-config                              2.1.1.1
+        list rw-project:user                                         2.1.1.1.1
+          list rw-project:role                                     2.1.1.1.1.1
+      container rw-project:project-state                               2.1.1.2
+        list rw-project:user                                         2.1.1.2.1
+          list rw-project:role                                     2.1.1.2.1.1
+        list rw-project:role                                         2.1.1.2.2
+      container rwmanoproject:internal                                 2.1.1.3
+        container riftsdn:sdn                                        2.1.1.3.1
+          list riftsdn:account                                     2.1.1.3.1.1
+            container riftsdn:odl                                2.1.1.3.1.1.1
+            container riftsdn:mock                               2.1.1.3.1.1.2
+            container riftsdn:sdnsim                             2.1.1.3.1.1.3
+            container riftsdn:openstack                          2.1.1.3.1.1.4
+            container riftsdn:vmware-vio                         2.1.1.3.1.1.5
+            container riftsdn:oper-state                         2.1.1.3.1.1.6
+        container rwmanocloud:cloud                                  2.1.1.3.2
+          list rwmanocloud:account                                 2.1.1.3.2.1
+            container rwmanocloud:mock                           2.1.1.3.2.1.1
+            container rwmanocloud:aws                            2.1.1.3.2.1.2
+            container rwmanocloud:openstack                      2.1.1.3.2.1.3
+              leaf-list rwmanocloud:security-groups            2.1.1.3.2.1.3.1
+            container rwmanocloud:openmano                       2.1.1.3.2.1.4
+            container rwmanocloud:vmware-vio                     2.1.1.3.2.1.5
+              leaf-list rwmanocloud:security-groups            2.1.1.3.2.1.5.1
+            container rwmanocloud:vmware-vcd                     2.1.1.3.2.1.6
+              container rwmanocloud:admin-credentials          2.1.1.3.2.1.6.1
+              container rwmanocloud:nsx-credentials            2.1.1.3.2.1.6.2
+              container rwmanocloud:vcenter-credentials        2.1.1.3.2.1.6.3
+            container rwmanocloud:cloudsim                       2.1.1.3.2.1.7
+            container rwmanocloud:cloudsim_proxy                 2.1.1.3.2.1.8
+            container rwmanocloud:openvim                        2.1.1.3.2.1.9
+              container rwmanocloud:image-management           2.1.1.3.2.1.9.1
+            container rwmanocloud:prop-cloud1                   2.1.1.3.2.1.10
+            container rwmanocloud:oper-state                    2.1.1.3.2.1.11
+              list rwmanocloud:security-group                 2.1.1.3.2.1.11.1
+              list rwmanocloud:network                        2.1.1.3.2.1.11.2
+                list rwmanocloud:subnet                     2.1.1.3.2.1.11.2.1
+module rwmano-project                                                        3
+module rwmano-cloud                                                          4
+  rwmano-cloud rpc input                                                   4.1
+    rpc input rwmanocloud:rwmano-update-cloud-status                     4.1.1
+  rwmano-cloud rpc output                                                  4.2
+    rpc output rwmanocloud:rwmano-update-cloud-status                    4.2.1
+  rwmano-cloud notification                                                4.3
+    notification rwmanocloud:rwmano-cloud-notif                          4.3.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwmanoCloud_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwmanoCloud_g_schema
+2  module rw-project
+
+2.1  rw-project data
+  Description
+    This yang module defines project-based tenancy for RIFT.ware.
+    Authorization for project access is defined in terms of RIFT.ware's
+    Role-Based Access Control (RBAC) model.
+
+2.1.1  list rw-project:project
+  Description
+    Configuration and state for individual projects.  RIFT.ware
+    applications and projects are expected to augment this list in
+    order to add configuration for projects that is specific to the
+    product or application.  As such, this list contains minimal
+    data defined in this yang module.
+
+    When augmenting this element, other yang modules should prefer to
+    define containers with the same name as the augmenting module.
+    (Augmenting RIFT.ware modules should prefer to augment without
+    the rw prefix [for new features], or should prefer to augment the
+    augmented container of an existing augment, to ease future
+    adoption and/or standardization.)
+  Leaves
+    name: name, type: STRING, description: Name of the project.
+    name: description, type: STRING, description: Information about project
+  XPath Path
+    /rw-project:project
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']
+  RW Keyspec XPath Path
+    D,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project
+
+2.1.1.1  container rw-project:project-config
+  Description
+    General Project configuration supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-config
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig
+
+2.1.1.1.1  list rw-project:user
+  Description
+    The list of Users who have been assigned Roles within this
+    Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: LEAFREF, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is email address,
+    the syntax could include additional characters, such as the at(@) sign.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig.User
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig_User
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig__User
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig_User
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig_User
+
+2.1.1.1.1.1  list rw-project:role
+  Description
+    The list of Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig_User_Role
+
+2.1.1.2  container rw-project:project-state
+  Description
+    General Project operational state supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-state
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState
+
+2.1.1.2.1  list rw-project:user
+  Description
+    The state of Users who have been assigned Roles within
+    this Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.User
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_User
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__User
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_User
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_User
+
+2.1.1.2.1.1  list rw-project:role
+  Description
+    The state of the Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: state, type: STRING, description: The assignment of a User to a Role may be an asynchronous
+    operation.  This value indicates whether the Role
+    assignment is active.  If the value is 'active', then the
+    assignment is complete and active.  Any other value
+    indicates that Role assignment is in a transitional or
+    failed state, as described in the value.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_User_Role
+
+2.1.1.2.2  list rw-project:role
+  Description
+    The set of Roles that may be configured into
+    /rw-project:project/rw-project:config/rw-project:user/
+    rw-project:role.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: description, type: STRING, description: A description of the Role.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_Role
+
+2.1.1.3  container rwmanoproject:internal
+  Description
+    A container which will be the root of all the MANO internal APIs
+  XPath Path
+    /rw-project:project/rwmanoproject:internal
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal
+
+2.1.1.3.1  container riftsdn:sdn
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/riftsdn:sdn
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn
+
+2.1.1.3.1.1  list riftsdn:account
+  Leaves
+    name: name, type: STRING
+    name: account-type, type: ENUM
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account
+
+2.1.1.3.1.1.1  container riftsdn:odl
+  Leaves
+    name: username, type: STRING
+    name: password, type: STRING
+    name: url, type: STRING
+    name: plugin-name, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:odl
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:odl
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/odl
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:odl
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:odl
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.Odl
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_Odl
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__Odl
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Odl
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Odl
+
+2.1.1.3.1.1.2  container riftsdn:mock
+  Leaves
+    name: username, type: STRING
+    name: plugin-name, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:mock
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:mock
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/mock
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:mock
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:mock
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.Mock
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_Mock
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__Mock
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Mock
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Mock
+
+2.1.1.3.1.1.3  container riftsdn:sdnsim
+  Leaves
+    name: username, type: STRING
+    name: topology-source, type: STRING
+    name: plugin-name, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:sdnsim
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:sdnsim
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/sdnsim
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:sdnsim
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:sdnsim
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.Sdnsim
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_Sdnsim
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__Sdnsim
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Sdnsim
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Sdnsim
+
+2.1.1.3.1.1.4  container riftsdn:openstack
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: auth_url, type: STRING
+    name: tenant, type: STRING
+    name: admin, type: BOOLEAN
+    name: user-domain, type: STRING, description: Domain of the OpenStack user
+    name: project-domain, type: STRING, description: Domain of the OpenStack project
+    name: region, type: STRING
+    name: plugin-name, type: STRING
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:openstack
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:openstack
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/openstack
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:openstack
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:openstack
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.Openstack
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_Openstack
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__Openstack
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Openstack
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_Openstack
+
+2.1.1.3.1.1.5  container riftsdn:vmware-vio
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: auth_url, type: STRING
+    name: tenant, type: STRING
+    name: admin, type: BOOLEAN
+    name: user-domain, type: STRING, description: Domain of the VMware-VIO user
+    name: project-domain, type: STRING, description: Domain of the VMware-VIO project
+    name: region, type: STRING
+    name: plugin-name, type: STRING
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:vmware-vio
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:vmware-vio
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/vmware-vio
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:vmware-vio
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:vmware-vio
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.VmwareVio
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_VmwareVio
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__VmwareVio
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_VmwareVio
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_VmwareVio
+
+2.1.1.3.1.1.6  container riftsdn:oper-state
+  Leaves
+    name: status, type: ENUM
+    name: details, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:oper-state
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:oper-state
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-sdn:sdn/account/STRING/oper-state
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/riftsdn:sdn/riftsdn:account/riftsdn:oper-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/riftsdn:sdn/riftsdn:account[riftsdn:name='STRING']/riftsdn:oper-state
+  Protobuf Type
+    .rwmano_sdn.YangData.RwProject.Project.Internal.Sdn.Account.OperState
+  Python Proto-GI Type
+    RwmanoSdnYang.YangData_RwProject_Project_Internal_Sdn_Account_OperState
+  C Protobuf-C Struct Type
+    RwmanoSdn__YangData__RwProject__Project__Internal__Sdn__Account__OperState
+  C RWPB Identifiers
+    RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_OperState
+  YPBC Base Identifier
+    rw_ypbc_RwmanoSdn_RwProject_data_Project_Internal_Sdn_Account_OperState
+
+2.1.1.3.2  container rwmanocloud:cloud
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud
+
+2.1.1.3.2.1  list rwmanocloud:account
+  Description
+    Configure Cloud Accounts
+  Leaves
+    name: name, type: STRING
+    name: sdn-account, type: LEAFREF, description: Configured SDN account associated with this cloud account
+    name: account-type, type: ENUM
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account
+
+2.1.1.3.2.1.1  container rwmanocloud:mock
+  Leaves
+    name: username, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:mock
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:mock
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/mock
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:mock
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:mock
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Mock
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Mock
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Mock
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Mock
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Mock
+
+2.1.1.3.2.1.2  container rwmanocloud:aws
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: region, type: STRING
+    name: vpcid, type: STRING, description: VPC ID to use to instantiate EC2 instances
+    name: ssh-key, type: STRING, description: Key pair name to connect to EC2 instance
+    name: availability-zone, type: STRING, description: Availability zone where EC2 instance should
+    be started
+    name: default-subnet-id, type: STRING, description: Default subnet ID to create network
+    interface at instance creation time
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:aws
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:aws
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/aws
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:aws
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:aws
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Aws
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Aws
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Aws
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Aws
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Aws
+
+2.1.1.3.2.1.3  container rwmanocloud:openstack
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: auth_url, type: STRING
+    name: user-domain, type: STRING, description: Domain of the OpenStack user
+    name: project-domain, type: STRING, description: Domain of the OpenStack project
+    name: tenant, type: STRING
+    name: region, type: STRING
+    name: admin, type: BOOLEAN
+    name: mgmt-network, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+    name: floating-ip-pool, type: STRING, description: Name of floating IP pool to use for floating IP address assignement
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+    name: city-code-distro-location, type: STRING
+    name: state-code-distro-location, type: STRING
+    name: code-location, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openstack
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openstack
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/openstack
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openstack
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openstack
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Openstack
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Openstack
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Openstack
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openstack
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openstack
+
+2.1.1.3.2.1.3.1  leaf-list rwmanocloud:security-groups
+  Description
+    Names of the security groups for the VM
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openstack/rwmanocloud:security-groups
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openstack/rwmanocloud:security-groups
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/openstack/security-groups
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openstack/rwmanocloud:security-groups
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openstack/rwmanocloud:security-groups
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Openstack.SecurityGroups
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Openstack_SecurityGroups
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Openstack__SecurityGroups
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openstack_SecurityGroups
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openstack_SecurityGroups
+
+2.1.1.3.2.1.4  container rwmanocloud:openmano
+  Leaves
+    name: host, type: STRING
+    name: port, type: UINT16
+    name: tenant-id, type: STRING
+    name: plugin-name, type: STRING
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openmano
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openmano
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/openmano
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openmano
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openmano
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Openmano
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Openmano
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Openmano
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openmano
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openmano
+
+2.1.1.3.2.1.5  container rwmanocloud:vmware-vio
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: auth_url, type: STRING
+    name: user-domain, type: STRING, description: Domain of the VMware VIO user
+    name: project-domain, type: STRING, description: Domain of the VMware VIO project
+    name: tenant, type: STRING
+    name: region, type: STRING
+    name: admin, type: BOOLEAN
+    name: mgmt-network, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+    name: floating-ip-pool, type: STRING, description: Name of floating IP pool to use for floating IP address assignement
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vio
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vio
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vio
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vio
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vio
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVio
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVio
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVio
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVio
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVio
+
+2.1.1.3.2.1.5.1  leaf-list rwmanocloud:security-groups
+  Description
+    Names of the security groups for the VM
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vio/rwmanocloud:security-groups
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vio/rwmanocloud:security-groups
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vio/security-groups
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vio/rwmanocloud:security-groups
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vio/rwmanocloud:security-groups
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVio.SecurityGroups
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVio_SecurityGroups
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVio__SecurityGroups
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVio_SecurityGroups
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVio_SecurityGroups
+
+2.1.1.3.2.1.6  container rwmanocloud:vmware-vcd
+  Leaves
+    name: user, type: STRING, description: VMware VCD username
+    name: password, type: STRING, description: VMware VCD password
+    name: auth-url, type: STRING, description: VMware VCD authentical URL
+    name: tenant, type: STRING, description: Tenant of VCD user
+    name: organization, type: STRING, description: Tenant of VCD organization
+    name: mgmt-network, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vcd
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVcd
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVcd
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVcd
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd
+
+2.1.1.3.2.1.6.1  container rwmanocloud:admin-credentials
+  Description
+    VMware VCD system admin credentials
+  Leaves
+    name: user, type: STRING, description: VMware VCD system admin username
+    name: password, type: STRING, description: VMware VCD system admin password
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:admin-credentials
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:admin-credentials
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vcd/admin-credentials
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:admin-credentials
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:admin-credentials
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVcd.AdminCredentials
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVcd_AdminCredentials
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVcd__AdminCredentials
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_AdminCredentials
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_AdminCredentials
+
+2.1.1.3.2.1.6.2  container rwmanocloud:nsx-credentials
+  Description
+    VMware VCD NSX URL and credentials
+  Leaves
+    name: auth-url, type: STRING, description: VMware NSX URL
+    name: user, type: STRING, description: VMware VCD system admin password
+    name: password, type: STRING, description: VMware VCD system admin password
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:nsx-credentials
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:nsx-credentials
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vcd/nsx-credentials
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:nsx-credentials
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:nsx-credentials
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVcd.NsxCredentials
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVcd_NsxCredentials
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVcd__NsxCredentials
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_NsxCredentials
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_NsxCredentials
+
+2.1.1.3.2.1.6.3  container rwmanocloud:vcenter-credentials
+  Leaves
+    name: host, type: STRING, description: VMware VCenter IP address or hostname
+    name: port, type: UINT16, description: VMware VCenter port
+    name: user, type: STRING, description: VMware VCD system admin username
+    name: password, type: STRING, description: VMware VCD system admin password
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:vcenter-credentials
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:vcenter-credentials
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/vmware-vcd/vcenter-credentials
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:vmware-vcd/rwmanocloud:vcenter-credentials
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:vmware-vcd/rwmanocloud:vcenter-credentials
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.VmwareVcd.VcenterCredentials
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_VmwareVcd_VcenterCredentials
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__VmwareVcd__VcenterCredentials
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_VcenterCredentials
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_VmwareVcd_VcenterCredentials
+
+2.1.1.3.2.1.7  container rwmanocloud:cloudsim
+  Leaves
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:cloudsim
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:cloudsim
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/cloudsim
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:cloudsim
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:cloudsim
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Cloudsim
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Cloudsim
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Cloudsim
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Cloudsim
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Cloudsim
+
+2.1.1.3.2.1.8  container rwmanocloud:cloudsim_proxy
+  Leaves
+    name: host, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:cloudsim_proxy
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:cloudsim_proxy
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/cloudsim_proxy
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:cloudsim_proxy
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:cloudsim_proxy
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.CloudsimProxy
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_CloudsimProxy
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__CloudsimProxy
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_CloudsimProxy
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_CloudsimProxy
+
+2.1.1.3.2.1.9  container rwmanocloud:openvim
+  Leaves
+    name: host, type: STRING
+    name: port, type: UINT16
+    name: tenant-name, type: STRING, description: Mandatory parameter to indicate openvim tenant name
+    name: mgmt-network, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openvim
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openvim
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/openvim
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openvim
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openvim
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Openvim
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Openvim
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Openvim
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openvim
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openvim
+
+2.1.1.3.2.1.9.1  container rwmanocloud:image-management
+  Description
+    Information required for OpenVim image upload operation
+  Leaves
+    name: username, type: STRING, description: Username for host access
+    name: password, type: STRING, description: Password for host access
+    name: image-directory-path, type: STRING, description: Name of the directory on the host where image needs to be copied
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openvim/rwmanocloud:image-management
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openvim/rwmanocloud:image-management
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/openvim/image-management
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:openvim/rwmanocloud:image-management
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:openvim/rwmanocloud:image-management
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.Openvim.ImageManagement
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_Openvim_ImageManagement
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__Openvim__ImageManagement
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openvim_ImageManagement
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_Openvim_ImageManagement
+
+2.1.1.3.2.1.10  container rwmanocloud:prop-cloud1
+  Leaves
+    name: host, type: STRING, description: This is a single-host cloud. IP address of host
+    name: username, type: STRING, description: Username to access host
+    name: password, type: STRING, description: Password for user
+    name: mgmt-network, type: STRING, description: Name of bridge used for management access to VMs on cloud
+    name: public-ip-pool, type: STRING, description: Public IP pool for VMs
+    name: wan-interface, type: STRING, description: WAN interface name
+    name: firewall, type: STRING, description: Firewall services
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:prop-cloud1
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:prop-cloud1
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/prop-cloud1
+  RW Keyspec XPath Path
+    C,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:prop-cloud1
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:prop-cloud1
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.PropCloud1
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_PropCloud1
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__PropCloud1
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_PropCloud1
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_PropCloud1
+
+2.1.1.3.2.1.11  container rwmanocloud:oper-state
+  Leaves
+    name: status, type: ENUM
+    name: details, type: STRING
+    name: vimid, type: STRING, description: VIM id generated by RIFT.ware for cloud account
+    name: tenant-id, type: STRING, description: Tenant id associated with this cloud
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/oper-state
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.OperState
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_OperState
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__OperState
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState
+
+2.1.1.3.2.1.11.1  list rwmanocloud:security-group
+  Leaves
+    name: id, type: STRING, description: Security-group id associated with this cloud
+    name: name, type: STRING, description: Name of security group
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:security-group
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:security-group[rwmanocloud:id='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/oper-state/security-group/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:security-group
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:security-group[rwmanocloud:id='STRING']
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.OperState.SecurityGroup
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_OperState_SecurityGroup
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__OperState__SecurityGroup
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_SecurityGroup
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_SecurityGroup
+
+2.1.1.3.2.1.11.2  list rwmanocloud:network
+  Leaves
+    name: id, type: STRING, description: Network id associated with this cloud
+    name: name, type: STRING, description: Name of cloud network
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:network
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:network[rwmanocloud:id='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/oper-state/network/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:network
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:network[rwmanocloud:id='STRING']
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.OperState.Network
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_OperState_Network
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__OperState__Network
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_Network
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_Network
+
+2.1.1.3.2.1.11.2.1  list rwmanocloud:subnet
+  Leaves
+    name: id, type: STRING, description: Subnet id associated with this network
+    name: cidr, type: STRING, description: Known CIDR
+  XPath Path
+    /rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:network/rwmanocloud:subnet
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:network[rwmanocloud:id='STRING']/rwmanocloud:subnet[rwmanocloud:id='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/rwmano-project:internal/rwmano-cloud:cloud/account/STRING/oper-state/network/STRING/subnet/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account/rwmanocloud:oper-state/rwmanocloud:network/rwmanocloud:subnet
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rwmanoproject:internal/rwmanocloud:cloud/rwmanocloud:account[rwmanocloud:name='STRING']/rwmanocloud:oper-state/rwmanocloud:network[rwmanocloud:id='STRING']/rwmanocloud:subnet[rwmanocloud:id='STRING']
+  Protobuf Type
+    .rwmano_cloud.YangData.RwProject.Project.Internal.Cloud.Account.OperState.Network.Subnet
+  Python Proto-GI Type
+    RwmanoCloudYang.YangData_RwProject_Project_Internal_Cloud_Account_OperState_Network_Subnet
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangData__RwProject__Project__Internal__Cloud__Account__OperState__Network__Subnet
+  C RWPB Identifiers
+    RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_Network_Subnet
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwProject_data_Project_Internal_Cloud_Account_OperState_Network_Subnet
+
+3  module rwmano-project
+
+4  module rwmano-cloud
+
+4.1  rwmano-cloud rpc input
+
+4.1.1  rpc input rwmanocloud:rwmano-update-cloud-status
+  Leaves
+    name: cloud-account, type: STRING, description: The cloud account name to update connection status for
+    name: project-name, type: LEAFREF, description: Project to which this belongs
+  XPath Path
+    /rwmanocloud:rwmano-update-cloud-status
+  XPath Keyed Path
+    /rwmanocloud:rwmano-update-cloud-status
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rwmanocloud:rwmano-update-cloud-status
+  RW Keyspec XPath Keyed Path
+    I,/rwmanocloud:rwmano-update-cloud-status
+  Protobuf Type
+    .rwmano_cloud.YangInput.RwmanoCloud.RwmanoUpdateCloudStatus
+  Python Proto-GI Type
+    RwmanoCloudYang.YangInput_RwmanoCloud_RwmanoUpdateCloudStatus
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangInput__RwmanoCloud__RwmanoUpdateCloudStatus
+  C RWPB Identifiers
+    RwmanoCloud_RwmanoCloud_input_RwmanoUpdateCloudStatus
+    RwmanoCloud_input_RwmanoUpdateCloudStatus
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwmanoCloud_input_RwmanoUpdateCloudStatus
+
+4.2  rwmano-cloud rpc output
+
+4.2.1  rpc output rwmanocloud:rwmano-update-cloud-status
+  XPath Path
+    /rwmanocloud:rwmano-update-cloud-status
+  XPath Keyed Path
+    /rwmanocloud:rwmano-update-cloud-status
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rwmanocloud:rwmano-update-cloud-status
+  RW Keyspec XPath Keyed Path
+    O,/rwmanocloud:rwmano-update-cloud-status
+  Protobuf Type
+    .rwmano_cloud.YangOutput.RwmanoCloud.RwmanoUpdateCloudStatus
+  Python Proto-GI Type
+    RwmanoCloudYang.YangOutput_RwmanoCloud_RwmanoUpdateCloudStatus
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangOutput__RwmanoCloud__RwmanoUpdateCloudStatus
+  C RWPB Identifiers
+    RwmanoCloud_RwmanoCloud_output_RwmanoUpdateCloudStatus
+    RwmanoCloud_output_RwmanoUpdateCloudStatus
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwmanoCloud_output_RwmanoUpdateCloudStatus
+
+4.3  rwmano-cloud notification
+
+4.3.1  notification rwmanocloud:rwmano-cloud-notif
+  Description
+    Notification for cloud account credentials
+  Leaves
+    name: name, type: STRING, description: Cloud account name
+    name: message, type: STRING, description: Notification message
+  XPath Path
+    /rwmanocloud:rwmano-cloud-notif
+  XPath Keyed Path
+    /rwmanocloud:rwmano-cloud-notif
+  RW.REST URI Path
+    /rwmano-cloud:rwmano-cloud-notif
+  RW Keyspec XPath Path
+    N,/rwmanocloud:rwmano-cloud-notif
+  RW Keyspec XPath Keyed Path
+    N,/rwmanocloud:rwmano-cloud-notif
+  Protobuf Type
+    .rwmano_cloud.YangNotif.RwmanoCloud.RwmanoCloudNotif
+  Python Proto-GI Type
+    RwmanoCloudYang.YangNotif_RwmanoCloud_RwmanoCloudNotif
+  C Protobuf-C Struct Type
+    RwmanoCloud__YangNotif__RwmanoCloud__RwmanoCloudNotif
+  C RWPB Identifiers
+    RwmanoCloud_RwmanoCloud_notif_RwmanoCloudNotif
+    RwmanoCloud_notif_RwmanoCloudNotif
+  YPBC Base Identifier
+    rw_ypbc_RwmanoCloud_RwmanoCloud_notif_RwmanoCloudNotif
+

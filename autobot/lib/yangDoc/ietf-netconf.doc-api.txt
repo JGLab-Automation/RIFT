@@ -1,0 +1,954 @@
+Programmer's API documentation for yang module ietf-netconf.yang
+
+
+
+Schema Globals                                                               1
+
+module ietf-netconf                                                          2
+  ietf-netconf rpc input                                                   2.1
+    rpc input nc:get-config                                              2.1.1
+      container nc:source                                              2.1.1.1
+    rpc input nc:edit-config                                             2.1.2
+      container nc:target                                              2.1.2.1
+    rpc input nc:copy-config                                             2.1.3
+      container nc:target                                              2.1.3.1
+      container nc:source                                              2.1.3.2
+    rpc input nc:delete-config                                           2.1.4
+      container nc:target                                              2.1.4.1
+    rpc input nc:lock                                                    2.1.5
+      container nc:target                                              2.1.5.1
+    rpc input nc:unlock                                                  2.1.6
+      container nc:target                                              2.1.6.1
+    rpc input nc:get                                                     2.1.7
+    rpc input nc:close-session                                           2.1.8
+    rpc input nc:kill-session                                            2.1.9
+    rpc input nc:commit                                                 2.1.10
+    rpc input nc:discard-changes                                        2.1.11
+    rpc input nc:cancel-commit                                          2.1.12
+    rpc input nc:validate                                               2.1.13
+      container nc:source                                             2.1.13.1
+  ietf-netconf rpc output                                                  2.2
+    rpc output nc:get-config                                             2.2.1
+    rpc output nc:edit-config                                            2.2.2
+    rpc output nc:copy-config                                            2.2.3
+    rpc output nc:delete-config                                          2.2.4
+    rpc output nc:lock                                                   2.2.5
+    rpc output nc:unlock                                                 2.2.6
+    rpc output nc:get                                                    2.2.7
+    rpc output nc:close-session                                          2.2.8
+    rpc output nc:kill-session                                           2.2.9
+    rpc output nc:commit                                                2.2.10
+    rpc output nc:discard-changes                                       2.2.11
+    rpc output nc:cancel-commit                                         2.2.12
+    rpc output nc:validate                                              2.2.13
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_IetfNetconf_t_schema
+  Global Schema Pointer
+    rw_ypbc_IetfNetconf_g_schema
+2  module ietf-netconf
+
+2.1  ietf-netconf rpc input
+  Description
+    NETCONF Protocol Data Types and Protocol Operations.
+
+    Copyright (c) 2011 IETF Trust and the persons identified as
+    the document authors.  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or
+    without modification, is permitted pursuant to, and subject
+    to the license terms contained in, the Simplified BSD License
+    set forth in Section 4.c of the IETF Trust's Legal Provisions
+    Relating to IETF Documents
+    (http://trustee.ietf.org/license-info).
+
+    This version of this YANG module is part of RFC 6241; see
+    the RFC itself for full legal notices.
+
+2.1.1  rpc input nc:get-config
+  XPath Path
+    /nc:get-config
+  XPath Keyed Path
+    /nc:get-config
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:get-config
+  RW Keyspec XPath Keyed Path
+    I,/nc:get-config
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.GetConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_GetConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__GetConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_GetConfig
+    IetfNetconf_input_GetConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_GetConfig
+
+2.1.1.1  container nc:source
+  Description
+    Particular configuration to retrieve.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config source.
+    name: running, type: EMPTY, description: The running configuration is the config source.
+    name: startup, type: EMPTY, description: The startup configuration is the config source.
+    This is optional-to-implement on the server because
+    not all servers will support filtering for this
+    datastore.
+  XPath Path
+    /nc:get-config/nc:source
+  XPath Keyed Path
+    /nc:get-config/nc:source
+  RW.REST URI Path
+    /input/source
+  RW Keyspec XPath Path
+    I,/nc:get-config/nc:source
+  RW Keyspec XPath Keyed Path
+    I,/nc:get-config/nc:source
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.GetConfig.Source
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_GetConfig_Source
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__GetConfig__Source
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_GetConfig_Source
+    IetfNetconf_input_GetConfig_Source
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_GetConfig_Source
+
+2.1.2  rpc input nc:edit-config
+  Leaves
+    name: default-operation, type: ENUM, description: The default operation to use.
+    name: test-option, type: ENUM, description: The test option to use.
+    name: error-option, type: ENUM, description: The error option to use.
+    name: url, type: STRING, description: URL-based config content.
+  XPath Path
+    /nc:edit-config
+  XPath Keyed Path
+    /nc:edit-config
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:edit-config
+  RW Keyspec XPath Keyed Path
+    I,/nc:edit-config
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.EditConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_EditConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__EditConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_EditConfig
+    IetfNetconf_input_EditConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_EditConfig
+
+2.1.2.1  container nc:target
+  Description
+    Particular configuration to edit.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config target.
+    name: running, type: EMPTY, description: The running configuration is the config source.
+  XPath Path
+    /nc:edit-config/nc:target
+  XPath Keyed Path
+    /nc:edit-config/nc:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/nc:edit-config/nc:target
+  RW Keyspec XPath Keyed Path
+    I,/nc:edit-config/nc:target
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.EditConfig.Target
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_EditConfig_Target
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__EditConfig__Target
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_EditConfig_Target
+    IetfNetconf_input_EditConfig_Target
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_EditConfig_Target
+
+2.1.3  rpc input nc:copy-config
+  XPath Path
+    /nc:copy-config
+  XPath Keyed Path
+    /nc:copy-config
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:copy-config
+  RW Keyspec XPath Keyed Path
+    I,/nc:copy-config
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.CopyConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_CopyConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__CopyConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_CopyConfig
+    IetfNetconf_input_CopyConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_CopyConfig
+
+2.1.3.1  container nc:target
+  Description
+    Particular configuration to copy to.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config target.
+    name: running, type: EMPTY, description: The running configuration is the config target.
+    This is optional-to-implement on the server.
+    name: startup, type: EMPTY, description: The startup configuration is the config target.
+    name: url, type: STRING, description: The URL-based configuration is the config target.
+  XPath Path
+    /nc:copy-config/nc:target
+  XPath Keyed Path
+    /nc:copy-config/nc:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/nc:copy-config/nc:target
+  RW Keyspec XPath Keyed Path
+    I,/nc:copy-config/nc:target
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.CopyConfig.Target
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_CopyConfig_Target
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__CopyConfig__Target
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_CopyConfig_Target
+    IetfNetconf_input_CopyConfig_Target
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_CopyConfig_Target
+
+2.1.3.2  container nc:source
+  Description
+    Particular configuration to copy from.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config source.
+    name: running, type: EMPTY, description: The running configuration is the config source.
+    name: startup, type: EMPTY, description: The startup configuration is the config source.
+    name: url, type: STRING, description: The URL-based configuration is the config source.
+  XPath Path
+    /nc:copy-config/nc:source
+  XPath Keyed Path
+    /nc:copy-config/nc:source
+  RW.REST URI Path
+    /input/source
+  RW Keyspec XPath Path
+    I,/nc:copy-config/nc:source
+  RW Keyspec XPath Keyed Path
+    I,/nc:copy-config/nc:source
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.CopyConfig.Source
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_CopyConfig_Source
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__CopyConfig__Source
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_CopyConfig_Source
+    IetfNetconf_input_CopyConfig_Source
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_CopyConfig_Source
+
+2.1.4  rpc input nc:delete-config
+  XPath Path
+    /nc:delete-config
+  XPath Keyed Path
+    /nc:delete-config
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:delete-config
+  RW Keyspec XPath Keyed Path
+    I,/nc:delete-config
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.DeleteConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_DeleteConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__DeleteConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_DeleteConfig
+    IetfNetconf_input_DeleteConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_DeleteConfig
+
+2.1.4.1  container nc:target
+  Description
+    Particular configuration to delete.
+  Leaves
+    name: startup, type: EMPTY, description: The startup configuration is the config target.
+    name: url, type: STRING, description: The URL-based configuration is the config target.
+  XPath Path
+    /nc:delete-config/nc:target
+  XPath Keyed Path
+    /nc:delete-config/nc:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/nc:delete-config/nc:target
+  RW Keyspec XPath Keyed Path
+    I,/nc:delete-config/nc:target
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.DeleteConfig.Target
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_DeleteConfig_Target
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__DeleteConfig__Target
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_DeleteConfig_Target
+    IetfNetconf_input_DeleteConfig_Target
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_DeleteConfig_Target
+
+2.1.5  rpc input nc:lock
+  XPath Path
+    /nc:lock
+  XPath Keyed Path
+    /nc:lock
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:lock
+  RW Keyspec XPath Keyed Path
+    I,/nc:lock
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Lock
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Lock
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Lock
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Lock
+    IetfNetconf_input_Lock
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Lock
+
+2.1.5.1  container nc:target
+  Description
+    Particular configuration to lock.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config target.
+    name: running, type: EMPTY, description: The running configuration is the config target.
+    name: startup, type: EMPTY, description: The startup configuration is the config target.
+  XPath Path
+    /nc:lock/nc:target
+  XPath Keyed Path
+    /nc:lock/nc:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/nc:lock/nc:target
+  RW Keyspec XPath Keyed Path
+    I,/nc:lock/nc:target
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Lock.Target
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Lock_Target
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Lock__Target
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Lock_Target
+    IetfNetconf_input_Lock_Target
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Lock_Target
+
+2.1.6  rpc input nc:unlock
+  XPath Path
+    /nc:unlock
+  XPath Keyed Path
+    /nc:unlock
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:unlock
+  RW Keyspec XPath Keyed Path
+    I,/nc:unlock
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Unlock
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Unlock
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Unlock
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Unlock
+    IetfNetconf_input_Unlock
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Unlock
+
+2.1.6.1  container nc:target
+  Description
+    Particular configuration to unlock.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config target.
+    name: running, type: EMPTY, description: The running configuration is the config target.
+    name: startup, type: EMPTY, description: The startup configuration is the config target.
+  XPath Path
+    /nc:unlock/nc:target
+  XPath Keyed Path
+    /nc:unlock/nc:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/nc:unlock/nc:target
+  RW Keyspec XPath Keyed Path
+    I,/nc:unlock/nc:target
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Unlock.Target
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Unlock_Target
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Unlock__Target
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Unlock_Target
+    IetfNetconf_input_Unlock_Target
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Unlock_Target
+
+2.1.7  rpc input nc:get
+  XPath Path
+    /nc:get
+  XPath Keyed Path
+    /nc:get
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:get
+  RW Keyspec XPath Keyed Path
+    I,/nc:get
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Get
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Get
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Get
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Get
+    IetfNetconf_input_Get
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Get
+
+2.1.8  rpc input nc:close-session
+  XPath Path
+    /nc:close-session
+  XPath Keyed Path
+    /nc:close-session
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:close-session
+  RW Keyspec XPath Keyed Path
+    I,/nc:close-session
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.CloseSession
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_CloseSession
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__CloseSession
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_CloseSession
+    IetfNetconf_input_CloseSession
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_CloseSession
+
+2.1.9  rpc input nc:kill-session
+  Leaves
+    name: session-id, type: UINT32, description: Particular session to kill.
+  XPath Path
+    /nc:kill-session
+  XPath Keyed Path
+    /nc:kill-session
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:kill-session
+  RW Keyspec XPath Keyed Path
+    I,/nc:kill-session
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.KillSession
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_KillSession
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__KillSession
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_KillSession
+    IetfNetconf_input_KillSession
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_KillSession
+
+2.1.10  rpc input nc:commit
+  Leaves
+    name: confirmed, type: EMPTY, description: Requests a confirmed commit.
+    name: confirm-timeout, type: UINT32, description: The timeout interval for a confirmed commit.
+    name: persist, type: STRING, description: This parameter is used to make a confirmed commit
+    persistent.  A persistent confirmed commit is not aborted
+    if the NETCONF session terminates.  The only way to abort
+    a persistent confirmed commit is to let the timer expire,
+    or to use the <cancel-commit> operation.
+
+    The value of this parameter is a token that must be given
+    in the 'persist-id' parameter of <commit> or
+    <cancel-commit> operations in order to confirm or cancel
+    the persistent confirmed commit.
+
+    The token should be a random string.
+    name: persist-id, type: STRING, description: This parameter is given in order to commit a persistent
+    confirmed commit.  The value must be equal to the value
+    given in the 'persist' parameter to the <commit> operation.
+    If it does not match, the operation fails with an
+    'invalid-value' error.
+  XPath Path
+    /nc:commit
+  XPath Keyed Path
+    /nc:commit
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:commit
+  RW Keyspec XPath Keyed Path
+    I,/nc:commit
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Commit
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Commit
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Commit
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Commit
+    IetfNetconf_input_Commit
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Commit
+
+2.1.11  rpc input nc:discard-changes
+  XPath Path
+    /nc:discard-changes
+  XPath Keyed Path
+    /nc:discard-changes
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:discard-changes
+  RW Keyspec XPath Keyed Path
+    I,/nc:discard-changes
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.DiscardChanges
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_DiscardChanges
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__DiscardChanges
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_DiscardChanges
+    IetfNetconf_input_DiscardChanges
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_DiscardChanges
+
+2.1.12  rpc input nc:cancel-commit
+  Leaves
+    name: persist-id, type: STRING, description: This parameter is given in order to cancel a persistent
+    confirmed commit.  The value must be equal to the value
+    given in the 'persist' parameter to the <commit> operation.
+    If it does not match, the operation fails with an
+    'invalid-value' error.
+  XPath Path
+    /nc:cancel-commit
+  XPath Keyed Path
+    /nc:cancel-commit
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:cancel-commit
+  RW Keyspec XPath Keyed Path
+    I,/nc:cancel-commit
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.CancelCommit
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_CancelCommit
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__CancelCommit
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_CancelCommit
+    IetfNetconf_input_CancelCommit
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_CancelCommit
+
+2.1.13  rpc input nc:validate
+  XPath Path
+    /nc:validate
+  XPath Keyed Path
+    /nc:validate
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/nc:validate
+  RW Keyspec XPath Keyed Path
+    I,/nc:validate
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Validate
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Validate
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Validate
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Validate
+    IetfNetconf_input_Validate
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Validate
+
+2.1.13.1  container nc:source
+  Description
+    Particular configuration to validate.
+  Leaves
+    name: candidate, type: EMPTY, description: The candidate configuration is the config source.
+    name: running, type: EMPTY, description: The running configuration is the config source.
+    name: startup, type: EMPTY, description: The startup configuration is the config source.
+    name: url, type: STRING, description: The URL-based configuration is the config source.
+  XPath Path
+    /nc:validate/nc:source
+  XPath Keyed Path
+    /nc:validate/nc:source
+  RW.REST URI Path
+    /input/source
+  RW Keyspec XPath Path
+    I,/nc:validate/nc:source
+  RW Keyspec XPath Keyed Path
+    I,/nc:validate/nc:source
+  Protobuf Type
+    .ietf_netconf.YangInput.IetfNetconf.Validate.Source
+  Python Proto-GI Type
+    IetfNetconfYang.YangInput_IetfNetconf_Validate_Source
+  C Protobuf-C Struct Type
+    IetfNetconf__YangInput__IetfNetconf__Validate__Source
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_input_Validate_Source
+    IetfNetconf_input_Validate_Source
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_input_Validate_Source
+
+2.2  ietf-netconf rpc output
+  Description
+    NETCONF Protocol Data Types and Protocol Operations.
+
+    Copyright (c) 2011 IETF Trust and the persons identified as
+    the document authors.  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or
+    without modification, is permitted pursuant to, and subject
+    to the license terms contained in, the Simplified BSD License
+    set forth in Section 4.c of the IETF Trust's Legal Provisions
+    Relating to IETF Documents
+    (http://trustee.ietf.org/license-info).
+
+    This version of this YANG module is part of RFC 6241; see
+    the RFC itself for full legal notices.
+
+2.2.1  rpc output nc:get-config
+  XPath Path
+    /nc:get-config
+  XPath Keyed Path
+    /nc:get-config
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:get-config
+  RW Keyspec XPath Keyed Path
+    O,/nc:get-config
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.GetConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_GetConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__GetConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_GetConfig
+    IetfNetconf_output_GetConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_GetConfig
+
+2.2.2  rpc output nc:edit-config
+  XPath Path
+    /nc:edit-config
+  XPath Keyed Path
+    /nc:edit-config
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:edit-config
+  RW Keyspec XPath Keyed Path
+    O,/nc:edit-config
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.EditConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_EditConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__EditConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_EditConfig
+    IetfNetconf_output_EditConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_EditConfig
+
+2.2.3  rpc output nc:copy-config
+  XPath Path
+    /nc:copy-config
+  XPath Keyed Path
+    /nc:copy-config
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:copy-config
+  RW Keyspec XPath Keyed Path
+    O,/nc:copy-config
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.CopyConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_CopyConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__CopyConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_CopyConfig
+    IetfNetconf_output_CopyConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_CopyConfig
+
+2.2.4  rpc output nc:delete-config
+  XPath Path
+    /nc:delete-config
+  XPath Keyed Path
+    /nc:delete-config
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:delete-config
+  RW Keyspec XPath Keyed Path
+    O,/nc:delete-config
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.DeleteConfig
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_DeleteConfig
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__DeleteConfig
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_DeleteConfig
+    IetfNetconf_output_DeleteConfig
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_DeleteConfig
+
+2.2.5  rpc output nc:lock
+  XPath Path
+    /nc:lock
+  XPath Keyed Path
+    /nc:lock
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:lock
+  RW Keyspec XPath Keyed Path
+    O,/nc:lock
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.Lock
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_Lock
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__Lock
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_Lock
+    IetfNetconf_output_Lock
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_Lock
+
+2.2.6  rpc output nc:unlock
+  XPath Path
+    /nc:unlock
+  XPath Keyed Path
+    /nc:unlock
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:unlock
+  RW Keyspec XPath Keyed Path
+    O,/nc:unlock
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.Unlock
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_Unlock
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__Unlock
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_Unlock
+    IetfNetconf_output_Unlock
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_Unlock
+
+2.2.7  rpc output nc:get
+  XPath Path
+    /nc:get
+  XPath Keyed Path
+    /nc:get
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:get
+  RW Keyspec XPath Keyed Path
+    O,/nc:get
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.Get
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_Get
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__Get
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_Get
+    IetfNetconf_output_Get
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_Get
+
+2.2.8  rpc output nc:close-session
+  XPath Path
+    /nc:close-session
+  XPath Keyed Path
+    /nc:close-session
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:close-session
+  RW Keyspec XPath Keyed Path
+    O,/nc:close-session
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.CloseSession
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_CloseSession
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__CloseSession
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_CloseSession
+    IetfNetconf_output_CloseSession
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_CloseSession
+
+2.2.9  rpc output nc:kill-session
+  XPath Path
+    /nc:kill-session
+  XPath Keyed Path
+    /nc:kill-session
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:kill-session
+  RW Keyspec XPath Keyed Path
+    O,/nc:kill-session
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.KillSession
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_KillSession
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__KillSession
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_KillSession
+    IetfNetconf_output_KillSession
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_KillSession
+
+2.2.10  rpc output nc:commit
+  XPath Path
+    /nc:commit
+  XPath Keyed Path
+    /nc:commit
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:commit
+  RW Keyspec XPath Keyed Path
+    O,/nc:commit
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.Commit
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_Commit
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__Commit
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_Commit
+    IetfNetconf_output_Commit
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_Commit
+
+2.2.11  rpc output nc:discard-changes
+  XPath Path
+    /nc:discard-changes
+  XPath Keyed Path
+    /nc:discard-changes
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:discard-changes
+  RW Keyspec XPath Keyed Path
+    O,/nc:discard-changes
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.DiscardChanges
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_DiscardChanges
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__DiscardChanges
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_DiscardChanges
+    IetfNetconf_output_DiscardChanges
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_DiscardChanges
+
+2.2.12  rpc output nc:cancel-commit
+  XPath Path
+    /nc:cancel-commit
+  XPath Keyed Path
+    /nc:cancel-commit
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:cancel-commit
+  RW Keyspec XPath Keyed Path
+    O,/nc:cancel-commit
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.CancelCommit
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_CancelCommit
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__CancelCommit
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_CancelCommit
+    IetfNetconf_output_CancelCommit
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_CancelCommit
+
+2.2.13  rpc output nc:validate
+  XPath Path
+    /nc:validate
+  XPath Keyed Path
+    /nc:validate
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/nc:validate
+  RW Keyspec XPath Keyed Path
+    O,/nc:validate
+  Protobuf Type
+    .ietf_netconf.YangOutput.IetfNetconf.Validate
+  Python Proto-GI Type
+    IetfNetconfYang.YangOutput_IetfNetconf_Validate
+  C Protobuf-C Struct Type
+    IetfNetconf__YangOutput__IetfNetconf__Validate
+  C RWPB Identifiers
+    IetfNetconf_IetfNetconf_output_Validate
+    IetfNetconf_output_Validate
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconf_IetfNetconf_output_Validate
+

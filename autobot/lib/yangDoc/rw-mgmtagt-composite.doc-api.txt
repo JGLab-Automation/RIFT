@@ -1,0 +1,16 @@
+Programmer's API documentation for yang module rw-mgmtagt-composite.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-mgmtagt-composite                                                  2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMgmtagtComposite_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMgmtagtComposite_g_schema
+2  module rw-mgmtagt-composite
+

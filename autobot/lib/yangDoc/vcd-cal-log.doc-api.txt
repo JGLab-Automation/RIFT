@@ -1,0 +1,1581 @@
+Programmer's API documentation for yang module vcd-cal-log.yang
+
+
+
+Schema Globals                                                               1
+
+module vcd-cal-log                                                           2
+  vcd-cal-log notification                                                 2.1
+    notification vcd-cal-log:generic-debug                               2.1.1
+      container vcd-cal-log:template_params                            2.1.1.1
+        list vcd-cal-log:debug-details                               2.1.1.1.1
+        list vcd-cal-log:additional-data                             2.1.1.1.2
+        container vcd-cal-log:call-identifier                        2.1.1.1.3
+        container vcd-cal-log:session-params                         2.1.1.1.4
+    notification vcd-cal-log:generic-info                                2.1.2
+      container vcd-cal-log:template_params                            2.1.2.1
+        list vcd-cal-log:debug-details                               2.1.2.1.1
+        list vcd-cal-log:additional-data                             2.1.2.1.2
+        container vcd-cal-log:call-identifier                        2.1.2.1.3
+        container vcd-cal-log:session-params                         2.1.2.1.4
+    notification vcd-cal-log:internal-error                              2.1.3
+      container vcd-cal-log:template_params                            2.1.3.1
+        list vcd-cal-log:debug-details                               2.1.3.1.1
+        list vcd-cal-log:additional-data                             2.1.3.1.2
+        container vcd-cal-log:call-identifier                        2.1.3.1.3
+        container vcd-cal-log:session-params                         2.1.3.1.4
+    notification vcd-cal-log:generic-notice                              2.1.4
+      container vcd-cal-log:template_params                            2.1.4.1
+        list vcd-cal-log:debug-details                               2.1.4.1.1
+        list vcd-cal-log:additional-data                             2.1.4.1.2
+        container vcd-cal-log:call-identifier                        2.1.4.1.3
+        container vcd-cal-log:session-params                         2.1.4.1.4
+    notification vcd-cal-log:generic-warning                             2.1.5
+      container vcd-cal-log:template_params                            2.1.5.1
+        list vcd-cal-log:debug-details                               2.1.5.1.1
+        list vcd-cal-log:additional-data                             2.1.5.1.2
+        container vcd-cal-log:call-identifier                        2.1.5.1.3
+        container vcd-cal-log:session-params                         2.1.5.1.4
+    notification vcd-cal-log:vcd-cal-error                               2.1.6
+      container vcd-cal-log:template_params                            2.1.6.1
+        list vcd-cal-log:debug-details                               2.1.6.1.1
+        list vcd-cal-log:additional-data                             2.1.6.1.2
+        container vcd-cal-log:call-identifier                        2.1.6.1.3
+        container vcd-cal-log:session-params                         2.1.6.1.4
+    notification vcd-cal-log:vcd-cal-critical                            2.1.7
+      container vcd-cal-log:template_params                            2.1.7.1
+        list vcd-cal-log:debug-details                               2.1.7.1.1
+        list vcd-cal-log:additional-data                             2.1.7.1.2
+        container vcd-cal-log:call-identifier                        2.1.7.1.3
+        container vcd-cal-log:session-params                         2.1.7.1.4
+    notification vcd-cal-log:vcd-rest-call                               2.1.8
+      container vcd-cal-log:template_params                            2.1.8.1
+        list vcd-cal-log:debug-details                               2.1.8.1.1
+        list vcd-cal-log:additional-data                             2.1.8.1.2
+        container vcd-cal-log:call-identifier                        2.1.8.1.3
+        container vcd-cal-log:session-params                         2.1.8.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_VcdCalLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_VcdCalLog_g_schema
+2  module vcd-cal-log
+
+2.1  vcd-cal-log notification
+
+2.1.1  notification vcd-cal-log:generic-debug
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:generic-debug
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug
+    VcdCalLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug
+
+2.1.1.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams
+    VcdCalLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_DebugDetails
+    VcdCalLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_AdditionalData
+    VcdCalLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    VcdCalLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-debug/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_SessionParams
+    VcdCalLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification vcd-cal-log:generic-info
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:generic-info
+  XPath Keyed Path
+    /vcd-cal-log:generic-info
+  RW.REST URI Path
+    /vcd-cal-log:generic-info
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo
+    VcdCalLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo
+
+2.1.2.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams
+    VcdCalLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_DebugDetails
+    VcdCalLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_AdditionalData
+    VcdCalLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    VcdCalLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-info/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_SessionParams
+    VcdCalLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification vcd-cal-log:internal-error
+  Description
+    Internal Error
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:internal-error
+  XPath Keyed Path
+    /vcd-cal-log:internal-error
+  RW.REST URI Path
+    /vcd-cal-log:internal-error
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError
+    VcdCalLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError
+
+2.1.3.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams
+    VcdCalLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams
+
+2.1.3.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_DebugDetails
+    VcdCalLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.3.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_AdditionalData
+    VcdCalLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.3.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_CallIdentifier
+    VcdCalLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:internal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_SessionParams
+    VcdCalLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.4  notification vcd-cal-log:generic-notice
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:generic-notice
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice
+    VcdCalLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice
+
+2.1.4.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams
+    VcdCalLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams
+
+2.1.4.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_DebugDetails
+    VcdCalLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.4.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_AdditionalData
+    VcdCalLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.4.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    VcdCalLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-notice/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_SessionParams
+    VcdCalLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.5  notification vcd-cal-log:generic-warning
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:generic-warning
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning
+    VcdCalLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning
+
+2.1.5.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams
+    VcdCalLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams
+
+2.1.5.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_DebugDetails
+    VcdCalLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.5.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_AdditionalData
+    VcdCalLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.5.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    VcdCalLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:generic-warning/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_SessionParams
+    VcdCalLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.6  notification vcd-cal-log:vcd-cal-error
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:vcd-cal-error
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError
+    VcdCalLog_notif_VcdCalError
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError
+
+2.1.6.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams
+    VcdCalLog_notif_VcdCalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams
+
+2.1.6.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_DebugDetails
+    VcdCalLog_notif_VcdCalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_DebugDetails
+
+2.1.6.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_AdditionalData
+    VcdCalLog_notif_VcdCalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_AdditionalData
+
+2.1.6.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_CallIdentifier
+    VcdCalLog_notif_VcdCalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-error/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_SessionParams
+    VcdCalLog_notif_VcdCalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalError_TemplateParams_SessionParams
+
+2.1.7  notification vcd-cal-log:vcd-cal-critical
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical
+    VcdCalLog_notif_VcdCalCritical
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical
+
+2.1.7.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams
+    VcdCalLog_notif_VcdCalCritical_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams
+
+2.1.7.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_DebugDetails
+    VcdCalLog_notif_VcdCalCritical_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_DebugDetails
+
+2.1.7.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_AdditionalData
+    VcdCalLog_notif_VcdCalCritical_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_AdditionalData
+
+2.1.7.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_CallIdentifier
+    VcdCalLog_notif_VcdCalCritical_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-cal-critical/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-cal-critical/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdCalCritical.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdCalCritical_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdCalCritical__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_SessionParams
+    VcdCalLog_notif_VcdCalCritical_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdCalCritical_TemplateParams_SessionParams
+
+2.1.8  notification vcd-cal-log:vcd-rest-call
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vcd-cal-log:vcd-rest-call
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall
+    VcdCalLog_notif_VcdRestCall
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall
+
+2.1.8.1  container vcd-cal-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call/template_params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall.TemplateParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall_TemplateParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall__TemplateParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams
+    VcdCalLog_notif_VcdRestCall_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams
+
+2.1.8.1.1  list vcd-cal-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:debug-details[vcd-cal-log:type='generic-debug-detail']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_DebugDetails
+    VcdCalLog_notif_VcdRestCall_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_DebugDetails
+
+2.1.8.1.2  list vcd-cal-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:additional-data[vcd-cal-log:attribute='STRING']
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_AdditionalData
+    VcdCalLog_notif_VcdRestCall_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_AdditionalData
+
+2.1.8.1.3  container vcd-cal-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:call-identifier
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_CallIdentifier
+    VcdCalLog_notif_VcdRestCall_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container vcd-cal-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:session-params
+  XPath Keyed Path
+    /vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW.REST URI Path
+    /vcd-cal-log:vcd-rest-call/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vcd-cal-log:vcd-rest-call/vcd-cal-log:template_params/vcd-cal-log:session-params
+  Protobuf Type
+    .vcd_cal_log.YangNotif.VcdCalLog.VcdRestCall.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VcdCalLogYang.YangNotif_VcdCalLog_VcdRestCall_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VcdCalLog__YangNotif__VcdCalLog__VcdRestCall__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_SessionParams
+    VcdCalLog_notif_VcdRestCall_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VcdCalLog_VcdCalLog_notif_VcdRestCall_TemplateParams_SessionParams
+

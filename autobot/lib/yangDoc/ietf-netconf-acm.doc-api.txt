@@ -1,0 +1,297 @@
+Programmer's API documentation for yang module ietf-netconf-acm.yang
+
+
+
+Schema Globals                                                               1
+
+module ietf-netconf-acm                                                      2
+  ietf-netconf-acm data                                                    2.1
+    container nacm:nacm                                                  2.1.1
+      container nacm:groups                                            2.1.1.1
+        list nacm:group                                              2.1.1.1.1
+          leaf-list nacm:user-name                                 2.1.1.1.1.1
+      list nacm:rule-list                                              2.1.1.2
+        leaf-list nacm:group                                         2.1.1.2.1
+        list nacm:rule                                               2.1.1.2.2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_IetfNetconfAcm_t_schema
+  Global Schema Pointer
+    rw_ypbc_IetfNetconfAcm_g_schema
+2  module ietf-netconf-acm
+
+2.1  ietf-netconf-acm data
+  Description
+    NETCONF Access Control Model.
+
+    Copyright (c) 2012 IETF Trust and the persons identified as
+    authors of the code.  All rights reserved.
+
+    Redistribution and use in source and binary forms, with or
+    without modification, is permitted pursuant to, and subject
+    to the license terms contained in, the Simplified BSD
+    License set forth in Section 4.c of the IETF Trust's
+    Legal Provisions Relating to IETF Documents
+    (http://trustee.ietf.org/license-info).
+
+    This version of this YANG module is part of RFC 6536; see
+    the RFC itself for full legal notices.
+
+2.1.1  container nacm:nacm
+  Description
+    Parameters for NETCONF Access Control Model.
+  Leaves
+    name: enable-nacm, type: BOOLEAN, description: Enables or disables all NETCONF access control
+    enforcement.  If 'true', then enforcement
+    is enabled.  If 'false', then enforcement
+    is disabled.
+    name: read-default, type: ENUM, description: Controls whether read access is granted if
+    no appropriate rule is found for a
+    particular read request.
+    name: write-default, type: ENUM, description: Controls whether create, update, or delete access
+    is granted if no appropriate rule is found for a
+    particular write request.
+    name: exec-default, type: ENUM, description: Controls whether exec access is granted if no appropriate
+    rule is found for a particular protocol operation request.
+    name: enable-external-groups, type: BOOLEAN, description: Controls whether the server uses the groups reported by the
+    NETCONF transport layer when it assigns the user to a set of
+    NACM groups.  If this leaf has the value 'false', any group
+    names reported by the transport layer are ignored by the
+    server.
+    name: denied-operations, type: UINT32, description: Number of times since the server last restarted that a
+    protocol operation request was denied.
+    name: denied-data-writes, type: UINT32, description: Number of times since the server last restarted that a
+    protocol operation request to alter
+    a configuration datastore was denied.
+    name: denied-notifications, type: UINT32, description: Number of times since the server last restarted that
+    a notification was dropped for a subscription because
+    access to the event type was denied.
+  XPath Path
+    /nacm:nacm
+  XPath Keyed Path
+    /nacm:nacm
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm
+  RW Keyspec XPath Path
+    C,/nacm:nacm
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm
+  RW Keyspec XPath Path
+    D,/nacm:nacm
+  RW Keyspec XPath Keyed Path
+    D,/nacm:nacm
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm
+    IetfNetconfAcm_data_Nacm
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm
+
+2.1.1.1  container nacm:groups
+  Description
+    NETCONF Access Control Groups.
+  XPath Path
+    /nacm:nacm/nacm:groups
+  XPath Keyed Path
+    /nacm:nacm/nacm:groups
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/groups
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:groups
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:groups
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.Groups
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_Groups
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__Groups
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups
+    IetfNetconfAcm_data_Nacm_Groups
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups
+
+2.1.1.1.1  list nacm:group
+  Description
+    One NACM Group Entry.  This list will only contain
+    configured entries, not any entries learned from
+    any transport protocols.
+  Leaves
+    name: name, type: STRING, description: Group name associated with this entry.
+  XPath Path
+    /nacm:nacm/nacm:groups/nacm:group
+  XPath Keyed Path
+    /nacm:nacm/nacm:groups/nacm:group[nacm:name='STRING']
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/groups/group/STRING
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:groups/nacm:group
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:groups/nacm:group[nacm:name='STRING']
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.Groups.Group
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_Groups_Group
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__Groups__Group
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups_Group
+    IetfNetconfAcm_data_Nacm_Groups_Group
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups_Group
+
+2.1.1.1.1.1  leaf-list nacm:user-name
+  Description
+    Each entry identifies the username of
+    a member of the group associated with
+    this entry.
+  XPath Path
+    /nacm:nacm/nacm:groups/nacm:group/nacm:user-name
+  XPath Keyed Path
+    /nacm:nacm/nacm:groups/nacm:group[nacm:name='STRING']/nacm:user-name
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/groups/group/STRING/user-name
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:groups/nacm:group/nacm:user-name
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:groups/nacm:group[nacm:name='STRING']/nacm:user-name
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.Groups.Group.UserName
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_Groups_Group_UserName
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__Groups__Group__UserName
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups_Group_UserName
+    IetfNetconfAcm_data_Nacm_Groups_Group_UserName
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_Groups_Group_UserName
+
+2.1.1.2  list nacm:rule-list
+  Description
+    An ordered collection of access control rules.
+  Leaves
+    name: name, type: STRING, description: Arbitrary name assigned to the rule-list.
+  XPath Path
+    /nacm:nacm/nacm:rule-list
+  XPath Keyed Path
+    /nacm:nacm/nacm:rule-list[nacm:name='STRING']
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/rule-list/STRING
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:rule-list
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:rule-list[nacm:name='STRING']
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.RuleList
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_RuleList
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__RuleList
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList
+    IetfNetconfAcm_data_Nacm_RuleList
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList
+
+2.1.1.2.1  leaf-list nacm:group
+  Description
+    List of administrative groups that will be
+    assigned the associated access rights
+    defined by the 'rule' list.
+
+    The string '*' indicates that all groups apply to the
+    entry.
+  XPath Path
+    /nacm:nacm/nacm:rule-list/nacm:group
+  XPath Keyed Path
+    /nacm:nacm/nacm:rule-list[nacm:name='STRING']/nacm:group
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/rule-list/STRING/group
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:rule-list/nacm:group
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:rule-list[nacm:name='STRING']/nacm:group
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.RuleList.Group
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_RuleList_Group
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__RuleList__Group
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList_Group
+    IetfNetconfAcm_data_Nacm_RuleList_Group
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList_Group
+
+2.1.1.2.2  list nacm:rule
+  Description
+    One access control rule.
+
+    Rules are processed in user-defined order until a match is
+    found.  A rule matches if 'module-name', 'rule-type', and
+    'access-operations' match the request.  If a rule
+    matches, the 'action' leaf determines if access is granted
+    or not.
+  Leaves
+    name: name, type: STRING, description: Arbitrary name assigned to the rule.
+    name: module-name, type: UNION, description: Name of the module associated with this rule.
+
+    This leaf matches if it has the value '*' or if the
+    object being accessed is defined in the module with the
+    specified module name.
+    name: rpc-name, type: UNION, description: This leaf matches if it has the value '*' or if
+    its value equals the requested protocol operation
+    name.
+    name: notification-name, type: UNION, description: This leaf matches if it has the value '*' or if its
+    value equals the requested notification name.
+    name: path, type: STRING, description: Data Node Instance Identifier associated with the
+    data node controlled by this rule.
+
+    Configuration data or state data instance
+    identifiers start with a top-level data node.  A
+    complete instance identifier is required for this
+    type of path value.
+
+    The special value '/' refers to all possible
+    datastore contents.
+    name: access-operations, type: UNION, description: Access operations associated with this rule.
+
+    This leaf matches if it has the value '*' or if the
+    bit corresponding to the requested operation is set.
+    name: action, type: ENUM, description: The access control action associated with the
+    rule.  If a rule is determined to match a
+    particular request, then this object is used
+    to determine whether to permit or deny the
+    request.
+    name: comment, type: STRING, description: A textual description of the access rule.
+  XPath Path
+    /nacm:nacm/nacm:rule-list/nacm:rule
+  XPath Keyed Path
+    /nacm:nacm/nacm:rule-list[nacm:name='STRING']/nacm:rule[nacm:name='STRING']
+  RW.REST URI Path
+    /ietf-netconf-acm:nacm/rule-list/STRING/rule/STRING
+  RW Keyspec XPath Path
+    C,/nacm:nacm/nacm:rule-list/nacm:rule
+  RW Keyspec XPath Keyed Path
+    C,/nacm:nacm/nacm:rule-list[nacm:name='STRING']/nacm:rule[nacm:name='STRING']
+  Protobuf Type
+    .ietf_netconf_acm.YangData.IetfNetconfAcm.Nacm.RuleList.Rule
+  Python Proto-GI Type
+    IetfNetconfAcmYang.YangData_IetfNetconfAcm_Nacm_RuleList_Rule
+  C Protobuf-C Struct Type
+    IetfNetconfAcm__YangData__IetfNetconfAcm__Nacm__RuleList__Rule
+  C RWPB Identifiers
+    IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList_Rule
+    IetfNetconfAcm_data_Nacm_RuleList_Rule
+  YPBC Base Identifier
+    rw_ypbc_IetfNetconfAcm_IetfNetconfAcm_data_Nacm_RuleList_Rule
+

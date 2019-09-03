@@ -1,0 +1,513 @@
+Programmer's API documentation for yang module mgmt-rbac-role-test.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-project                                                            2
+  rw-project data                                                          2.1
+    list rw-project:project                                              2.1.1
+      container rw-project:project-config                              2.1.1.1
+        list rw-project:user                                         2.1.1.1.1
+          list rw-project:role                                     2.1.1.1.1.1
+      container rw-project:project-state                               2.1.1.2
+        list rw-project:user                                         2.1.1.2.1
+          list rw-project:role                                     2.1.1.2.1.1
+        list rw-project:role                                         2.1.1.2.2
+      list mgmt-rbac-role-test:test-descriptor                         2.1.1.3
+module mgmt-rbac-role-test                                                   3
+  mgmt-rbac-role-test data                                                 3.1
+    container mgmt-rbac-role-test:project-config                         3.1.1
+      list mgmt-rbac-role-test:projects                                3.1.1.1
+    list mgmt-rbac-role-test:config1                                     3.1.2
+      list mgmt-rbac-role-test:port                                    3.1.2.1
+    list mgmt-rbac-role-test:config2                                     3.1.3
+      container mgmt-rbac-role-test:port-group                         3.1.3.1
+        container mgmt-rbac-role-test:start-port                     3.1.3.1.1
+        container mgmt-rbac-role-test:end-port                       3.1.3.1.2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_MgmtRbacRoleTest_t_schema
+  Global Schema Pointer
+    rw_ypbc_MgmtRbacRoleTest_g_schema
+2  module rw-project
+
+2.1  rw-project data
+  Description
+    This yang module defines project-based tenancy for RIFT.ware.
+    Authorization for project access is defined in terms of RIFT.ware's
+    Role-Based Access Control (RBAC) model.
+
+2.1.1  list rw-project:project
+  Description
+    Configuration and state for individual projects.  RIFT.ware
+    applications and projects are expected to augment this list in
+    order to add configuration for projects that is specific to the
+    product or application.  As such, this list contains minimal
+    data defined in this yang module.
+
+    When augmenting this element, other yang modules should prefer to
+    define containers with the same name as the augmenting module.
+    (Augmenting RIFT.ware modules should prefer to augment without
+    the rw prefix [for new features], or should prefer to augment the
+    augmented container of an existing augment, to ease future
+    adoption and/or standardization.)
+  Leaves
+    name: name, type: STRING, description: Name of the project.
+    name: description, type: STRING, description: Information about project
+  XPath Path
+    /rw-project:project
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']
+  RW Keyspec XPath Path
+    D,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.RwProject.Project
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_RwProject_Project
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__RwProject__Project
+  C RWPB Identifiers
+    MgmtRbacRoleTest_RwProject_data_Project
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_RwProject_data_Project
+
+2.1.1.1  container rw-project:project-config
+  Description
+    General Project configuration supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-config
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig
+
+2.1.1.1.1  list rw-project:user
+  Description
+    The list of Users who have been assigned Roles within this
+    Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: LEAFREF, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is email address,
+    the syntax could include additional characters, such as the at(@) sign.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig.User
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig_User
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig__User
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig_User
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig_User
+
+2.1.1.1.1.1  list rw-project:role
+  Description
+    The list of Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig_User_Role
+
+2.1.1.2  container rw-project:project-state
+  Description
+    General Project operational state supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-state
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState
+
+2.1.1.2.1  list rw-project:user
+  Description
+    The state of Users who have been assigned Roles within
+    this Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.User
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_User
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__User
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_User
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_User
+
+2.1.1.2.1.1  list rw-project:role
+  Description
+    The state of the Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: state, type: STRING, description: The assignment of a User to a Role may be an asynchronous
+    operation.  This value indicates whether the Role
+    assignment is active.  If the value is 'active', then the
+    assignment is complete and active.  Any other value
+    indicates that Role assignment is in a transitional or
+    failed state, as described in the value.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_User_Role
+
+2.1.1.2.2  list rw-project:role
+  Description
+    The set of Roles that may be configured into
+    /rw-project:project/rw-project:config/rw-project:user/
+    rw-project:role.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: description, type: STRING, description: A description of the Role.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_Role
+
+2.1.1.3  list mgmt-rbac-role-test:test-descriptor
+  Leaves
+    name: name, type: STRING
+    name: value, type: STRING
+  XPath Path
+    /rw-project:project/mgmt-rbac-role-test:test-descriptor
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/mgmt-rbac-role-test:test-descriptor[mgmt-rbac-role-test:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/mgmt-rbac-role-test:test-descriptor/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/mgmt-rbac-role-test:test-descriptor
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/mgmt-rbac-role-test:test-descriptor[mgmt-rbac-role-test:name='STRING']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.RwProject.Project.TestDescriptor
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_RwProject_Project_TestDescriptor
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__RwProject__Project__TestDescriptor
+  C RWPB Identifiers
+    MgmtRbacRoleTest_RwProject_data_Project_TestDescriptor
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_RwProject_data_Project_TestDescriptor
+
+3  module mgmt-rbac-role-test
+
+3.1  mgmt-rbac-role-test data
+  Description
+    Role test for rbac
+
+3.1.1  container mgmt-rbac-role-test:project-config
+  XPath Path
+    /mgmt-rbac-role-test:project-config
+  XPath Keyed Path
+    /mgmt-rbac-role-test:project-config
+  RW.REST URI Path
+    /mgmt-rbac-role-test:project-config
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:project-config
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:project-config
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.ProjectConfig
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_ProjectConfig
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__ProjectConfig
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_ProjectConfig
+    MgmtRbacRoleTest_data_ProjectConfig
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_ProjectConfig
+
+3.1.1.1  list mgmt-rbac-role-test:projects
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /mgmt-rbac-role-test:project-config/mgmt-rbac-role-test:projects
+  XPath Keyed Path
+    /mgmt-rbac-role-test:project-config/mgmt-rbac-role-test:projects[mgmt-rbac-role-test:name='STRING']
+  RW.REST URI Path
+    /mgmt-rbac-role-test:project-config/projects/STRING
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:project-config/mgmt-rbac-role-test:projects
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:project-config/mgmt-rbac-role-test:projects[mgmt-rbac-role-test:name='STRING']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.ProjectConfig.Projects
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_ProjectConfig_Projects
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__ProjectConfig__Projects
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_ProjectConfig_Projects
+    MgmtRbacRoleTest_data_ProjectConfig_Projects
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_ProjectConfig_Projects
+
+3.1.2  list mgmt-rbac-role-test:config1
+  Leaves
+    name: ip, type: STRING
+  XPath Path
+    /mgmt-rbac-role-test:config1
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config1[mgmt-rbac-role-test:ip='STRING']
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config1/STRING
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config1
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config1[mgmt-rbac-role-test:ip='STRING']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config1
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config1
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config1
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config1
+    MgmtRbacRoleTest_data_Config1
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config1
+
+3.1.2.1  list mgmt-rbac-role-test:port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /mgmt-rbac-role-test:config1/mgmt-rbac-role-test:port
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config1[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port[mgmt-rbac-role-test:port='0']
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config1/STRING/port/0
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config1/mgmt-rbac-role-test:port
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config1[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port[mgmt-rbac-role-test:port='0']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config1.Port
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config1_Port
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config1__Port
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config1_Port
+    MgmtRbacRoleTest_data_Config1_Port
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config1_Port
+
+3.1.3  list mgmt-rbac-role-test:config2
+  Leaves
+    name: ip, type: STRING
+  XPath Path
+    /mgmt-rbac-role-test:config2
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config2/STRING
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config2
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config2
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config2
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config2
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2
+    MgmtRbacRoleTest_data_Config2
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2
+
+3.1.3.1  container mgmt-rbac-role-test:port-group
+  XPath Path
+    /mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config2/STRING/port-group
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config2.PortGroup
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config2_PortGroup
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config2__PortGroup
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup
+    MgmtRbacRoleTest_data_Config2_PortGroup
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup
+
+3.1.3.1.1  container mgmt-rbac-role-test:start-port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:start-port
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:start-port
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config2/STRING/port-group/start-port
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:start-port
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:start-port
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config2.PortGroup.StartPort
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config2_PortGroup_StartPort
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config2__PortGroup__StartPort
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup_StartPort
+    MgmtRbacRoleTest_data_Config2_PortGroup_StartPort
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup_StartPort
+
+3.1.3.1.2  container mgmt-rbac-role-test:end-port
+  Leaves
+    name: port, type: UINT16
+  XPath Path
+    /mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:end-port
+  XPath Keyed Path
+    /mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:end-port
+  RW.REST URI Path
+    /mgmt-rbac-role-test:config2/STRING/port-group/end-port
+  RW Keyspec XPath Path
+    C,/mgmt-rbac-role-test:config2/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:end-port
+  RW Keyspec XPath Keyed Path
+    C,/mgmt-rbac-role-test:config2[mgmt-rbac-role-test:ip='STRING']/mgmt-rbac-role-test:port-group/mgmt-rbac-role-test:end-port
+  Protobuf Type
+    .mgmt_rbac_role_test.YangData.MgmtRbacRoleTest.Config2.PortGroup.EndPort
+  Python Proto-GI Type
+    MgmtRbacRoleTestYang.YangData_MgmtRbacRoleTest_Config2_PortGroup_EndPort
+  C Protobuf-C Struct Type
+    MgmtRbacRoleTest__YangData__MgmtRbacRoleTest__Config2__PortGroup__EndPort
+  C RWPB Identifiers
+    MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup_EndPort
+    MgmtRbacRoleTest_data_Config2_PortGroup_EndPort
+  YPBC Base Identifier
+    rw_ypbc_MgmtRbacRoleTest_MgmtRbacRoleTest_data_Config2_PortGroup_EndPort
+

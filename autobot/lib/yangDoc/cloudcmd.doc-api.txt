@@ -1,0 +1,165 @@
+Programmer's API documentation for yang module cloudcmd.yang
+
+
+
+Schema Globals                                                               1
+
+module cloudcmd                                                              2
+  cloudcmd data                                                            2.1
+    container cloudcmd:cloud-accounts                                    2.1.1
+      list cloudcmd:cloud-account-list                                 2.1.1.1
+        container cloudcmd:mock                                      2.1.1.1.1
+        container cloudcmd:openstack                                 2.1.1.1.2
+          leaf-list cloudcmd:security-groups                       2.1.1.1.2.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_Cloudcmd_t_schema
+  Global Schema Pointer
+    rw_ypbc_Cloudcmd_g_schema
+2  module cloudcmd
+
+2.1  cloudcmd data
+  Description
+    This YANG module models a Cloud account CRUD dummy model
+
+2.1.1  container cloudcmd:cloud-accounts
+  XPath Path
+    /cloudcmd:cloud-accounts
+  XPath Keyed Path
+    /cloudcmd:cloud-accounts
+  RW.REST URI Path
+    /cloudcmd:cloud-accounts
+  RW Keyspec XPath Path
+    C,/cloudcmd:cloud-accounts
+  RW Keyspec XPath Keyed Path
+    C,/cloudcmd:cloud-accounts
+  Protobuf Type
+    .cloudcmd.YangData.Cloudcmd.CloudAccounts
+  Python Proto-GI Type
+    CloudcmdYang.YangData_Cloudcmd_CloudAccounts
+  C Protobuf-C Struct Type
+    Cloudcmd__YangData__Cloudcmd__CloudAccounts
+  C RWPB Identifiers
+    Cloudcmd_Cloudcmd_data_CloudAccounts
+    Cloudcmd_data_CloudAccounts
+  YPBC Base Identifier
+    rw_ypbc_Cloudcmd_Cloudcmd_data_CloudAccounts
+
+2.1.1.1  list cloudcmd:cloud-account-list
+  Leaves
+    name: name, type: STRING
+    name: account-type, type: ENUM
+  XPath Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list
+  XPath Keyed Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']
+  RW.REST URI Path
+    /cloudcmd:cloud-accounts/cloud-account-list/STRING
+  RW Keyspec XPath Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list
+  RW Keyspec XPath Keyed Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']
+  Protobuf Type
+    .cloudcmd.YangData.Cloudcmd.CloudAccounts.CloudAccountList
+  Python Proto-GI Type
+    CloudcmdYang.CloudAccount
+  C Protobuf-C Struct Type
+    Cloudcmd__YangData__Cloudcmd__CloudAccounts__CloudAccountList
+  C RWPB Identifiers
+    Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList
+    Cloudcmd_data_CloudAccounts_CloudAccountList
+    Cloudcmd_CloudAccount
+  YPBC Base Identifier
+    rw_ypbc_Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList
+
+2.1.1.1.1  container cloudcmd:mock
+  Leaves
+    name: username, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+  XPath Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:mock
+  XPath Keyed Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:mock
+  RW.REST URI Path
+    /cloudcmd:cloud-accounts/cloud-account-list/STRING/mock
+  RW Keyspec XPath Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:mock
+  RW Keyspec XPath Keyed Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:mock
+  Protobuf Type
+    .cloudcmd.YangData.Cloudcmd.CloudAccounts.CloudAccountList.Mock
+  Python Proto-GI Type
+    CloudcmdYang.CloudAccount_Mock
+  C Protobuf-C Struct Type
+    Cloudcmd__YangData__Cloudcmd__CloudAccounts__CloudAccountList__Mock
+  C RWPB Identifiers
+    Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Mock
+    Cloudcmd_data_CloudAccounts_CloudAccountList_Mock
+    Cloudcmd_CloudAccount_Mock
+  YPBC Base Identifier
+    rw_ypbc_Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Mock
+
+2.1.1.1.2  container cloudcmd:openstack
+  Leaves
+    name: key, type: STRING
+    name: secret, type: STRING
+    name: auth_url, type: STRING
+    name: tenant, type: STRING
+    name: admin, type: BOOLEAN
+    name: mgmt-network, type: STRING
+    name: plugin-name, type: STRING
+    name: dynamic-flavor-support, type: BOOLEAN
+    name: floating-ip-pool, type: STRING, description: Name of floating IP pool to use for floating IP address assignement
+    name: cert-validate, type: BOOLEAN, description: Certificate validatation policy in case of SSL/TLS connection
+  XPath Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:openstack
+  XPath Keyed Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:openstack
+  RW.REST URI Path
+    /cloudcmd:cloud-accounts/cloud-account-list/STRING/openstack
+  RW Keyspec XPath Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:openstack
+  RW Keyspec XPath Keyed Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:openstack
+  Protobuf Type
+    .cloudcmd.YangData.Cloudcmd.CloudAccounts.CloudAccountList.Openstack
+  Python Proto-GI Type
+    CloudcmdYang.CloudAccount_Openstack
+  C Protobuf-C Struct Type
+    Cloudcmd__YangData__Cloudcmd__CloudAccounts__CloudAccountList__Openstack
+  C RWPB Identifiers
+    Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack
+    Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack
+    Cloudcmd_CloudAccount_Openstack
+  YPBC Base Identifier
+    rw_ypbc_Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack
+
+2.1.1.1.2.1  leaf-list cloudcmd:security-groups
+  Description
+    Names of the security groups for the VM
+  XPath Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:openstack/cloudcmd:security-groups
+  XPath Keyed Path
+    /cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:openstack/cloudcmd:security-groups
+  RW.REST URI Path
+    /cloudcmd:cloud-accounts/cloud-account-list/STRING/openstack/security-groups
+  RW Keyspec XPath Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list/cloudcmd:openstack/cloudcmd:security-groups
+  RW Keyspec XPath Keyed Path
+    C,/cloudcmd:cloud-accounts/cloudcmd:cloud-account-list[cloudcmd:name='STRING']/cloudcmd:openstack/cloudcmd:security-groups
+  Protobuf Type
+    .cloudcmd.YangData.Cloudcmd.CloudAccounts.CloudAccountList.Openstack.SecurityGroups
+  Python Proto-GI Type
+    CloudcmdYang.CloudAccount_Openstack_SecurityGroups
+  C Protobuf-C Struct Type
+    Cloudcmd__YangData__Cloudcmd__CloudAccounts__CloudAccountList__Openstack__SecurityGroups
+  C RWPB Identifiers
+    Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack_SecurityGroups
+    Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack_SecurityGroups
+    Cloudcmd_CloudAccount_Openstack_SecurityGroups
+  YPBC Base Identifier
+    rw_ypbc_Cloudcmd_Cloudcmd_data_CloudAccounts_CloudAccountList_Openstack_SecurityGroups
+

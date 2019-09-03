@@ -1,0 +1,813 @@
+Programmer's API documentation for yang module rwperson-db.yang
+
+
+
+Schema Globals                                                               1
+
+module rwperson-db                                                           2
+  rwperson-db data                                                         2.1
+    container ps:person                                                  2.1.1
+      list ps:phone                                                    2.1.1.1
+      list ps:phone-inline                                             2.1.1.2
+      container ps:emergency-phone                                     2.1.1.3
+      container ps:favourite                                           2.1.1.4
+        leaf-list ps:numbers                                         2.1.1.4.1
+        leaf-list ps:colors                                          2.1.1.4.2
+        leaf-list ps:places                                          2.1.1.4.3
+      leaf-list ps:secret                                              2.1.1.5
+      leaf-list ps:other-ip4                                           2.1.1.6
+    container ps:flat-person                                             2.1.2
+      list ps:phone                                                    2.1.2.1
+      container ps:emergency-phone                                     2.1.2.2
+      container ps:favourite                                           2.1.2.3
+        leaf-list ps:numbers                                         2.1.2.3.1
+        leaf-list ps:colors                                          2.1.2.3.2
+        leaf-list ps:places                                          2.1.2.3.3
+      leaf-list ps:secret                                              2.1.2.4
+      leaf-list ps:other-ip4                                           2.1.2.5
+    container ps:minimal-person                                          2.1.3
+      container ps:address                                             2.1.3.1
+    list ps:person-list                                                  2.1.4
+      container ps:person-info                                         2.1.4.1
+  rwperson-db rpc input                                                    2.2
+    rpc input ps:duplicate-db                                            2.2.1
+      container ps:target                                              2.2.1.1
+        container ps:details                                         2.2.1.1.1
+  rwperson-db rpc output                                                   2.3
+    rpc output ps:duplicate-db                                           2.3.1
+      container ps:target                                              2.3.1.1
+        container ps:result                                          2.3.1.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwpersonDb_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwpersonDb_g_schema
+2  module rwperson-db
+
+2.1  rwperson-db data
+  Description
+    This yang models a person
+
+2.1.1  container ps:person
+  Leaves
+    name: name, type: STRING, description: This is the person's name.
+    name: id, type: INT32
+    name: email, type: STRING
+    name: employed, type: BOOLEAN
+    name: blob, type: BINARY
+    name: weight, type: DECIMAL64
+    name: nri, type: EMPTY
+    name: laptop-ip, type: STRING
+    name: laptop-mac, type: STRING
+  XPath Path
+    /ps:person
+  XPath Keyed Path
+    /ps:person
+  RW.REST URI Path
+    /rwperson-db:person
+  RW Keyspec XPath Path
+    C,/ps:person
+  RW Keyspec XPath Keyed Path
+    C,/ps:person
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person
+  Python Proto-GI Type
+    RwpersonDbYang.Person
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person
+    RwpersonDb_data_Person
+    RwpersonDb_Person
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person
+
+2.1.1.1  list ps:phone
+  Leaves
+    name: number, type: STRING
+    name: type, type: ENUM
+  XPath Path
+    /ps:person/ps:phone
+  XPath Keyed Path
+    /ps:person/ps:phone[ps:number='STRING']
+  RW.REST URI Path
+    /rwperson-db:person/phone/STRING
+  RW Keyspec XPath Path
+    C,/ps:person/ps:phone
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:phone[ps:number='STRING']
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Phone
+  Python Proto-GI Type
+    RwpersonDbYang.PhoneNumber
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Phone
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Phone
+    RwpersonDb_data_Person_Phone
+    RwpersonDb_PhoneNumber
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Phone
+
+2.1.1.2  list ps:phone-inline
+  Leaves
+    name: number, type: STRING
+    name: type, type: ENUM
+  XPath Path
+    /ps:person/ps:phone-inline
+  XPath Keyed Path
+    /ps:person/ps:phone-inline[ps:number='STRING']
+  RW.REST URI Path
+    /rwperson-db:person/phone-inline/STRING
+  RW Keyspec XPath Path
+    C,/ps:person/ps:phone-inline
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:phone-inline[ps:number='STRING']
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.PhoneNumberInline
+  Python Proto-GI Type
+    RwpersonDbYang.Person_PhoneNumberInline
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__PhoneNumberInline
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_PhoneNumberInline
+    RwpersonDb_data_Person_PhoneNumberInline
+    RwpersonDb_Person_PhoneNumberInline
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_PhoneNumberInline
+
+2.1.1.3  container ps:emergency-phone
+  Leaves
+    name: number, type: STRING
+    name: type, type: ENUM
+  XPath Path
+    /ps:person/ps:emergency-phone
+  XPath Keyed Path
+    /ps:person/ps:emergency-phone
+  RW.REST URI Path
+    /rwperson-db:person/emergency-phone
+  RW Keyspec XPath Path
+    C,/ps:person/ps:emergency-phone
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:emergency-phone
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.EmergencyPhone
+  Python Proto-GI Type
+    RwpersonDbYang.PhoneNumber1
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__EmergencyPhone
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_EmergencyPhone
+    RwpersonDb_data_Person_EmergencyPhone
+    RwpersonDb_PhoneNumber1
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_EmergencyPhone
+
+2.1.1.4  container ps:favourite
+  XPath Path
+    /ps:person/ps:favourite
+  XPath Keyed Path
+    /ps:person/ps:favourite
+  RW.REST URI Path
+    /rwperson-db:person/favourite
+  RW Keyspec XPath Path
+    C,/ps:person/ps:favourite
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:favourite
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Favourite
+  Python Proto-GI Type
+    RwpersonDbYang.Person_Favourite
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Favourite
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Favourite
+    RwpersonDb_data_Person_Favourite
+    RwpersonDb_Person_Favourite
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Favourite
+
+2.1.1.4.1  leaf-list ps:numbers
+  XPath Path
+    /ps:person/ps:favourite/ps:numbers
+  XPath Keyed Path
+    /ps:person/ps:favourite/ps:numbers
+  RW.REST URI Path
+    /rwperson-db:person/favourite/numbers
+  RW Keyspec XPath Path
+    C,/ps:person/ps:favourite/ps:numbers
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:favourite/ps:numbers
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Favourite.Numbers
+  Python Proto-GI Type
+    RwpersonDbYang.Person_Favourite_Numbers
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Favourite__Numbers
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Favourite_Numbers
+    RwpersonDb_data_Person_Favourite_Numbers
+    RwpersonDb_Person_Favourite_Numbers
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Favourite_Numbers
+
+2.1.1.4.2  leaf-list ps:colors
+  XPath Path
+    /ps:person/ps:favourite/ps:colors
+  XPath Keyed Path
+    /ps:person/ps:favourite/ps:colors
+  RW.REST URI Path
+    /rwperson-db:person/favourite/colors
+  RW Keyspec XPath Path
+    C,/ps:person/ps:favourite/ps:colors
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:favourite/ps:colors
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Favourite.Colors
+  Python Proto-GI Type
+    RwpersonDbYang.Person_Favourite_Colors
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Favourite__Colors
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Favourite_Colors
+    RwpersonDb_data_Person_Favourite_Colors
+    RwpersonDb_Person_Favourite_Colors
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Favourite_Colors
+
+2.1.1.4.3  leaf-list ps:places
+  XPath Path
+    /ps:person/ps:favourite/ps:places
+  XPath Keyed Path
+    /ps:person/ps:favourite/ps:places
+  RW.REST URI Path
+    /rwperson-db:person/favourite/places
+  RW Keyspec XPath Path
+    C,/ps:person/ps:favourite/ps:places
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:favourite/ps:places
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Favourite.Places
+  Python Proto-GI Type
+    RwpersonDbYang.Person_Favourite_Places
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Favourite__Places
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Favourite_Places
+    RwpersonDb_data_Person_Favourite_Places
+    RwpersonDb_Person_Favourite_Places
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Favourite_Places
+
+2.1.1.5  leaf-list ps:secret
+  XPath Path
+    /ps:person/ps:secret
+  XPath Keyed Path
+    /ps:person/ps:secret
+  RW.REST URI Path
+    /rwperson-db:person/secret
+  RW Keyspec XPath Path
+    C,/ps:person/ps:secret
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:secret
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.Secret
+  Python Proto-GI Type
+    RwpersonDbYang.Person_Secret
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__Secret
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_Secret
+    RwpersonDb_data_Person_Secret
+    RwpersonDb_Person_Secret
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_Secret
+
+2.1.1.6  leaf-list ps:other-ip4
+  XPath Path
+    /ps:person/ps:other-ip4
+  XPath Keyed Path
+    /ps:person/ps:other-ip4
+  RW.REST URI Path
+    /rwperson-db:person/other-ip4
+  RW Keyspec XPath Path
+    C,/ps:person/ps:other-ip4
+  RW Keyspec XPath Keyed Path
+    C,/ps:person/ps:other-ip4
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.Person.OtherIp4
+  Python Proto-GI Type
+    RwpersonDbYang.Person_OtherIp4
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__Person__OtherIp4
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_Person_OtherIp4
+    RwpersonDb_data_Person_OtherIp4
+    RwpersonDb_Person_OtherIp4
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_Person_OtherIp4
+
+2.1.2  container ps:flat-person
+  Leaves
+    name: name, type: STRING
+    name: id, type: INT32
+    name: email, type: STRING
+    name: employed, type: BOOLEAN
+    name: blob, type: BINARY
+    name: laptop-ip, type: STRING
+    name: laptop-mac, type: STRING
+  XPath Path
+    /ps:flat-person
+  XPath Keyed Path
+    /ps:flat-person
+  RW.REST URI Path
+    /rwperson-db:flat-person
+  RW Keyspec XPath Path
+    C,/ps:flat-person
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson
+    RwpersonDb_data_FlatPerson
+    RwpersonDb_FlatPerson
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson
+
+2.1.2.1  list ps:phone
+  Leaves
+    name: number, type: STRING
+    name: type, type: ENUM
+  XPath Path
+    /ps:flat-person/ps:phone
+  XPath Keyed Path
+    /ps:flat-person/ps:phone[ps:number='STRING']
+  RW.REST URI Path
+    /rwperson-db:flat-person/phone/STRING
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:phone
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:phone[ps:number='STRING']
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Phone
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPhoneNumber
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Phone
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Phone
+    RwpersonDb_data_FlatPerson_Phone
+    RwpersonDb_FlatPhoneNumber
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Phone
+
+2.1.2.2  container ps:emergency-phone
+  Leaves
+    name: number, type: STRING
+    name: type, type: ENUM
+  XPath Path
+    /ps:flat-person/ps:emergency-phone
+  XPath Keyed Path
+    /ps:flat-person/ps:emergency-phone
+  RW.REST URI Path
+    /rwperson-db:flat-person/emergency-phone
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:emergency-phone
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:emergency-phone
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.EmergencyPhone
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPhoneNumber1
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__EmergencyPhone
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_EmergencyPhone
+    RwpersonDb_data_FlatPerson_EmergencyPhone
+    RwpersonDb_FlatPhoneNumber1
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_EmergencyPhone
+
+2.1.2.3  container ps:favourite
+  XPath Path
+    /ps:flat-person/ps:favourite
+  XPath Keyed Path
+    /ps:flat-person/ps:favourite
+  RW.REST URI Path
+    /rwperson-db:flat-person/favourite
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:favourite
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:favourite
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Favourite
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_Favourite
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Favourite
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Favourite
+    RwpersonDb_data_FlatPerson_Favourite
+    RwpersonDb_FlatPerson_Favourite
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Favourite
+
+2.1.2.3.1  leaf-list ps:numbers
+  XPath Path
+    /ps:flat-person/ps:favourite/ps:numbers
+  XPath Keyed Path
+    /ps:flat-person/ps:favourite/ps:numbers
+  RW.REST URI Path
+    /rwperson-db:flat-person/favourite/numbers
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:favourite/ps:numbers
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:favourite/ps:numbers
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Favourite.Numbers
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_Favourite_Numbers
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Favourite__Numbers
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Numbers
+    RwpersonDb_data_FlatPerson_Favourite_Numbers
+    RwpersonDb_FlatPerson_Favourite_Numbers
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Numbers
+
+2.1.2.3.2  leaf-list ps:colors
+  XPath Path
+    /ps:flat-person/ps:favourite/ps:colors
+  XPath Keyed Path
+    /ps:flat-person/ps:favourite/ps:colors
+  RW.REST URI Path
+    /rwperson-db:flat-person/favourite/colors
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:favourite/ps:colors
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:favourite/ps:colors
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Favourite.Colors
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_Favourite_Colors
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Favourite__Colors
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Colors
+    RwpersonDb_data_FlatPerson_Favourite_Colors
+    RwpersonDb_FlatPerson_Favourite_Colors
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Colors
+
+2.1.2.3.3  leaf-list ps:places
+  XPath Path
+    /ps:flat-person/ps:favourite/ps:places
+  XPath Keyed Path
+    /ps:flat-person/ps:favourite/ps:places
+  RW.REST URI Path
+    /rwperson-db:flat-person/favourite/places
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:favourite/ps:places
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:favourite/ps:places
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Favourite.Places
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_Favourite_Places
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Favourite__Places
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Places
+    RwpersonDb_data_FlatPerson_Favourite_Places
+    RwpersonDb_FlatPerson_Favourite_Places
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Favourite_Places
+
+2.1.2.4  leaf-list ps:secret
+  XPath Path
+    /ps:flat-person/ps:secret
+  XPath Keyed Path
+    /ps:flat-person/ps:secret
+  RW.REST URI Path
+    /rwperson-db:flat-person/secret
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:secret
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:secret
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.Secret
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_Secret
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__Secret
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_Secret
+    RwpersonDb_data_FlatPerson_Secret
+    RwpersonDb_FlatPerson_Secret
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_Secret
+
+2.1.2.5  leaf-list ps:other-ip4
+  XPath Path
+    /ps:flat-person/ps:other-ip4
+  XPath Keyed Path
+    /ps:flat-person/ps:other-ip4
+  RW.REST URI Path
+    /rwperson-db:flat-person/other-ip4
+  RW Keyspec XPath Path
+    C,/ps:flat-person/ps:other-ip4
+  RW Keyspec XPath Keyed Path
+    C,/ps:flat-person/ps:other-ip4
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.FlatPerson.OtherIp4
+  Python Proto-GI Type
+    RwpersonDbYang.FlatPerson_OtherIp4
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__FlatPerson__OtherIp4
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_FlatPerson_OtherIp4
+    RwpersonDb_data_FlatPerson_OtherIp4
+    RwpersonDb_FlatPerson_OtherIp4
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_FlatPerson_OtherIp4
+
+2.1.3  container ps:minimal-person
+  Leaves
+    name: name, type: STRING
+    name: email, type: STRING
+    name: employed, type: BOOLEAN
+    name: nationality, type: STRING
+  XPath Path
+    /ps:minimal-person
+  XPath Keyed Path
+    /ps:minimal-person
+  RW.REST URI Path
+    /rwperson-db:minimal-person
+  RW Keyspec XPath Path
+    C,/ps:minimal-person
+  RW Keyspec XPath Keyed Path
+    C,/ps:minimal-person
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.MinimalPerson
+  Python Proto-GI Type
+    RwpersonDbYang.YangData_RwpersonDb_MinimalPerson
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__MinimalPerson
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_MinimalPerson
+    RwpersonDb_data_MinimalPerson
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_MinimalPerson
+
+2.1.3.1  container ps:address
+  Leaves
+    name: street, type: STRING
+    name: city, type: STRING
+    name: state, type: STRING
+  XPath Path
+    /ps:minimal-person/ps:address
+  XPath Keyed Path
+    /ps:minimal-person/ps:address
+  RW.REST URI Path
+    /rwperson-db:minimal-person/address
+  RW Keyspec XPath Path
+    C,/ps:minimal-person/ps:address
+  RW Keyspec XPath Keyed Path
+    C,/ps:minimal-person/ps:address
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.MinimalPerson.Address
+  Python Proto-GI Type
+    RwpersonDbYang.MinimalPersonAddr
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__MinimalPerson__Address
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_MinimalPerson_Address
+    RwpersonDb_data_MinimalPerson_Address
+    RwpersonDb_MinimalPersonAddr
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_MinimalPerson_Address
+
+2.1.4  list ps:person-list
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /ps:person-list
+  XPath Keyed Path
+    /ps:person-list[ps:name='STRING']
+  RW.REST URI Path
+    /rwperson-db:person-list/STRING
+  RW Keyspec XPath Path
+    C,/ps:person-list
+  RW Keyspec XPath Keyed Path
+    C,/ps:person-list[ps:name='STRING']
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.PersonList
+  Python Proto-GI Type
+    RwpersonDbYang.PersonList
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__PersonList
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_PersonList
+    RwpersonDb_data_PersonList
+    RwpersonDb_PersonList
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_PersonList
+
+2.1.4.1  container ps:person-info
+  Leaves
+    name: aadhar-id, type: STRING
+    name: dob, type: STRING
+    name: pan-no, type: STRING
+    name: passport-no, type: STRING
+  XPath Path
+    /ps:person-list/ps:person-info
+  XPath Keyed Path
+    /ps:person-list[ps:name='STRING']/ps:person-info
+  RW.REST URI Path
+    /rwperson-db:person-list/STRING/person-info
+  RW Keyspec XPath Path
+    C,/ps:person-list/ps:person-info
+  RW Keyspec XPath Keyed Path
+    C,/ps:person-list[ps:name='STRING']/ps:person-info
+  Protobuf Type
+    .rwperson_db.YangData.RwpersonDb.PersonList.PersonInfo
+  Python Proto-GI Type
+    RwpersonDbYang.PersonInfo
+  C Protobuf-C Struct Type
+    RwpersonDb__YangData__RwpersonDb__PersonList__PersonInfo
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_data_PersonList_PersonInfo
+    RwpersonDb_data_PersonList_PersonInfo
+    RwpersonDb_PersonInfo
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_data_PersonList_PersonInfo
+
+2.2  rwperson-db rpc input
+  Description
+    This yang models a person
+
+2.2.1  rpc input ps:duplicate-db
+  XPath Path
+    /ps:duplicate-db
+  XPath Keyed Path
+    /ps:duplicate-db
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/ps:duplicate-db
+  RW Keyspec XPath Keyed Path
+    I,/ps:duplicate-db
+  Protobuf Type
+    .rwperson_db.YangInput.RwpersonDb.DuplicateDb
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBI
+  C Protobuf-C Struct Type
+    RwpersonDb__YangInput__RwpersonDb__DuplicateDb
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_input_DuplicateDb
+    RwpersonDb_input_DuplicateDb
+    RwpersonDb_DuplicateDBI
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_input_DuplicateDb
+
+2.2.1.1  container ps:target
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /ps:duplicate-db/ps:target
+  XPath Keyed Path
+    /ps:duplicate-db/ps:target
+  RW.REST URI Path
+    /input/target
+  RW Keyspec XPath Path
+    I,/ps:duplicate-db/ps:target
+  RW Keyspec XPath Keyed Path
+    I,/ps:duplicate-db/ps:target
+  Protobuf Type
+    .rwperson_db.YangInput.RwpersonDb.DuplicateDb.Target
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBI_Target
+  C Protobuf-C Struct Type
+    RwpersonDb__YangInput__RwpersonDb__DuplicateDb__Target
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_input_DuplicateDb_Target
+    RwpersonDb_input_DuplicateDb_Target
+    RwpersonDb_DuplicateDBI_Target
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_input_DuplicateDb_Target
+
+2.2.1.1.1  container ps:details
+  Leaves
+    name: location, type: STRING
+    name: timeout, type: UINT32
+  XPath Path
+    /ps:duplicate-db/ps:target/ps:details
+  XPath Keyed Path
+    /ps:duplicate-db/ps:target/ps:details
+  RW.REST URI Path
+    /input/target/details
+  RW Keyspec XPath Path
+    I,/ps:duplicate-db/ps:target/ps:details
+  RW Keyspec XPath Keyed Path
+    I,/ps:duplicate-db/ps:target/ps:details
+  Protobuf Type
+    .rwperson_db.YangInput.RwpersonDb.DuplicateDb.Target.Details
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBI_Target_Details
+  C Protobuf-C Struct Type
+    RwpersonDb__YangInput__RwpersonDb__DuplicateDb__Target__Details
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_input_DuplicateDb_Target_Details
+    RwpersonDb_input_DuplicateDb_Target_Details
+    RwpersonDb_DuplicateDBI_Target_Details
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_input_DuplicateDb_Target_Details
+
+2.3  rwperson-db rpc output
+  Description
+    This yang models a person
+
+2.3.1  rpc output ps:duplicate-db
+  XPath Path
+    /ps:duplicate-db
+  XPath Keyed Path
+    /ps:duplicate-db
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/ps:duplicate-db
+  RW Keyspec XPath Keyed Path
+    O,/ps:duplicate-db
+  Protobuf Type
+    .rwperson_db.YangOutput.RwpersonDb.DuplicateDb
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBO
+  C Protobuf-C Struct Type
+    RwpersonDb__YangOutput__RwpersonDb__DuplicateDb
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_output_DuplicateDb
+    RwpersonDb_output_DuplicateDb
+    RwpersonDb_DuplicateDBO
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_output_DuplicateDb
+
+2.3.1.1  container ps:target
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /ps:duplicate-db/ps:target
+  XPath Keyed Path
+    /ps:duplicate-db/ps:target
+  RW.REST URI Path
+    /output/target
+  RW Keyspec XPath Path
+    O,/ps:duplicate-db/ps:target
+  RW Keyspec XPath Keyed Path
+    O,/ps:duplicate-db/ps:target
+  Protobuf Type
+    .rwperson_db.YangOutput.RwpersonDb.DuplicateDb.Target
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBO_Target
+  C Protobuf-C Struct Type
+    RwpersonDb__YangOutput__RwpersonDb__DuplicateDb__Target
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_output_DuplicateDb_Target
+    RwpersonDb_output_DuplicateDb_Target
+    RwpersonDb_DuplicateDBO_Target
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_output_DuplicateDb_Target
+
+2.3.1.1.1  container ps:result
+  Leaves
+    name: timetaken, type: UINT32
+  XPath Path
+    /ps:duplicate-db/ps:target/ps:result
+  XPath Keyed Path
+    /ps:duplicate-db/ps:target/ps:result
+  RW.REST URI Path
+    /output/target/result
+  RW Keyspec XPath Path
+    O,/ps:duplicate-db/ps:target/ps:result
+  RW Keyspec XPath Keyed Path
+    O,/ps:duplicate-db/ps:target/ps:result
+  Protobuf Type
+    .rwperson_db.YangOutput.RwpersonDb.DuplicateDb.Target.Result
+  Python Proto-GI Type
+    RwpersonDbYang.DuplicateDBO_Target_Result
+  C Protobuf-C Struct Type
+    RwpersonDb__YangOutput__RwpersonDb__DuplicateDb__Target__Result
+  C RWPB Identifiers
+    RwpersonDb_RwpersonDb_output_DuplicateDb_Target_Result
+    RwpersonDb_output_DuplicateDb_Target_Result
+    RwpersonDb_DuplicateDBO_Target_Result
+  YPBC Base Identifier
+    rw_ypbc_RwpersonDb_RwpersonDb_output_DuplicateDb_Target_Result
+

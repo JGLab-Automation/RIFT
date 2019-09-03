@@ -1,0 +1,1589 @@
+Programmer's API documentation for yang module rw-msg-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-msg-log                                                            2
+  rw-msg-log notification                                                  2.1
+    notification rwmsglog:msg-debug                                      2.1.1
+      container rwmsglog:template_params                               2.1.1.1
+        list rwmsglog:debug-details                                  2.1.1.1.1
+        list rwmsglog:additional-data                                2.1.1.1.2
+        container rwmsglog:call-identifier                           2.1.1.1.3
+        container rwmsglog:session-params                            2.1.1.1.4
+    notification rwmsglog:msg-info                                       2.1.2
+      container rwmsglog:template_params                               2.1.2.1
+        list rwmsglog:debug-details                                  2.1.2.1.1
+        list rwmsglog:additional-data                                2.1.2.1.2
+        container rwmsglog:call-identifier                           2.1.2.1.3
+        container rwmsglog:session-params                            2.1.2.1.4
+    notification rwmsglog:msg-notice                                     2.1.3
+      container rwmsglog:template_params                               2.1.3.1
+        list rwmsglog:debug-details                                  2.1.3.1.1
+        list rwmsglog:additional-data                                2.1.3.1.2
+        container rwmsglog:call-identifier                           2.1.3.1.3
+        container rwmsglog:session-params                            2.1.3.1.4
+    notification rwmsglog:msg-warning                                    2.1.4
+      container rwmsglog:template_params                               2.1.4.1
+        list rwmsglog:debug-details                                  2.1.4.1.1
+        list rwmsglog:additional-data                                2.1.4.1.2
+        container rwmsglog:call-identifier                           2.1.4.1.3
+        container rwmsglog:session-params                            2.1.4.1.4
+    notification rwmsglog:msg-error                                      2.1.5
+      container rwmsglog:template_params                               2.1.5.1
+        list rwmsglog:debug-details                                  2.1.5.1.1
+        list rwmsglog:additional-data                                2.1.5.1.2
+        container rwmsglog:call-identifier                           2.1.5.1.3
+        container rwmsglog:session-params                            2.1.5.1.4
+    notification rwmsglog:msg-critical                                   2.1.6
+      container rwmsglog:template_params                               2.1.6.1
+        list rwmsglog:debug-details                                  2.1.6.1.1
+        list rwmsglog:additional-data                                2.1.6.1.2
+        container rwmsglog:call-identifier                           2.1.6.1.3
+        container rwmsglog:session-params                            2.1.6.1.4
+    notification rwmsglog:msg-alert                                      2.1.7
+      container rwmsglog:template_params                               2.1.7.1
+        list rwmsglog:debug-details                                  2.1.7.1.1
+        list rwmsglog:additional-data                                2.1.7.1.2
+        container rwmsglog:call-identifier                           2.1.7.1.3
+        container rwmsglog:session-params                            2.1.7.1.4
+    notification rwmsglog:msg-emergency                                  2.1.8
+      container rwmsglog:template_params                               2.1.8.1
+        list rwmsglog:debug-details                                  2.1.8.1.1
+        list rwmsglog:additional-data                                2.1.8.1.2
+        container rwmsglog:call-identifier                           2.1.8.1.3
+        container rwmsglog:session-params                            2.1.8.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMsgLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMsgLog_g_schema
+2  module rw-msg-log
+
+2.1  rw-msg-log notification
+  Description
+    RW.Msg logging definitions
+
+2.1.1  notification rwmsglog:msg-debug
+  Description
+    RwMsg generic debug log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-debug
+  XPath Keyed Path
+    /rwmsglog:msg-debug
+  RW.REST URI Path
+    /rw-msg-log:msg-debug
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug
+    RwMsgLog_notif_MsgDebug
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug
+
+2.1.1.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-debug/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-debug/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-debug/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams
+    RwMsgLog_notif_MsgDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams
+
+2.1.1.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-debug/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgDebug_TemplateParams_SessionParams
+
+2.1.2  notification rwmsglog:msg-info
+  Description
+    RwMsg generic info log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-info
+  XPath Keyed Path
+    /rwmsglog:msg-info
+  RW.REST URI Path
+    /rw-msg-log:msg-info
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo
+    RwMsgLog_notif_MsgInfo
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo
+
+2.1.2.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-info/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-info/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-info/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams
+    RwMsgLog_notif_MsgInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams
+
+2.1.2.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-info/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgInfo_TemplateParams_SessionParams
+
+2.1.3  notification rwmsglog:msg-notice
+  Description
+    RwMsg generic notice log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-notice
+  XPath Keyed Path
+    /rwmsglog:msg-notice
+  RW.REST URI Path
+    /rw-msg-log:msg-notice
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice
+    RwMsgLog_notif_MsgNotice
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice
+
+2.1.3.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-notice/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-notice/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-notice/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams
+    RwMsgLog_notif_MsgNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams
+
+2.1.3.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-notice/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgNotice_TemplateParams_SessionParams
+
+2.1.4  notification rwmsglog:msg-warning
+  Description
+    RwMsg generic warning log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-warning
+  XPath Keyed Path
+    /rwmsglog:msg-warning
+  RW.REST URI Path
+    /rw-msg-log:msg-warning
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning
+    RwMsgLog_notif_MsgWarning
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning
+
+2.1.4.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-warning/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-warning/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-warning/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams
+    RwMsgLog_notif_MsgWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams
+
+2.1.4.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-warning/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgWarning_TemplateParams_SessionParams
+
+2.1.5  notification rwmsglog:msg-error
+  Description
+    RwMsg generic error log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-error
+  XPath Keyed Path
+    /rwmsglog:msg-error
+  RW.REST URI Path
+    /rw-msg-log:msg-error
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError
+    RwMsgLog_notif_MsgError
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError
+
+2.1.5.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-error/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-error/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-error/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams
+    RwMsgLog_notif_MsgError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams
+
+2.1.5.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-error/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgError_TemplateParams_SessionParams
+
+2.1.6  notification rwmsglog:msg-critical
+  Description
+    RwMsg generic critical log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-critical
+  XPath Keyed Path
+    /rwmsglog:msg-critical
+  RW.REST URI Path
+    /rw-msg-log:msg-critical
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical
+    RwMsgLog_notif_MsgCritical
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical
+
+2.1.6.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-critical/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-critical/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-critical/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams
+    RwMsgLog_notif_MsgCritical_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams
+
+2.1.6.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-critical/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgCritical_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_DebugDetails
+
+2.1.6.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-critical/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgCritical_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_AdditionalData
+
+2.1.6.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-critical/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgCritical_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-critical/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-critical/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgCritical.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgCritical_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgCritical__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgCritical_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgCritical_TemplateParams_SessionParams
+
+2.1.7  notification rwmsglog:msg-alert
+  Description
+    RwMsg generic alert log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-alert
+  XPath Keyed Path
+    /rwmsglog:msg-alert
+  RW.REST URI Path
+    /rw-msg-log:msg-alert
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert
+    RwMsgLog_notif_MsgAlert
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert
+
+2.1.7.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-alert/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-alert/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-alert/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams
+    RwMsgLog_notif_MsgAlert_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams
+
+2.1.7.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-alert/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgAlert_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_DebugDetails
+
+2.1.7.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-alert/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgAlert_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_AdditionalData
+
+2.1.7.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-alert/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgAlert_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-alert/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-alert/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgAlert.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgAlert_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgAlert__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgAlert_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgAlert_TemplateParams_SessionParams
+
+2.1.8  notification rwmsglog:msg-emergency
+  Description
+    RwMsg generic emergency log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwmsglog:msg-emergency
+  XPath Keyed Path
+    /rwmsglog:msg-emergency
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency
+    RwMsgLog_notif_MsgEmergency
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency
+
+2.1.8.1  container rwmsglog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params
+  XPath Keyed Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency/template_params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency.TemplateParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency_TemplateParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency__TemplateParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams
+    RwMsgLog_notif_MsgEmergency_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams
+
+2.1.8.1.1  list rwmsglog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:debug-details
+  XPath Keyed Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:debug-details[rwmsglog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_DebugDetails
+    RwMsgLog_notif_MsgEmergency_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_DebugDetails
+
+2.1.8.1.2  list rwmsglog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:additional-data
+  XPath Keyed Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:additional-data[rwmsglog:attribute='STRING']
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_AdditionalData
+    RwMsgLog_notif_MsgEmergency_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_AdditionalData
+
+2.1.8.1.3  container rwmsglog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:call-identifier
+  XPath Keyed Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:call-identifier
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:call-identifier
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_CallIdentifier
+    RwMsgLog_notif_MsgEmergency_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container rwmsglog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:session-params
+  XPath Keyed Path
+    /rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:session-params
+  RW.REST URI Path
+    /rw-msg-log:msg-emergency/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwmsglog:msg-emergency/rwmsglog:template_params/rwmsglog:session-params
+  Protobuf Type
+    .rw_msg_log.YangNotif.RwMsgLog.MsgEmergency.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwMsgLogYang.YangNotif_RwMsgLog_MsgEmergency_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwMsgLog__YangNotif__RwMsgLog__MsgEmergency__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_SessionParams
+    RwMsgLog_notif_MsgEmergency_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwMsgLog_RwMsgLog_notif_MsgEmergency_TemplateParams_SessionParams
+

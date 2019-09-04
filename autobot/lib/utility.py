@@ -12,6 +12,14 @@ import sys
 import os
 import re
 
+from email import encoders
+from email.mime.audio import MIMEAudio
+from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
+
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +66,23 @@ def get_rpc_error_state(status):
     return state
 
 
-def create_operational_url(lp_addr, api):
+def create_url_running(lp_addr, api):
+    try:
+        url = f'https://{lp_addr}:8008/api/running/{api}'
+        return str(url).strip()
+    except BaseException as e:
+        log_info(e)
+
+
+def create_url_operations(lp_addr, api):
+    try:
+        url = f'https://{lp_addr}:8008/api/operations/{api}'
+        return str(url).strip()
+    except BaseException as e:
+        log_info(e)
+
+
+def create_url_operational(lp_addr, api):
     try:
         url = f'https://{lp_addr}:8008/api/operational/{api}'
         return str(url).strip()
@@ -67,32 +91,16 @@ def create_operational_url(lp_addr, api):
         raise
 
 
-def create_operations_url(lp_addr, api):
-    try:
-        url = f'https://{lp_addr}:8008/api/operations/{api}'
-        return str(url).strip()
-    except BaseException as e:
-        log_info(e)
-
-
-def create_running_url(lp_addr, api):
-    try:
-        url = f'https://{lp_addr}:8008/api/running/{api}'
-        return str(url).strip()
-    except BaseException as e:
-        log_info(e)
-
-
 def create_http_basic_auth(uname, passwd):
     try:
         auth = HTTPBasicAuth(uname, passwd)
-        return (auth)
+        return auth
     except BaseException as e:
         log_info(e)
         raise
 
 
-def get_config(url, header, payload=""):
+def config_get(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
@@ -107,7 +115,7 @@ def get_config(url, header, payload=""):
         raise
 
 
-def create_config(url, header, payload):
+def config_add(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
@@ -122,7 +130,7 @@ def create_config(url, header, payload):
         raise
 
 
-def edit_config(url, header, payload):
+def config_edit(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
@@ -137,10 +145,9 @@ def edit_config(url, header, payload):
         raise
 
 
-def delete_config(url, header, payload=""):
+def config_delete(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
             state = get_rpc_error_state(response.json())
@@ -164,51 +171,87 @@ def delete_config(url, header, payload=""):
 
 
 
+def create_html_mail(html, Subject, fromEmail, toEmail, cc=None, attachment=None):
+    """Create a mime-message that will render HTML in popular
+    MUAs, text in better ones"""
+    #copy_email_tos = ''
+    #cc1 = ''
+    msg = MIMEMultipart('alternative')
+    msg['From'] = fromEmail
+    msg['To'] = toEmail
+    msg['Subject'] = Subject
+    msg.attach(MIMEText(html))
+    if cc:
+        msg['Cc'] = cc.strip(',')
+    if attachment:
+        ctype, encoding = mimetypes.guess_type(attachment)
+        if ctype is None or encoding is not None:
+            # No guess could be made, or the file is encoded (compressed), so
+            # use a generic bag-of-bits type.
+            ctype = 'application/octet-stream'
+
+        maintype, subtype = ctype.split('/', 1)
+        if maintype == 'text':
+            fp = open(attachment)
+            # Note: we should handle calculating the charset
+            att = MIMEText(fp.read(), _subtype=subtype)
+            fp.close()
+            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
+            msg.attach(att)
+        elif maintype == 'image':
+            fp = open(attachment, 'rb')
+            att = MIMEImage(fp.read(), _subtype=subtype)
+            fp.close()
+            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
+            msg.attach(att)
+        elif maintype == 'audio':
+            fp = open(attachment, 'rb')
+            att = MIMEAudio(fp.read(), _subtype=subtype)
+            fp.close()
+            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
+            msg.attach(att)
+        elif maintype == 'application':
+            fp = open(attachment, 'rb')
+            att = MIMEApplication(fp.read(), _subtype=subtype)
+            fp.close()
+            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
+            msg.attach(att)
+        else:
+            fp = open(attachment, 'rb')
+            att = MIMEBase(maintype, subtype)
+            att.set_payload(fp.read())
+            # Encode the payload using Base64
+            encoders.encode_base64(att)
+            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
+            msg.attach(att)
+            fp.close()
+        # Set the filename parameter
+
+    html_part = MIMEText(html, 'html')
+    msg.attach(html_part)
+    log(msg)
+    return msg
 
 
+def send_email(message, send_from, send_tos, subject='', cc=None, attachment=None, smtp_server='mail.office.com'):
 
+     # RECIPIENTS = send_tos
+    log_info('Sending email to ' + send_tos)
+    recipients = send_tos.split(',')
+    sender = send_from
+    msg = create_html_mail(message, subject, send_from, send_tos, cc, attachment)
 
+    auth_required = 0  # if you need to use SMTP AUTH set to 1
+    smtp_user = ''  # for SMTP AUTH, set SMTP username here
+    smtp_pass = ''  # for SMTP AUTH, set SMTP password here
+    session = smtplib.SMTP(smtp_server)
+    if auth_required:
+        session.login(smtp_user, smtp_pass)
+    smtp_result = session.sendmail(sender, recipients, msg.as_string())
+    session.quit()
 
+    if smtp_result:
+        return 0
+    else:
+        return 1
 
-
-
-
-# def read_json(file_name, node):
-#     json_data = open(file_name)
-#     data = json.load(json_data)
-#     json_data.close()
-#     return data[node]
-
-
-# def is_valid_xml(xml_file):
-#     try:
-#         et.parse(xml_file)
-#         return True
-#     except Exception as e:
-#         return False
-
-# def parse_xml(xml_file, *attributes):
-#     if not os.path.exists(xml_file):
-#         log("XML does not exist")
-#         return []
-#     tree = et.parse(xml_file)
-#     root = tree.getroot()
-#     values = []
-#     for child in root:
-#         attr_list = child.attrib
-#         row = ''
-#         if not len(attributes):
-#             for key in attr_list:
-#                 try:
-#                     row += attr_list[key] + ', '
-#                 except StandardError:
-#                     row += ', '
-#         else:
-#             for attribute in attributes:
-#                 try:
-#                     row += attr_list[attribute] + ', '
-#                 except StandardError:
-#                     row += ', '
-#         if not row == '':
-#             values.append(row+'\n')
-#     return values

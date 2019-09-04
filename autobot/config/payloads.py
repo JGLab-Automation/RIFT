@@ -1,73 +1,81 @@
 __author__ = 'JG'
 
+import json
 
 
-from modules.automation.autobot.config.constants import constants as const
+def proj_add(proj_name, proj_desc):
+    payload = \
+        {
+            "rw-project:project":
+                {
+                    "name": proj_name,
+                    "description": proj_desc
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
 
-def project(proj_name, proj_desc):
-    project = "{" \
-            "\"rw-project:project\":" \
-            "{" \
-                "\"name\": \"{}\".format(proj_name)," \
-                "\"description\": \"{}\".format(proj_desc)" \
-            "}" \
-          "}"
 
-# project_config = "{" \
-#                     "\"rw-project:project\": " \
-#                         "{" \
-#                             "\"name\": \"default\"," \
-#                             "\"description\": \"Default project\"," \
-#                             "\"project-config\": " \
-#                                 "{" \
-#                                     "\"user\": " \
-#                                     "[" \
-#                                         "{" \
-#                                             "\"user-name\": \"admin\",\"user-domain\": \"system\"," \
-#                                             "\"role\": [{\"role\": \"rw-project:project-admin\"}]" \
-#                                         "}," \
-#                                         "{" \
-#                                             "\"user-name\": \"oper\",\"user-domain\": \"system\"," \
-#                                             "\"role\": [{\"role\": \"rw-project:project-oper\"}]" \
-#                                         "}" \
-#                                     "]," \
-#                                     "\"rw-umb-mgr:event-publish\":" \
-#                                         "{" \
-#                                             "\"event-publish-enable\": \"false\"" \
-#                                         "}" \
-#                                 "}" \
-#                         "}" \
-#                 "}"
+def proj_config(user_name, user_domain, role, event_publish):
+    payload = \
+        {
+            "rw-project:project-config":
+                {
+                    "user":
+                        [
+                            {
+                                "user-name": user_name,
+                                "user-domain": user_domain,
+                                "role":
+                                    [
+                                        {
+                                            "role": role
+                                        }
+                                    ]
+                            }
+                        ],
+                    "rw-umb-mgr:event-publish":
+                        {
+                            "event-publish-enable": event_publish
+                        }
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
 
-# vim_os ="{" \
-#             "\"rw-project:project\":" \
-#                 "{" \
-#                     "\"rw-cloud:cloud\":" \
-#                         "{" \
-#                             "\"account\":" \
-#                                 "[" \
-#                                     "{" \
-#                                         "\"name\": \"{}\".format(cloud_name)," \
-#                                         "\"account-type\": \"openstack\"," \
-#                                         "\"openstack\":" \
-#                                             "{" \
-#                                                 "\"key\": \"{}\".format(const.vim_os_secret),
-#                                                 \"secret\": \"{}\".format(const.vim_os_secret),
-#                                                 \"auth_url\": \"{}\".format(const.vim_os_authURL),
-#                                                 \"user-domain\": \"{}\".format(const.),
-#                                                 \"project-domain\": \"{}\",
-#                                                 \"tenant\": \"jghosh\",
-#                                                 \"region\": \"RegionOne\",
-#                                                 \"admin\": \"false\",
-#                                                 \"mgmt-network\": \"private\",
-#                                                 \"plugin-name\": \"rwcal_openstack\",
-#                                                 \"dynamic-flavor-support\": \"true\",
-#                                                 \"floating-ip-pool\": \"public\",
-#                                                 \"cert-validate\": \"false\"" \
-#                                             "}," \
-#                                         "\"vdu-instance-timeout\": 300" \
-#                                     "}" \
-#                                 "]" \
-#                         "}" \
-#                 "}" \
-#         "}"
+
+def cloud_acct_add(acct_name, acct_type, timeout):
+    payload = \
+        {
+            "rw-cloud:account":
+                [
+                    {
+                        "name": acct_name,
+                        "account-type": acct_type.lower(),
+                        "vdu-instance-timeout": timeout
+                    }
+                ]
+        }
+    payload = json.dumps(payload)
+    return payload
+
+
+def cloud_acct_config_openstack(key, secret, auth_url, usr_domain, proj_domain, tenant, region, mgmt_net, float_ip_pool_net):
+    payload = \
+        {
+            "key": key,
+            "secret": secret,
+            "auth_url": auth_url,
+            "user-domain": usr_domain,
+            "project-domain": proj_domain,
+            "tenant": tenant,
+            "region": region,
+            "admin": "false",
+            "mgmt-network": mgmt_net,
+            "plugin-name": "rwcal_openstack",
+            "dynamic-flavor-support": "true",
+            "floating-ip-pool": float_ip_pool_net,
+            "cert-validate": "false"
+        }
+    payload = json.dumps(payload)
+    return payload

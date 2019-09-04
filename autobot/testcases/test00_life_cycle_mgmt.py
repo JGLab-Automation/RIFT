@@ -27,12 +27,22 @@ class Life_Cycle_Management(unittest.TestCase):
         state = fw.cloud_acct_add(const.lp_addr, const.header, const.proj_name_default, const.cloud_acct_name,
                                   const.cloud_acct_type, const.cloud_acct_timeout)
         if state == "OK":
-            util.log_info(f"Test-case: {self.test02_Project_Configure.__name__} | Status: Passed.")
+            util.log_info(f"Test-case: {self.test03_Cloud_Account_Add.__name__} | Status: Passed.")
         else:
             assert state == "OK", f"Response State: {state}. Status: Failed."
 
     def test04_Cloud_Account_Configure(self):
-        pass
+        state = fw.cloud_acct_config_openstack(const.lp_addr, const.header, const.proj_name_default,
+                                                const.cloud_acct_name, const.vim_os_key, const.vim_os_secret,
+                                               const.vim_os_auth_url, const.vim_os_tenant)
+        if state == "OK":
+            status = fw.cloud_acct_status(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+            if status == "success":
+                util.log_info(f"Test-case: {self.test04_Cloud_Account_Configure.__name__} | Status: Passed.")
+            else:
+                assert state == "OK", f"Response State: {state}. Status: Failed."
+        else:
+            assert state == "OK", f"Response State: {state}. Status: Failed."
 
     def test05_Descriptors_Create(self):
         pass

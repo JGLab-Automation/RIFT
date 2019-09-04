@@ -2,21 +2,143 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="146feddf-3b15-404b-857f-e406d423fe4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/autobot/lib/reference.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/local.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/local.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot/config/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/config/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot/config/payloads.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/config/payloads.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/execSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/execSuite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot/lib/framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/framework.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/lib/restAPIs.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/restAPIs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/lib/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/utility.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/testcases/testFire.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/testcases/testFire.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/config/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/config/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/config/payloads.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/execReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/execSuite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/execTraces.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/testcases/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/testcases/test00_life_cycle_mgmt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/testcases/test01_resource_discovery_openstack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/testcases/test02_vnf_discovery_openstack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot_bkp/testcases/testFire.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#254#564#0" />
+                <element signature="e#614#1028#0" />
+                <element signature="e#1078#1481#0" />
+                <element signature="e#1539#2053#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/testcases/testFire.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="98" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/framework.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+              <folding>
+                <element signature="e#19#58#0" expanded="true" />
+                <element signature="e#226#564#0" />
+                <element signature="e#661#1037#0" />
+                <element signature="e#1098#1466#0" />
+                <element signature="e#1654#2127#0" />
+                <element signature="e#2230#2579#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/restAPIs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="61" column="4" lean-forward="true" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="32" />
+              <folding>
+                <element signature="e#19#33#0" expanded="true" />
+                <element signature="e#543#884#0" />
+                <element signature="e#911#928#0" />
+                <element signature="e#956#974#0" />
+                <element signature="e#1002#1020#0" />
+                <element signature="e#4312#4415#0" />
+                <element signature="e#1375#1520#0" />
+                <element signature="e#1568#1716#0" />
+                <element signature="e#4637#4800#0" />
+                <element signature="e#5236#5371#0" />
+                <element signature="e#5419#5932#0" />
+                <element signature="e#5980#6494#0" />
+                <element signature="e#6540#7053#0" />
+                <element signature="e#7104#7621#0" />
+                <element signature="e#4464#6850#0" />
+                <element signature="e#6974#7630#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="80" column="18" lean-forward="true" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+              <folding>
+                <element signature="e#73#311#0" />
+                <element signature="e#380#1221#0" />
+                <element signature="e#1279#1633#0" />
+                <element signature="e#1766#2328#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/autobot/config/constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-149">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -28,8 +150,51 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/autobot/execSuite.py" />
+        <option value="$PROJECT_DIR$/autobot/config/payloads.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/restAPIs.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/utility.py" />
+        <option value="$PROJECT_DIR$/autobot/testcases/testFire.py" />
+        <option value="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/framework.py" />
+        <option value="$PROJECT_DIR$/autobot/config/constants.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
   <component name="ProjectId" id="1QKVFTbw5llbOreQHs1p48gY2au" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="autobot" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -45,7 +210,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testFire">
+  <component name="RunManager" selected="Python tests.Unittests in test00_life_cycle_mgmt.py">
+    <configuration name="execSuite" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="local" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/autobot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/autobot/execSuite.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="testFire" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="local" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,8 +283,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.testFire" />
         <item itemvalue="Python tests.Unittests in test00_life_cycle_mgmt.py" />
+        <item itemvalue="Python.testFire" />
+        <item itemvalue="Python.execSuite" />
         <item itemvalue="Python tests.Unittests for test00_life_cycle_mgmt.Life_Cycle_Management.test03_Cloud_Account_Add" />
       </list>
     </recent_temporary>
@@ -116,17 +303,178 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_in_test00_life_cycle_mgmt_py - 2019.09.04 at 23h 19m 32s.xml">
+      <configuration name="Unittests in test00_life_cycle_mgmt.py" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1382" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24981631" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32951653" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32951653" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit#3: Validated Account Create" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit#3: Validated Account Create" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/autobot/execReport.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/execSuite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot_bkp/config/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/restAPIs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/testcases/testFire.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding>
+            <element signature="e#19#58#0" expanded="true" />
+            <element signature="e#226#564#0" />
+            <element signature="e#661#1037#0" />
+            <element signature="e#1098#1466#0" />
+            <element signature="e#1654#2127#0" />
+            <element signature="e#2230#2579#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="61" column="4" lean-forward="true" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="32" />
+          <folding>
+            <element signature="e#19#33#0" expanded="true" />
+            <element signature="e#543#884#0" />
+            <element signature="e#911#928#0" />
+            <element signature="e#956#974#0" />
+            <element signature="e#1002#1020#0" />
+            <element signature="e#4312#4415#0" />
+            <element signature="e#1375#1520#0" />
+            <element signature="e#1568#1716#0" />
+            <element signature="e#4637#4800#0" />
+            <element signature="e#5236#5371#0" />
+            <element signature="e#5419#5932#0" />
+            <element signature="e#5980#6494#0" />
+            <element signature="e#6540#7053#0" />
+            <element signature="e#7104#7621#0" />
+            <element signature="e#4464#6850#0" />
+            <element signature="e#6974#7630#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="80" column="18" lean-forward="true" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+          <folding>
+            <element signature="e#73#311#0" />
+            <element signature="e#380#1221#0" />
+            <element signature="e#1279#1633#0" />
+            <element signature="e#1766#2328#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#254#564#0" />
+            <element signature="e#614#1028#0" />
+            <element signature="e#1078#1481#0" />
+            <element signature="e#1539#2053#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/config/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-149">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

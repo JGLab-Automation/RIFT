@@ -27,17 +27,12 @@ def cloud_acct_add(proj_name):
     return api
 
 
-def cloud_acct_config(proj_name, cloud_acct_name):
-    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}"
-    return api
-
-
 def cloud_acct_config_openstack(proj_name, cloud_acct_name):
     api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/openstack"
     return api
 
 
-cloud_account = 'rw-project:project/STRING/rwcal:cloud-accounts'
+def cloud_acct_status(proj_name, cloud_acct_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/oper-state/status"
+    return api
 
-vnfr_catalog = 'rw-project:project/default/vnfr:vnfr-catalog/vnfr'
-ns_instance_config = 'rw-project:project/default/nsr:ns-instance-config/nsr'

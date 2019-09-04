@@ -43,6 +43,21 @@ def log_error(text):
     log(text, 'error')
 
 
+def get_rpc_state(status):
+    key1 = list(status.keys())
+    key2 = list(status[key1[0]].keys())
+    state = key2[0]
+    return state
+
+
+def get_rpc_error_state(status):
+    val1 = list(status.values())
+    val2 = list(val1[0].values())
+    val3 = list(val2[0].values())
+    state = val3[1]
+    return state
+
+
 def create_operational_url(lp_addr, api):
     try:
         url = f'https://{lp_addr}:8008/api/operational/{api}'
@@ -80,12 +95,13 @@ def create_http_basic_auth(uname, passwd):
 def get_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        response = requests.request("GET", url=url, headers=header, verify=False)
+        response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 200:
-            assert response.status_code == 200, f'Response is: {response.status_code}.'
+            state = get_rpc_error_state(response.json())
+            assert response.status_code == 200, f'Response: {response.status_code} | State: {state}.'
         else:
             data = response.json()
-            return (data)
+            return data
     except BaseException as e:
         log_info(e)
         raise
@@ -96,10 +112,11 @@ def create_config(url, header, payload):
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            assert response.status_code == 201, f'Response is: {response.status_code}.'
+            state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
         else:
             data = response.json()
-            return (data)
+            return data
     except BaseException as e:
         log_info(e)
         raise
@@ -110,10 +127,11 @@ def edit_config(url, header, payload):
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            assert response.status_code == 201, f'Response is: {response.status_code}.'
+            state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
         else:
             data = response.json()
-            return (data)
+            return data
     except BaseException as e:
         log_info(e)
         raise
@@ -125,10 +143,11 @@ def delete_config(url, header, payload=""):
 
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            assert response.status_code == 201, f'Response is: {response.status_code}.'
+            state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
         else:
             data = response.json()
-            return (data)
+            return data
     except BaseException as e:
         log_info(e)
         raise
@@ -154,11 +173,11 @@ def delete_config(url, header, payload=""):
 
 
 
-def read_json(file_name, node):
-    json_data = open(file_name)
-    data = json.load(json_data)
-    json_data.close()
-    return data[node]
+# def read_json(file_name, node):
+#     json_data = open(file_name)
+#     data = json.load(json_data)
+#     json_data.close()
+#     return data[node]
 
 
 # def is_valid_xml(xml_file):
@@ -168,28 +187,28 @@ def read_json(file_name, node):
 #     except Exception as e:
 #         return False
 
-def parse_xml(xml_file, *attributes):
-    if not os.path.exists(xml_file):
-        log("XML does not exist")
-        return []
-    tree = et.parse(xml_file)
-    root = tree.getroot()
-    values = []
-    for child in root:
-        attr_list = child.attrib
-        row = ''
-        if not len(attributes):
-            for key in attr_list:
-                try:
-                    row += attr_list[key] + ', '
-                except StandardError:
-                    row += ', '
-        else:
-            for attribute in attributes:
-                try:
-                    row += attr_list[attribute] + ', '
-                except StandardError:
-                    row += ', '
-        if not row == '':
-            values.append(row+'\n')
-    return values
+# def parse_xml(xml_file, *attributes):
+#     if not os.path.exists(xml_file):
+#         log("XML does not exist")
+#         return []
+#     tree = et.parse(xml_file)
+#     root = tree.getroot()
+#     values = []
+#     for child in root:
+#         attr_list = child.attrib
+#         row = ''
+#         if not len(attributes):
+#             for key in attr_list:
+#                 try:
+#                     row += attr_list[key] + ', '
+#                 except StandardError:
+#                     row += ', '
+#         else:
+#             for attribute in attributes:
+#                 try:
+#                     row += attr_list[attribute] + ', '
+#                 except StandardError:
+#                     row += ', '
+#         if not row == '':
+#             values.append(row+'\n')
+#     return values

@@ -79,3 +79,68 @@ def cloud_acct_status(lp_addr, header, proj_name, cloud_acct_name):
         util.log_info(e)
         raise
 
+
+def cloud_acct_delete(lp_addr, header, proj_name, cloud_acct_name):
+    try:
+        api = rapi.cloud_acct_delete(proj_name, cloud_acct_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_delete(url, header, payload)
+        time.sleep(10)
+        state = util.get_rpc_state(status).upper()
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def proj_delete(lp_addr, header, proj_name):
+    try:
+        api = rapi.proj_delete(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_delete(url, header, payload)
+        time.sleep(10)
+        state = util.get_rpc_state(status).upper()
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def pkg_onboard(lp_addr, header, proj_name, ext_url):
+    try:
+        api = rapi.pkg_upload()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.pkg_upload(proj_name, ext_url)
+
+        status = util.config_add(url, header, payload)
+        time.sleep(10)
+        transac_id = util.get_transac_id(status)
+        return transac_id
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def pkg_upload_status(lp_addr, header, proj_name, transac_id):
+    try:
+        api = rapi.pkg_upload_status(proj_name, transac_id)
+        url = util.create_url_operations(lp_addr, api)
+        payload = ""
+
+        status = util.config_get(url, header, payload)
+        state = list(status.values())
+        print(state[0])
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+
+
+
+

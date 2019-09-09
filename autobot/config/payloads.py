@@ -79,3 +79,17 @@ def cloud_acct_config_openstack(key, secret, auth_url, usr_domain, proj_domain, 
         }
     payload = json.dumps(payload)
     return payload
+
+
+def pkg_upload(proj_name, ext_url):
+    payload = \
+        {
+            "input":
+                {
+                    "external-url": f"{ext_url}",
+                    "overwrite": "false",
+                    "project-name": f"{proj_name}"
+                }
+        }
+    payload = json.dumps(payload)
+    return payload

@@ -38,3 +38,7 @@ vim_os_tenant = "jghosh_automation"
 vim_os_region = "RegionOne"
 vim_os_mgmt_net = "private"
 vim_os_float_ip_pool_net = "public"
+
+ping_vnfd_ext_url = "http://10.110.0.2/descriptors/rel71/ping_vnfd.tar.gz"
+pong_vnfd_ext_url = "http://10.110.0.2/descriptors/rel71/pong_vnfd.tar.gz"
+ping_pong_nsd_ext_url = "http://10.110.0.2/descriptors/rel71/ping_pong_nsd.tar.gz"

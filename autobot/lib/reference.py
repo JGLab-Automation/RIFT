@@ -4,6 +4,13 @@ __author__ = "JG"
 This is just a sample file and not used for any execution.
 """
 
+"""
+Status Codes:
+200     OK
+201     Data Created
+404     Resource target or resource node not found
+405     Data-exists / Invalid-value
+"""
 
 
 """

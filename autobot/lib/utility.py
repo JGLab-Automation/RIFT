@@ -102,12 +102,16 @@ def create_http_basic_auth(uname, passwd):
 
 def config_get(url, header, payload=""):
     try:
+        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 200:
-            state = get_rpc_error_state(response.json())
-            assert response.status_code == 200, f'Response: {response.status_code} | State: {state}.'
+            #log_info(f"Response received: {response.text}.")
+            #state = get_rpc_error_state(response.json())
+            assert response.status_code == 200, f'Response: {response.status_code} | State: {response.text}.'
         else:
+            log_info(f"Response received: {response.text}.")
             data = response.json()
             return data
     except BaseException as e:
@@ -117,12 +121,16 @@ def config_get(url, header, payload=""):
 
 def config_add(url, header, payload):
     try:
+        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
+            log_info(f"Response received: {response.text}.")
+            #state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f"Response: {response.status_code} | State: {response.text}."
         else:
+            log_info(f"Response received: {response.text}.")
             data = response.json()
             return data
     except BaseException as e:
@@ -132,12 +140,16 @@ def config_add(url, header, payload):
 
 def config_edit(url, header, payload):
     try:
+        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
+            log_info(f"Response received: {response.text}.")
+            #state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
         else:
+            log_info(f"Response received: {response.text}.")
             data = response.json()
             return data
     except BaseException as e:
@@ -147,12 +159,16 @@ def config_edit(url, header, payload):
 
 def config_delete(url, header, payload=""):
     try:
+        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f'Response: {response.status_code} | State: {state}.'
+            log_info(f"Response received: {response.text}.")
+            #state = get_rpc_error_state(response.json())
+            assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
         else:
+            log_info(f"Response received: {response.text}.")
             data = response.json()
             return data
     except BaseException as e:
@@ -161,7 +177,11 @@ def config_delete(url, header, payload=""):
 
 
 
-
+def get_transac_id(status):
+    val1 = list(status.values())
+    val2 = list(val1[0].values())
+    id = val2[0]
+    return id
 
 
 

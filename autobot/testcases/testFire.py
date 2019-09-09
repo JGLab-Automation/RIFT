@@ -22,5 +22,21 @@ from autobot.config import payloads as pl
 #                                         const.vim_os_tenant)
 # print(state4)
 
-status = fw.cloud_acct_status(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+# status = fw.cloud_acct_status(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+# print(status)
+
+# url = "https://10.110.5.2:8008/api/operations/package-create-update"
+# payload = {"input": {"external-url": "https://localhost:8443/package/uploaded/1568009293804_package_ping_vnfd.tar.gz",
+# "overwrite":"false", "project-name": "Automation"}}
+#
+# {
+#     "output": {
+#         "transaction-id": "26cba310-a20e-4c7e-bf99-55b5a293ee4e"
+#     }
+# }
+
+
+transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_vnfd_ext_url)
+print(transac_id)
+status = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
 print(status)

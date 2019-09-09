@@ -36,3 +36,19 @@ def cloud_acct_status(proj_name, cloud_acct_name):
     api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/oper-state/status"
     return api
 
+
+def cloud_acct_delete(proj_name, cloud_acct_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}"
+    return api
+
+
+def pkg_upload():
+    api = f"package-create-update"
+    return api
+
+
+def pkg_upload_status(proj_name, transac_id):
+    api = f"rw-project:project/{proj_name}/rw-package:package-state/package-create-update-job/{transac_id}/status"
+    return api
+
+

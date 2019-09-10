@@ -52,3 +52,22 @@ def pkg_upload_status(proj_name, transac_id):
     return api
 
 
+def vnfd_catalog(proj_name):
+    api = f"rw-project:project/{proj_name}/project-vnfd:vnfd-catalog/vnfd"
+    return api
+
+
+def vnfd_delete(proj_name, vnfd_id):
+    api = f"rw-project:project/{proj_name}/project-vnfd:vnfd-catalog/vnfd/{vnfd_id}"
+    return api
+
+
+def nsd_catalog(proj_name):
+    api = f"rw-project:project/{proj_name}/project-nsd:nsd-catalog/nsd"
+    return api
+
+
+def nsd_delete(proj_name, nsd_id):
+    api = f"rw-project:project/{proj_name}/project-nsd:nsd-catalog/nsd/{nsd_id}"
+    return api
+

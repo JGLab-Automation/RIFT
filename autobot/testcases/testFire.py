@@ -6,37 +6,28 @@ from autobot.config import payloads as pl
 
 
 
-# state1 = fw.proj_add(const.lp_addr, const.header, const.proj_name_default, const.proj_desc_default)
-# print(state1)
+
+# transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_vnfd_ext_url)
+# state1 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+# util.log_info(f"Package onboard status: {state1}.")
 #
-# state2 = fw.proj_config(const.lp_addr, const.header, const.proj_name_default, const.proj_user_name,
-#                         const.proj_user_domain, const.proj_role, const.proj_event_publish)
-# print(state2)
-
-# state3 = fw.cloud_acct_add(const.lp_addr, const.header, const.proj_name_default, const.cloud_acct_name,
-#                            const.cloud_acct_type, const.cloud_acct_timeout)
-# print(state3)
+# transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.pong_vnfd_ext_url)
+# state2 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+# util.log_info(f"Package onboard status: {state2}.")
 #
-# state4 = fw.cloud_acct_config_openstack(const.lp_addr, const.header, const.proj_name_default, const.cloud_acct_name,
-#                                         const.vim_os_key, const.vim_os_secret, const.vim_os_auth_url,
-#                                         const.vim_os_tenant)
-# print(state4)
-
-# status = fw.cloud_acct_status(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
-# print(status)
-
-# url = "https://10.110.5.2:8008/api/operations/package-create-update"
-# payload = {"input": {"external-url": "https://localhost:8443/package/uploaded/1568009293804_package_ping_vnfd.tar.gz",
-# "overwrite":"false", "project-name": "Automation"}}
+# transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_pong_nsd_ext_url)
+# state3 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+# util.log_info(f"Package onboard status: {state3}.")
 #
-# {
-#     "output": {
-#         "transaction-id": "26cba310-a20e-4c7e-bf99-55b5a293ee4e"
-#     }
-# }
+# if state1 and state2 and state3 == "COMPLETED":
+#     print("All three files uploaded")
 
 
-transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_vnfd_ext_url)
-print(transac_id)
-status = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
-print(status)
+state1 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name_default, "nsd", "ping_pong_nsd")
+state2 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name_default, "vnfd", "pong_vnfd")
+state3 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name_default, "vnfd", "ping_vnfd")
+
+if state1 and state2 and state3 == "OK":
+    print("All files are deleted,.")
+
+

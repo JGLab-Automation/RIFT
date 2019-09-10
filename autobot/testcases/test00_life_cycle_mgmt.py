@@ -48,28 +48,44 @@ class LifeCycleManagement(unittest.TestCase):
         else:
             assert state == "OK", f"Response State: {state}. Status: Failed."
 
-    def test05_Descriptors_Create(self):
-        pass
-
-    def test06_Package_Onboard(self):
-        util.log_info(f"Executing {self.test06_Package_Onboard.__name__}.")
+    def test05_Package_Onboard(self):
+        util.log_info(f"Executing {self.test05_Package_Onboard.__name__}.")
         transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_vnfd_ext_url)
-        state = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
-        util.log_info(f"Package onboard status: {state}.")
-        if state == "COMPLETED":
-            util.log_info(f"Test-case: {self.test06_Package_Onboard.__name__} | Status: Passed.")
+        state1 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+        util.log_info(f"Package onboard status: {state1}.")
+
+        transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.pong_vnfd_ext_url)
+        state2 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+        util.log_info(f"Package onboard status: {state2}.")
+
+        transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_pong_nsd_ext_url)
+        state3 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
+        util.log_info(f"Package onboard status: {state3}.")
+
+        if state1 and state2 and state3 == "COMPLETED":
+            util.log_info(f"Test-case: {self.test05_Package_Onboard.__name__} | Status: Passed.")
         else:
-            assert state == "COMPLETED", f"Response State: {state}. Status: Failed."
+            assert state1 and state2 and state3 == "COMPLETED", f"Response States: {state1, state2, state3}." \
+                f"Status: Failed."
 
-
-    def test07_NS_Instantiate(self):
+    def test06_NS_Instantiate(self):
         pass
 
-    def test08_NS_Terminate(self):
+    def test07_NS_Terminate(self):
         pass
 
-    def test09_NS_Delete(self):
+    def test08_NS_Delete(self):
         pass
+
+    def test09_Package_Delete(self):
+        state1 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name_default, "nsd", "ping_pong_nsd")
+        state2 = fw.pkg_delete(const.lp_addr, const.header, "default", "vnfd", "pong_vnfd")
+        state3 = fw.pkg_delete(const.lp_addr, const.header, "default", "vnfd", "ping_vnfd")
+
+        if state1 and state2 and state3 == "OK":
+            util.log_info("Packages deleted successfully.")
+            util.log_info(f"Test-case: {self.test09_Package_Delete.__name__} | Status: Passed.")
+
 
     def test10_Cloud_Account_Delete(self):
         util.log_info(f"Executing {self.test10_Cloud_Account_Delete.__name__}.")

@@ -104,16 +104,20 @@ def config_get(url, header, payload=""):
     try:
         log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
+        log_info(f"Fetching configuration from URI: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
-        if response.status_code != 200:
-            #log_info(f"Response received: {response.text}.")
-            #state = get_rpc_error_state(response.json())
-            assert response.status_code == 200, f'Response: {response.status_code} | State: {response.text}.'
-        else:
+        if response.status_code == 200:
             log_info(f"Response received: {response.text}.")
             data = response.json()
             return data
+        elif response.status_code == 204:
+            log_info(f"Response received: {response.text}.")
+            return None
+        else:
+            #log_info(f"Response received: {response.text}.")
+            #state = get_rpc_error_state(response.json())
+            assert response.status_code == 200, f'Response: {response.status_code} | State: {response.text}.'
+
     except BaseException as e:
         log_info(e)
         raise
@@ -123,10 +127,10 @@ def config_add(url, header, payload):
     try:
         log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
+        log_info(f"Adding configuration to URI: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            log_info(f"Response received: {response.text}.")
+            #log_info(f"Response received: {response.text}.")
             #state = get_rpc_error_state(response.json())
             assert response.status_code == 201, f"Response: {response.status_code} | State: {response.text}."
         else:
@@ -142,10 +146,10 @@ def config_edit(url, header, payload):
     try:
         log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
+        log_info(f"Adding configuration to URI: {url}, Header: {header} & Payload: {payload}")
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            log_info(f"Response received: {response.text}.")
+            #log_info(f"Response received: {response.text}.")
             #state = get_rpc_error_state(response.json())
             assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
         else:
@@ -161,10 +165,10 @@ def config_delete(url, header, payload=""):
     try:
         log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration with URL: {url}, Header: {header} & Payload: {payload}")
+        log_info(f"Deleting configuration for URI: {url}, Header: {header} & Payload: {payload}.")
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code != 201:
-            log_info(f"Response received: {response.text}.")
+            #log_info(f"Response received: {response.text}.")
             #state = get_rpc_error_state(response.json())
             assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
         else:

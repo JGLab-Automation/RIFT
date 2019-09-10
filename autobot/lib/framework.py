@@ -117,7 +117,7 @@ def pkg_onboard(lp_addr, header, proj_name, ext_url):
         payload = pl.pkg_upload(proj_name, ext_url)
 
         status = util.config_add(url, header, payload)
-        time.sleep(10)
+        time.sleep(20)
         transac_id = util.get_transac_id(status)
         return transac_id
     except BaseException as e:
@@ -140,7 +140,146 @@ def pkg_upload_status(lp_addr, header, proj_name, transac_id):
         raise
 
 
+def get_vnfd_id(lp_addr, header, proj_name):
+    try:
+        vnfd_id = []
+
+        api = rapi.vnfd_catalog(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_get(url, header, payload)
+        vnfd_catalog = status['project-vnfd:vnfd']
+        for i in range(0, len(vnfd_catalog)):
+            vnfd_id.append(vnfd_catalog[i]['id'])
+        return vnfd_id
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_vnfd_name(lp_addr, header, proj_name):
+    try:
+        vnfd_name = []
+
+        api = rapi.vnfd_catalog(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_get(url, header, payload)
+        vnfd_catalog = status['project-vnfd:vnfd']
+        for i in range(len(vnfd_catalog)):
+            vnfd_name.append(vnfd_catalog[i]['name'])
+        return vnfd_name
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_nsd_id(lp_addr, header, proj_name):
+    try:
+        nsd_id = []
+
+        api = rapi.nsd_catalog(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_get(url, header, payload)
+        if status is not None:
+            nsd_catalog = status['project-nsd:nsd']
+            for i in range(0, len(nsd_catalog)):
+                nsd_id.append(nsd_catalog[i]['id'])
+            print(nsd_id)
+            return nsd_id
+        else:
+            util.log_info("NSD package(s) not available.")
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_nsd_name(lp_addr, header, proj_name):
+    try:
+        nsd_name = []
+
+        api = rapi.nsd_catalog(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.config_get(url, header, payload)
+        if status is not None:
+            nsd_catalog = status['project-nsd:nsd']
+            for i in range(len(nsd_catalog)):
+                nsd_name.append(nsd_catalog[i]['name'])
+            print(nsd_name)
+            return nsd_name
+        else:
+            util.log_info("NSD package(s) not available.")
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
+    try:
+        vnfd = {}
+        nsd = {}
+        pkg = {}
+        util.log_info("Collecting VNFD ID.")
+        vnfd_id = get_vnfd_id(lp_addr, header, proj_name)
+        util.log_info("Collecting VNFD Name.")
+        vnfd_name = get_vnfd_name(lp_addr, header, proj_name)
+        util.log_info("Collecting NSD ID.")
+        nsd_id = get_nsd_id(lp_addr, header, proj_name)
+        util.log_info("Collecting NSD Name.")
+        nsd_name = get_nsd_name(lp_addr, header, proj_name)
+
+        if vnfd_id and vnfd_name:
+            vnfd = dict(zip(vnfd_name, vnfd_id))
+        if nsd_id and nsd_name:
+            nsd = dict(zip(nsd_name, nsd_id))
+        if bool(vnfd) or bool(nsd):
+            pkg = {**vnfd, **nsd}
+            util.log_info(f"Available packages: {pkg}")
+
+        if pkg_type.upper() == "VNFD":
+            api = rapi.vnfd_delete(proj_name, pkg[pkg_name])
+            url = util.create_url_running(lp_addr, api)
+            payload = ""
+            util.log_info(f"Deleting package: {pkg_name} with ID: {pkg[pkg_name]}")
+            status = util.config_delete(url, header, payload)
+            time.sleep(20)
+            state = util.get_rpc_state(status).upper()
+            return state
+
+        elif pkg_type.upper() == "NSD":
+            api = rapi.nsd_delete(proj_name, pkg[pkg_name])
+            url = util.create_url_running(lp_addr, api)
+            payload = ""
+            util.log_info(f"Deleting package: {pkg_name} with ID: {pkg[pkg_name]}")
+            status = util.config_delete(url, header, payload)
+            time.sleep(20)
+            state = util.get_rpc_state(status).upper()
+            return state
+
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
 
 
+
+
+
+
+
+
+
+"""
+    try:
+        pass
+    except BaseException as e:
+        util.log_info(e)
+        raise 
+"""

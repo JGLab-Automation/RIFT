@@ -11,10 +11,24 @@ def proj_add(lp_addr, header, proj_name, proj_desc):
         url = util.create_url_running(lp_addr, api)
         payload = pl.proj_add(proj_name, proj_desc)
 
-        status = util.config_add(url, header, payload)
-        time.sleep(10)
+        status = util.add_config(url, header, payload)
+        time.sleep(15)
         state = util.get_rpc_state(status).upper()
         return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_proj_name(lp_addr, header, proj_name):
+    try:
+        api = rapi.proj_name(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload =""
+
+        status = util.get_config(url, header, payload)
+        time.sleep(5)
+        return status["name"]
     except BaseException as e:
         util.log_info(e)
         raise
@@ -26,7 +40,7 @@ def proj_config(lp_addr, header, proj_name, user_name, user_domain, role, event_
         url = util.create_url_running(lp_addr, api)
         payload = pl.proj_config(user_name, user_domain, role, event_publish)
 
-        status = util.config_add(url, header, payload)
+        status = util.add_config(url, header, payload)
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         return state
@@ -41,7 +55,7 @@ def cloud_acct_add(lp_addr, header, proj_name, acct_name, acct_type, timeout):
         url = util.create_url_running(lp_addr, api)
         payload = pl.cloud_acct_add(acct_name, acct_type, timeout)
 
-        status = util.config_add(url, header, payload)
+        status = util.add_config(url, header, payload)
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         return state
@@ -56,7 +70,7 @@ def cloud_acct_config_openstack(lp_addr, header, proj_name, cloud_acct_name, key
         url = util.create_url_running(lp_addr, api)
         payload = pl.cloud_acct_config_openstack(key, secret, auth_url, user_domain, proj_domain, tenant, region, mgmt_net, float_ip_pool_net)
 
-        status = util.config_edit(url, header, payload)
+        status = util.edit_config(url, header, payload)
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         return state
@@ -71,7 +85,7 @@ def cloud_acct_status(lp_addr, header, proj_name, cloud_acct_name):
         url = util.create_url_operational(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         time.sleep(10)
         val = list(status.values())
         return val[0]
@@ -86,7 +100,7 @@ def cloud_acct_delete(lp_addr, header, proj_name, cloud_acct_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_delete(url, header, payload)
+        status = util.delete_config(url, header, payload)
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         return state
@@ -101,7 +115,7 @@ def proj_delete(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_delete(url, header, payload)
+        status = util.delete_config(url, header, payload)
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         return state
@@ -116,7 +130,7 @@ def pkg_onboard(lp_addr, header, proj_name, ext_url):
         url = util.create_url_operations(lp_addr, api)
         payload = pl.pkg_upload(proj_name, ext_url)
 
-        status = util.config_add(url, header, payload)
+        status = util.add_config(url, header, payload)
         time.sleep(20)
         transac_id = util.get_transac_id(status)
         return transac_id
@@ -131,10 +145,9 @@ def pkg_upload_status(lp_addr, header, proj_name, transac_id):
         url = util.create_url_operations(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         state = list(status.values())
-        print(state[0])
-        return state
+        return state[0]
     except BaseException as e:
         util.log_info(e)
         raise
@@ -148,7 +161,7 @@ def get_vnfd_id(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         vnfd_catalog = status['project-vnfd:vnfd']
         for i in range(0, len(vnfd_catalog)):
             vnfd_id.append(vnfd_catalog[i]['id'])
@@ -166,7 +179,7 @@ def get_vnfd_name(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         vnfd_catalog = status['project-vnfd:vnfd']
         for i in range(len(vnfd_catalog)):
             vnfd_name.append(vnfd_catalog[i]['name'])
@@ -184,12 +197,11 @@ def get_nsd_id(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         if status is not None:
             nsd_catalog = status['project-nsd:nsd']
             for i in range(0, len(nsd_catalog)):
                 nsd_id.append(nsd_catalog[i]['id'])
-            print(nsd_id)
             return nsd_id
         else:
             util.log_info("NSD package(s) not available.")
@@ -206,18 +218,27 @@ def get_nsd_name(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        status = util.config_get(url, header, payload)
+        status = util.get_config(url, header, payload)
         if status is not None:
             nsd_catalog = status['project-nsd:nsd']
             for i in range(len(nsd_catalog)):
                 nsd_name.append(nsd_catalog[i]['name'])
-            print(nsd_name)
             return nsd_name
         else:
             util.log_info("NSD package(s) not available.")
     except BaseException as e:
         util.log_info(e)
         raise
+
+
+def get_nsd_name_id(lp_addr, header, proj_name):
+    nsd_id = get_nsd_id(lp_addr, header, proj_name)
+    nsd_name = get_nsd_name(lp_addr, header, proj_name)
+    if nsd_id and nsd_name:
+        nsd = dict(zip(nsd_name, nsd_id))
+        return nsd
+    else:
+        util.log_info("NSD ID & Name couldn't map.")
 
 
 def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
@@ -247,7 +268,7 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             url = util.create_url_running(lp_addr, api)
             payload = ""
             util.log_info(f"Deleting package: {pkg_name} with ID: {pkg[pkg_name]}")
-            status = util.config_delete(url, header, payload)
+            status = util.delete_config(url, header, payload)
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
             return state
@@ -257,7 +278,7 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             url = util.create_url_running(lp_addr, api)
             payload = ""
             util.log_info(f"Deleting package: {pkg_name} with ID: {pkg[pkg_name]}")
-            status = util.config_delete(url, header, payload)
+            status = util.delete_config(url, header, payload)
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
             return state
@@ -267,12 +288,83 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
         raise
 
 
+def ns_add(lp_addr, header, proj_name, ns_name, nsd_id):
+    try:
+        api = rapi.ns_create()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.ns_create(proj_name, ns_name, nsd_id)
+
+        status = util.add_config(url, header, payload)
+        time.sleep(10)
+        nsr_id = util.get_nsr_id(status)
+        transac_state = util.get_transac_id(status)
+        return nsr_id, transac_state
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
+def ns_instantiate(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.ns_instantiate()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.ns_instantiate(proj_name, nsr_id)
+
+        status = util.add_config(url, header, payload)
+        util.log_info("Please wait while instantiation is in progress.")
+        time.sleep(300)
+        state = util.get_transac_id(status)
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
+def ns_terminate(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.ns_terminate()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.ns_terminate(proj_name, nsr_id)
+
+        status = util.add_config(url, header, payload)
+        util.log_info(f"Please wait while terminating NS with ID- {nsr_id}.")
+        time.sleep(60)
+        state = util.get_transac_id(status)
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
+def ns_delete(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.ns_delete()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.ns_delete(proj_name, nsr_id)
+
+        status = util.add_config(url, header, payload)
+        util.log_info(f"Please wait while deleting NS with ID- {nsr_id}.")
+        time.sleep(10)
+        state = util.get_transac_id(status)
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+def get_ns_oper_status(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.ns_oper_status(proj_name, nsr_id)
+        url = util.create_url_operations(lp_addr, api)
+        payload = ""
+
+        status = util.get_config(url, header, payload)
+        util.log_info(f"Fetching operational-status of NS with ID: {nsr_id}.")
+        time.sleep(10)
+        state = status["operational-status"]
+        return state
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
 

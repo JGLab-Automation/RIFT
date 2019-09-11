@@ -51,21 +51,6 @@ def log_error(text):
     log(text, 'error')
 
 
-def get_rpc_state(status):
-    key1 = list(status.keys())
-    key2 = list(status[key1[0]].keys())
-    state = key2[0]
-    return state
-
-
-def get_rpc_error_state(status):
-    val1 = list(status.values())
-    val2 = list(val1[0].values())
-    val3 = list(val2[0].values())
-    state = val3[1]
-    return state
-
-
 def create_url_running(lp_addr, api):
     try:
         url = f'https://{lp_addr}:8008/api/running/{api}'
@@ -100,85 +85,93 @@ def create_http_basic_auth(uname, passwd):
         raise
 
 
-def config_get(url, header, payload=""):
+def get_config(url, header, payload=""):
     try:
-        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Fetching configuration from URI: {url}, Header: {header} & Payload: {payload}")
+        log_info("Fetching configuration.")
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
-        if response.status_code == 200:
-            log_info(f"Response received: {response.text}.")
+        if response.status_code == 200:         # Code for successful response.
             data = response.json()
+            log_info(f"Data received: {data}.")
             return data
-        elif response.status_code == 204:
-            log_info(f"Response received: {response.text}.")
+        elif response.status_code == 204:       # Code for response with 'No Content'.
+            data = response.json()
+            log_info(f"Data received: {data}.")
             return None
         else:
-            #log_info(f"Response received: {response.text}.")
-            #state = get_rpc_error_state(response.json())
-            assert response.status_code == 200, f'Response: {response.status_code} | State: {response.text}.'
-
+            data = response.json()
+            assert response.status_code == 200, f"Response: {response.status_code} | Data received: {data}."
     except BaseException as e:
         log_info(e)
         raise
 
 
-def config_add(url, header, payload):
+def add_config(url, header, payload):
     try:
-        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration to URI: {url}, Header: {header} & Payload: {payload}")
+        log_info("Adding configuration")
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
-        if response.status_code != 201:
-            #log_info(f"Response received: {response.text}.")
-            #state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f"Response: {response.status_code} | State: {response.text}."
-        else:
-            log_info(f"Response received: {response.text}.")
+        if response.status_code == 201:
             data = response.json()
+            log_info(f"Data received: {data}.")
             return data
+        else:
+            data = response.json()
+            assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
     except BaseException as e:
         log_info(e)
         raise
 
 
-def config_edit(url, header, payload):
+def edit_config(url, header, payload):
     try:
-        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Adding configuration to URI: {url}, Header: {header} & Payload: {payload}")
+        log_info("Editing configuration.")
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
-        if response.status_code != 201:
-            #log_info(f"Response received: {response.text}.")
-            #state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
-        else:
-            log_info(f"Response received: {response.text}.")
+        if response.status_code == 201:
             data = response.json()
+            log_info(f"Data received: {data}")
             return data
+        else:
+            data = response.json()
+            assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
     except BaseException as e:
         log_info(e)
         raise
 
 
-def config_delete(url, header, payload=""):
+def delete_config(url, header, payload=""):
     try:
-        log_info("Disabling SSL Check.")
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info(f"Deleting configuration for URI: {url}, Header: {header} & Payload: {payload}.")
+        log_info("Deleting configuration.")
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
-        if response.status_code != 201:
-            #log_info(f"Response received: {response.text}.")
-            #state = get_rpc_error_state(response.json())
-            assert response.status_code == 201, f'Response: {response.status_code} | State: {response.text}.'
-        else:
-            log_info(f"Response received: {response.text}.")
+        if response.status_code == 201:
             data = response.json()
+            log_info(f"Data received: {data}")
             return data
+        else:
+            data = response.json()
+            assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+            log_info(f"Response received: {response.text}.")
+
     except BaseException as e:
         log_info(e)
         raise
 
+
+def get_rpc_state(status):
+    key1 = list(status.keys())
+    key2 = list(status[key1[0]].keys())
+    state = key2[0]
+    return state
+
+
+def get_rpc_error_state(status):
+    val1 = list(status.values())
+    val2 = list(val1[0].values())
+    val3 = list(val2[0].values())
+    state = val3[1]
+    return state
 
 
 def get_transac_id(status):
@@ -186,6 +179,19 @@ def get_transac_id(status):
     val2 = list(val1[0].values())
     id = val2[0]
     return id
+
+def get_nsr_id(status):
+    val1 = list(status.values())
+    val2 = list(val1[0].values())
+    id = val2[0]
+    return id
+
+def get_ns_transac_status(status):
+    val1 = list(status.values())
+    val2 = list(val1[1].values())
+    state = val2[0]
+    return state
+
 
 
 

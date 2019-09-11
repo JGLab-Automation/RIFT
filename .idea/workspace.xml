@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="146feddf-3b15-404b-857f-e406d423fe4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/local.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/local.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autobot/config/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/config/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/config/payloads.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/config/payloads.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/lib/framework.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/framework.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autobot/lib/reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/reference.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/lib/restAPIs.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/restAPIs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/lib/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/lib/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/autobot/testcases/testFire.py" beforeDir="false" afterPath="$PROJECT_DIR$/autobot/testcases/testFire.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,30 +18,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/autobot/testcases/testFire.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_ping_pong_life_cycle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="323">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#19#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/testcases/testFire.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="70" column="31" lean-forward="true" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
+            <state relative-caret-position="582">
+              <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
               <folding>
-                <element signature="e#19#34#0" expanded="true" />
-                <element signature="e#684#1176#0" />
-                <element signature="e#1226#1707#0" />
-                <element signature="e#1763#2615#0" />
-                <element signature="e#2925#3323#0" />
-                <element signature="e#3379#3742#0" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,15 +45,64 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/autobot/lib/framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="824">
-              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="470">
+              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
               <folding>
-                <element signature="e#212#571#0" />
+                <element signature="e#668#1065#0" />
                 <element signature="e#1151#1540#0" />
                 <element signature="e#1762#2258#0" />
                 <element signature="e#2333#2686#0" />
+                <element signature="e#2761#2900#0" />
                 <element signature="e#3201#3567#0" />
-                <element signature="e#4022#4355#0" />
+                <element signature="e#4421#4859#0" />
+                <element signature="e#4913#5356#0" />
+                <element signature="e#5911#6369#0" />
+                <element signature="e#6598#6824#0" />
+                <element signature="e#6688#8084#0" />
+                <element signature="e#8419#8778#0" />
+                <element signature="e#9182#9620#0" />
+                <element signature="e#10171#10603#0" />
+                <element signature="e#9653#10091#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="166" selection-start-line="166" selection-end-line="166" />
+              <folding>
+                <element signature="e#1375#1520#0" />
+                <element signature="e#1568#1716#0" />
+                <element signature="e#1765#1928#0" />
+                <element signature="e#1978#2111#0" />
+                <element signature="e#2159#2672#0" />
+                <element signature="e#2717#3231#0" />
+                <element signature="e#3277#3790#0" />
+                <element signature="e#3841#4357#0" />
+                <element signature="e#4679#4782#0" />
+                <element signature="e#4822#4955#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+              <folding>
+                <element signature="e#380#1221#0" />
+                <element signature="e#1279#1633#0" />
+                <element signature="e#1766#2328#0" />
+                <element signature="e#2371#2621#0" />
+                <element signature="e#2705#2971#0" />
+                <element signature="e#3017#6874#0" />
+                <element signature="e#6917#7146#0" />
+                <element signature="e#7186#7415#0" />
               </folding>
             </state>
           </provider>
@@ -71,31 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/autobot/lib/restAPIs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="767">
-              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-              <folding>
-                <element signature="e#73#311#0" />
-                <element signature="e#380#1221#0" />
-                <element signature="e#1279#1633#0" />
-              </folding>
+            <state relative-caret-position="304">
+              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -103,17 +120,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/autobot/config/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="304">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-package.doc-api.txt">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-config-agent.doc-api.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="7127" column="77" selection-start-line="7127" selection-start-column="55" selection-end-line="7127" selection-end-column="82" />
+            <state relative-caret-position="-634">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-project.doc-api.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-74">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -132,6 +158,20 @@
       <find>package-create</find>
       <find>package-create-update</find>
       <find>descriptor</find>
+      <find>vnfd-cata</find>
+      <find>project-vnfd:vnfd-catalog</find>
+      <find>nsd-catalog</find>
+      <find>project-nsd:nsd-catalog</find>
+      <find>network-service</find>
+      <find>create-network-service</find>
+      <find>delete-network-service</find>
+      <find>nsr:ns-instance-opdata</find>
+      <find>operational-status</find>
+      <find>const.proj_name_default</find>
+      <find>const.proj_desc_default</find>
+      <find>ns-instance-opdata</find>
+      <find>rw-project</find>
+      <find>rw-project:project</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/autobot/lib/yangDoc</dir>
@@ -143,13 +183,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/autobot/config/payloads.py" />
-        <option value="$PROJECT_DIR$/autobot/lib/restAPIs.py" />
         <option value="$PROJECT_DIR$/autobot/config/constants.py" />
-        <option value="$PROJECT_DIR$/autobot/lib/utility.py" />
+        <option value="$PROJECT_DIR$/autobot/config/payloads.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/yangDoc/nsr.doc-api.txt" />
+        <option value="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/restAPIs.py" />
         <option value="$PROJECT_DIR$/autobot/lib/framework.py" />
         <option value="$PROJECT_DIR$/autobot/testcases/testFire.py" />
-        <option value="$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py" />
+        <option value="$PROJECT_DIR$/autobot/lib/utility.py" />
+        <option value="$PROJECT_DIR$/autobot/testcases/test00_ping_pong_life_cycle.py" />
       </list>
     </option>
   </component>
@@ -242,7 +284,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test00_life_cycle_mgmt.Life_Cycle_Management.test03_Cloud_Account_Add" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for autobot.testcases.test00_ping_pong_life_cycle" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="local" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -252,11 +294,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test00_life_cycle_mgmt.Life_Cycle_Management.test03_Cloud_Account_Add&quot;" />
+      <option name="_new_target" value="&quot;autobot.testcases.test00_ping_pong_life_cycle&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test00_life_cycle_mgmt.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in test00_ping_pong_life_cycle.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="local" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -266,15 +308,15 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/autobot/testcases/test00_ping_pong_life_cycle.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.testFire" />
-        <item itemvalue="Python tests.Unittests in test00_life_cycle_mgmt.py" />
-        <item itemvalue="Python tests.Unittests for test00_life_cycle_mgmt.Life_Cycle_Management.test03_Cloud_Account_Add" />
+        <item itemvalue="Python tests.Unittests in test00_ping_pong_life_cycle.py" />
+        <item itemvalue="Python tests.Unittests for autobot.testcases.test00_ping_pong_life_cycle" />
       </list>
     </recent_temporary>
   </component>
@@ -289,6 +331,21 @@
       <option name="presentableId" value="Default" />
       <updated>1567519170407</updated>
     </task>
+    <task id="LOCAL-00001" summary="Package_Upload">
+      <created>1568029310702</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568029310702</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Package_Upload &amp; Delete validated.">
+      <created>1568113668737</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568113668737</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -301,15 +358,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1200" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18670887" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18670887" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32945737" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32945737" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39922482" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -355,14 +411,12 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Package_Upload" />
+    <MESSAGE value="Package_Upload &amp; Delete validated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Package_Upload &amp; Delete validated." />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-vnfm.doc-api.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="1728" column="39" selection-start-line="1728" selection-start-column="29" selection-end-line="1728" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-package.doc-api.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -370,43 +424,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autobot/lib/restAPIs.py">
+    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-vnfm.doc-api.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+        <state relative-caret-position="723">
+          <caret line="16634" column="65" selection-start-line="16634" selection-start-column="5" selection-end-line="16634" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
+    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-nsr.doc-api.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-          <folding>
-            <element signature="e#73#311#0" />
-            <element signature="e#380#1221#0" />
-            <element signature="e#1279#1633#0" />
-          </folding>
+        <state relative-caret-position="363">
+          <caret line="23963" column="47" selection-start-line="23963" selection-start-column="18" selection-end-line="23963" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/nsr.doc-api.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="11188" column="11" selection-start-line="11188" selection-start-column="4" selection-end-line="11188" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/autobot/config/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
+    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-config-agent.doc-api.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
+        <state relative-caret-position="-634">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/yangDoc/rw-project.doc-api.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-74">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/config/payloads.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#380#1221#0" />
+            <element signature="e#1279#1633#0" />
+            <element signature="e#1766#2328#0" />
+            <element signature="e#2371#2621#0" />
+            <element signature="e#2705#2971#0" />
+            <element signature="e#3017#6874#0" />
+            <element signature="e#6917#7146#0" />
+            <element signature="e#7186#7415#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/lib/restAPIs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/autobot/testcases/testFire.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="582">
+          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -415,30 +502,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/autobot/lib/framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        <state relative-caret-position="470">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
-            <element signature="e#212#571#0" />
+            <element signature="e#668#1065#0" />
             <element signature="e#1151#1540#0" />
             <element signature="e#1762#2258#0" />
             <element signature="e#2333#2686#0" />
+            <element signature="e#2761#2900#0" />
             <element signature="e#3201#3567#0" />
-            <element signature="e#4022#4355#0" />
+            <element signature="e#4421#4859#0" />
+            <element signature="e#4913#5356#0" />
+            <element signature="e#5911#6369#0" />
+            <element signature="e#6598#6824#0" />
+            <element signature="e#6688#8084#0" />
+            <element signature="e#8419#8778#0" />
+            <element signature="e#9182#9620#0" />
+            <element signature="e#10171#10603#0" />
+            <element signature="e#9653#10091#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_life_cycle_mgmt.py">
+    <entry file="file://$PROJECT_DIR$/autobot/lib/utility.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="70" column="31" lean-forward="true" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
+        <state relative-caret-position="425">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
+          <folding>
+            <element signature="e#1375#1520#0" />
+            <element signature="e#1568#1716#0" />
+            <element signature="e#1765#1928#0" />
+            <element signature="e#1978#2111#0" />
+            <element signature="e#2159#2672#0" />
+            <element signature="e#2717#3231#0" />
+            <element signature="e#3277#3790#0" />
+            <element signature="e#3841#4357#0" />
+            <element signature="e#4679#4782#0" />
+            <element signature="e#4822#4955#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autobot/testcases/test00_ping_pong_life_cycle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#19#34#0" expanded="true" />
-            <element signature="e#684#1176#0" />
-            <element signature="e#1226#1707#0" />
-            <element signature="e#1763#2615#0" />
-            <element signature="e#2925#3323#0" />
-            <element signature="e#3379#3742#0" />
           </folding>
         </state>
       </provider>

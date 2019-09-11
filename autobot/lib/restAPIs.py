@@ -12,6 +12,11 @@ def proj_add():
     return str(api)
 
 
+def proj_name(proj_name):
+    api = f"rw-project:project/{proj_name}/name"
+    return api
+
+
 def proj_config(proj_name):
     api = f"rw-project:project/{proj_name}/project-config"
     return api
@@ -71,3 +76,25 @@ def nsd_delete(proj_name, nsd_id):
     api = f"rw-project:project/{proj_name}/project-nsd:nsd-catalog/nsd/{nsd_id}"
     return api
 
+
+def ns_create():
+    api = "nsr:create-network-service-v2"
+    return api
+
+
+def ns_instantiate():
+    api = "nsr:instantiate-network-service-v2"
+    return api
+
+def ns_terminate():
+    api = "nsr:terminate-network-service-v2"
+    return api
+
+
+def ns_delete():
+    api = "nsr:delete-network-service-v2"
+    return api
+
+def ns_oper_status(proj_name, nsr_id):
+    api = f"rw-project:project/{proj_name}/nsr:ns-instance-opdata/nsr/{nsr_id}/operational-status"
+    return api

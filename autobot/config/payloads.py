@@ -93,3 +93,121 @@ def pkg_upload(proj_name, ext_url):
         }
     payload = json.dumps(payload)
     return payload
+
+
+def ns_create(proj_name, ns_name, nsd_id):
+    payload = \
+        {
+            'input':
+                {
+                    'project-name': proj_name,
+                    'name': ns_name,
+                    'nsd-id-ref': nsd_id
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
+
+
+def ns_instantiate(proj_name, nsr_id):
+    payload = \
+        {
+            'input':
+                {
+                    'nsr-id-ref': nsr_id,
+                    'deployment-profile':
+                        {
+                            'config-timeout': 1200,
+                            'auto-rollback': 'DISABLED',
+                            'ip-profile-map':
+                                [
+                                    {
+                                        'ip-profile-ref': 'InterVNFLink-1',
+                                        'ip-profile-params':
+                                            {
+                                                'subnet':
+                                                    [
+                                                        {
+                                                            'name': 'subnet-1',
+                                                            'ip-version': 'ipv4',
+                                                            'subnet-address': '31.31.31.0/24',
+                                                            'dhcp-params':
+                                                                {
+                                                                    'enabled': 'false'
+                                                                }
+                                                        }
+                                                    ]
+                                            }
+                                    },
+                                    {
+                                        'ip-profile-ref': 'InterVNFLink-2',
+                                        'ip-profile-params':
+                                            {
+                                                'subnet':
+                                                    [
+                                                        {
+                                                            'name': 'subnet-2',
+                                                            'ip-version': 'ipv4',
+                                                            'subnet-address': '32.32.32.0/24',
+                                                            'dhcp-params':
+                                                                {
+                                                                    'enabled': 'false'
+                                                                }
+                                                        }
+                                                    ]
+                                            }
+                                    }
+                                ],
+                            'datacenter': 'OS',
+                            'input-variable': [],
+                            'input-parameter':
+                                [
+                                    {
+                                        'xpath': "/nsd/vld[id='mgmt_vld']/vim-network-name",
+                                        'value': 'private'
+                                    },
+                                    {
+                                        'xpath': "/nsd/vld[id='mgmt_vld']/ipv4-nat-pool-name",
+                                        'value': 'public'
+                                    },
+                                    {
+                                        'xpath': "/nsd/vld[id='ping_pong_vld1']/ip-profile-ref",
+                                        'value': 'InterVNFLink-1'
+                                    }
+                                ],
+                            'nsd-placement-group-maps': [],
+                            'vnfd-placement-group-maps': []
+                        },
+                    'project-name': proj_name
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
+
+
+def ns_terminate(proj_name, nsr_id):
+    payload = \
+        {
+            'input':
+                {
+                    'project-name': proj_name,
+                    'nsr-id-ref': nsr_id
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
+
+
+def ns_delete(proj_name, nsr_id):
+    payload = \
+        {
+            'input':
+                {
+                    'project-name': proj_name,
+                    'nsr-id-ref': nsr_id
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
+
+

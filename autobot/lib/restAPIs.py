@@ -22,6 +22,11 @@ def proj_config(proj_name):
     return api
 
 
+def proj_user_role(proj_name):
+    api = f"rw-project:project/{proj_name}/project-config/user/role"
+    return api
+
+
 def proj_delete(proj_name):
     api = f"rw-project:project/{proj_name}"
     return str(api)
@@ -29,6 +34,11 @@ def proj_delete(proj_name):
 
 def cloud_acct_add(proj_name):
     api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account"
+    return api
+
+
+def cloud_acct_type(proj_name, acct_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{acct_name}/account-type"
     return api
 
 
@@ -82,9 +92,15 @@ def ns_create():
     return api
 
 
+def ns_instance_config(proj_name, nsr_id):
+    api = f"rw-project:project/{proj_name}/nsr:ns-instance-config/nsr/{nsr_id}"
+    return api
+
+
 def ns_instantiate():
     api = "nsr:instantiate-network-service-v2"
     return api
+
 
 def ns_terminate():
     api = "nsr:terminate-network-service-v2"
@@ -94,6 +110,7 @@ def ns_terminate():
 def ns_delete():
     api = "nsr:delete-network-service-v2"
     return api
+
 
 def ns_oper_status(proj_name, nsr_id):
     api = f"rw-project:project/{proj_name}/nsr:ns-instance-opdata/nsr/{nsr_id}/operational-status"

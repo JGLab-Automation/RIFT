@@ -17,7 +17,7 @@ header = \
 proj_name = ""
 proj_desc = ""
 
-proj_name_default = "Test1"
+proj_name_default = "Autobot"
 proj_desc_default = "Automation Project"
 
 proj_user_name = "admin"
@@ -27,14 +27,14 @@ proj_event_publish = False
 
 cloud_acct_name = "OS"
 cloud_acct_type = "OpenStack"
-cloud_acct_timeout = 120
+cloud_acct_timeout = 500
 
-vim_os_key = "jghosh_automation"
+vim_os_key = "jghosh"
 vim_os_secret = "mypasswd"
 vim_os_auth_url = "https://keystone.es2.eng.riftio.com:5000/v3"
 vim_os_user_domain = "eng"
 vim_os_proj_domain = "eng"
-vim_os_tenant = "jghosh_automation"
+vim_os_tenant = "jghosh"
 vim_os_region = "RegionOne"
 vim_os_mgmt_net = "private"
 vim_os_float_ip_pool_net = "public"

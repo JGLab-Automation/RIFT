@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2019-09-12 11:14:52</p>
+                <p class='attribute'><strong>Duration: </strong>181.33 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 12, Pass: 5, Fail: 6, Error: 1</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>autobot.testcases.test00_ping_pong_life_cycle.PingPongLifeCycle</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test01_Project_Add</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test01_Project_Add.
+Adding configuration
+Data received: {'rpc-reply': {'ok': ''}}.
+Test-case: test01_Project_Add | Status: Passed.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test02_Project_Configure</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test02_Project_Configure.
+Adding configuration
+Response: 503 | Data received: {'error': 'Session closed'}.
+Response: 503 | Data received: {'error': 'Session closed'}.
+</p><p style="color:maroon;">AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 28, in test02_Project_Configure
+    const.proj_user_domain, const.proj_role, const.proj_event_publish)
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 43, in proj_config
+    status = util.add_config(url, header, payload)
+  File "/home/JG/Documents/automation/local/autobot/lib/utility.py", line 120, in add_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test03_Cloud_Account_Add</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test03_Cloud_Account_Add.
+Adding configuration
+Data received: {'rpc-reply': {'ok': ''}}.
+Test-case: test03_Cloud_Account_Add | Status: Passed.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test04_Cloud_Account_Configure</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test04_Cloud_Account_Configure.
+Editing configuration.
+Data received: {'rpc-reply': {'ok': ''}}
+Fetching configuration.
+Data received: {'status': 'failure'}.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test05_Package_Onboard</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test05_Package_Onboard.
+Adding configuration
+Data received: {'output': {'transaction-id': '33e493f4-3bb1-4e5f-bf35-ceabc332ed48'}}.
+Fetching configuration.
+Data received: {'status': 'COMPLETED'}.
+Package onboard status: COMPLETED.
+Adding configuration
+Data received: {'output': {'transaction-id': 'f10a529e-4f75-45b8-af0c-4ad5c2de388a'}}.
+Fetching configuration.
+Data received: {'status': 'COMPLETED'}.
+Package onboard status: COMPLETED.
+Adding configuration
+Data received: {'output': {'transaction-id': 'c357ed80-a925-4db0-ad11-819f0c1efb08'}}.
+Fetching configuration.
+Data received: {'status': 'COMPLETED'}.
+Package onboard status: COMPLETED.
+Test-case: test05_Package_Onboard | Status: Passed.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test06_NS_Create</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test06_NS_Create.
+Fetching configuration.
+Data received: {'project-nsd:nsd': [{'id': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_pong_nsd', 'short-name': 'ping_pong_nsd', 'vendor': 'RIFT.io', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware NS ', 'version': '1.0', 'model-version': '1.3', 'ip-profiles': [{'name': 'InterVNFLink-1', 'description': 'Inter VNF Link', 'ip-profile-params': {'subnet': [{'name': 'subnet-1', 'ip-version': 'ipv4', 'subnet-address': '31.31.31.0/24', 'dhcp-params': {'enabled': 'false'}}]}}, {'name': 'InterVNFLink-2', 'description': 'Inter VNF Link-2', 'ip-profile-params': {'subnet': [{'name': 'subnet-2', 'ip-version': 'ipv4', 'subnet-address': '32.32.32.0/24', 'dhcp-params': {'enabled': 'false'}}]}}], 'initial-service-primitive': [{'seq': 1, 'name': 'start traffic', 'user-defined-script': 'start_traffic.py', 'parameter': [{'name': 'userid'}]}], 'terminate-service-primitive': [{'seq': 1, 'name': 'stop traffic', 'user-defined-script': 'stop_traffic.py', 'parameter': [{'name': 'userid', 'value': 'rift'}]}], 'input-parameter-xpath': [{'xpath': '/nsd/vendor'}], 'vld': [{'id': 'mgmt_vld', 'name': 'mgmt_vld', 'type': 'ELAN', 'mgmt-network': 'true', 'vim-network-name': 'private', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp0', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp0', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}], 'rw-project-nsd:ipv4-nat-pool-name': 'public'}, {'id': 'ping_pong_vld1', 'name': 'ping_pong_vld1', 'short-name': 'ping_pong_vld1', 'vendor': 'RIFT.io', 'description': 'Toy VL', 'version': '1.0', 'type': 'ELAN', 'mgmt-network': 'false', 'ip-profile-ref': 'InterVNFLink-1', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'constituent-vnfd': [{'member-vnf-index': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}, {'member-vnf-index': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}], 'placement-groups': [{'name': 'Orcus', 'requirement': 'Place this VM on the Kuiper belt object Orcus', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'name': 'Quaoar', 'requirement': 'Place this VM on the Kuiper belt object Quaoar', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '2', 'name': 'ping-response-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '3', 'name': 'ping-request-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '4', 'name': 'ping-response-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '5', 'name': 'packet-rate', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '3', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}]}]}.
+Fetching configuration.
+Data received: {'project-nsd:nsd': [{'id': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_pong_nsd', 'short-name': 'ping_pong_nsd', 'vendor': 'RIFT.io', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware NS ', 'version': '1.0', 'model-version': '1.3', 'ip-profiles': [{'name': 'InterVNFLink-1', 'description': 'Inter VNF Link', 'ip-profile-params': {'subnet': [{'name': 'subnet-1', 'ip-version': 'ipv4', 'subnet-address': '31.31.31.0/24', 'dhcp-params': {'enabled': 'false'}}]}}, {'name': 'InterVNFLink-2', 'description': 'Inter VNF Link-2', 'ip-profile-params': {'subnet': [{'name': 'subnet-2', 'ip-version': 'ipv4', 'subnet-address': '32.32.32.0/24', 'dhcp-params': {'enabled': 'false'}}]}}], 'initial-service-primitive': [{'seq': 1, 'name': 'start traffic', 'user-defined-script': 'start_traffic.py', 'parameter': [{'name': 'userid'}]}], 'terminate-service-primitive': [{'seq': 1, 'name': 'stop traffic', 'user-defined-script': 'stop_traffic.py', 'parameter': [{'name': 'userid', 'value': 'rift'}]}], 'input-parameter-xpath': [{'xpath': '/nsd/vendor'}], 'vld': [{'id': 'mgmt_vld', 'name': 'mgmt_vld', 'type': 'ELAN', 'mgmt-network': 'true', 'vim-network-name': 'private', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp0', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp0', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}], 'rw-project-nsd:ipv4-nat-pool-name': 'public'}, {'id': 'ping_pong_vld1', 'name': 'ping_pong_vld1', 'short-name': 'ping_pong_vld1', 'vendor': 'RIFT.io', 'description': 'Toy VL', 'version': '1.0', 'type': 'ELAN', 'mgmt-network': 'false', 'ip-profile-ref': 'InterVNFLink-1', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'constituent-vnfd': [{'member-vnf-index': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}, {'member-vnf-index': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}], 'placement-groups': [{'name': 'Orcus', 'requirement': 'Place this VM on the Kuiper belt object Orcus', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'name': 'Quaoar', 'requirement': 'Place this VM on the Kuiper belt object Quaoar', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '2', 'name': 'ping-response-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '3', 'name': 'ping-request-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '4', 'name': 'ping-response-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '5', 'name': 'packet-rate', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '3', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}]}]}.
+Adding configuration
+Data received: {'output': {'nsr-id': '5c7b8cc8-dc62-4012-96b0-32c63d434ca1', 'transaction-status': 'init', 'transaction-id': 'c553a01a-d520-11e9-8e3d-02420a6e0502'}}.
+</p><p style="color:maroon;">AssertionError: Transaction state: 5c7b8cc8-dc62-4012-96b0-32c63d434ca1. | Status: Failed.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 89, in test06_NS_Create
+    assert state == "init", f"Transaction state: {state}. | Status: Failed."
+AssertionError: Transaction state: 5c7b8cc8-dc62-4012-96b0-32c63d434ca1. | Status: Failed.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test07_NS_Instantiate</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test07_NS_Instantiate.
+Adding configuration
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+</p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 93, in test07_NS_Instantiate
+    state = fw.ns_instantiate(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 313, in ns_instantiate
+    status = util.add_config(url, header, payload)
+  File "/home/JG/Documents/automation/local/autobot/lib/utility.py", line 120, in add_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:instantiate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test08_NS_Terminate</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test08_NS_Terminate.
+Adding configuration
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+</p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 105, in test08_NS_Terminate
+    state = fw.ns_terminate(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 329, in ns_terminate
+    status = util.add_config(url, header, payload)
+  File "/home/JG/Documents/automation/local/autobot/lib/utility.py", line 120, in add_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'protocol', 'error-tag': 'invalid-value', 'error-severity': 'error', 'error-path': '\n    /rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref\n  ', 'error-message': '/rpc/nsr:terminate-network-service-v2/nsr:nsr-id-ref: "" is an invalid value.', 'error-info': {'bad-element': 'nsr-id-ref'}}}}.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test09_NS_Delete</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test09_NS_Delete.
+Fetching configuration.
+Data received: {}.
+Fetching operational-status of NS with ID: .
+'operational-status'
+</p><p style="color:maroon;">KeyError: 'operational-status'</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 117, in test09_NS_Delete
+    status = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 363, in get_ns_oper_status
+    state = status["operational-status"]
+KeyError: 'operational-status'
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test10_Package_Delete</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Collecting VNFD ID.
+Fetching configuration.
+Data received: {'project-vnfd:vnfd': [{'id': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_vnfd', 'short-name': 'ping_vnfd', 'vendor': 'RIFT', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware VNF ', 'version': '1.0', 'model-version': '1.3', 'vnf-configuration': {'script': {'script-type': 'rift'}, 'initial-config-primitive': [{'seq': 1, 'name': 'Ping config', 'user-defined-script': 'ping_initial_config.py'}]}, 'mgmt-interface': {'vdu-id': 'iovdu_0', 'port': 18888, 'dashboard-params': {'path': 'api/v1/ping/stats', 'port': 18888}}, 'connection-point': [{'name': 'ping_vnfd/cp0', 'type': 'VPORT'}, {'name': 'ping_vnfd/cp1', 'type': 'VPORT'}], 'vdu': [{'id': 'iovdu_0', 'name': 'iovdu_0', 'count': 1, 'vm-flavor': {'vcpu-count': 1, 'memory-mib': 512, 'storage-gib': 4}, 'guest-epa': {'cpu-pinning-policy': 'ANY'}, 'image': 'xenial-ping-amd64.img', 'image-checksum': 'edbd0fb17ec2e958d4af145568c37a96', 'cloud-init': '#cloud-config\npassword: riftIO\nchpasswd: { expire: False }\nssh_pwauth: True\n', 'supplemental-boot-data': {'boot-data-drive': 'true'}, 'interface': [{'name': 'ens3', 'type': 'EXTERNAL', 'external-connection-point-ref': 'ping_vnfd/cp0', 'virtual-interface': {'type': 'VIRTIO'}}, {'name': 'ens4', 'type': 'EXTERNAL', 'external-connection-point-ref': 'ping_vnfd/cp1', 'virtual-interface': {'type': 'VIRTIO'}}]}], 'service-function-chain': 'UNAWARE', 'http-endpoint': [{'path': 'api/v1/ping/stats', 'https': 'false', 'port': 18888, 'polling-interval-secs': 2, 'method': 'GET'}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'http-endpoint-ref': 'api/v1/ping/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping requests', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '2', 'name': 'ping-response-rx-count', 'http-endpoint-ref': 'api/v1/ping/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping responses', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}], 'placement-groups': [{'name': 'Eris', 'requirement': 'Place this VM on the Kuiper belt object Eris', 'strategy': 'COLOCATION', 'member-vdus': [{'member-vdu-ref': 'iovdu_0'}]}]}, {'id': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'name': 'pong_vnfd', 'short-name': 'pong_vnfd', 'vendor': 'RIFT', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware VNF ', 'version': '1.0', 'model-version': '1.3', 'vnf-configuration': {'script': {'script-type': 'rift'}, 'initial-config-primitive': [{'seq': 1, 'name': 'Pong config', 'user-defined-script': 'pong_initial_config.py'}]}, 'mgmt-interface': {'vdu-id': 'iovdu_0', 'port': 18889, 'dashboard-params': {'path': 'api/v1/pong/stats', 'port': 18889}}, 'connection-point': [{'name': 'pong_vnfd/cp0', 'type': 'VPORT'}, {'name': 'pong_vnfd/cp1', 'type': 'VPORT'}], 'vdu': [{'id': 'iovdu_0', 'name': 'iovdu_0', 'count': 1, 'vm-flavor': {'vcpu-count': 1, 'memory-mib': 512, 'storage-gib': 4}, 'guest-epa': {'cpu-pinning-policy': 'ANY'}, 'image': 'xenial-pong-amd64.img', 'image-checksum': 'd234e0a0cd283fa01f669c3d4a562752', 'cloud-init-file': 'pong_cloud_init.cfg', 'supplemental-boot-data': {'boot-data-drive': 'true'}, 'interface': [{'name': 'ens3', 'type': 'EXTERNAL', 'external-connection-point-ref': 'pong_vnfd/cp0', 'virtual-interface': {'type': 'VIRTIO'}}, {'name': 'ens4', 'type': 'EXTERNAL', 'external-connection-point-ref': 'pong_vnfd/cp1', 'virtual-interface': {'type': 'VIRTIO'}}]}], 'service-function-chain': 'UNAWARE', 'http-endpoint': [{'path': 'api/v1/pong/stats', 'https': 'false', 'port': 18889, 'polling-interval-secs': 2, 'method': 'GET'}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-rx-count', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping requests', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '2', 'name': 'ping-response-tx-count', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping responses', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '3', 'name': 'packet-rate', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'packet rate per sec', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets per sec', 'value-type': 'INT'}], 'placement-groups': [{'name': 'Weywot', 'requirement': 'Place this VM on the Kuiper belt object Weywot', 'strategy': 'COLOCATION', 'member-vdus': [{'member-vdu-ref': 'iovdu_0'}]}]}]}.
+Collecting VNFD Name.
+Fetching configuration.
+Data received: {'project-vnfd:vnfd': [{'id': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_vnfd', 'short-name': 'ping_vnfd', 'vendor': 'RIFT', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware VNF ', 'version': '1.0', 'model-version': '1.3', 'vnf-configuration': {'script': {'script-type': 'rift'}, 'initial-config-primitive': [{'seq': 1, 'name': 'Ping config', 'user-defined-script': 'ping_initial_config.py'}]}, 'mgmt-interface': {'vdu-id': 'iovdu_0', 'port': 18888, 'dashboard-params': {'path': 'api/v1/ping/stats', 'port': 18888}}, 'connection-point': [{'name': 'ping_vnfd/cp0', 'type': 'VPORT'}, {'name': 'ping_vnfd/cp1', 'type': 'VPORT'}], 'vdu': [{'id': 'iovdu_0', 'name': 'iovdu_0', 'count': 1, 'vm-flavor': {'vcpu-count': 1, 'memory-mib': 512, 'storage-gib': 4}, 'guest-epa': {'cpu-pinning-policy': 'ANY'}, 'image': 'xenial-ping-amd64.img', 'image-checksum': 'edbd0fb17ec2e958d4af145568c37a96', 'cloud-init': '#cloud-config\npassword: riftIO\nchpasswd: { expire: False }\nssh_pwauth: True\n', 'supplemental-boot-data': {'boot-data-drive': 'true'}, 'interface': [{'name': 'ens3', 'type': 'EXTERNAL', 'external-connection-point-ref': 'ping_vnfd/cp0', 'virtual-interface': {'type': 'VIRTIO'}}, {'name': 'ens4', 'type': 'EXTERNAL', 'external-connection-point-ref': 'ping_vnfd/cp1', 'virtual-interface': {'type': 'VIRTIO'}}]}], 'service-function-chain': 'UNAWARE', 'http-endpoint': [{'path': 'api/v1/ping/stats', 'https': 'false', 'port': 18888, 'polling-interval-secs': 2, 'method': 'GET'}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'http-endpoint-ref': 'api/v1/ping/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping requests', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '2', 'name': 'ping-response-rx-count', 'http-endpoint-ref': 'api/v1/ping/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping responses', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}], 'placement-groups': [{'name': 'Eris', 'requirement': 'Place this VM on the Kuiper belt object Eris', 'strategy': 'COLOCATION', 'member-vdus': [{'member-vdu-ref': 'iovdu_0'}]}]}, {'id': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'name': 'pong_vnfd', 'short-name': 'pong_vnfd', 'vendor': 'RIFT', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware VNF ', 'version': '1.0', 'model-version': '1.3', 'vnf-configuration': {'script': {'script-type': 'rift'}, 'initial-config-primitive': [{'seq': 1, 'name': 'Pong config', 'user-defined-script': 'pong_initial_config.py'}]}, 'mgmt-interface': {'vdu-id': 'iovdu_0', 'port': 18889, 'dashboard-params': {'path': 'api/v1/pong/stats', 'port': 18889}}, 'connection-point': [{'name': 'pong_vnfd/cp0', 'type': 'VPORT'}, {'name': 'pong_vnfd/cp1', 'type': 'VPORT'}], 'vdu': [{'id': 'iovdu_0', 'name': 'iovdu_0', 'count': 1, 'vm-flavor': {'vcpu-count': 1, 'memory-mib': 512, 'storage-gib': 4}, 'guest-epa': {'cpu-pinning-policy': 'ANY'}, 'image': 'xenial-pong-amd64.img', 'image-checksum': 'd234e0a0cd283fa01f669c3d4a562752', 'cloud-init-file': 'pong_cloud_init.cfg', 'supplemental-boot-data': {'boot-data-drive': 'true'}, 'interface': [{'name': 'ens3', 'type': 'EXTERNAL', 'external-connection-point-ref': 'pong_vnfd/cp0', 'virtual-interface': {'type': 'VIRTIO'}}, {'name': 'ens4', 'type': 'EXTERNAL', 'external-connection-point-ref': 'pong_vnfd/cp1', 'virtual-interface': {'type': 'VIRTIO'}}]}], 'service-function-chain': 'UNAWARE', 'http-endpoint': [{'path': 'api/v1/pong/stats', 'https': 'false', 'port': 18889, 'polling-interval-secs': 2, 'method': 'GET'}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-rx-count', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping requests', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '2', 'name': 'ping-response-tx-count', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'no of ping responses', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets', 'value-type': 'INT'}, {'id': '3', 'name': 'packet-rate', 'http-endpoint-ref': 'api/v1/pong/stats', 'json-query-method': 'NAMEKEY', 'description': 'packet rate per sec', 'group-tag': 'Group1', 'widget-type': 'COUNTER', 'units': 'packets per sec', 'value-type': 'INT'}], 'placement-groups': [{'name': 'Weywot', 'requirement': 'Place this VM on the Kuiper belt object Weywot', 'strategy': 'COLOCATION', 'member-vdus': [{'member-vdu-ref': 'iovdu_0'}]}]}]}.
+Collecting NSD ID.
+Fetching configuration.
+Data received: {'project-nsd:nsd': [{'id': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_pong_nsd', 'short-name': 'ping_pong_nsd', 'vendor': 'RIFT.io', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware NS ', 'version': '1.0', 'model-version': '1.3', 'ip-profiles': [{'name': 'InterVNFLink-1', 'description': 'Inter VNF Link', 'ip-profile-params': {'subnet': [{'name': 'subnet-1', 'ip-version': 'ipv4', 'subnet-address': '31.31.31.0/24', 'dhcp-params': {'enabled': 'false'}}]}}, {'name': 'InterVNFLink-2', 'description': 'Inter VNF Link-2', 'ip-profile-params': {'subnet': [{'name': 'subnet-2', 'ip-version': 'ipv4', 'subnet-address': '32.32.32.0/24', 'dhcp-params': {'enabled': 'false'}}]}}], 'initial-service-primitive': [{'seq': 1, 'name': 'start traffic', 'user-defined-script': 'start_traffic.py', 'parameter': [{'name': 'userid'}]}], 'terminate-service-primitive': [{'seq': 1, 'name': 'stop traffic', 'user-defined-script': 'stop_traffic.py', 'parameter': [{'name': 'userid', 'value': 'rift'}]}], 'input-parameter-xpath': [{'xpath': '/nsd/vendor'}], 'vld': [{'id': 'mgmt_vld', 'name': 'mgmt_vld', 'type': 'ELAN', 'mgmt-network': 'true', 'vim-network-name': 'private', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp0', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp0', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}], 'rw-project-nsd:ipv4-nat-pool-name': 'public'}, {'id': 'ping_pong_vld1', 'name': 'ping_pong_vld1', 'short-name': 'ping_pong_vld1', 'vendor': 'RIFT.io', 'description': 'Toy VL', 'version': '1.0', 'type': 'ELAN', 'mgmt-network': 'false', 'ip-profile-ref': 'InterVNFLink-1', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'constituent-vnfd': [{'member-vnf-index': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}, {'member-vnf-index': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}], 'placement-groups': [{'name': 'Orcus', 'requirement': 'Place this VM on the Kuiper belt object Orcus', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'name': 'Quaoar', 'requirement': 'Place this VM on the Kuiper belt object Quaoar', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '2', 'name': 'ping-response-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '3', 'name': 'ping-request-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '4', 'name': 'ping-response-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '5', 'name': 'packet-rate', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '3', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}]}]}.
+Collecting NSD Name.
+Fetching configuration.
+Data received: {'project-nsd:nsd': [{'id': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02', 'name': 'ping_pong_nsd', 'short-name': 'ping_pong_nsd', 'vendor': 'RIFT.io', 'logo': 'rift_logo.png', 'description': 'Toy Rift.ware NS ', 'version': '1.0', 'model-version': '1.3', 'ip-profiles': [{'name': 'InterVNFLink-1', 'description': 'Inter VNF Link', 'ip-profile-params': {'subnet': [{'name': 'subnet-1', 'ip-version': 'ipv4', 'subnet-address': '31.31.31.0/24', 'dhcp-params': {'enabled': 'false'}}]}}, {'name': 'InterVNFLink-2', 'description': 'Inter VNF Link-2', 'ip-profile-params': {'subnet': [{'name': 'subnet-2', 'ip-version': 'ipv4', 'subnet-address': '32.32.32.0/24', 'dhcp-params': {'enabled': 'false'}}]}}], 'initial-service-primitive': [{'seq': 1, 'name': 'start traffic', 'user-defined-script': 'start_traffic.py', 'parameter': [{'name': 'userid'}]}], 'terminate-service-primitive': [{'seq': 1, 'name': 'stop traffic', 'user-defined-script': 'stop_traffic.py', 'parameter': [{'name': 'userid', 'value': 'rift'}]}], 'input-parameter-xpath': [{'xpath': '/nsd/vendor'}], 'vld': [{'id': 'mgmt_vld', 'name': 'mgmt_vld', 'type': 'ELAN', 'mgmt-network': 'true', 'vim-network-name': 'private', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp0', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp0', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}], 'rw-project-nsd:ipv4-nat-pool-name': 'public'}, {'id': 'ping_pong_vld1', 'name': 'ping_pong_vld1', 'short-name': 'ping_pong_vld1', 'vendor': 'RIFT.io', 'description': 'Toy VL', 'version': '1.0', 'type': 'ELAN', 'mgmt-network': 'false', 'ip-profile-ref': 'InterVNFLink-1', 'vnfd-connection-point-ref': [{'member-vnf-index-ref': 1, 'vnfd-connection-point-ref': 'ping_vnfd/cp1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-connection-point-ref': 'pong_vnfd/cp1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'constituent-vnfd': [{'member-vnf-index': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}, {'member-vnf-index': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'start-by-default': 'true'}], 'placement-groups': [{'name': 'Orcus', 'requirement': 'Place this VM on the Kuiper belt object Orcus', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'name': 'Quaoar', 'requirement': 'Place this VM on the Kuiper belt object Quaoar', 'strategy': 'COLOCATION', 'member-vnfd': [{'member-vnf-index-ref': 1, 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}, {'member-vnf-index-ref': 2, 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}], 'monitoring-param': [{'id': '1', 'name': 'ping-request-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '2', 'name': 'ping-response-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 1, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '3', 'name': 'ping-request-rx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '1', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '4', 'name': 'ping-response-tx-count', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '2', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}, {'id': '5', 'name': 'packet-rate', 'value-type': 'INT', 'widget-type': 'COUNTER', 'aggregation-type': 'AVERAGE', 'vnfd-monitoring-param': [{'member-vnf-index-ref': 2, 'vnfd-monitoring-param-ref': '3', 'vnfd-id-ref': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}]}]}]}.
+Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'ping_pong_nsd': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02'}
+Deleting package: ping_pong_nsd with ID: cc12e5cc-a650-11e9-b8ce-02420a40cc02
+Deleting configuration.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test00']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test00']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
+</p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test00']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 128, in test10_Package_Delete
+    state1 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "nsd", "ping_pong_nsd")
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 281, in pkg_delete
+    status = util.delete_config(url, header, payload)
+  File "/home/JG/Documents/automation/local/autobot/lib/utility.py", line 154, in delete_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test00']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test11_Cloud_Account_Delete</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test11_Cloud_Account_Delete.
+Deleting configuration.
+Data received: {'rpc-reply': {'ok': ''}}
+Test-case: test11_Cloud_Account_Delete | Status: Passed.
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test12_Project_Delete</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>Executing test12_Project_Delete.
+Deleting configuration.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
+Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
+</p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/local/autobot/testcases/test00_ping_pong_life_cycle.py", line 149, in test12_Project_Delete
+    state = fw.proj_delete(const.lp_addr, const.header, const.proj_name)
+  File "/home/JG/Documents/automation/local/autobot/lib/framework.py", line 118, in proj_delete
+    status = util.delete_config(url, header, payload)
+  File "/home/JG/Documents/automation/local/autobot/lib/utility.py", line 154, in delete_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
+</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 12, Pass: 5, Fail: 6, Error: 1 -- Duration: 181.33 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html

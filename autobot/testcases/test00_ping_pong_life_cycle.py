@@ -4,13 +4,13 @@ import unittest
 from autobot.lib import framework as fw
 from autobot.lib import utility as util
 from autobot.config import constants as const
-import sys
+
 
 class PingPongLifeCycle(unittest.TestCase):
 
     const.proj_name = "test00"
     const.proj_desc = "test00_ping_pong_life_cycle"
-    nsr_id = ""
+    nsr_id = []
 
     def test01_Project_Add(self):
         util.log_info(f"Executing {self.test01_Project_Add.__name__}.")
@@ -83,10 +83,10 @@ class PingPongLifeCycle(unittest.TestCase):
         nsd = fw.get_nsd_name_id(const.lp_addr, const.header, const.proj_name)
         nsd_id = nsd["ping_pong_nsd"]
         nsr_id = fw.ns_create(const.lp_addr, const.header, const.proj_name, ns_name, nsd_id)
-        self.nsr_id = nsr_id
+        self.nsr_id.append(nsr_id)
 
-        conf_name = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id, "name")
-        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id, "status")
+        conf_name = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0], "name")
+        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0], "status")
 
         if conf_name == ns_name and conf_state == "DISABLED":
             util.log_info(f"NS is created with name- {conf_name} and current state is- {conf_state}. Test-case Pass.")
@@ -97,11 +97,11 @@ class PingPongLifeCycle(unittest.TestCase):
     def test07_NS_Instantiate(self):
         util.log_info(f"Executing {self.test07_NS_Instantiate.__name__}.")
 
-        fw.ns_instantiate(const.lp_addr, const.header, const.proj_name, self.nsr_id)
-        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id, "status")
-        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+        fw.ns_instantiate(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
+        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0], "status")
+        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
         if conf_state == "ENABLED" and state == "running":
-            util.log_info(f"NS with ID- {self.nsr_id} instantiated successfully and is- {state}. Test-case Pass.")
+            util.log_info(f"NS with ID- {self.nsr_id[0]} instantiated successfully and is- {state}. Test-case Pass.")
         else:
             assert conf_state == "ENABLED" and state == "running", \
                 f"Expected state- running, Current state- {state}. Test-case Fail."
@@ -109,67 +109,82 @@ class PingPongLifeCycle(unittest.TestCase):
     def test08_NS_Terminate(self):
         util.log_info(f"Executing {self.test08_NS_Terminate.__name__}.")
 
-        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
         if state == "running":
-            fw.ns_terminate(const.lp_addr, const.header, const.proj_name, self.nsr_id)
-            conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id, "status")
-            state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+            fw.ns_terminate(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
+            conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0], "status")
+            state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
             if conf_state == "DISABLED" and state == "terminated":
-                util.log_info(f"NS with NSR ID- {self.nsr_id} terminated successfully. Test-case Pass.")
+                util.log_info(f"NS with NSR ID- {self.nsr_id[0]} terminated successfully. Test-case Pass.")
             else:
                 assert conf_state == "DISABLED" and state == "terminated", \
                     f"Expected state- terminated, Current state- {state}. Test-case Fail."
         else:
-            assert state == "running", f"NS with NSR ID- {self.nsr_id} is not running. Current state- {state}. " \
+            assert state == "running", f"NS with NSR ID- {self.nsr_id[0]} is not running. Current state- {state}. " \
                 f"Test-case Fail."
 
     def test09_NS_Delete(self):
         util.log_info(f"Executing {self.test09_NS_Delete.__name__}.")
 
-        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id, "status")
-        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+        conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0], "status")
+        state = fw.get_ns_oper_status(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
         if conf_state == "DISABLED" or state == "terminated":
-            fw.ns_delete(const.lp_addr, const.header, const.proj_name, self.nsr_id)
-            conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id)
+            fw.ns_delete(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
+            conf_state = fw.get_ns_instance_config(const.lp_addr, const.header, const.proj_name, self.nsr_id[0])
             if not conf_state:
-                util.log_info(f"NS with NSR ID- {self.nsr_id} deleted successfully. Test-case Pass.")
+                util.log_info(f"NS with NSR ID- {self.nsr_id[0]} deleted successfully. Test-case Pass.")
             else:
-                util.log_info(f"NS with NSR ID- {self.nsr_id} is not deleted. NS still has config-data- {conf_state}."
+                util.log_info(f"NS with NSR ID- {self.nsr_id[0]} is not deleted. NS still has config-data- {conf_state}."
                               f"Test-case Fail.")
         else:
             assert conf_state == "DISABLED" or state == "terminated",\
-                f"NS with NSR ID- {self.nsr_id} is not terminated. Current state- {state}. Test-case Fail."
+                f"NS with NSR ID- {self.nsr_id[0]} is not terminated. Current state- {state}. Test-case Fail."
 
     def test10_Package_Delete(self):
-        vnfd_id = fw.get_vnfd_id(const.lp_addr, const.header, const.proj_name)
-        state1 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "nsd", "ping_pong_nsd")
-        state2 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "vnfd", "pong_vnfd")
-        state3 = fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "vnfd", "ping_vnfd")
+        util.log_info(f"Executing {self.test10_Package_Delete.__name__}.")
 
-        if state1 and state2 and state3 == "OK":
-            util.log_info("Packages deleted successfully.")
-            util.log_info(f"Test-case: {self.test10_Package_Delete.__name__} | Status: Passed.")
+        pkg_catalog = fw.get_pkg_catalog(const.lp_addr, const.header, const.proj_name)
+        if pkg_catalog:
+            fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "nsd", "ping_pong_nsd")
+            fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "vnfd", "pong_vnfd")
+            fw.pkg_delete(const.lp_addr, const.header, const.proj_name, "vnfd", "ping_vnfd")
+
+            pkg_catalog = fw.get_pkg_catalog(const.lp_addr, const.header, const.proj_name)
+            if pkg_catalog is None:
+                util.log_info("Packages deleted successfully. Test-case Pass.")
+            else:
+                assert pkg_catalog is None, "Packages couldn't delete successfully. Test-case Fail."
         else:
-            assert state1 and state2 and state3 == "OK", f"Response States: {state1, state2, state3}." \
-                f"Status: Failed."
+            assert pkg_catalog, f"Packages not available to delete. Test-case Fail."
 
     def test11_Cloud_Account_Delete(self):
         util.log_info(f"Executing {self.test11_Cloud_Account_Delete.__name__}.")
-        state = fw.cloud_acct_delete(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
-        if state == "OK":
-            util.log_info(f"Test-case: {self.test11_Cloud_Account_Delete.__name__} | Status: Passed.")
+
+        acct = fw.get_cloud_acct_details(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+        if acct:
+            fw.cloud_acct_delete(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+            acct = fw.get_cloud_acct_details(const.lp_addr, const.header, const.proj_name, const.cloud_acct_name)
+            if not acct:
+                util.log_info(f"Cloud account with name- {const.cloud_acct_name} deleted successfully. Test-case Pass.")
+            else:
+                assert not acct, f"Cloud account with name- {const.cloud_acct_name} couldn't get deleted." \
+                    f"Test-case Fail."
         else:
-            assert state == "OK", f"Response State: {state}. Status: Failed."
+            assert acct, f"Cloud account with name- {const.cloud_acct_name} is not configured. Test-case Fail."
 
     def test12_Project_Delete(self):
         util.log_info(f"Executing {self.test12_Project_Delete.__name__}.")
-        state = fw.proj_delete(const.lp_addr, const.header, const.proj_name)
-        if state == "OK":
-            util.log_info(f"Test-case: {self.test12_Project_Delete.__name__} | Status: Passed.")
+
+        proj_details = fw.get_proj_details(const.lp_addr, const.header, const.proj_name)
+        if proj_details:
+            fw.proj_delete(const.lp_addr, const.header, const.proj_name)
+            proj_details = fw.get_proj_details(const.lp_addr, const.header, const.proj_name)
+            if proj_details is None:
+                util.log_info(f"Project with name- {const.proj_name} deleted successfully. Test-case Pass.")
         else:
-            assert state == "OK", f"Response State: {state}. Status: Failed."
+            assert proj_details, f"Project details not found to delete. Test-case Fail."
 
 
-#
-# if __name__ == '__main__':
-#     unittest.main()
+if __name__ == '__main__':
+    unittest.main()
+

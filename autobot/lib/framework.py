@@ -70,6 +70,38 @@ def get_proj_user_role(lp_addr, header, proj_name):
         raise
 
 
+def proj_delete(lp_addr, header, proj_name):
+    try:
+        api = rapi.proj_detail(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Deleting project with name- {proj_name}.")
+        status = util.delete_config(url, header, payload)
+        time.sleep(10)
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_proj_details(lp_addr, header, proj_name):
+    try:
+        api = rapi.proj_detail(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching project details for project- {proj_name}.")
+        status = util.get_config(url, header, payload)
+        time.sleep(5)
+        return status
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
 def cloud_acct_add(lp_addr, header, proj_name, acct_name, acct_type, timeout):
     try:
         api = rapi.cloud_acct_add(proj_name)
@@ -82,6 +114,21 @@ def cloud_acct_add(lp_addr, header, proj_name, acct_name, acct_type, timeout):
         state = util.get_rpc_state(status).upper()
         if state != "OK":
             assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_cloud_acct_details(lp_addr, header, proj_name, cloud_acct_name):
+    try:
+        api = rapi.cloud_acct_detail(proj_name, cloud_acct_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching cloud-account details for account with name- {cloud_acct_name}.")
+        status = util.get_config(url, header, payload)
+        time.sleep(5)
+        return status
     except BaseException as e:
         util.log_info(e)
         raise
@@ -137,28 +184,12 @@ def cloud_acct_status(lp_addr, header, proj_name, cloud_acct_name):
 
 def cloud_acct_delete(lp_addr, header, proj_name, cloud_acct_name):
     try:
-        api = rapi.cloud_acct_delete(proj_name, cloud_acct_name)
+        api = rapi.cloud_acct_detail(proj_name, cloud_acct_name)
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
         status = util.delete_config(url, header, payload)
-        time.sleep(10)
-        state = util.get_rpc_state(status).upper()
-        if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
-    except BaseException as e:
-        util.log_info(e)
-        raise
-
-
-def proj_delete(lp_addr, header, proj_name):
-    try:
-        api = rapi.proj_delete(proj_name)
-        url = util.create_url_running(lp_addr, api)
-        payload = ""
-
-        status = util.delete_config(url, header, payload)
-        time.sleep(10)
+        time.sleep(15)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
             assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
@@ -317,7 +348,7 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             nsd = dict(zip(nsd_name, nsd_id))
         if bool(vnfd) or bool(nsd):
             pkg = {**vnfd, **nsd}
-            util.log_info(f"Available packages: {pkg}")
+            util.log_info(f"Available packages: {pkg}.")
 
         if pkg_type.upper() == "VNFD":
             api = rapi.vnfd_delete(proj_name, pkg[pkg_name])
@@ -327,8 +358,8 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             status = util.delete_config(url, header, payload)
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
-            return state
-
+            if state != "OK":
+                assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
         elif pkg_type.upper() == "NSD":
             api = rapi.nsd_delete(proj_name, pkg[pkg_name])
             url = util.create_url_running(lp_addr, api)
@@ -337,8 +368,33 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             status = util.delete_config(url, header, payload)
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
-            return state
+            if state != "OK":
+                assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
+
+def get_pkg_catalog(lp_addr, header, proj_name, value=None):
+    try:
+        prod_name = []
+
+        api = rapi.pkg_catalog(proj_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        status = util.get_config(url, header, payload)
+        if status:
+            pkgs = (list(status.values())[0])
+            if value is None:
+                return pkgs
+            elif value == "name":
+                for pkg in pkgs:
+                    prod_name.append(pkg["product-name"])
+                return prod_name
+        else:
+            return None
+            #assert status, f"Packages not available."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -372,7 +428,7 @@ def ns_instantiate(lp_addr, header, proj_name, nsr_id):
         util.log_info(f"Instantiating NS with NSR ID- {nsr_id}.")
         status = util.add_config(url, header, payload)
         util.log_info("Please wait while for a few minutes while instantiation is in progress.")
-        time.sleep(600)
+        time.sleep(360)
         # state = util.get_transac_id(status)
         # return state
     except BaseException as e:

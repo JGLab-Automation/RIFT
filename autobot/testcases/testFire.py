@@ -3,6 +3,7 @@ from autobot.lib import utility as util
 from autobot.lib import restAPIs as rapi
 from autobot.config import constants as const
 from autobot.config import payloads as pl
+import unittest
 import json
 import os
 
@@ -35,17 +36,19 @@ import os
 #---------------------------------------
 
 
-#lp_addr, header, proj_name
-#
-# api = rapi.cloud_acct_type(const.proj_name_default, "OS")
-# url = util.create_url_running(const.lp_addr, api)
-# payload = ""
-#
-# status = util.get_config(url, const.header, payload)
-# print(status["account-type"])
+class Test(unittest.TestCase):
 
-# nsr_id = "db3f409e-21df-4fa3-91a6-b0577b20e55d"
-# x = fw.get_ns_instance_config(const.lp_addr, const.header, "test00", nsr_id, "name")
-# y = fw.get_ns_instance_config(const.lp_addr, const.header, "test00", nsr_id, "status")
-# print(x)
-# print(y)
+    def test01_test1(self):
+        util.log_info("This is test1.")
+        a = []
+        if a:
+            print("Not Empty!")
+        else:
+            assert a, "Empty!"
+
+    def test02_test2(self):
+        util.log_info("This is test2.")
+
+
+if __name__ == '__main__':
+    unittest.main()

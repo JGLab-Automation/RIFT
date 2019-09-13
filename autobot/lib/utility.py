@@ -11,7 +11,7 @@ import time
 import sys
 import os
 import re
-
+import mimetypes
 from email import encoders
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
@@ -88,15 +88,15 @@ def create_http_basic_auth(uname, passwd):
 def get_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        #log_info("Fetching configuration.")
+        # log_info("Fetching configuration.")
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 200:         # Code for successful response.
             data = response.json()
-            #log_info(f"Data received: {data}.")
+            # log_info(f"Data received: {data}.")
             return data
         elif response.status_code == 204:       # Code for response with 'No Content'.
-            data = response.json()
-            #log_info(f"Data received: {data}.")
+            # data = response.json()
+            # log_info(f"Data received: {data}.")
             return None
         else:
             data = response.json()
@@ -109,11 +109,11 @@ def get_config(url, header, payload=""):
 def add_config(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        #log_info("Adding configuration")
+        # log_info("Adding configuration")
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            #log_info(f"Data received: {data}.")
+            # log_info(f"Data received: {data}.")
             return data
         else:
             data = response.json()
@@ -126,11 +126,11 @@ def add_config(url, header, payload):
 def edit_config(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        #log_info("Editing configuration.")
+        # log_info("Editing configuration.")
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            #log_info(f"Data received: {data}")
+            # log_info(f"Data received: {data}")
             return data
         else:
             data = response.json()
@@ -143,11 +143,11 @@ def edit_config(url, header, payload):
 def delete_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        log_info("Deleting configuration.")
+        # log_info("Deleting configuration.")
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            log_info(f"Data received: {data}")
+            # log_info(f"Data received: {data}")
             return data
         else:
             data = response.json()
@@ -201,7 +201,7 @@ def get_ns_transac_status(status):
 
 
 
-def create_html_mail(html, Subject, fromEmail, toEmail, cc=None, attachment=None):
+def create_html_mail(html, subject, fromEmail, toEmail, cc=None, attachment=None):
     """Create a mime-message that will render HTML in popular
     MUAs, text in better ones"""
     #copy_email_tos = ''
@@ -209,61 +209,21 @@ def create_html_mail(html, Subject, fromEmail, toEmail, cc=None, attachment=None
     msg = MIMEMultipart('alternative')
     msg['From'] = fromEmail
     msg['To'] = toEmail
-    msg['Subject'] = Subject
-    msg.attach(MIMEText(html))
+    msg['Subject'] = subject
     if cc:
         msg['Cc'] = cc.strip(',')
     if attachment:
-        ctype, encoding = mimetypes.guess_type(attachment)
-        if ctype is None or encoding is not None:
-            # No guess could be made, or the file is encoded (compressed), so
-            # use a generic bag-of-bits type.
-            ctype = 'application/octet-stream'
-
-        maintype, subtype = ctype.split('/', 1)
-        if maintype == 'text':
-            fp = open(attachment)
-            # Note: we should handle calculating the charset
-            att = MIMEText(fp.read(), _subtype=subtype)
-            fp.close()
-            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
-            msg.attach(att)
-        elif maintype == 'image':
-            fp = open(attachment, 'rb')
-            att = MIMEImage(fp.read(), _subtype=subtype)
-            fp.close()
-            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
-            msg.attach(att)
-        elif maintype == 'audio':
-            fp = open(attachment, 'rb')
-            att = MIMEAudio(fp.read(), _subtype=subtype)
-            fp.close()
-            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
-            msg.attach(att)
-        elif maintype == 'application':
-            fp = open(attachment, 'rb')
-            att = MIMEApplication(fp.read(), _subtype=subtype)
-            fp.close()
-            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
-            msg.attach(att)
-        else:
-            fp = open(attachment, 'rb')
-            att = MIMEBase(maintype, subtype)
-            att.set_payload(fp.read())
-            # Encode the payload using Base64
-            encoders.encode_base64(att)
-            att.add_header('Content-Disposition', 'attachment; filename=' + attachment.split('/')[-1])
-            msg.attach(att)
-            fp.close()
-        # Set the filename parameter
-
+        fp = open(attachment, 'rb')
+        img = MIMEImage(fp.read())
+        fp.close()
+        msg.attach(img)
     html_part = MIMEText(html, 'html')
     msg.attach(html_part)
     log(msg)
     return msg
 
 
-def send_email(message, send_from, send_tos, subject='', cc=None, attachment=None, smtp_server='mail.office.com'):
+def send_email(message, send_from, send_tos, subject='', cc=None, attachment=None, smtp_server='smtp.office365.com'):
 
      # RECIPIENTS = send_tos
     log_info('Sending email to ' + send_tos)
@@ -275,6 +235,7 @@ def send_email(message, send_from, send_tos, subject='', cc=None, attachment=Non
     smtp_user = ''  # for SMTP AUTH, set SMTP username here
     smtp_pass = ''  # for SMTP AUTH, set SMTP password here
     session = smtplib.SMTP(smtp_server)
+    #session = smtplib.SMTP_SSL("smtp.office365.com", 587)
     if auth_required:
         session.login(smtp_user, smtp_pass)
     smtp_result = session.sendmail(sender, recipients, msg.as_string())

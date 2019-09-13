@@ -1,5 +1,5 @@
 __author__="JG"
-##-----DO NOT MAKE ANY CHANGES TO THIS FILE-----#
+
 
 
 from autobot.lib import utility as util
@@ -10,19 +10,23 @@ import time
 import sys
 import os
 from datetime import datetime
-from autobot.testcases import test00_ping_pong_life_cycle
+from autobot.testcases import test00_ping_pong_life_cycle as tc1
 
-logging.basicConfig(filename='execTraces.log', format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
 
+logging.basicConfig(filename='traces/execTraces.log', format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
 
 suite = unittest.TestSuite()
-suite.addTest(unittest.makeSuite(test00_ping_pong_life_cycle.PingPongLifeCycle))
-report = 'execReport.html'
-with open(report, "w") as buff:
-    runner = HtmlTestRunner.HTMLTestRunner(stream=buff)
-    result = runner.run(suite)
+suite.addTest(unittest.makeSuite(tc1.PingPongLifeCycle))
 
+runner = HtmlTestRunner.HTMLTestRunner(report_name='execReport', report_title="Regression Suite Execution")
+result = runner.run(suite)
+unittest.main(testRunner=runner)
+#runner.generateReport(None, result)
 
-if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='reports', report_name='execReport.html'))
+# report = "execReport.html"
+# with open(report, "w") as buf:
+#     runner = HtmlTestRunner.HTMLTestRunner(report_name='execReport: ', report_title="Exec Report", stream=buf)
+#     result = runner.run(suite)
+#     unittest.main(testRunner=runner)
+#     runner.generateReport(None, result)
 

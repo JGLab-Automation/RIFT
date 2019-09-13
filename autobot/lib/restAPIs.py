@@ -27,7 +27,7 @@ def proj_user_role(proj_name):
     return api
 
 
-def proj_delete(proj_name):
+def proj_detail(proj_name):
     api = f"rw-project:project/{proj_name}"
     return str(api)
 
@@ -37,8 +37,8 @@ def cloud_acct_add(proj_name):
     return api
 
 
-def cloud_acct_type(proj_name, acct_name):
-    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{acct_name}/account-type"
+def cloud_acct_type(proj_name, cloud_acct_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/account-type"
     return api
 
 
@@ -52,7 +52,7 @@ def cloud_acct_status(proj_name, cloud_acct_name):
     return api
 
 
-def cloud_acct_delete(proj_name, cloud_acct_name):
+def cloud_acct_detail(proj_name, cloud_acct_name):
     api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}"
     return api
 
@@ -64,6 +64,11 @@ def pkg_upload():
 
 def pkg_upload_status(proj_name, transac_id):
     api = f"rw-project:project/{proj_name}/rw-package:package-state/package-create-update-job/{transac_id}/status"
+    return api
+
+
+def pkg_catalog(proj_name):
+    api = f"rw-project:project/{proj_name}/rw-package:package-catalog/package"
     return api
 
 

@@ -211,3 +211,18 @@ def ns_delete(proj_name, nsr_id):
     return payload
 
 
+def vim_resource_discover(proj_name, cloud_acct_name):
+    payload = \
+        {
+            'input':
+                {
+                    'cloud-account': cloud_acct_name,
+                    'project-name': proj_name
+                }
+        }
+    payload = json.dumps(payload)
+    return payload
+
+
+
+

@@ -1,0 +1,383 @@
+Programmer's API documentation for yang module ietf-network-topology.yang
+
+
+
+Schema Globals                                                               1
+
+module ietf-network                                                          2
+  ietf-network data                                                        2.1
+    list nd:network                                                      2.1.1
+      container nd:network-types                                       2.1.1.1
+      list nd:supporting-network                                       2.1.1.2
+      list nd:node                                                     2.1.1.3
+        list nd:supporting-node                                      2.1.1.3.1
+        list lnk:termination-point                                   2.1.1.3.2
+          list lnk:supporting-termination-point                    2.1.1.3.2.1
+      list lnk:link                                                    2.1.1.4
+        container lnk:source                                         2.1.1.4.1
+        container lnk:destination                                    2.1.1.4.2
+        list lnk:supporting-link                                     2.1.1.4.3
+module ietf-network-topology                                                 3
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_IetfNetworkTopology_t_schema
+  Global Schema Pointer
+    rw_ypbc_IetfNetworkTopology_g_schema
+2  module ietf-network
+
+2.1  ietf-network data
+  Description
+    This module defines a common base model for a collection
+    of nodes in a network. Node definitions s are further used
+    in network topologies and inventories.
+
+2.1.1  list nd:network
+  Description
+    Describes a network.
+    A network typically contains an inventory of nodes,
+    topological information (augmented through
+    network-topology model), as well as layering
+    information.
+  Leaves
+    name: network-id, type: STRING, description: Identifies a network.
+    name: server-provided, type: BOOLEAN, description: Indicates whether the information concerning this
+    particular network is populated by the server
+    (server-provided true, the general case for network
+    information discovered from the server),
+    or whether it is configured by a client
+    (server-provided true, possible e.g. for
+    service overlays managed through a controller).
+  XPath Path
+    /nd:network
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING
+  RW Keyspec XPath Path
+    D,/nd:network
+  RW Keyspec XPath Keyed Path
+    D,/nd:network[nd:network-id='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network
+
+2.1.1.1  container nd:network-types
+  Description
+    Serves as an augmentation target.
+    The network type is indicated through corresponding
+    presence containers augmented into this container.
+  XPath Path
+    /nd:network/nd:network-types
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:network-types
+  RW.REST URI Path
+    /ietf-network:network/STRING/network-types
+  RW Keyspec XPath Path
+    D,/nd:network/nd:network-types
+  RW Keyspec XPath Keyed Path
+    D,/nd:network[nd:network-id='STRING']/nd:network-types
+  Protobuf Type
+    .ietf_network.YangData.IetfNetwork.Network.NetworkTypes
+  Python Proto-GI Type
+    IetfNetworkYang.YangData_IetfNetwork_Network_NetworkTypes
+  C Protobuf-C Struct Type
+    IetfNetwork__YangData__IetfNetwork__Network__NetworkTypes
+  C RWPB Identifiers
+    IetfNetwork_IetfNetwork_data_Network_NetworkTypes
+  YPBC Base Identifier
+    rw_ypbc_IetfNetwork_IetfNetwork_data_Network_NetworkTypes
+
+2.1.1.2  list nd:supporting-network
+  Description
+    An underlay network, used to represent layered network
+    topologies.
+  Leaves
+    name: network-ref, type: LEAFREF, description: References the underlay network.
+  XPath Path
+    /nd:network/nd:supporting-network
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:supporting-network[nd:network-ref='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/supporting-network/STRING
+  RW Keyspec XPath Path
+    D,/nd:network/nd:supporting-network
+  RW Keyspec XPath Keyed Path
+    D,/nd:network[nd:network-id='STRING']/nd:supporting-network[nd:network-ref='STRING']
+  Protobuf Type
+    .ietf_network.YangData.IetfNetwork.Network.SupportingNetwork
+  Python Proto-GI Type
+    IetfNetworkYang.YangData_IetfNetwork_Network_SupportingNetwork
+  C Protobuf-C Struct Type
+    IetfNetwork__YangData__IetfNetwork__Network__SupportingNetwork
+  C RWPB Identifiers
+    IetfNetwork_IetfNetwork_data_Network_SupportingNetwork
+  YPBC Base Identifier
+    rw_ypbc_IetfNetwork_IetfNetwork_data_Network_SupportingNetwork
+
+2.1.1.3  list nd:node
+  Description
+    The inventory of nodes of this network.
+  Leaves
+    name: node-id, type: STRING, description: Identifies a node uniquely within the containing
+    network.
+  XPath Path
+    /nd:network/nd:node
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/node/STRING
+  RW Keyspec XPath Path
+    D,/nd:network/nd:node
+  RW Keyspec XPath Keyed Path
+    D,/nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Node
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Node
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Node
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Node
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Node
+
+2.1.1.3.1  list nd:supporting-node
+  Description
+    Represents another node, in an underlay network, that
+    this node is supported by.  Used to represent layering
+    structure.
+  Leaves
+    name: network-ref, type: LEAFREF, description: References the underlay network that the
+    underlay node is part of.
+    name: node-ref, type: LEAFREF, description: References the underlay node itself.
+  XPath Path
+    /nd:network/nd:node/nd:supporting-node
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/nd:supporting-node[nd:network-ref='STRING'][nd:node-ref='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/node/STRING/supporting-node/STRING,STRING
+  RW Keyspec XPath Path
+    D,/nd:network/nd:node/nd:supporting-node
+  RW Keyspec XPath Keyed Path
+    D,/nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/nd:supporting-node[nd:network-ref='STRING'][nd:node-ref='STRING']
+  Protobuf Type
+    .ietf_network.YangData.IetfNetwork.Network.Node.SupportingNode
+  Python Proto-GI Type
+    IetfNetworkYang.YangData_IetfNetwork_Network_Node_SupportingNode
+  C Protobuf-C Struct Type
+    IetfNetwork__YangData__IetfNetwork__Network__Node__SupportingNode
+  C RWPB Identifiers
+    IetfNetwork_IetfNetwork_data_Network_Node_SupportingNode
+  YPBC Base Identifier
+    rw_ypbc_IetfNetwork_IetfNetwork_data_Network_Node_SupportingNode
+
+2.1.1.3.2  list lnk:termination-point
+  Description
+    A termination point can terminate a link.
+    Depending on the type of topology, a termination point
+    could, for example, refer to a port or an interface.
+  Leaves
+    name: tp-id, type: STRING, description: Termination point identifier.
+  XPath Path
+    /nd:network/nd:node/lnk:termination-point
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/lnk:termination-point[lnk:tp-id='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/node/STRING/ietf-network-topology:termination-point/STRING
+  RW Keyspec XPath Path
+    C,/nd:network/nd:node/lnk:termination-point
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/lnk:termination-point[lnk:tp-id='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Node.TerminationPoint
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Node_TerminationPoint
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Node__TerminationPoint
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Node_TerminationPoint
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Node_TerminationPoint
+
+2.1.1.3.2.1  list lnk:supporting-termination-point
+  Description
+    The leaf list identifies any termination points that
+    the termination point is dependent on, or maps onto.
+    Those termination points will themselves be contained
+    in a supporting node.
+    This dependency information can be inferred from
+    the dependencies between links.  For this reason,
+    this item is not separately configurable.  Hence no
+    corresponding constraint needs to be articulated.
+    The corresponding information is simply provided by the
+    implementing system.
+  Leaves
+    name: network-ref, type: LEAFREF, description: This leaf identifies in which topology the
+    supporting termination point is present.
+    name: node-ref, type: LEAFREF, description: This leaf identifies in which node the supporting
+    termination point is present.
+    name: tp-ref, type: LEAFREF, description: Reference to the underlay node, must be in a
+    different topology
+  XPath Path
+    /nd:network/nd:node/lnk:termination-point/lnk:supporting-termination-point
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/lnk:termination-point[lnk:tp-id='STRING']/lnk:supporting-termination-point[lnk:network-ref='STRING'][lnk:node-ref='STRING'][lnk:tp-ref='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/node/STRING/ietf-network-topology:termination-point/STRING/supporting-termination-point/STRING,STRING,STRING
+  RW Keyspec XPath Path
+    C,/nd:network/nd:node/lnk:termination-point/lnk:supporting-termination-point
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/nd:node[nd:node-id='STRING']/lnk:termination-point[lnk:tp-id='STRING']/lnk:supporting-termination-point[lnk:network-ref='STRING'][lnk:node-ref='STRING'][lnk:tp-ref='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Node.TerminationPoint.SupportingTerminationPoint
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Node_TerminationPoint_SupportingTerminationPoint
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Node__TerminationPoint__SupportingTerminationPoint
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Node_TerminationPoint_SupportingTerminationPoint
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Node_TerminationPoint_SupportingTerminationPoint
+
+2.1.1.4  list lnk:link
+  Description
+    A Network Link connects a by Local (Source) node and
+    a Remote (Destination) Network Nodes via a set of the
+    nodes' termination points.
+    As it is possible to have several links between the same
+    source and destination nodes, and as a link could
+    potentially be re-homed between termination points, to
+    ensure that we would always know to distinguish between
+    links, every link is identified by a dedicated link
+    identifier.
+    Note that a link models a point-to-point link, not a
+    multipoint link.
+    Layering dependencies on links in underlay topologies are
+    not represented as the layering information of nodes and of
+    termination points is sufficient.
+  Leaves
+    name: link-id, type: STRING, description: The identifier of a link in the topology.
+    A link is specific to a topology to which it belongs.
+  XPath Path
+    /nd:network/lnk:link
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/ietf-network-topology:link/STRING
+  RW Keyspec XPath Path
+    C,/nd:network/lnk:link
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Link
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Link
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Link
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Link
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Link
+
+2.1.1.4.1  container lnk:source
+  Description
+    This container holds the logical source of a particular
+    link.
+  Leaves
+    name: source-node, type: LEAFREF, description: Source node identifier, must be in same topology.
+    name: source-tp, type: LEAFREF, description: Termination point within source node that terminates
+    the link.
+  XPath Path
+    /nd:network/lnk:link/lnk:source
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:source
+  RW.REST URI Path
+    /ietf-network:network/STRING/ietf-network-topology:link/STRING/source
+  RW Keyspec XPath Path
+    C,/nd:network/lnk:link/lnk:source
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:source
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Link.Source
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Link_Source
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Link__Source
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Link_Source
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Link_Source
+
+2.1.1.4.2  container lnk:destination
+  Description
+    This container holds the logical destination of a
+    particular link.
+  Leaves
+    name: dest-node, type: LEAFREF, description: Destination node identifier, must be in the same
+    network.
+    name: dest-tp, type: LEAFREF, description: Termination point within destination node that
+    terminates the link.
+  XPath Path
+    /nd:network/lnk:link/lnk:destination
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:destination
+  RW.REST URI Path
+    /ietf-network:network/STRING/ietf-network-topology:link/STRING/destination
+  RW Keyspec XPath Path
+    C,/nd:network/lnk:link/lnk:destination
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:destination
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Link.Destination
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Link_Destination
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Link__Destination
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Link_Destination
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Link_Destination
+
+2.1.1.4.3  list lnk:supporting-link
+  Description
+    Identifies the link, or links, that this link
+    is dependent on.
+  Leaves
+    name: network-ref, type: LEAFREF, description: This leaf identifies in which underlay topology
+    supporting link is present.
+    name: link-ref, type: LEAFREF, description: This leaf identifies a link which is a part
+    of this link's underlay. Reference loops, in which
+    a link identifies itself as its underlay, either
+    directly or transitively, are not allowed.
+  XPath Path
+    /nd:network/lnk:link/lnk:supporting-link
+  XPath Keyed Path
+    /nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:supporting-link[lnk:network-ref='STRING'][lnk:link-ref='STRING']
+  RW.REST URI Path
+    /ietf-network:network/STRING/ietf-network-topology:link/STRING/supporting-link/STRING,STRING
+  RW Keyspec XPath Path
+    C,/nd:network/lnk:link/lnk:supporting-link
+  RW Keyspec XPath Keyed Path
+    C,/nd:network[nd:network-id='STRING']/lnk:link[lnk:link-id='STRING']/lnk:supporting-link[lnk:network-ref='STRING'][lnk:link-ref='STRING']
+  Protobuf Type
+    .ietf_network_topology.YangData.IetfNetwork.Network.Link.SupportingLink
+  Python Proto-GI Type
+    IetfNetworkTopologyYang.YangData_IetfNetwork_Network_Link_SupportingLink
+  C Protobuf-C Struct Type
+    IetfNetworkTopology__YangData__IetfNetwork__Network__Link__SupportingLink
+  C RWPB Identifiers
+    IetfNetworkTopology_IetfNetwork_data_Network_Link_SupportingLink
+  YPBC Base Identifier
+    rw_ypbc_IetfNetworkTopology_IetfNetwork_data_Network_Link_SupportingLink
+
+3  module ietf-network-topology
+

@@ -1,0 +1,2572 @@
+Programmer's API documentation for yang module vns-log.yang
+
+
+
+Schema Globals                                                               1
+
+module vns-log                                                               2
+  vns-log notification                                                     2.1
+    notification vns-log:generic-debug                                   2.1.1
+      container vns-log:template_params                                2.1.1.1
+        list vns-log:debug-details                                   2.1.1.1.1
+        list vns-log:additional-data                                 2.1.1.1.2
+        container vns-log:call-identifier                            2.1.1.1.3
+        container vns-log:session-params                             2.1.1.1.4
+    notification vns-log:generic-info                                    2.1.2
+      container vns-log:template_params                                2.1.2.1
+        list vns-log:debug-details                                   2.1.2.1.1
+        list vns-log:additional-data                                 2.1.2.1.2
+        container vns-log:call-identifier                            2.1.2.1.3
+        container vns-log:session-params                             2.1.2.1.4
+    notification vns-log:generic-notice                                  2.1.3
+      container vns-log:template_params                                2.1.3.1
+        list vns-log:debug-details                                   2.1.3.1.1
+        list vns-log:additional-data                                 2.1.3.1.2
+        container vns-log:call-identifier                            2.1.3.1.3
+        container vns-log:session-params                             2.1.3.1.4
+    notification vns-log:generic-warning                                 2.1.4
+      container vns-log:template_params                                2.1.4.1
+        list vns-log:debug-details                                   2.1.4.1.1
+        list vns-log:additional-data                                 2.1.4.1.2
+        container vns-log:call-identifier                            2.1.4.1.3
+        container vns-log:session-params                             2.1.4.1.4
+    notification vns-log:internal-error                                  2.1.5
+      container vns-log:template_params                                2.1.5.1
+        list vns-log:debug-details                                   2.1.5.1.1
+        list vns-log:additional-data                                 2.1.5.1.2
+        container vns-log:call-identifier                            2.1.5.1.3
+        container vns-log:session-params                             2.1.5.1.4
+    notification vns-log:vns-debug                                       2.1.6
+      container vns-log:template_params                                2.1.6.1
+        list vns-log:debug-details                                   2.1.6.1.1
+        list vns-log:additional-data                                 2.1.6.1.2
+        container vns-log:call-identifier                            2.1.6.1.3
+        container vns-log:session-params                             2.1.6.1.4
+    notification vns-log:vns-warning                                     2.1.7
+      container vns-log:template_params                                2.1.7.1
+        list vns-log:debug-details                                   2.1.7.1.1
+        list vns-log:additional-data                                 2.1.7.1.2
+        container vns-log:call-identifier                            2.1.7.1.3
+        container vns-log:session-params                             2.1.7.1.4
+    notification vns-log:vns-error                                       2.1.8
+      container vns-log:template_params                                2.1.8.1
+        list vns-log:debug-details                                   2.1.8.1.1
+        list vns-log:additional-data                                 2.1.8.1.2
+        container vns-log:call-identifier                            2.1.8.1.3
+        container vns-log:session-params                             2.1.8.1.4
+    notification vns-log:vns-info                                        2.1.9
+      container vns-log:template_params                                2.1.9.1
+        list vns-log:debug-details                                   2.1.9.1.1
+        list vns-log:additional-data                                 2.1.9.1.2
+        container vns-log:call-identifier                            2.1.9.1.3
+        container vns-log:session-params                             2.1.9.1.4
+    notification vns-log:vlr-debug                                      2.1.10
+      container vns-log:template_params                               2.1.10.1
+        list vns-log:debug-details                                  2.1.10.1.1
+        list vns-log:additional-data                                2.1.10.1.2
+        container vns-log:call-identifier                           2.1.10.1.3
+        container vns-log:session-params                            2.1.10.1.4
+    notification vns-log:vlr-error                                      2.1.11
+      container vns-log:template_params                               2.1.11.1
+        list vns-log:debug-details                                  2.1.11.1.1
+        list vns-log:additional-data                                2.1.11.1.2
+        container vns-log:call-identifier                           2.1.11.1.3
+        container vns-log:session-params                            2.1.11.1.4
+    notification vns-log:datastore-event                                2.1.12
+      container vns-log:template_params                               2.1.12.1
+        list vns-log:debug-details                                  2.1.12.1.1
+        list vns-log:additional-data                                2.1.12.1.2
+        container vns-log:call-identifier                           2.1.12.1.3
+        container vns-log:session-params                            2.1.12.1.4
+    notification vns-log:datastore-error                                2.1.13
+      container vns-log:template_params                               2.1.13.1
+        list vns-log:debug-details                                  2.1.13.1.1
+        list vns-log:additional-data                                2.1.13.1.2
+        container vns-log:call-identifier                           2.1.13.1.3
+        container vns-log:session-params                            2.1.13.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_VnsLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_VnsLog_g_schema
+2  module vns-log
+
+2.1  vns-log notification
+
+2.1.1  notification vns-log:generic-debug
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:generic-debug
+  XPath Keyed Path
+    /vns-log:generic-debug
+  RW.REST URI Path
+    /vns-log:generic-debug
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug
+    VnsLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug
+
+2.1.1.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:generic-debug/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:generic-debug/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug_TemplateParams
+    VnsLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug_TemplateParams_DebugDetails
+    VnsLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug_TemplateParams_AdditionalData
+    VnsLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    VnsLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:generic-debug/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-debug/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericDebug_TemplateParams_SessionParams
+    VnsLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification vns-log:generic-info
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:generic-info
+  XPath Keyed Path
+    /vns-log:generic-info
+  RW.REST URI Path
+    /vns-log:generic-info
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo
+    VnsLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo
+
+2.1.2.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:generic-info/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:generic-info/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo_TemplateParams
+    VnsLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo_TemplateParams_DebugDetails
+    VnsLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo_TemplateParams_AdditionalData
+    VnsLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    VnsLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:generic-info/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-info/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericInfo_TemplateParams_SessionParams
+    VnsLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification vns-log:generic-notice
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:generic-notice
+  XPath Keyed Path
+    /vns-log:generic-notice
+  RW.REST URI Path
+    /vns-log:generic-notice
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice
+    VnsLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice
+
+2.1.3.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:generic-notice/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:generic-notice/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice_TemplateParams
+    VnsLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice_TemplateParams_DebugDetails
+    VnsLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice_TemplateParams_AdditionalData
+    VnsLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    VnsLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:generic-notice/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-notice/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericNotice_TemplateParams_SessionParams
+    VnsLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification vns-log:generic-warning
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:generic-warning
+  XPath Keyed Path
+    /vns-log:generic-warning
+  RW.REST URI Path
+    /vns-log:generic-warning
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning
+    VnsLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning
+
+2.1.4.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:generic-warning/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:generic-warning/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning_TemplateParams
+    VnsLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning_TemplateParams_DebugDetails
+    VnsLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning_TemplateParams_AdditionalData
+    VnsLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    VnsLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:generic-warning/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:generic-warning/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_GenericWarning_TemplateParams_SessionParams
+    VnsLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification vns-log:internal-error
+  Description
+    Internal Error
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:internal-error
+  XPath Keyed Path
+    /vns-log:internal-error
+  RW.REST URI Path
+    /vns-log:internal-error
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError
+    VnsLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError
+
+2.1.5.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:internal-error/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:internal-error/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError_TemplateParams
+    VnsLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError_TemplateParams
+
+2.1.5.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError_TemplateParams_DebugDetails
+    VnsLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError_TemplateParams_AdditionalData
+    VnsLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError_TemplateParams_CallIdentifier
+    VnsLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:internal-error/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:internal-error/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_InternalError_TemplateParams_SessionParams
+    VnsLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.6  notification vns-log:vns-debug
+  Description
+    Vns Debug
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vns-debug
+  XPath Keyed Path
+    /vns-log:vns-debug
+  RW.REST URI Path
+    /vns-log:vns-debug
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug
+    VnsLog_notif_VnsDebug
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug
+
+2.1.6.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vns-debug/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vns-debug/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vns-debug/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug_TemplateParams
+    VnsLog_notif_VnsDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug_TemplateParams
+
+2.1.6.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vns-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug_TemplateParams_DebugDetails
+    VnsLog_notif_VnsDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug_TemplateParams_DebugDetails
+
+2.1.6.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vns-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug_TemplateParams_AdditionalData
+    VnsLog_notif_VnsDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug_TemplateParams_AdditionalData
+
+2.1.6.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vns-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug_TemplateParams_CallIdentifier
+    VnsLog_notif_VnsDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vns-debug/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vns-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-debug/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsDebug_TemplateParams_SessionParams
+    VnsLog_notif_VnsDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsDebug_TemplateParams_SessionParams
+
+2.1.7  notification vns-log:vns-warning
+  Description
+    Vns Warning
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vns-warning
+  XPath Keyed Path
+    /vns-log:vns-warning
+  RW.REST URI Path
+    /vns-log:vns-warning
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning
+    VnsLog_notif_VnsWarning
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning
+
+2.1.7.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vns-warning/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vns-warning/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vns-warning/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning_TemplateParams
+    VnsLog_notif_VnsWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning_TemplateParams
+
+2.1.7.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vns-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning_TemplateParams_DebugDetails
+    VnsLog_notif_VnsWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning_TemplateParams_DebugDetails
+
+2.1.7.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vns-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning_TemplateParams_AdditionalData
+    VnsLog_notif_VnsWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning_TemplateParams_AdditionalData
+
+2.1.7.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vns-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning_TemplateParams_CallIdentifier
+    VnsLog_notif_VnsWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vns-warning/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vns-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-warning/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsWarning_TemplateParams_SessionParams
+    VnsLog_notif_VnsWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsWarning_TemplateParams_SessionParams
+
+2.1.8  notification vns-log:vns-error
+  Description
+    Vns Error
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vns-error
+  XPath Keyed Path
+    /vns-log:vns-error
+  RW.REST URI Path
+    /vns-log:vns-error
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError
+    VnsLog_notif_VnsError
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError
+
+2.1.8.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vns-error/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vns-error/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vns-error/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError_TemplateParams
+    VnsLog_notif_VnsError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError_TemplateParams
+
+2.1.8.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vns-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError_TemplateParams_DebugDetails
+    VnsLog_notif_VnsError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError_TemplateParams_DebugDetails
+
+2.1.8.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vns-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError_TemplateParams_AdditionalData
+    VnsLog_notif_VnsError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError_TemplateParams_AdditionalData
+
+2.1.8.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vns-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError_TemplateParams_CallIdentifier
+    VnsLog_notif_VnsError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vns-error/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vns-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-error/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsError_TemplateParams_SessionParams
+    VnsLog_notif_VnsError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsError_TemplateParams_SessionParams
+
+2.1.9  notification vns-log:vns-info
+  Description
+    Vns Info
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vns-info
+  XPath Keyed Path
+    /vns-log:vns-info
+  RW.REST URI Path
+    /vns-log:vns-info
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo
+    VnsLog_notif_VnsInfo
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo
+
+2.1.9.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vns-info/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vns-info/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vns-info/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo_TemplateParams
+    VnsLog_notif_VnsInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo_TemplateParams
+
+2.1.9.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vns-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo_TemplateParams_DebugDetails
+    VnsLog_notif_VnsInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo_TemplateParams_DebugDetails
+
+2.1.9.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vns-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo_TemplateParams_AdditionalData
+    VnsLog_notif_VnsInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo_TemplateParams_AdditionalData
+
+2.1.9.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vns-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo_TemplateParams_CallIdentifier
+    VnsLog_notif_VnsInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vns-info/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vns-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vns-info/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VnsInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VnsInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VnsInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VnsInfo_TemplateParams_SessionParams
+    VnsLog_notif_VnsInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VnsInfo_TemplateParams_SessionParams
+
+2.1.10  notification vns-log:vlr-debug
+  Description
+    Vlr Debug
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vlr-debug
+  XPath Keyed Path
+    /vns-log:vlr-debug
+  RW.REST URI Path
+    /vns-log:vlr-debug
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug
+    VnsLog_notif_VlrDebug
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug
+
+2.1.10.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vlr-debug/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vlr-debug/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vlr-debug/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug_TemplateParams
+    VnsLog_notif_VlrDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug_TemplateParams
+
+2.1.10.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vlr-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug_TemplateParams_DebugDetails
+    VnsLog_notif_VlrDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug_TemplateParams_DebugDetails
+
+2.1.10.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vlr-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug_TemplateParams_AdditionalData
+    VnsLog_notif_VlrDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug_TemplateParams_AdditionalData
+
+2.1.10.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vlr-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug_TemplateParams_CallIdentifier
+    VnsLog_notif_VlrDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vlr-debug/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vlr-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-debug/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrDebug_TemplateParams_SessionParams
+    VnsLog_notif_VlrDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrDebug_TemplateParams_SessionParams
+
+2.1.11  notification vns-log:vlr-error
+  Description
+    Vlr Error
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:vlr-error
+  XPath Keyed Path
+    /vns-log:vlr-error
+  RW.REST URI Path
+    /vns-log:vlr-error
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError
+    VnsLog_notif_VlrError
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError
+
+2.1.11.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:vlr-error/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:vlr-error/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:vlr-error/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError_TemplateParams
+    VnsLog_notif_VlrError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError_TemplateParams
+
+2.1.11.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:vlr-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError_TemplateParams_DebugDetails
+    VnsLog_notif_VlrError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError_TemplateParams_DebugDetails
+
+2.1.11.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:vlr-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError_TemplateParams_AdditionalData
+    VnsLog_notif_VlrError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError_TemplateParams_AdditionalData
+
+2.1.11.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:vlr-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError_TemplateParams_CallIdentifier
+    VnsLog_notif_VlrError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError_TemplateParams_CallIdentifier
+
+2.1.11.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:vlr-error/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:vlr-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:vlr-error/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.VlrError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_VlrError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__VlrError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_VlrError_TemplateParams_SessionParams
+    VnsLog_notif_VlrError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_VlrError_TemplateParams_SessionParams
+
+2.1.12  notification vns-log:datastore-event
+  Description
+    datastore operation details
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:datastore-event
+  XPath Keyed Path
+    /vns-log:datastore-event
+  RW.REST URI Path
+    /vns-log:datastore-event
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent
+    VnsLog_notif_DatastoreEvent
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent
+
+2.1.12.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:datastore-event/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:datastore-event/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:datastore-event/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams
+    VnsLog_notif_DatastoreEvent_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams
+
+2.1.12.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:datastore-event/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+    VnsLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+
+2.1.12.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:datastore-event/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+    VnsLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+
+2.1.12.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:datastore-event/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+    VnsLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+
+2.1.12.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:datastore-event/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:datastore-event/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-event/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreEvent.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreEvent_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreEvent__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_SessionParams
+    VnsLog_notif_DatastoreEvent_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreEvent_TemplateParams_SessionParams
+
+2.1.13  notification vns-log:datastore-error
+  Description
+    error in datastore operation
+  Leaves
+    name: project-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vns-log:datastore-error
+  XPath Keyed Path
+    /vns-log:datastore-error
+  RW.REST URI Path
+    /vns-log:datastore-error
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError
+    VnsLog_notif_DatastoreError
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError
+
+2.1.13.1  container vns-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vns-log:datastore-error/vns-log:template_params
+  XPath Keyed Path
+    /vns-log:datastore-error/vns-log:template_params
+  RW.REST URI Path
+    /vns-log:datastore-error/template_params
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error/vns-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error/vns-log:template_params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError.TemplateParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError_TemplateParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError__TemplateParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError_TemplateParams
+    VnsLog_notif_DatastoreError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError_TemplateParams
+
+2.1.13.1.1  list vns-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:debug-details
+  XPath Keyed Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vns-log:datastore-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:debug-details[vns-log:type='generic-debug-detail']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError_TemplateParams_DebugDetails
+    VnsLog_notif_DatastoreError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError_TemplateParams_DebugDetails
+
+2.1.13.1.2  list vns-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:additional-data
+  XPath Keyed Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  RW.REST URI Path
+    /vns-log:datastore-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:additional-data[vns-log:attribute='STRING']
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError_TemplateParams_AdditionalData
+    VnsLog_notif_DatastoreError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError_TemplateParams_AdditionalData
+
+2.1.13.1.3  container vns-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:call-identifier
+  XPath Keyed Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:call-identifier
+  RW.REST URI Path
+    /vns-log:datastore-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:call-identifier
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError_TemplateParams_CallIdentifier
+    VnsLog_notif_DatastoreError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError_TemplateParams_CallIdentifier
+
+2.1.13.1.4  container vns-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:session-params
+  XPath Keyed Path
+    /vns-log:datastore-error/vns-log:template_params/vns-log:session-params
+  RW.REST URI Path
+    /vns-log:datastore-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vns-log:datastore-error/vns-log:template_params/vns-log:session-params
+  Protobuf Type
+    .vns_log.YangNotif.VnsLog.DatastoreError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnsLogYang.YangNotif_VnsLog_DatastoreError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnsLog__YangNotif__VnsLog__DatastoreError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnsLog_VnsLog_notif_DatastoreError_TemplateParams_SessionParams
+    VnsLog_notif_DatastoreError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnsLog_VnsLog_notif_DatastoreError_TemplateParams_SessionParams
+

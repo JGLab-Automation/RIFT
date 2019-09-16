@@ -1,0 +1,1589 @@
+Programmer's API documentation for yang module rw-sched-log.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-sched-log                                                          2
+  rw-sched-log notification                                                2.1
+    notification rwschedlog:sched-debug                                  2.1.1
+      container rwschedlog:template_params                             2.1.1.1
+        list rwschedlog:debug-details                                2.1.1.1.1
+        list rwschedlog:additional-data                              2.1.1.1.2
+        container rwschedlog:call-identifier                         2.1.1.1.3
+        container rwschedlog:session-params                          2.1.1.1.4
+    notification rwschedlog:sched-info                                   2.1.2
+      container rwschedlog:template_params                             2.1.2.1
+        list rwschedlog:debug-details                                2.1.2.1.1
+        list rwschedlog:additional-data                              2.1.2.1.2
+        container rwschedlog:call-identifier                         2.1.2.1.3
+        container rwschedlog:session-params                          2.1.2.1.4
+    notification rwschedlog:sched-notice                                 2.1.3
+      container rwschedlog:template_params                             2.1.3.1
+        list rwschedlog:debug-details                                2.1.3.1.1
+        list rwschedlog:additional-data                              2.1.3.1.2
+        container rwschedlog:call-identifier                         2.1.3.1.3
+        container rwschedlog:session-params                          2.1.3.1.4
+    notification rwschedlog:sched-warning                                2.1.4
+      container rwschedlog:template_params                             2.1.4.1
+        list rwschedlog:debug-details                                2.1.4.1.1
+        list rwschedlog:additional-data                              2.1.4.1.2
+        container rwschedlog:call-identifier                         2.1.4.1.3
+        container rwschedlog:session-params                          2.1.4.1.4
+    notification rwschedlog:sched-error                                  2.1.5
+      container rwschedlog:template_params                             2.1.5.1
+        list rwschedlog:debug-details                                2.1.5.1.1
+        list rwschedlog:additional-data                              2.1.5.1.2
+        container rwschedlog:call-identifier                         2.1.5.1.3
+        container rwschedlog:session-params                          2.1.5.1.4
+    notification rwschedlog:sched-critical                               2.1.6
+      container rwschedlog:template_params                             2.1.6.1
+        list rwschedlog:debug-details                                2.1.6.1.1
+        list rwschedlog:additional-data                              2.1.6.1.2
+        container rwschedlog:call-identifier                         2.1.6.1.3
+        container rwschedlog:session-params                          2.1.6.1.4
+    notification rwschedlog:sched-alert                                  2.1.7
+      container rwschedlog:template_params                             2.1.7.1
+        list rwschedlog:debug-details                                2.1.7.1.1
+        list rwschedlog:additional-data                              2.1.7.1.2
+        container rwschedlog:call-identifier                         2.1.7.1.3
+        container rwschedlog:session-params                          2.1.7.1.4
+    notification rwschedlog:sched-emergency                              2.1.8
+      container rwschedlog:template_params                             2.1.8.1
+        list rwschedlog:debug-details                                2.1.8.1.1
+        list rwschedlog:additional-data                              2.1.8.1.2
+        container rwschedlog:call-identifier                         2.1.8.1.3
+        container rwschedlog:session-params                          2.1.8.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwSchedLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwSchedLog_g_schema
+2  module rw-sched-log
+
+2.1  rw-sched-log notification
+  Description
+    RW.Sched logging definitions
+
+2.1.1  notification rwschedlog:sched-debug
+  Description
+    RwScheduler generic debug log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-debug
+  XPath Keyed Path
+    /rwschedlog:sched-debug
+  RW.REST URI Path
+    /rw-sched-log:sched-debug
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug
+    RwSchedLog_notif_SchedDebug
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug
+
+2.1.1.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-debug/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-debug/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-debug/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams
+    RwSchedLog_notif_SchedDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams
+
+2.1.1.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-debug/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedDebug_TemplateParams_SessionParams
+
+2.1.2  notification rwschedlog:sched-info
+  Description
+    RwScheduler generic info log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-info
+  XPath Keyed Path
+    /rwschedlog:sched-info
+  RW.REST URI Path
+    /rw-sched-log:sched-info
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo
+    RwSchedLog_notif_SchedInfo
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo
+
+2.1.2.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-info/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-info/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-info/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams
+    RwSchedLog_notif_SchedInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams
+
+2.1.2.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-info/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedInfo_TemplateParams_SessionParams
+
+2.1.3  notification rwschedlog:sched-notice
+  Description
+    RwScheduler generic notice log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-notice
+  XPath Keyed Path
+    /rwschedlog:sched-notice
+  RW.REST URI Path
+    /rw-sched-log:sched-notice
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice
+    RwSchedLog_notif_SchedNotice
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice
+
+2.1.3.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-notice/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-notice/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-notice/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams
+    RwSchedLog_notif_SchedNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams
+
+2.1.3.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-notice/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedNotice_TemplateParams_SessionParams
+
+2.1.4  notification rwschedlog:sched-warning
+  Description
+    RwScheduler generic warning log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-warning
+  XPath Keyed Path
+    /rwschedlog:sched-warning
+  RW.REST URI Path
+    /rw-sched-log:sched-warning
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning
+    RwSchedLog_notif_SchedWarning
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning
+
+2.1.4.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-warning/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-warning/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-warning/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams
+    RwSchedLog_notif_SchedWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams
+
+2.1.4.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-warning/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedWarning_TemplateParams_SessionParams
+
+2.1.5  notification rwschedlog:sched-error
+  Description
+    RwScheduler generic error log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-error
+  XPath Keyed Path
+    /rwschedlog:sched-error
+  RW.REST URI Path
+    /rw-sched-log:sched-error
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError
+    RwSchedLog_notif_SchedError
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError
+
+2.1.5.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-error/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-error/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-error/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams
+    RwSchedLog_notif_SchedError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams
+
+2.1.5.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-error/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedError_TemplateParams_SessionParams
+
+2.1.6  notification rwschedlog:sched-critical
+  Description
+    RwScheduler generic critical log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-critical
+  XPath Keyed Path
+    /rwschedlog:sched-critical
+  RW.REST URI Path
+    /rw-sched-log:sched-critical
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical
+    RwSchedLog_notif_SchedCritical
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical
+
+2.1.6.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-critical/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-critical/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-critical/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams
+    RwSchedLog_notif_SchedCritical_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams
+
+2.1.6.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-critical/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedCritical_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_DebugDetails
+
+2.1.6.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-critical/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedCritical_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_AdditionalData
+
+2.1.6.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-critical/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedCritical_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-critical/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-critical/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedCritical.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedCritical_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedCritical__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedCritical_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedCritical_TemplateParams_SessionParams
+
+2.1.7  notification rwschedlog:sched-alert
+  Description
+    RwScheduler generic alert log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-alert
+  XPath Keyed Path
+    /rwschedlog:sched-alert
+  RW.REST URI Path
+    /rw-sched-log:sched-alert
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert
+    RwSchedLog_notif_SchedAlert
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert
+
+2.1.7.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-alert/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-alert/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-alert/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams
+    RwSchedLog_notif_SchedAlert_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams
+
+2.1.7.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-alert/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedAlert_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_DebugDetails
+
+2.1.7.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-alert/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedAlert_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_AdditionalData
+
+2.1.7.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-alert/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedAlert_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-alert/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-alert/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedAlert.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedAlert_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedAlert__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedAlert_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedAlert_TemplateParams_SessionParams
+
+2.1.8  notification rwschedlog:sched-emergency
+  Description
+    DTS API generic emergency log
+  Leaves
+    name: log, type: STRING
+  XPath Path
+    /rwschedlog:sched-emergency
+  XPath Keyed Path
+    /rwschedlog:sched-emergency
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency
+    RwSchedLog_notif_SchedEmergency
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency
+
+2.1.8.1  container rwschedlog:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params
+  XPath Keyed Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency/template_params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency.TemplateParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency_TemplateParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency__TemplateParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams
+    RwSchedLog_notif_SchedEmergency_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams
+
+2.1.8.1.1  list rwschedlog:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:debug-details
+  XPath Keyed Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:debug-details[rwschedlog:type='generic-debug-detail']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_DebugDetails
+    RwSchedLog_notif_SchedEmergency_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_DebugDetails
+
+2.1.8.1.2  list rwschedlog:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:additional-data
+  XPath Keyed Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:additional-data[rwschedlog:attribute='STRING']
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_AdditionalData
+    RwSchedLog_notif_SchedEmergency_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_AdditionalData
+
+2.1.8.1.3  container rwschedlog:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:call-identifier
+  XPath Keyed Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:call-identifier
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:call-identifier
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_CallIdentifier
+    RwSchedLog_notif_SchedEmergency_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container rwschedlog:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:session-params
+  XPath Keyed Path
+    /rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:session-params
+  RW.REST URI Path
+    /rw-sched-log:sched-emergency/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwschedlog:sched-emergency/rwschedlog:template_params/rwschedlog:session-params
+  Protobuf Type
+    .rw_sched_log.YangNotif.RwSchedLog.SchedEmergency.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwSchedLogYang.YangNotif_RwSchedLog_SchedEmergency_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwSchedLog__YangNotif__RwSchedLog__SchedEmergency__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_SessionParams
+    RwSchedLog_notif_SchedEmergency_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwSchedLog_RwSchedLog_notif_SchedEmergency_TemplateParams_SessionParams
+

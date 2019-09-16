@@ -1,0 +1,1209 @@
+Programmer's API documentation for yang module rw-mgmtagt-confd.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-mgmtagt                                                            2
+  rw-mgmtagt data                                                          2.1
+    container rw-mgmtagt:uagent                                          2.1.1
+      container rw-mgmtagt:logrotate-conf                              2.1.1.1
+      container rw-mgmtagt:snmp-conf                                   2.1.1.2
+      container rw-mgmtagt:state                                       2.1.1.3
+        container rw-mgmtagt:config-state                            2.1.1.3.1
+        container rw-mgmtagt:internal-heartbeat                      2.1.1.3.2
+        list rw-mgmtagt:statistics                                   2.1.1.3.3
+          container rw-mgmtagt:processing-times                    2.1.1.3.3.1
+        list rw-mgmtagt:specific                                     2.1.1.3.4
+          list rw-mgmtagt:commands                                 2.1.1.3.4.1
+            container rw-mgmtagt:processing-times                2.1.1.3.4.1.1
+        container rw-mgmtagt:edit-config-control-state               2.1.1.3.5
+      container rw-mgmtagt:last-error                                  2.1.1.4
+        list rw-mgmtagt:rpc-error                                    2.1.1.4.1
+      container rw-mgmtagt-confd:confd                                 2.1.1.5
+        container rw-mgmtagt-confd:dom-refresh-period                2.1.1.5.1
+        container rw-mgmtagt-confd:user-login-stats                  2.1.1.5.2
+          container rw-mgmtagt-confd:current-users                 2.1.1.5.2.1
+            list rw-mgmtagt-confd:users                          2.1.1.5.2.1.1
+          container rw-mgmtagt-confd:authentication-stats          2.1.1.5.2.2
+            list rw-mgmtagt-confd:failure-stats                  2.1.1.5.2.2.1
+            list rw-mgmtagt-confd:success-stats                  2.1.1.5.2.2.2
+        list rw-mgmtagt-confd:client                                 2.1.1.5.3
+          list rw-mgmtagt-confd:cached_dom                         2.1.1.5.3.1
+            list rw-mgmtagt-confd:callbacks                      2.1.1.5.3.1.1
+  rw-mgmtagt rpc input                                                     2.2
+    rpc input rw-mgmtagt:mgmt-agent                                      2.2.1
+      container rw-mgmtagt:dts-trace                                   2.2.1.1
+      container rw-mgmtagt:send-trap                                   2.2.1.2
+        list rw-mgmtagt:var-binding                                  2.2.1.2.1
+    rpc input rw-mgmtagt:show-system-info                                2.2.2
+    rpc input rw-mgmtagt:show-role-instances                             2.2.3
+    rpc input rw-mgmtagt:edit-config-control                             2.2.4
+  rw-mgmtagt rpc output                                                    2.3
+    rpc output rw-mgmtagt:mgmt-agent                                     2.3.1
+    rpc output rw-mgmtagt:show-system-info                               2.3.2
+    rpc output rw-mgmtagt:show-role-instances                            2.3.3
+      list rw-mgmtagt:result                                           2.3.3.1
+        list rw-mgmtagt:users                                        2.3.3.1.1
+    rpc output rw-mgmtagt:edit-config-control                            2.3.4
+module rw-mgmtagt-confd                                                      3
+  rw-mgmtagt-confd rpc input                                               3.1
+    rpc input rw-mgmtagt-confd:mgmt-agent-confd                          3.1.1
+      container rw-mgmtagt-confd:clear-stats                           3.1.1.1
+      container rw-mgmtagt-confd:dom-refresh-period                    3.1.1.2
+  rw-mgmtagt-confd rpc output                                              3.2
+    rpc output rw-mgmtagt-confd:mgmt-agent-confd                         3.2.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMgmtagtConfd_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMgmtagtConfd_g_schema
+2  module rw-mgmtagt
+
+2.1  rw-mgmtagt data
+
+2.1.1  container rw-mgmtagt:uagent
+  XPath Path
+    /rw-mgmtagt:uagent
+  XPath Keyed Path
+    /rw-mgmtagt:uagent
+  RW.REST URI Path
+    /rw-mgmtagt:uagent
+  RW Keyspec XPath Path
+    C,/rw-mgmtagt:uagent
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmtagt:uagent
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.YangData_RwMgmtagt_Uagent
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent
+
+2.1.1.1  container rw-mgmtagt:logrotate-conf
+  Description
+    Configuration for logrotate
+  Leaves
+    name: compress, type: BOOLEAN, description: Compress rotated log file
+    name: size, type: UINT32, description: Max size of log file (in MB) after which it must be rotated.
+    name: rotations, type: UINT32, description: Number of rotations before the oldest file gets overwritten
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:logrotate-conf
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:logrotate-conf
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/logrotate-conf
+  RW Keyspec XPath Path
+    C,/rw-mgmtagt:uagent/rw-mgmtagt:logrotate-conf
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmtagt:uagent/rw-mgmtagt:logrotate-conf
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.LogrotateConf
+  Python Proto-GI Type
+    RwMgmtagtYang.LogrotateConf
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__LogrotateConf
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_LogrotateConf
+    RwMgmtagt_LogrotateConf
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_LogrotateConf
+
+2.1.1.2  container rw-mgmtagt:snmp-conf
+  Description
+    SNMP Related configurations.
+  Leaves
+    name: rest-session-traps, type: BOOLEAN, description: Enabled/Disable traps when a token based REST session login is performed.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:snmp-conf
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:snmp-conf
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/snmp-conf
+  RW Keyspec XPath Path
+    C,/rw-mgmtagt:uagent/rw-mgmtagt:snmp-conf
+  RW Keyspec XPath Keyed Path
+    C,/rw-mgmtagt:uagent/rw-mgmtagt:snmp-conf
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.SnmpConf
+  Python Proto-GI Type
+    RwMgmtagtYang.YangData_RwMgmtagt_Uagent_SnmpConf
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__SnmpConf
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_SnmpConf
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_SnmpConf
+
+2.1.1.3  container rw-mgmtagt:state
+  Description
+    Information pertaining to the state of the Management Agent
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State
+  Python Proto-GI Type
+    RwMgmtagtYang.State
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State
+    RwMgmtagt_State
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State
+
+2.1.1.3.1  container rw-mgmtagt:config-state
+  Leaves
+    name: ready, type: BOOLEAN, description: Indicates readiness of critical tasks, schema loading and init configuration
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:config-state
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:config-state
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/config-state
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:config-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:config-state
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.ConfigState
+  Python Proto-GI Type
+    RwMgmtagtYang.State_ConfigState
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__ConfigState
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_ConfigState
+    RwMgmtagt_State_ConfigState
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_ConfigState
+
+2.1.1.3.2  container rw-mgmtagt:internal-heartbeat
+  Leaves
+    name: heartbeat, type: EMPTY, description: To be published and subscribed only by agent.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:internal-heartbeat
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:internal-heartbeat
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/internal-heartbeat
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:internal-heartbeat
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:internal-heartbeat
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.InternalHeartbeat
+  Python Proto-GI Type
+    RwMgmtagtYang.State_InternalHeartbeat
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__InternalHeartbeat
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_InternalHeartbeat
+    RwMgmtagt_State_InternalHeartbeat
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_InternalHeartbeat
+
+2.1.1.3.3  list rw-mgmtagt:statistics
+  Description
+    Statistics on different types of transactions 
+  Leaves
+    name: operation, type: ENUM
+    name: request-count, type: UINT32, description: The types of requests of this type handled by the Management Agent
+    name: parsing-failed, type: UINT32, description: The number of requests that failed parsing
+    name: elapsed-time, type: UINT32, description: Elapsed time since record keeping began for this statistic
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics[rw-mgmtagt:operation='Invalid']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/statistics/Invalid
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics[rw-mgmtagt:operation='Invalid']
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.Statistics
+  Python Proto-GI Type
+    RwMgmtagtYang.Statistics
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__Statistics
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_Statistics
+    RwMgmtagt_Statistics
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_Statistics
+
+2.1.1.3.3.1  container rw-mgmtagt:processing-times
+  Leaves
+    name: request-parse-time, type: UINT32, description: The time it takes the UAGENT to parse a request, and build
+    the internal data structure to process requests
+    name: transaction-start-time, type: UINT32, description: The time taken to translate the request from an XML DOM to
+    DTS data structures, build a transaction, and start it
+    name: dts-response-time, type: UINT32, description: The time taken from the start of a transaction till DTS
+    responds to a transaction
+    name: response-parse-time, type: UINT32, description: The time taken by UAGENT to build a response DOM from the
+    data provided in the response
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics/rw-mgmtagt:processing-times
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:processing-times
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/statistics/Invalid/processing-times
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics/rw-mgmtagt:processing-times
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:statistics[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:processing-times
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.Statistics.ProcessingTimes
+  Python Proto-GI Type
+    RwMgmtagtYang.Statistics_ProcessingTimes
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__Statistics__ProcessingTimes
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_Statistics_ProcessingTimes
+    RwMgmtagt_Statistics_ProcessingTimes
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_Statistics_ProcessingTimes
+
+2.1.1.3.4  list rw-mgmtagt:specific
+  Description
+    The last N commands for each type of transaction
+  Leaves
+    name: operation, type: ENUM
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/specific/Invalid
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.Specific
+  Python Proto-GI Type
+    RwMgmtagtYang.Specific
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__Specific
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific
+    RwMgmtagt_Specific
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific
+
+2.1.1.3.4.1  list rw-mgmtagt:commands
+  Leaves
+    name: index, type: UINT32, description: A generated index - No real keys exists, since multiple
+    of the same command can be issued
+    name: request, type: STRING, description: The XML version of the command processed
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific/rw-mgmtagt:commands
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:commands[rw-mgmtagt:index='0']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/specific/Invalid/commands/0
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific/rw-mgmtagt:commands
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:commands[rw-mgmtagt:index='0']
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.Specific.Commands
+  Python Proto-GI Type
+    RwMgmtagtYang.SpecificStatistics
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__Specific__Commands
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific_Commands
+    RwMgmtagt_SpecificStatistics
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific_Commands
+
+2.1.1.3.4.1.1  container rw-mgmtagt:processing-times
+  Leaves
+    name: request-parse-time, type: UINT32, description: The time it takes the UAGENT to parse a request, and build
+    the internal data structure to process requests
+    name: transaction-start-time, type: UINT32, description: The time taken to translate the request from an XML DOM to
+    DTS data structures, build a transaction, and start it
+    name: dts-response-time, type: UINT32, description: The time taken from the start of a transaction till DTS
+    responds to a transaction
+    name: response-parse-time, type: UINT32, description: The time taken by UAGENT to build a response DOM from the
+    data provided in the response
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific/rw-mgmtagt:commands/rw-mgmtagt:processing-times
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:commands[rw-mgmtagt:index='0']/rw-mgmtagt:processing-times
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/specific/Invalid/commands/0/processing-times
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific/rw-mgmtagt:commands/rw-mgmtagt:processing-times
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:specific[rw-mgmtagt:operation='Invalid']/rw-mgmtagt:commands[rw-mgmtagt:index='0']/rw-mgmtagt:processing-times
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.Specific.Commands.ProcessingTimes
+  Python Proto-GI Type
+    RwMgmtagtYang.SpecificStatistics_ProcessingTimes
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__Specific__Commands__ProcessingTimes
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific_Commands_ProcessingTimes
+    RwMgmtagt_SpecificStatistics_ProcessingTimes
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_Specific_Commands_ProcessingTimes
+
+2.1.1.3.5  container rw-mgmtagt:edit-config-control-state
+  Description
+    States whether edit-config is possible. When the state is enabled
+    then edit-config is possible. When it is disabled edit-config will
+    fail.
+  Leaves
+    name: control-status, type: STRING
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:edit-config-control-state
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:edit-config-control-state
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/state/edit-config-control-state
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:edit-config-control-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:state/rw-mgmtagt:edit-config-control-state
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.State.EditConfigControlState
+  Python Proto-GI Type
+    RwMgmtagtYang.State_EditConfigControlState
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__State__EditConfigControlState
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_State_EditConfigControlState
+    RwMgmtagt_State_EditConfigControlState
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_State_EditConfigControlState
+
+2.1.1.4  container rw-mgmtagt:last-error
+  Description
+    Displays the last-error, reported by Mgmt Agent
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:last-error
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:last-error
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/last-error
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:last-error
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:last-error
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.LastError
+  Python Proto-GI Type
+    RwMgmtagtYang.YangData_RwMgmtagt_Uagent_LastError
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__LastError
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_LastError
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_LastError
+
+2.1.1.4.1  list rw-mgmtagt:rpc-error
+  Leaves
+    name: error-type, type: ENUM, description: Defines the conceptual layer that the error occurred.
+    name: error-tag-type, type: ENUM, description: Contains a string identifying the error condition.
+    name: error-severity-type, type: ENUM, description: Contains a string identifying the error severity, as
+    determined by the device.
+    name: error-app-tag, type: STRING, description: Contains a string identifying the data-model-specific
+    or implementation-specific error condition, if one exists.
+    name: error-path, type: STRING, description: Contains the absolute XPath expression identifying
+    the element path to the node that is associated with the error
+    being reported in a particular rpc-error element.
+    name: error-message, type: STRING, description: Contains a string suitable for human display that
+    describes the error condition. This element SHOULD include an
+    xml:lang attribute.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:last-error/rw-mgmtagt:rpc-error
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt:last-error/rw-mgmtagt:rpc-error
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/last-error/rpc-error
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:last-error/rw-mgmtagt:rpc-error
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt:last-error/rw-mgmtagt:rpc-error
+  Protobuf Type
+    .rw_mgmtagt.YangData.RwMgmtagt.Uagent.LastError.RpcError
+  Python Proto-GI Type
+    RwMgmtagtYang.YangData_RwMgmtagt_Uagent_LastError_RpcError
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangData__RwMgmtagt__Uagent__LastError__RpcError
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_data_Uagent_LastError_RpcError
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_data_Uagent_LastError_RpcError
+
+2.1.1.5  container rw-mgmtagt-confd:confd
+  Description
+    Information regarding interaction with the confd agent
+  Leaves
+    name: total-dom-lifetime, type: UINT64, description: Total time spent in DOM operations
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.Confd
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd
+    RwMgmtagtConfd_Confd
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd
+
+2.1.1.5.1  container rw-mgmtagt-confd:dom-refresh-period
+  Leaves
+    name: cli-dom-refresh-period, type: UINT32, description: Time in milliseconds after which cached DOM data will get
+    flushed for CLI session.
+    name: nc-rest-dom-refresh-period, type: UINT32, description: Time in milliseconds after which cached DOM data will get
+    flushed for RESTCONF/NETCONF session.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:dom-refresh-period
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:dom-refresh-period
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/dom-refresh-period
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:dom-refresh-period
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:dom-refresh-period
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.DomRefreshPeriod
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.Confd_DomRefreshPeriod
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__DomRefreshPeriod
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_DomRefreshPeriod
+    RwMgmtagtConfd_Confd_DomRefreshPeriod
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_DomRefreshPeriod
+
+2.1.1.5.2  container rw-mgmtagt-confd:user-login-stats
+  Description
+    All the user login and authentication stats
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.UserLoginStats
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats
+    RwMgmtagtConfd_UserLoginStats
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats
+
+2.1.1.5.2.1  container rw-mgmtagt-confd:current-users
+  Description
+    List of currently logged in users.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats/current-users
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats.CurrentUsers
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.UserLoginStats_CurrentUsers
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats__CurrentUsers
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_CurrentUsers
+    RwMgmtagtConfd_UserLoginStats_CurrentUsers
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_CurrentUsers
+
+2.1.1.5.2.1.1  list rw-mgmtagt-confd:users
+  Leaves
+    name: user-session-id, type: UINT32, description: Session ID of the user.
+    name: username, type: STRING, description: Name of the logged in user.
+    name: logintime, type: STRING, description: Time at which user logged in.
+    name: protocol, type: STRING, description: Protocol used for login.
+    name: ip-address, type: STRING, description: Ip address from which the user connected.
+    name: context-info, type: STRING, description: Contextual information associated with the login.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users/rw-mgmtagt-confd:users
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users/rw-mgmtagt-confd:users[rw-mgmtagt-confd:user-session-id='0']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats/current-users/users/0
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users/rw-mgmtagt-confd:users
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:current-users/rw-mgmtagt-confd:users[rw-mgmtagt-confd:user-session-id='0']
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats.CurrentUsers.Users
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.UserLoginStats_CurrentUsers_Users
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats__CurrentUsers__Users
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_CurrentUsers_Users
+    RwMgmtagtConfd_UserLoginStats_CurrentUsers_Users
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_CurrentUsers_Users
+
+2.1.1.5.2.2  container rw-mgmtagt-confd:authentication-stats
+  Description
+    User login authentication notifications.
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats/authentication-stats
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats.AuthenticationStats
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.AuthStats
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats__AuthenticationStats
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats
+    RwMgmtagtConfd_AuthStats
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats
+
+2.1.1.5.2.2.1  list rw-mgmtagt-confd:failure-stats
+  Leaves
+    name: user-session-id, type: UINT32, description: Session id of the user
+    name: time, type: STRING, description: Time at which the log was recorded
+    name: username, type: STRING
+    name: auth-message, type: STRING, description: Descriptive authentication log message
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:failure-stats
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:failure-stats
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats/authentication-stats/failure-stats
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:failure-stats
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:failure-stats
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats.AuthenticationStats.FailureStats
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.AuthStats_FailureStats
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats__AuthenticationStats__FailureStats
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats_FailureStats
+    RwMgmtagtConfd_AuthStats_FailureStats
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats_FailureStats
+
+2.1.1.5.2.2.2  list rw-mgmtagt-confd:success-stats
+  Leaves
+    name: user-session-id, type: UINT32, description: Session id of the user
+    name: time, type: STRING, description: Time at which the log was recorded
+    name: username, type: STRING
+    name: auth-message, type: STRING, description: Descriptive authentication log message
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:success-stats
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:success-stats
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/user-login-stats/authentication-stats/success-stats
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:success-stats
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:user-login-stats/rw-mgmtagt-confd:authentication-stats/rw-mgmtagt-confd:success-stats
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.UserLoginStats.AuthenticationStats.SuccessStats
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.AuthStats_SuccessStats
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__UserLoginStats__AuthenticationStats__SuccessStats
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats_SuccessStats
+    RwMgmtagtConfd_AuthStats_SuccessStats
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_UserLoginStats_AuthenticationStats_SuccessStats
+
+2.1.1.5.3  list rw-mgmtagt-confd:client
+  Description
+    Interaction with each client type
+  Leaves
+    name: identifier, type: UINT64, description: An internal identifier for each client used by confd.  0
+    corresponds to clients that have exited
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/client/0
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.Client
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.Client
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__Client
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client
+    RwMgmtagtConfd_Client
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client
+
+2.1.1.5.3.1  list rw-mgmtagt-confd:cached_dom
+  Leaves
+    name: index, type: UINT16, description: A false index
+    name: path, type: STRING, description: The hkey path that created this entry
+    name: dts-keyspec, type: STRING, description: Keyspec used for DTS if a query was needed.  Not set for
+    requests served from local operational dom
+    name: create-time, type: UINT64, description: Time in microseconds from when the dom was created to
+    its last access
+    name: usage-time, type: UINT64, description: Time in microseconds from when the dom was created to
+    its last access
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client/rw-mgmtagt-confd:cached_dom
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']/rw-mgmtagt-confd:cached_dom[rw-mgmtagt-confd:index='0']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/client/0/cached_dom/0
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client/rw-mgmtagt-confd:cached_dom
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']/rw-mgmtagt-confd:cached_dom[rw-mgmtagt-confd:index='0']
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.Client.CachedDom
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.CachedDom
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__Client__CachedDom
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client_CachedDom
+    RwMgmtagtConfd_CachedDom
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client_CachedDom
+
+2.1.1.5.3.1.1  list rw-mgmtagt-confd:callbacks
+  Leaves
+    name: type, type: ENUM, description: The type of callback invoked
+    name: count, type: UINT16, description: Number of times a callback was invoked
+  XPath Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client/rw-mgmtagt-confd:cached_dom/rw-mgmtagt-confd:callbacks
+  XPath Keyed Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']/rw-mgmtagt-confd:cached_dom[rw-mgmtagt-confd:index='0']/rw-mgmtagt-confd:callbacks[rw-mgmtagt-confd:type='exists-optional']
+  RW.REST URI Path
+    /rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/client/0/cached_dom/0/callbacks/exists-optional
+  RW Keyspec XPath Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client/rw-mgmtagt-confd:cached_dom/rw-mgmtagt-confd:callbacks
+  RW Keyspec XPath Keyed Path
+    D,/rw-mgmtagt:uagent/rw-mgmtagt-confd:confd/rw-mgmtagt-confd:client[rw-mgmtagt-confd:identifier='0']/rw-mgmtagt-confd:cached_dom[rw-mgmtagt-confd:index='0']/rw-mgmtagt-confd:callbacks[rw-mgmtagt-confd:type='exists-optional']
+  Protobuf Type
+    .rw_mgmtagt_confd.YangData.RwMgmtagt.Uagent.Confd.Client.CachedDom.Callbacks
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.Callbacks
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangData__RwMgmtagt__Uagent__Confd__Client__CachedDom__Callbacks
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client_CachedDom_Callbacks
+    RwMgmtagtConfd_Callbacks
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagt_data_Uagent_Confd_Client_CachedDom_Callbacks
+
+2.2  rw-mgmtagt rpc input
+
+2.2.1  rpc input rw-mgmtagt:mgmt-agent
+  Leaves
+    name: show-agent-dom, type: EMPTY
+    name: validate-agent-dom, type: EMPTY
+  XPath Path
+    /rw-mgmtagt:mgmt-agent
+  XPath Keyed Path
+    /rw-mgmtagt:mgmt-agent
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:mgmt-agent
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:mgmt-agent
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.MgmtAgent
+  Python Proto-GI Type
+    RwMgmtagtYang.YangInput_RwMgmtagt_MgmtAgent
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__MgmtAgent
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_MgmtAgent
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_MgmtAgent
+
+2.2.1.1  container rw-mgmtagt:dts-trace
+  Description
+    Trace the next Management Agent transaction
+  Leaves
+    name: next-command, type: EMPTY, description: Trace the next mangement/ netconf command
+  XPath Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:dts-trace
+  XPath Keyed Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:dts-trace
+  RW.REST URI Path
+    /input/dts-trace
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:dts-trace
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:dts-trace
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.MgmtAgent.DtsTrace
+  Python Proto-GI Type
+    RwMgmtagtYang.DtsTrace
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__MgmtAgent__DtsTrace
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_MgmtAgent_DtsTrace
+    RwMgmtagt_DtsTrace
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_MgmtAgent_DtsTrace
+
+2.2.1.2  container rw-mgmtagt:send-trap
+  Description
+    RPC to send a test SNMP trap to the trap receivers
+  Leaves
+    name: mib-module, type: STRING, description: Name of the MIB module where the trap is defined
+    (example: RIFT-LP-TRAPS-MIB)
+    name: trap-name, type: STRING, description: SNMP trap name. (example: riftLPApplicationStart)
+  XPath Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap
+  XPath Keyed Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap
+  RW.REST URI Path
+    /input/send-trap
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.MgmtAgent.SendTrap
+  Python Proto-GI Type
+    RwMgmtagtYang.YangInput_RwMgmtagt_MgmtAgent_SendTrap
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__MgmtAgent__SendTrap
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_MgmtAgent_SendTrap
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_MgmtAgent_SendTrap
+
+2.2.1.2.1  list rw-mgmtagt:var-binding
+  Leaves
+    name: var-name, type: STRING, description: Variable Name
+    name: var-value, type: STRING, description: Value of the variable
+  XPath Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap/rw-mgmtagt:var-binding
+  XPath Keyed Path
+    /rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap/rw-mgmtagt:var-binding
+  RW.REST URI Path
+    /input/send-trap/var-binding
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap/rw-mgmtagt:var-binding
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:mgmt-agent/rw-mgmtagt:send-trap/rw-mgmtagt:var-binding
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.MgmtAgent.SendTrap.VarBinding
+  Python Proto-GI Type
+    RwMgmtagtYang.YangInput_RwMgmtagt_MgmtAgent_SendTrap_VarBinding
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__MgmtAgent__SendTrap__VarBinding
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_MgmtAgent_SendTrap_VarBinding
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_MgmtAgent_SendTrap_VarBinding
+
+2.2.2  rpc input rw-mgmtagt:show-system-info
+  Leaves
+    name: string, type: EMPTY, description: Return the information in a string in the RPC response.
+    name: file, type: STRING, description: Save the information to a file.  This element contains the
+    filename.
+  XPath Path
+    /rw-mgmtagt:show-system-info
+  XPath Keyed Path
+    /rw-mgmtagt:show-system-info
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:show-system-info
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:show-system-info
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.ShowSystemInfo
+  Python Proto-GI Type
+    RwMgmtagtYang.SysInfoInput
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__ShowSystemInfo
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_ShowSystemInfo
+    RwMgmtagt_SysInfoInput
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_ShowSystemInfo
+
+2.2.3  rpc input rw-mgmtagt:show-role-instances
+  Leaves
+    name: string, type: EMPTY, description: Show the role instances on the console.
+  XPath Path
+    /rw-mgmtagt:show-role-instances
+  XPath Keyed Path
+    /rw-mgmtagt:show-role-instances
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:show-role-instances
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:show-role-instances
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.ShowRoleInstances
+  Python Proto-GI Type
+    RwMgmtagtYang.RoleInstancesInput
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__ShowRoleInstances
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_ShowRoleInstances
+    RwMgmtagt_RoleInstancesInput
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_ShowRoleInstances
+
+2.2.4  rpc input rw-mgmtagt:edit-config-control
+  Leaves
+    name: disable, type: BOOLEAN, description: If set to true, all subsequent config transactions are disabled.
+    New config udpates will result in an error. If set to false, config
+    transaction are enabled (if previosuly disabled.
+  XPath Path
+    /rw-mgmtagt:edit-config-control
+  XPath Keyed Path
+    /rw-mgmtagt:edit-config-control
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt:edit-config-control
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt:edit-config-control
+  Protobuf Type
+    .rw_mgmtagt.YangInput.RwMgmtagt.EditConfigControl
+  Python Proto-GI Type
+    RwMgmtagtYang.YangInput_RwMgmtagt_EditConfigControl
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangInput__RwMgmtagt__EditConfigControl
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_input_EditConfigControl
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_input_EditConfigControl
+
+2.3  rw-mgmtagt rpc output
+
+2.3.1  rpc output rw-mgmtagt:mgmt-agent
+  Leaves
+    name: agent-dom, type: STRING
+    name: send-trap-result, type: STRING, description: Result of send trap (success/failure-message)
+  XPath Path
+    /rw-mgmtagt:mgmt-agent
+  XPath Keyed Path
+    /rw-mgmtagt:mgmt-agent
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:mgmt-agent
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:mgmt-agent
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.MgmtAgent
+  Python Proto-GI Type
+    RwMgmtagtYang.YangOutput_RwMgmtagt_MgmtAgent
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__MgmtAgent
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_MgmtAgent
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_MgmtAgent
+
+2.3.2  rpc output rw-mgmtagt:show-system-info
+  Leaves
+    name: result, type: STRING, description: The system information string.  This may be very large.
+  XPath Path
+    /rw-mgmtagt:show-system-info
+  XPath Keyed Path
+    /rw-mgmtagt:show-system-info
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:show-system-info
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:show-system-info
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.ShowSystemInfo
+  Python Proto-GI Type
+    RwMgmtagtYang.SysInfoOutput
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__ShowSystemInfo
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_ShowSystemInfo
+    RwMgmtagt_SysInfoOutput
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_ShowSystemInfo
+
+2.3.3  rpc output rw-mgmtagt:show-role-instances
+  XPath Path
+    /rw-mgmtagt:show-role-instances
+  XPath Keyed Path
+    /rw-mgmtagt:show-role-instances
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:show-role-instances
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:show-role-instances
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.ShowRoleInstances
+  Python Proto-GI Type
+    RwMgmtagtYang.RoleInstancesOutput
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__ShowRoleInstances
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_ShowRoleInstances
+    RwMgmtagt_RoleInstancesOutput
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_ShowRoleInstances
+
+2.3.3.1  list rw-mgmtagt:result
+  Description
+    List of all Role instances.
+  Leaves
+    name: role, type: STRING, description: Role name.
+  XPath Path
+    /rw-mgmtagt:show-role-instances/rw-mgmtagt:result
+  XPath Keyed Path
+    /rw-mgmtagt:show-role-instances/rw-mgmtagt:result[rw-mgmtagt:role='STRING']
+  RW.REST URI Path
+    /output/result/STRING
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:show-role-instances/rw-mgmtagt:result
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:show-role-instances/rw-mgmtagt:result[rw-mgmtagt:role='STRING']
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.ShowRoleInstances.Result
+  Python Proto-GI Type
+    RwMgmtagtYang.RoleInstancesOutput_Result
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__ShowRoleInstances__Result
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_ShowRoleInstances_Result
+    RwMgmtagt_RoleInstancesOutput_Result
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_ShowRoleInstances_Result
+
+2.3.3.1.1  list rw-mgmtagt:users
+  Leaves
+    name: username, type: STRING, description: RBAC user name.
+    name: domain, type: STRING, description: Domain configured for the RBAC user.
+  XPath Path
+    /rw-mgmtagt:show-role-instances/rw-mgmtagt:result/rw-mgmtagt:users
+  XPath Keyed Path
+    /rw-mgmtagt:show-role-instances/rw-mgmtagt:result[rw-mgmtagt:role='STRING']/rw-mgmtagt:users[rw-mgmtagt:username='STRING'][rw-mgmtagt:domain='STRING']
+  RW.REST URI Path
+    /output/result/STRING/users/STRING,STRING
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:show-role-instances/rw-mgmtagt:result/rw-mgmtagt:users
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:show-role-instances/rw-mgmtagt:result[rw-mgmtagt:role='STRING']/rw-mgmtagt:users[rw-mgmtagt:username='STRING'][rw-mgmtagt:domain='STRING']
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.ShowRoleInstances.Result.Users
+  Python Proto-GI Type
+    RwMgmtagtYang.RoleInstancesOutput_Result_Users
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__ShowRoleInstances__Result__Users
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_ShowRoleInstances_Result_Users
+    RwMgmtagt_RoleInstancesOutput_Result_Users
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_ShowRoleInstances_Result_Users
+
+2.3.4  rpc output rw-mgmtagt:edit-config-control
+  Leaves
+    name: success, type: BOOLEAN, description: Set to True on successful enable/disable operation. Set to False on
+    failure and the error message set appropriately.
+    name: error-message, type: STRING, description: If the RPC results in a failure, this error-message is set
+    appropriately.
+  XPath Path
+    /rw-mgmtagt:edit-config-control
+  XPath Keyed Path
+    /rw-mgmtagt:edit-config-control
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt:edit-config-control
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt:edit-config-control
+  Protobuf Type
+    .rw_mgmtagt.YangOutput.RwMgmtagt.EditConfigControl
+  Python Proto-GI Type
+    RwMgmtagtYang.YangOutput_RwMgmtagt_EditConfigControl
+  C Protobuf-C Struct Type
+    RwMgmtagt__YangOutput__RwMgmtagt__EditConfigControl
+  C RWPB Identifiers
+    RwMgmtagt_RwMgmtagt_output_EditConfigControl
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagt_RwMgmtagt_output_EditConfigControl
+
+3  module rw-mgmtagt-confd
+
+3.1  rw-mgmtagt-confd rpc input
+
+3.1.1  rpc input rw-mgmtagt-confd:mgmt-agent-confd
+  XPath Path
+    /rw-mgmtagt-confd:mgmt-agent-confd
+  XPath Keyed Path
+    /rw-mgmtagt-confd:mgmt-agent-confd
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd
+  Protobuf Type
+    .rw_mgmtagt_confd.YangInput.RwMgmtagtConfd.MgmtAgentConfd
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.YangInput_RwMgmtagtConfd_MgmtAgentConfd
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangInput__RwMgmtagtConfd__MgmtAgentConfd
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd
+    RwMgmtagtConfd_input_MgmtAgentConfd
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd
+
+3.1.1.1  container rw-mgmtagt-confd:clear-stats
+  Description
+    Clear the stats
+  Leaves
+    name: confd, type: EMPTY
+  XPath Path
+    /rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:clear-stats
+  XPath Keyed Path
+    /rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:clear-stats
+  RW.REST URI Path
+    /input/clear-stats
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:clear-stats
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:clear-stats
+  Protobuf Type
+    .rw_mgmtagt_confd.YangInput.RwMgmtagtConfd.MgmtAgentConfd.ClearStats
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.ClearStats
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangInput__RwMgmtagtConfd__MgmtAgentConfd__ClearStats
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd_ClearStats
+    RwMgmtagtConfd_input_MgmtAgentConfd_ClearStats
+    RwMgmtagtConfd_ClearStats
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd_ClearStats
+
+3.1.1.2  container rw-mgmtagt-confd:dom-refresh-period
+  Leaves
+    name: cli-dom-refresh-period, type: UINT32, description: Time in milliseconds after which cached DOM data will get
+    flushed for CLI session.
+    name: nc-rest-dom-refresh-period, type: UINT32, description: Time in milliseconds after which cached DOM data will get
+    flushed for RESTCONF/NETCONF session.
+  XPath Path
+    /rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:dom-refresh-period
+  XPath Keyed Path
+    /rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:dom-refresh-period
+  RW.REST URI Path
+    /input/dom-refresh-period
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:dom-refresh-period
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-confd:mgmt-agent-confd/rw-mgmtagt-confd:dom-refresh-period
+  Protobuf Type
+    .rw_mgmtagt_confd.YangInput.RwMgmtagtConfd.MgmtAgentConfd.DomRefreshPeriod
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.DomRefreshPeriod
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangInput__RwMgmtagtConfd__MgmtAgentConfd__DomRefreshPeriod
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd_DomRefreshPeriod
+    RwMgmtagtConfd_input_MgmtAgentConfd_DomRefreshPeriod
+    RwMgmtagtConfd_DomRefreshPeriod
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagtConfd_input_MgmtAgentConfd_DomRefreshPeriod
+
+3.2  rw-mgmtagt-confd rpc output
+
+3.2.1  rpc output rw-mgmtagt-confd:mgmt-agent-confd
+  XPath Path
+    /rw-mgmtagt-confd:mgmt-agent-confd
+  XPath Keyed Path
+    /rw-mgmtagt-confd:mgmt-agent-confd
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt-confd:mgmt-agent-confd
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt-confd:mgmt-agent-confd
+  Protobuf Type
+    .rw_mgmtagt_confd.YangOutput.RwMgmtagtConfd.MgmtAgentConfd
+  Python Proto-GI Type
+    RwMgmtagtConfdYang.YangOutput_RwMgmtagtConfd_MgmtAgentConfd
+  C Protobuf-C Struct Type
+    RwMgmtagtConfd__YangOutput__RwMgmtagtConfd__MgmtAgentConfd
+  C RWPB Identifiers
+    RwMgmtagtConfd_RwMgmtagtConfd_output_MgmtAgentConfd
+    RwMgmtagtConfd_output_MgmtAgentConfd
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtConfd_RwMgmtagtConfd_output_MgmtAgentConfd
+

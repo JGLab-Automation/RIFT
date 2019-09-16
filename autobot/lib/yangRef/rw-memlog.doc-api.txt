@@ -1,0 +1,403 @@
+Programmer's API documentation for yang module rw-memlog.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-memlog                                                             2
+  rw-memlog data                                                           2.1
+    container rw-memlog:rw-memlog                                        2.1.1
+      list rw-memlog:tasklet                                           2.1.1.1
+        list rw-memlog:instance                                      2.1.1.1.1
+    container rw-memlog:rw-memlog-state                                  2.1.2
+      list rw-memlog:tasklet                                           2.1.2.1
+        list rw-memlog:instance                                      2.1.2.1.1
+          list rw-memlog:buffer                                    2.1.2.1.1.1
+            list rw-memlog:entry                                 2.1.2.1.1.1.1
+  rw-memlog rpc input                                                      2.2
+    rpc input rw-memlog:rw-memlog-command                                2.2.1
+      container rw-memlog:clear                                        2.2.1.1
+      container rw-memlog:keep                                         2.2.1.2
+  rw-memlog rpc output                                                     2.3
+    rpc output rw-memlog:rw-memlog-command                               2.3.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMemlog_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMemlog_g_schema
+2  module rw-memlog
+
+2.1  rw-memlog data
+  Description
+    Defines and configures RIFT.ware in-memory tracing and logging
+    facility.
+
+2.1.1  container rw-memlog:rw-memlog
+  Description
+    Configuration for the RIFT.ware in-memory tracing facility.
+  XPath Path
+    /rw-memlog:rw-memlog
+  XPath Keyed Path
+    /rw-memlog:rw-memlog
+  RW.REST URI Path
+    /rw-memlog:rw-memlog
+  RW Keyspec XPath Path
+    C,/rw-memlog:rw-memlog
+  RW Keyspec XPath Keyed Path
+    C,/rw-memlog:rw-memlog
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlog
+  Python Proto-GI Type
+    RwMemlogYang.MemlogConfig
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlog
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlog
+    RwMemlog_data_RwMemlog
+    RwMemlog_MemlogConfig
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlog
+
+2.1.1.1  list rw-memlog:tasklet
+  Leaves
+    name: tasklet-name, type: STRING, description: Tasklet name.
+  XPath Path
+    /rw-memlog:rw-memlog/rw-memlog:tasklet
+  XPath Keyed Path
+    /rw-memlog:rw-memlog/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']
+  RW.REST URI Path
+    /rw-memlog:rw-memlog/tasklet/STRING
+  RW Keyspec XPath Path
+    C,/rw-memlog:rw-memlog/rw-memlog:tasklet
+  RW Keyspec XPath Keyed Path
+    C,/rw-memlog:rw-memlog/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlog.Tasklet
+  Python Proto-GI Type
+    RwMemlogYang.MemlogConfig_Tasklet
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlog__Tasklet
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlog_Tasklet
+    RwMemlog_data_RwMemlog_Tasklet
+    RwMemlog_MemlogConfig_Tasklet
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlog_Tasklet
+
+2.1.1.1.1  list rw-memlog:instance
+  Leaves
+    name: instance-name, type: STRING, description: Memory logging instance name.  There may be more than one
+    instance in each tasklet.
+    name: minimum-retired-count, type: UINT32, description: The minimum number of buffers to retain on the retired
+    list.  Retired buffers form a historical record of what
+    happened in the past.
+    name: maximum-keep-count, type: UINT32, description: The maximum number of kept buffers.  Kept buffers are
+    retired buffers that have been specifically marked as more
+    interesting than the others, so they will not be reused as
+    quickly.
+    name: filter-mask, type: UINT64, description: The desired filter-mask setting.  Invalid flags will be
+    ignored, rather than fail configuration.
+  XPath Path
+    /rw-memlog:rw-memlog/rw-memlog:tasklet/rw-memlog:instance
+  XPath Keyed Path
+    /rw-memlog:rw-memlog/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']
+  RW.REST URI Path
+    /rw-memlog:rw-memlog/tasklet/STRING/instance/STRING
+  RW Keyspec XPath Path
+    C,/rw-memlog:rw-memlog/rw-memlog:tasklet/rw-memlog:instance
+  RW Keyspec XPath Keyed Path
+    C,/rw-memlog:rw-memlog/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlog.Tasklet.Instance
+  Python Proto-GI Type
+    RwMemlogYang.InstanceConfig
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlog__Tasklet__Instance
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlog_Tasklet_Instance
+    RwMemlog_data_RwMemlog_Tasklet_Instance
+    RwMemlog_InstanceConfig
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlog_Tasklet_Instance
+
+2.1.2  container rw-memlog:rw-memlog-state
+  Description
+    State for the RIFT.ware in-memory tracing facility.
+  XPath Path
+    /rw-memlog:rw-memlog-state
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-state
+  RW.REST URI Path
+    /rw-memlog:rw-memlog-state
+  RW Keyspec XPath Path
+    D,/rw-memlog:rw-memlog-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-memlog:rw-memlog-state
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlogState
+  Python Proto-GI Type
+    RwMemlogYang.MemlogState
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlogState
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlogState
+    RwMemlog_data_RwMemlogState
+    RwMemlog_MemlogState
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlogState
+
+2.1.2.1  list rw-memlog:tasklet
+  Leaves
+    name: tasklet-name, type: STRING, description: Tasklet name.
+  XPath Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']
+  RW.REST URI Path
+    /rw-memlog:rw-memlog-state/tasklet/STRING
+  RW Keyspec XPath Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet
+  RW Keyspec XPath Keyed Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlogState.Tasklet
+  Python Proto-GI Type
+    RwMemlogYang.MemlogState_Tasklet
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlogState__Tasklet
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlogState_Tasklet
+    RwMemlog_data_RwMemlogState_Tasklet
+    RwMemlog_MemlogState_Tasklet
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlogState_Tasklet
+
+2.1.2.1.1  list rw-memlog:instance
+  Leaves
+    name: instance-name, type: STRING, description: Memory logging instance name.  There may be more than one
+    instance in each tasklet.
+    name: buffer-count, type: UINT64, description: The number of buffers current allocated.
+    name: memory-for-buffers, type: UINT64, description: The memory held by buffers in bytes
+    name: filter-mask, type: UINT64, description: The current filter flags.
+  XPath Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']
+  RW.REST URI Path
+    /rw-memlog:rw-memlog-state/tasklet/STRING/instance/STRING
+  RW Keyspec XPath Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance
+  RW Keyspec XPath Keyed Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlogState.Tasklet.Instance
+  Python Proto-GI Type
+    RwMemlogYang.InstanceState
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlogState__Tasklet__Instance
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance
+    RwMemlog_data_RwMemlogState_Tasklet_Instance
+    RwMemlog_InstanceState
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance
+
+2.1.2.1.1.1  list rw-memlog:buffer
+  Leaves
+    name: address, type: UINT64, description: The address of the buffer.
+    name: object-name, type: STRING, description: Description of the object that last used/is using this buffer.
+    name: object-id, type: UINT64, description: Object identifier for the object that last used/is using
+    this buffer.
+    name: version, type: UINT32, description: Buffer version.  Each time the buffer is reused, the
+    version number increases.
+    name: time, type: UINT64, description: If the buffer is active, the time the buffer was made
+    active, in nanoseconds since the Unix epoch.  If the
+    buffer is retired, the time the buffer was retired, in
+    nanoseconds since the Unix epoch.
+    name: is-active, type: BOOLEAN, description: True if the buffer is active.
+    name: is-keep, type: BOOLEAN, description: True if the buffer is on the keep list.
+  XPath Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance/rw-memlog:buffer
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']/rw-memlog:buffer
+  RW.REST URI Path
+    /rw-memlog:rw-memlog-state/tasklet/STRING/instance/STRING/buffer
+  RW Keyspec XPath Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance/rw-memlog:buffer
+  RW Keyspec XPath Keyed Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']/rw-memlog:buffer
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlogState.Tasklet.Instance.Buffer
+  Python Proto-GI Type
+    RwMemlogYang.InstanceState_Buffer
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlogState__Tasklet__Instance__Buffer
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer
+    RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer
+    RwMemlog_InstanceState_Buffer
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer
+
+2.1.2.1.1.1.1  list rw-memlog:entry
+  Leaves
+    name: index, type: UINT32, description: The entry index.  Entries are numbered from 0.
+    name: file, type: STRING, description: The name of the file that created the entry.
+    name: line, type: UINT32, description: The line number where the entry was created.
+    name: arg0, type: STRING, description: Log argument string.
+    name: arg1, type: STRING, description: Log argument string.
+    name: arg2, type: STRING, description: Log argument string.
+    name: arg3, type: STRING, description: Log argument string.
+    name: arg4, type: STRING, description: Log argument string.
+    name: arg5, type: STRING, description: Log argument string.
+    name: arg6, type: STRING, description: Log argument string.
+    name: arg7, type: STRING, description: Log argument string.
+    name: arg8, type: STRING, description: Log argument string.
+    name: arg9, type: STRING, description: Log argument string.
+  XPath Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance/rw-memlog:buffer/rw-memlog:entry
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']/rw-memlog:buffer/rw-memlog:entry
+  RW.REST URI Path
+    /rw-memlog:rw-memlog-state/tasklet/STRING/instance/STRING/buffer/entry
+  RW Keyspec XPath Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet/rw-memlog:instance/rw-memlog:buffer/rw-memlog:entry
+  RW Keyspec XPath Keyed Path
+    D,/rw-memlog:rw-memlog-state/rw-memlog:tasklet[rw-memlog:tasklet-name='STRING']/rw-memlog:instance[rw-memlog:instance-name='STRING']/rw-memlog:buffer/rw-memlog:entry
+  Protobuf Type
+    .rw_memlog.YangData.RwMemlog.RwMemlogState.Tasklet.Instance.Buffer.Entry
+  Python Proto-GI Type
+    RwMemlogYang.InstanceState_Buffer_Entry
+  C Protobuf-C Struct Type
+    RwMemlog__YangData__RwMemlog__RwMemlogState__Tasklet__Instance__Buffer__Entry
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer_Entry
+    RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer_Entry
+    RwMemlog_InstanceState_Buffer_Entry
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_data_RwMemlogState_Tasklet_Instance_Buffer_Entry
+
+2.2  rw-memlog rpc input
+  Description
+    Defines and configures RIFT.ware in-memory tracing and logging
+    facility.
+
+2.2.1  rpc input rw-memlog:rw-memlog-command
+  XPath Path
+    /rw-memlog:rw-memlog-command
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-command
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-memlog:rw-memlog-command
+  RW Keyspec XPath Keyed Path
+    I,/rw-memlog:rw-memlog-command
+  Protobuf Type
+    .rw_memlog.YangInput.RwMemlog.RwMemlogCommand
+  Python Proto-GI Type
+    RwMemlogYang.Command
+  C Protobuf-C Struct Type
+    RwMemlog__YangInput__RwMemlog__RwMemlogCommand
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_input_RwMemlogCommand
+    RwMemlog_input_RwMemlogCommand
+    RwMemlog_Command
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_input_RwMemlogCommand
+
+2.2.1.1  container rw-memlog:clear
+  Description
+    Clear all of the retired buffers in the matching instances.
+  Leaves
+    name: tasklet-name, type: STRING, description: Tasklet name.
+    name: instance-name, type: STRING, description: Memory logging instance name.
+    name: object-name, type: STRING, description: Description of the object that last used/is using this buffer.
+    name: object-id, type: UINT64, description: Object identifier for the object that last used/is using
+    this buffer.
+    name: also-keep, type: EMPTY, description: Also clear all of the keep buffers.
+  XPath Path
+    /rw-memlog:rw-memlog-command/rw-memlog:clear
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-command/rw-memlog:clear
+  RW.REST URI Path
+    /input/clear
+  RW Keyspec XPath Path
+    I,/rw-memlog:rw-memlog-command/rw-memlog:clear
+  RW Keyspec XPath Keyed Path
+    I,/rw-memlog:rw-memlog-command/rw-memlog:clear
+  Protobuf Type
+    .rw_memlog.YangInput.RwMemlog.RwMemlogCommand.Clear
+  Python Proto-GI Type
+    RwMemlogYang.Command_Clear
+  C Protobuf-C Struct Type
+    RwMemlog__YangInput__RwMemlog__RwMemlogCommand__Clear
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_input_RwMemlogCommand_Clear
+    RwMemlog_input_RwMemlogCommand_Clear
+    RwMemlog_Command_Clear
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_input_RwMemlogCommand_Clear
+
+2.2.1.2  container rw-memlog:keep
+  Description
+    Keep all of the retired buffers in the matching instances.
+  Leaves
+    name: tasklet-name, type: STRING, description: Tasklet name.
+    name: instance-name, type: STRING, description: Memory logging instance name.
+    name: object-name, type: STRING, description: Description of the object that last used/is using this buffer.
+    name: object-id, type: UINT64, description: Object identifier for the object that last used/is using
+    this buffer.
+  XPath Path
+    /rw-memlog:rw-memlog-command/rw-memlog:keep
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-command/rw-memlog:keep
+  RW.REST URI Path
+    /input/keep
+  RW Keyspec XPath Path
+    I,/rw-memlog:rw-memlog-command/rw-memlog:keep
+  RW Keyspec XPath Keyed Path
+    I,/rw-memlog:rw-memlog-command/rw-memlog:keep
+  Protobuf Type
+    .rw_memlog.YangInput.RwMemlog.RwMemlogCommand.Keep
+  Python Proto-GI Type
+    RwMemlogYang.Command_Keep
+  C Protobuf-C Struct Type
+    RwMemlog__YangInput__RwMemlog__RwMemlogCommand__Keep
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_input_RwMemlogCommand_Keep
+    RwMemlog_input_RwMemlogCommand_Keep
+    RwMemlog_Command_Keep
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_input_RwMemlogCommand_Keep
+
+2.3  rw-memlog rpc output
+  Description
+    Defines and configures RIFT.ware in-memory tracing and logging
+    facility.
+
+2.3.1  rpc output rw-memlog:rw-memlog-command
+  XPath Path
+    /rw-memlog:rw-memlog-command
+  XPath Keyed Path
+    /rw-memlog:rw-memlog-command
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-memlog:rw-memlog-command
+  RW Keyspec XPath Keyed Path
+    O,/rw-memlog:rw-memlog-command
+  Protobuf Type
+    .rw_memlog.YangOutput.RwMemlog.RwMemlogCommand
+  Python Proto-GI Type
+    RwMemlogYang.YangOutput_RwMemlog_RwMemlogCommand
+  C Protobuf-C Struct Type
+    RwMemlog__YangOutput__RwMemlog__RwMemlogCommand
+  C RWPB Identifiers
+    RwMemlog_RwMemlog_output_RwMemlogCommand
+    RwMemlog_output_RwMemlogCommand
+  YPBC Base Identifier
+    rw_ypbc_RwMemlog_RwMemlog_output_RwMemlogCommand
+

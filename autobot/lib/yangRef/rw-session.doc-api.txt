@@ -1,0 +1,91 @@
+Programmer's API documentation for yang module rw-session.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-session                                                            2
+  rw-session data                                                          2.1
+    container rw-session:rw-session-state                                2.1.1
+      list rw-session:session                                          2.1.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwSession_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwSession_g_schema
+2  module rw-session
+
+2.1  rw-session data
+  Description
+    This module defines the platform-global sessions enabled in a
+    RIFT.ware installation.
+
+2.1.1  container rw-session:rw-session-state
+  Description
+    Operational state for RIFT.ware platform-global sessions.
+  XPath Path
+    /rw-session:rw-session-state
+  XPath Keyed Path
+    /rw-session:rw-session-state
+  RW.REST URI Path
+    /rw-session:rw-session-state
+  RW Keyspec XPath Path
+    D,/rw-session:rw-session-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-session:rw-session-state
+  Protobuf Type
+    .rw_session.YangData.RwSession.RwSessionState
+  Python Proto-GI Type
+    RwSessionYang.YangData_RwSession_RwSessionState
+  C Protobuf-C Struct Type
+    RwSession__YangData__RwSession__RwSessionState
+  C RWPB Identifiers
+    RwSession_RwSession_data_RwSessionState
+    RwSession_data_RwSessionState
+  YPBC Base Identifier
+    rw_ypbc_RwSession_RwSession_data_RwSessionState
+
+2.1.1.1  list rw-session:session
+  Description
+    List of sessions available in the RIFT.ware instance.
+  Leaves
+    name: session-id, type: STRING, description: The session id of this session
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+    name: xact-user-id, type: STRING, description: User of the transaction that requested for a session. In case of OTT
+    the user of the transaction that requested the OTT will be set here.
+    name: login-time, type: STRING, description: The logged in timestamp.
+    name: elapsed-time, type: STRING, description: Total time elapsed since login.
+    name: session-state, type: STRING, description: Status of the connection. i.e., active/inactive/disabled/etc
+    name: client-type, type: STRING, description: The client that requested authentication. i.e., rwcli/rwrest 
+    name: conn-type, type: STRING, description: The connection type this session is mapped to. i.e., rwmsg/rwdts/netconf/restconf 
+  XPath Path
+    /rw-session:rw-session-state/rw-session:session
+  XPath Keyed Path
+    /rw-session:rw-session-state/rw-session:session[rw-session:session-id='STRING']
+  RW.REST URI Path
+    /rw-session:rw-session-state/session/STRING
+  RW Keyspec XPath Path
+    D,/rw-session:rw-session-state/rw-session:session
+  RW Keyspec XPath Keyed Path
+    D,/rw-session:rw-session-state/rw-session:session[rw-session:session-id='STRING']
+  Protobuf Type
+    .rw_session.YangData.RwSession.RwSessionState.Session
+  Python Proto-GI Type
+    RwSessionYang.YangData_RwSession_RwSessionState_Session
+  C Protobuf-C Struct Type
+    RwSession__YangData__RwSession__RwSessionState__Session
+  C RWPB Identifiers
+    RwSession_RwSession_data_RwSessionState_Session
+    RwSession_data_RwSessionState_Session
+  YPBC Base Identifier
+    rw_ypbc_RwSession_RwSession_data_RwSessionState_Session
+

@@ -1,0 +1,13 @@
+Programmer's API documentation for yang module rw-c-types.yang
+
+
+
+Schema Globals                                                               1
+
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwCTypes_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwCTypes_g_schema

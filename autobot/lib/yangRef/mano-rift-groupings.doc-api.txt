@@ -1,0 +1,16 @@
+Programmer's API documentation for yang module mano-rift-groupings.yang
+
+
+
+Schema Globals                                                               1
+
+module mano-rift-groupings                                                   2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_ManoRiftGroupings_t_schema
+  Global Schema Pointer
+    rw_ypbc_ManoRiftGroupings_g_schema
+2  module mano-rift-groupings
+

@@ -1,0 +1,803 @@
+Programmer's API documentation for yang module rwpylog-test2.yang
+
+
+
+Schema Globals                                                               1
+
+module rwpylog-test2                                                         2
+  rwpylog-test2 notification                                               2.1
+    notification rwpylog-test2:generic-debug                             2.1.1
+      container rwpylog-test2:template_params                          2.1.1.1
+        list rwpylog-test2:debug-details                             2.1.1.1.1
+        list rwpylog-test2:additional-data                           2.1.1.1.2
+        container rwpylog-test2:call-identifier                      2.1.1.1.3
+        container rwpylog-test2:session-params                       2.1.1.1.4
+    notification rwpylog-test2:generic-info                              2.1.2
+      container rwpylog-test2:template_params                          2.1.2.1
+        list rwpylog-test2:debug-details                             2.1.2.1.1
+        list rwpylog-test2:additional-data                           2.1.2.1.2
+        container rwpylog-test2:call-identifier                      2.1.2.1.3
+        container rwpylog-test2:session-params                       2.1.2.1.4
+    notification rwpylog-test2:generic-notice                            2.1.3
+      container rwpylog-test2:template_params                          2.1.3.1
+        list rwpylog-test2:debug-details                             2.1.3.1.1
+        list rwpylog-test2:additional-data                           2.1.3.1.2
+        container rwpylog-test2:call-identifier                      2.1.3.1.3
+        container rwpylog-test2:session-params                       2.1.3.1.4
+    notification rwpylog-test2:generic-warning                           2.1.4
+      container rwpylog-test2:template_params                          2.1.4.1
+        list rwpylog-test2:debug-details                             2.1.4.1.1
+        list rwpylog-test2:additional-data                           2.1.4.1.2
+        container rwpylog-test2:call-identifier                      2.1.4.1.3
+        container rwpylog-test2:session-params                       2.1.4.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwpylogTest2_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwpylogTest2_g_schema
+2  module rwpylog-test2
+
+2.1  rwpylog-test2 notification
+
+2.1.1  notification rwpylog-test2:generic-debug
+  Leaves
+    name: project-name, type: STRING
+    name: uid, type: UINT32
+    name: message, type: STRING
+  XPath Path
+    /rwpylog-test2:generic-debug
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug
+    RwpylogTest2_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug
+
+2.1.1.1  container rwpylog-test2:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams
+    RwpylogTest2_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list rwpylog-test2:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_DebugDetails
+    RwpylogTest2_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list rwpylog-test2:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_AdditionalData
+    RwpylogTest2_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container rwpylog-test2:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwpylogTest2_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container rwpylog-test2:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:session-params
+  XPath Keyed Path
+    /rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW.REST URI Path
+    /rwpylog-test2:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-debug/rwpylog-test2:template_params/rwpylog-test2:session-params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_SessionParams
+    RwpylogTest2_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification rwpylog-test2:generic-info
+  Leaves
+    name: project-name, type: STRING
+    name: uid, type: UINT32
+    name: message, type: STRING
+  XPath Path
+    /rwpylog-test2:generic-info
+  XPath Keyed Path
+    /rwpylog-test2:generic-info
+  RW.REST URI Path
+    /rwpylog-test2:generic-info
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo
+    RwpylogTest2_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo
+
+2.1.2.1  container rwpylog-test2:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params
+  XPath Keyed Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params
+  RW.REST URI Path
+    /rwpylog-test2:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams
+    RwpylogTest2_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list rwpylog-test2:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  XPath Keyed Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  RW.REST URI Path
+    /rwpylog-test2:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_DebugDetails
+    RwpylogTest2_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list rwpylog-test2:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  XPath Keyed Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  RW.REST URI Path
+    /rwpylog-test2:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_AdditionalData
+    RwpylogTest2_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container rwpylog-test2:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  XPath Keyed Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW.REST URI Path
+    /rwpylog-test2:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwpylogTest2_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container rwpylog-test2:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:session-params
+  XPath Keyed Path
+    /rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW.REST URI Path
+    /rwpylog-test2:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-info/rwpylog-test2:template_params/rwpylog-test2:session-params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_SessionParams
+    RwpylogTest2_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification rwpylog-test2:generic-notice
+  Leaves
+    name: project-name, type: STRING
+    name: uid, type: UINT32
+    name: message, type: STRING
+  XPath Path
+    /rwpylog-test2:generic-notice
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice
+    RwpylogTest2_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice
+
+2.1.3.1  container rwpylog-test2:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams
+    RwpylogTest2_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list rwpylog-test2:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_DebugDetails
+    RwpylogTest2_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list rwpylog-test2:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_AdditionalData
+    RwpylogTest2_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container rwpylog-test2:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwpylogTest2_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container rwpylog-test2:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:session-params
+  XPath Keyed Path
+    /rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW.REST URI Path
+    /rwpylog-test2:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-notice/rwpylog-test2:template_params/rwpylog-test2:session-params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_SessionParams
+    RwpylogTest2_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification rwpylog-test2:generic-warning
+  Leaves
+    name: project-name, type: STRING
+    name: uid, type: UINT32
+    name: message, type: STRING
+  XPath Path
+    /rwpylog-test2:generic-warning
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning
+    RwpylogTest2_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning
+
+2.1.4.1  container rwpylog-test2:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams
+    RwpylogTest2_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list rwpylog-test2:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:debug-details[rwpylog-test2:type='generic-debug-detail']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_DebugDetails
+    RwpylogTest2_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list rwpylog-test2:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:additional-data[rwpylog-test2:attribute='STRING']
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_AdditionalData
+    RwpylogTest2_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container rwpylog-test2:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:call-identifier
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwpylogTest2_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container rwpylog-test2:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:session-params
+  XPath Keyed Path
+    /rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW.REST URI Path
+    /rwpylog-test2:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rwpylog-test2:generic-warning/rwpylog-test2:template_params/rwpylog-test2:session-params
+  Protobuf Type
+    .rwpylog_test2.YangNotif.RwpylogTest2.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwpylogTest2Yang.YangNotif_RwpylogTest2_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwpylogTest2__YangNotif__RwpylogTest2__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_SessionParams
+    RwpylogTest2_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwpylogTest2_RwpylogTest2_notif_GenericWarning_TemplateParams_SessionParams
+

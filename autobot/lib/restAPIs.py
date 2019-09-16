@@ -48,7 +48,7 @@ def cloud_acct_config_openstack(proj_name, cloud_acct_name):
 
 
 def cloud_acct_status(proj_name, cloud_acct_name):
-    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/oper-state/status"
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/oper-state"
     return api
 
 
@@ -119,4 +119,9 @@ def ns_delete():
 
 def ns_oper_status(proj_name, nsr_id):
     api = f"rw-project:project/{proj_name}/nsr:ns-instance-opdata/nsr/{nsr_id}/operational-status"
+    return api
+
+
+def vim_resource_discover():
+    api = "discover-cloud-resources"
     return api

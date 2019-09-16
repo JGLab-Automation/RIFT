@@ -1,0 +1,370 @@
+Programmer's API documentation for yang module rw-project-mano.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-project                                                            2
+  rw-project data                                                          2.1
+    list rw-project:project                                              2.1.1
+      container rw-project:project-config                              2.1.1.1
+        list rw-project:user                                         2.1.1.1.1
+          list rw-project:role                                     2.1.1.1.1.1
+          list rw-project-mano:mano-role                           2.1.1.1.1.2
+      container rw-project:project-state                               2.1.1.2
+        list rw-project:user                                         2.1.1.2.1
+          list rw-project:role                                     2.1.1.2.1.1
+          list rw-project-mano:mano-role                           2.1.1.2.1.2
+        list rw-project:role                                         2.1.1.2.2
+        list rw-project-mano:mano-role                               2.1.1.2.3
+module rw-project-mano                                                       3
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwProjectMano_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwProjectMano_g_schema
+2  module rw-project
+
+2.1  rw-project data
+  Description
+    This yang module defines project-based tenancy for RIFT.ware.
+    Authorization for project access is defined in terms of RIFT.ware's
+    Role-Based Access Control (RBAC) model.
+
+2.1.1  list rw-project:project
+  Description
+    Configuration and state for individual projects.  RIFT.ware
+    applications and projects are expected to augment this list in
+    order to add configuration for projects that is specific to the
+    product or application.  As such, this list contains minimal
+    data defined in this yang module.
+
+    When augmenting this element, other yang modules should prefer to
+    define containers with the same name as the augmenting module.
+    (Augmenting RIFT.ware modules should prefer to augment without
+    the rw prefix [for new features], or should prefer to augment the
+    augmented container of an existing augment, to ease future
+    adoption and/or standardization.)
+  Leaves
+    name: name, type: STRING, description: Name of the project.
+    name: description, type: STRING, description: Information about project
+  XPath Path
+    /rw-project:project
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']
+  RW Keyspec XPath Path
+    D,/rw-project:project
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project
+
+2.1.1.1  container rw-project:project-config
+  Description
+    General Project configuration supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-config
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectConfig
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectConfig
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectConfig
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectConfig
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectConfig
+
+2.1.1.1.1  list rw-project:user
+  Description
+    The list of Users who have been assigned Roles within this
+    Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: LEAFREF, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is email address,
+    the syntax could include additional characters, such as the at(@) sign.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectConfig.User
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectConfig_User
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectConfig__User
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectConfig_User
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectConfig_User
+
+2.1.1.1.1.1  list rw-project:role
+  Description
+    The list of Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectConfig.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectConfig_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectConfig__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectConfig_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectConfig_User_Role
+
+2.1.1.1.1.2  list rw-project-mano:mano-role
+  Description
+    The list of MANO application-specific Roles the User has been
+    assigned, within the enclosing Project.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+  XPath Path
+    /rw-project:project/rw-project:project-config/rw-project:user/rw-project-mano:mano-role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-config/user/STRING,STRING/rw-project-mano:mano-role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-config/rw-project:user/rw-project-mano:mano-role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-config/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectConfig.User.ManoRole
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectConfig_User_ManoRole
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectConfig__User__ManoRole
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectConfig_User_ManoRole
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectConfig_User_ManoRole
+
+2.1.1.2  container rw-project:project-state
+  Description
+    General Project operational state supported by all products.
+  XPath Path
+    /rw-project:project/rw-project:project-state
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectState
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectState
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectState
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectState
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectState
+
+2.1.1.2.1  list rw-project:user
+  Description
+    The state of Users who have been assigned Roles within
+    this Project.
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectState.User
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectState_User
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectState__User
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectState_User
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectState_User
+
+2.1.1.2.1.1  list rw-project:role
+  Description
+    The state of the Roles the User has been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: state, type: STRING, description: The assignment of a User to a Role may be an asynchronous
+    operation.  This value indicates whether the Role
+    assignment is active.  If the value is 'active', then the
+    assignment is complete and active.  Any other value
+    indicates that Role assignment is in a transitional or
+    failed state, as described in the value.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:user/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.User.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_User_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__User__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_User_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_User_Role
+
+2.1.1.2.1.2  list rw-project-mano:mano-role
+  Description
+    The state of the MANO application-specific Role the User has
+    been assigned.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: state, type: STRING, description: The assignment of a User to a Role may be an asynchronous
+    operation.  This value indicates whether the Role
+    assignment is active.  If the value is 'active', then the
+    assignment is complete and active.  Any other value
+    indicates that Role assignment is in a transitional or
+    failed state, as described in the value.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:user/rw-project-mano:mano-role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/user/STRING,STRING/rw-project-mano:mano-role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-state/rw-project:user/rw-project-mano:mano-role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:user[rw-project:user-name='STRING'][rw-project:user-domain='STRING']/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectState.User.ManoRole
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectState_User_ManoRole
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectState__User__ManoRole
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectState_User_ManoRole
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectState_User_ManoRole
+
+2.1.1.2.2  list rw-project:role
+  Description
+    The set of Roles that may be configured into
+    /rw-project:project/rw-project:config/rw-project:user/
+    rw-project:role.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: description, type: STRING, description: A description of the Role.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project:role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/role/STRING
+  RW Keyspec XPath Path
+    D,/rw-project:project/rw-project:project-state/rw-project:role
+  RW Keyspec XPath Keyed Path
+    D,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project:role[rw-project:role='STRING']
+  Protobuf Type
+    .rw_project.YangData.RwProject.Project.ProjectState.Role
+  Python Proto-GI Type
+    RwProjectYang.YangData_RwProject_Project_ProjectState_Role
+  C Protobuf-C Struct Type
+    RwProject__YangData__RwProject__Project__ProjectState__Role
+  C RWPB Identifiers
+    RwProject_RwProject_data_Project_ProjectState_Role
+  YPBC Base Identifier
+    rw_ypbc_RwProject_RwProject_data_Project_ProjectState_Role
+
+2.1.1.2.3  list rw-project-mano:mano-role
+  Description
+    The set of Roles that may be configured into
+    /rw-project:project/rw-project:project-config/rw-project:user/
+    rw-project-mano:mano-role/rw-project-mano:role.
+  Leaves
+    name: role, type: STRING, description: The Role, independent of Keys.
+    name: description, type: STRING, description: A description of the Role.
+  XPath Path
+    /rw-project:project/rw-project:project-state/rw-project-mano:mano-role
+  XPath Keyed Path
+    /rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  RW.REST URI Path
+    /rw-project:project/STRING/project-state/rw-project-mano:mano-role/STRING
+  RW Keyspec XPath Path
+    C,/rw-project:project/rw-project:project-state/rw-project-mano:mano-role
+  RW Keyspec XPath Keyed Path
+    C,/rw-project:project[rw-project:name='STRING']/rw-project:project-state/rw-project-mano:mano-role[rw-project-mano:role='STRING']
+  Protobuf Type
+    .rw_project_mano.YangData.RwProject.Project.ProjectState.ManoRole
+  Python Proto-GI Type
+    RwProjectManoYang.YangData_RwProject_Project_ProjectState_ManoRole
+  C Protobuf-C Struct Type
+    RwProjectMano__YangData__RwProject__Project__ProjectState__ManoRole
+  C RWPB Identifiers
+    RwProjectMano_RwProject_data_Project_ProjectState_ManoRole
+  YPBC Base Identifier
+    rw_ypbc_RwProjectMano_RwProject_data_Project_ProjectState_ManoRole
+
+3  module rw-project-mano
+

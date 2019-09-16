@@ -1,0 +1,204 @@
+Programmer's API documentation for yang module snmpv2-mib.yang
+
+
+
+Schema Globals                                                               1
+
+module snmpv2-mib                                                            2
+  snmpv2-mib data                                                          2.1
+    container snmpv2-mib:SNMPv2-MIB                                      2.1.1
+      container snmpv2-mib:system                                      2.1.1.1
+      container snmpv2-mib:snmp                                        2.1.1.2
+      container snmpv2-mib:snmpSet                                     2.1.1.3
+      container snmpv2-mib:sysORTable                                  2.1.1.4
+        list snmpv2-mib:sysOREntry                                   2.1.1.4.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_Snmpv2Mib_t_schema
+  Global Schema Pointer
+    rw_ypbc_Snmpv2Mib_g_schema
+2  module snmpv2-mib
+
+2.1  snmpv2-mib data
+
+2.1.1  container snmpv2-mib:SNMPv2-MIB
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB
+  RW Keyspec XPath Path
+    C,/snmpv2-mib:SNMPv2-MIB
+  RW Keyspec XPath Keyed Path
+    C,/snmpv2-mib:SNMPv2-MIB
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB
+    Snmpv2Mib_data_SNMPv2MIB
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB
+
+2.1.1.1  container snmpv2-mib:system
+  Leaves
+    name: sysDescr, type: STRING
+    name: sysObjectID, type: STRING
+    name: sysUpTime, type: UINT32
+    name: sysContact, type: STRING
+    name: sysName, type: STRING
+    name: sysLocation, type: STRING
+    name: sysServices, type: INT32
+    name: sysORLastChange, type: UINT32
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB/system
+  RW Keyspec XPath Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  RW Keyspec XPath Keyed Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:system
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB.System
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB_System
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB__System
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_System
+    Snmpv2Mib_data_SNMPv2MIB_System
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_System
+
+2.1.1.2  container snmpv2-mib:snmp
+  Leaves
+    name: snmpInPkts, type: UINT32
+    name: snmpInBadVersions, type: UINT32
+    name: snmpInBadCommunityNames, type: UINT32
+    name: snmpInBadCommunityUses, type: UINT32
+    name: snmpInASNParseErrs, type: UINT32
+    name: snmpEnableAuthenTraps, type: ENUM
+    name: snmpSilentDrops, type: UINT32
+    name: snmpProxyDrops, type: UINT32
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB/snmp
+  RW Keyspec XPath Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  RW Keyspec XPath Keyed Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmp
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB.Snmp
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB_Snmp
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB__Snmp
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_Snmp
+    Snmpv2Mib_data_SNMPv2MIB_Snmp
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_Snmp
+
+2.1.1.3  container snmpv2-mib:snmpSet
+  Leaves
+    name: snmpSetSerialNo, type: INT32
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB/snmpSet
+  RW Keyspec XPath Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  RW Keyspec XPath Keyed Path
+    C,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:snmpSet
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB.SnmpSet
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB_SnmpSet
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB__SnmpSet
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SnmpSet
+    Snmpv2Mib_data_SNMPv2MIB_SnmpSet
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SnmpSet
+
+2.1.1.4  container snmpv2-mib:sysORTable
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB/sysORTable
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB.SysORTable
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB_SysORTable
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB__SysORTable
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SysORTable
+    Snmpv2Mib_data_SNMPv2MIB_SysORTable
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SysORTable
+
+2.1.1.4.1  list snmpv2-mib:sysOREntry
+  Leaves
+    name: sysORIndex, type: INT32
+    name: sysORID, type: STRING
+    name: sysORDescr, type: STRING
+    name: sysORUpTime, type: UINT32
+  XPath Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable/snmpv2-mib:sysOREntry
+  XPath Keyed Path
+    /snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable/snmpv2-mib:sysOREntry[snmpv2-mib:sysORIndex='0']
+  RW.REST URI Path
+    /snmpv2-mib:SNMPv2-MIB/sysORTable/sysOREntry/0
+  RW Keyspec XPath Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable/snmpv2-mib:sysOREntry
+  RW Keyspec XPath Keyed Path
+    D,/snmpv2-mib:SNMPv2-MIB/snmpv2-mib:sysORTable/snmpv2-mib:sysOREntry[snmpv2-mib:sysORIndex='0']
+  Protobuf Type
+    .snmpv2_mib.YangData.Snmpv2Mib.SNMPv2MIB.SysORTable.SysOREntry
+  Python Proto-GI Type
+    Snmpv2MibYang.YangData_Snmpv2Mib_SNMPv2MIB_SysORTable_SysOREntry
+  C Protobuf-C Struct Type
+    Snmpv2Mib__YangData__Snmpv2Mib__SNMPv2MIB__SysORTable__SysOREntry
+  C RWPB Identifiers
+    Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SysORTable_SysOREntry
+    Snmpv2Mib_data_SNMPv2MIB_SysORTable_SysOREntry
+  YPBC Base Identifier
+    rw_ypbc_Snmpv2Mib_Snmpv2Mib_data_SNMPv2MIB_SysORTable_SysOREntry
+

@@ -7,6 +7,16 @@ import unittest
 import json
 import os
 
+
+
+
+
+
+
+
+
+
+
 #---------------------------------------
 # transac_id = fw.pkg_onboard(const.lp_addr, const.header, const.proj_name_default, const.ping_vnfd_ext_url)
 # state1 = fw.pkg_upload_status(const.lp_addr, const.header, const.proj_name_default, transac_id)
@@ -36,19 +46,19 @@ import os
 #---------------------------------------
 
 
-class Test(unittest.TestCase):
+# class Test(unittest.TestCase):
+#
+#     def test01_test1(self):
+#         util.log_info("This is test1.")
+#         a = []
+#         if a:
+#             print("Not Empty!")
+#         else:
+#             assert a, "Empty!"
+#
+#     def test02_test2(self):
+#         util.log_info("This is test2.")
 
-    def test01_test1(self):
-        util.log_info("This is test1.")
-        a = []
-        if a:
-            print("Not Empty!")
-        else:
-            assert a, "Empty!"
-
-    def test02_test2(self):
-        util.log_info("This is test2.")
-
-
-if __name__ == '__main__':
-    unittest.main()
+#
+# if __name__ == '__main__':
+#     unittest.main()

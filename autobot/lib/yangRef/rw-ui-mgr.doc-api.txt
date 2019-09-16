@@ -1,0 +1,2106 @@
+Programmer's API documentation for yang module rw-ui-mgr.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-ui-mgr                                                             2
+  rw-ui-mgr rpc input                                                      2.1
+    rpc input rw-ui-mgr:update-user-ui-state                             2.1.1
+    rpc input rw-ui-mgr:delete-user-ui-state                             2.1.2
+  rw-ui-mgr rpc output                                                     2.2
+    rpc output rw-ui-mgr:update-user-ui-state                            2.2.1
+    rpc output rw-ui-mgr:delete-user-ui-state                            2.2.2
+  rw-ui-mgr notification                                                   2.3
+    notification rw-ui-mgr:generic-debug                                 2.3.1
+      container rw-ui-mgr:template_params                              2.3.1.1
+        list rw-ui-mgr:debug-details                                 2.3.1.1.1
+        list rw-ui-mgr:additional-data                               2.3.1.1.2
+        container rw-ui-mgr:call-identifier                          2.3.1.1.3
+        container rw-ui-mgr:session-params                           2.3.1.1.4
+    notification rw-ui-mgr:generic-info                                  2.3.2
+      container rw-ui-mgr:template_params                              2.3.2.1
+        list rw-ui-mgr:debug-details                                 2.3.2.1.1
+        list rw-ui-mgr:additional-data                               2.3.2.1.2
+        container rw-ui-mgr:call-identifier                          2.3.2.1.3
+        container rw-ui-mgr:session-params                           2.3.2.1.4
+    notification rw-ui-mgr:generic-notice                                2.3.3
+      container rw-ui-mgr:template_params                              2.3.3.1
+        list rw-ui-mgr:debug-details                                 2.3.3.1.1
+        list rw-ui-mgr:additional-data                               2.3.3.1.2
+        container rw-ui-mgr:call-identifier                          2.3.3.1.3
+        container rw-ui-mgr:session-params                           2.3.3.1.4
+    notification rw-ui-mgr:generic-warning                               2.3.4
+      container rw-ui-mgr:template_params                              2.3.4.1
+        list rw-ui-mgr:debug-details                                 2.3.4.1.1
+        list rw-ui-mgr:additional-data                               2.3.4.1.2
+        container rw-ui-mgr:call-identifier                          2.3.4.1.3
+        container rw-ui-mgr:session-params                           2.3.4.1.4
+    notification rw-ui-mgr:init-error                                    2.3.5
+      container rw-ui-mgr:template_params                              2.3.5.1
+        list rw-ui-mgr:debug-details                                 2.3.5.1.1
+        list rw-ui-mgr:additional-data                               2.3.5.1.2
+        container rw-ui-mgr:call-identifier                          2.3.5.1.3
+        container rw-ui-mgr:session-params                           2.3.5.1.4
+    notification rw-ui-mgr:user-state-error                              2.3.6
+      container rw-ui-mgr:template_params                              2.3.6.1
+        list rw-ui-mgr:debug-details                                 2.3.6.1.1
+        list rw-ui-mgr:additional-data                               2.3.6.1.2
+        container rw-ui-mgr:call-identifier                          2.3.6.1.3
+        container rw-ui-mgr:session-params                           2.3.6.1.4
+    notification rw-ui-mgr:stop-error                                    2.3.7
+      container rw-ui-mgr:template_params                              2.3.7.1
+        list rw-ui-mgr:debug-details                                 2.3.7.1.1
+        list rw-ui-mgr:additional-data                               2.3.7.1.2
+        container rw-ui-mgr:call-identifier                          2.3.7.1.3
+        container rw-ui-mgr:session-params                           2.3.7.1.4
+    notification rw-ui-mgr:ui-start-error                                2.3.8
+      container rw-ui-mgr:template_params                              2.3.8.1
+        list rw-ui-mgr:debug-details                                 2.3.8.1.1
+        list rw-ui-mgr:additional-data                               2.3.8.1.2
+        container rw-ui-mgr:call-identifier                          2.3.8.1.3
+        container rw-ui-mgr:session-params                           2.3.8.1.4
+    notification rw-ui-mgr:nodejs-error                                  2.3.9
+      container rw-ui-mgr:template_params                              2.3.9.1
+        list rw-ui-mgr:debug-details                                 2.3.9.1.1
+        list rw-ui-mgr:additional-data                               2.3.9.1.2
+        container rw-ui-mgr:call-identifier                          2.3.9.1.3
+        container rw-ui-mgr:session-params                           2.3.9.1.4
+    notification rw-ui-mgr:graphql-error                                2.3.10
+      container rw-ui-mgr:template_params                             2.3.10.1
+        list rw-ui-mgr:debug-details                                2.3.10.1.1
+        list rw-ui-mgr:additional-data                              2.3.10.1.2
+        container rw-ui-mgr:call-identifier                         2.3.10.1.3
+        container rw-ui-mgr:session-params                          2.3.10.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwUiMgr_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwUiMgr_g_schema
+2  module rw-ui-mgr
+
+2.1  rw-ui-mgr rpc input
+
+2.1.1  rpc input rw-ui-mgr:update-user-ui-state
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+    name: key, type: STRING
+    name: value, type: STRING
+  XPath Path
+    /rw-ui-mgr:update-user-ui-state
+  XPath Keyed Path
+    /rw-ui-mgr:update-user-ui-state
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-ui-mgr:update-user-ui-state
+  RW Keyspec XPath Keyed Path
+    I,/rw-ui-mgr:update-user-ui-state
+  Protobuf Type
+    .rw_ui_mgr.YangInput.RwUiMgr.UpdateUserUiState
+  Python Proto-GI Type
+    RwUiMgrYang.YangInput_RwUiMgr_UpdateUserUiState
+  C Protobuf-C Struct Type
+    RwUiMgr__YangInput__RwUiMgr__UpdateUserUiState
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_input_UpdateUserUiState
+    RwUiMgr_input_UpdateUserUiState
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_input_UpdateUserUiState
+
+2.1.2  rpc input rw-ui-mgr:delete-user-ui-state
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+    name: key, type: STRING
+  XPath Path
+    /rw-ui-mgr:delete-user-ui-state
+  XPath Keyed Path
+    /rw-ui-mgr:delete-user-ui-state
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-ui-mgr:delete-user-ui-state
+  RW Keyspec XPath Keyed Path
+    I,/rw-ui-mgr:delete-user-ui-state
+  Protobuf Type
+    .rw_ui_mgr.YangInput.RwUiMgr.DeleteUserUiState
+  Python Proto-GI Type
+    RwUiMgrYang.YangInput_RwUiMgr_DeleteUserUiState
+  C Protobuf-C Struct Type
+    RwUiMgr__YangInput__RwUiMgr__DeleteUserUiState
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_input_DeleteUserUiState
+    RwUiMgr_input_DeleteUserUiState
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_input_DeleteUserUiState
+
+2.2  rw-ui-mgr rpc output
+
+2.2.1  rpc output rw-ui-mgr:update-user-ui-state
+  Leaves
+    name: response, type: STRING
+  XPath Path
+    /rw-ui-mgr:update-user-ui-state
+  XPath Keyed Path
+    /rw-ui-mgr:update-user-ui-state
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-ui-mgr:update-user-ui-state
+  RW Keyspec XPath Keyed Path
+    O,/rw-ui-mgr:update-user-ui-state
+  Protobuf Type
+    .rw_ui_mgr.YangOutput.RwUiMgr.UpdateUserUiState
+  Python Proto-GI Type
+    RwUiMgrYang.YangOutput_RwUiMgr_UpdateUserUiState
+  C Protobuf-C Struct Type
+    RwUiMgr__YangOutput__RwUiMgr__UpdateUserUiState
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_output_UpdateUserUiState
+    RwUiMgr_output_UpdateUserUiState
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_output_UpdateUserUiState
+
+2.2.2  rpc output rw-ui-mgr:delete-user-ui-state
+  Leaves
+    name: response, type: STRING
+  XPath Path
+    /rw-ui-mgr:delete-user-ui-state
+  XPath Keyed Path
+    /rw-ui-mgr:delete-user-ui-state
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-ui-mgr:delete-user-ui-state
+  RW Keyspec XPath Keyed Path
+    O,/rw-ui-mgr:delete-user-ui-state
+  Protobuf Type
+    .rw_ui_mgr.YangOutput.RwUiMgr.DeleteUserUiState
+  Python Proto-GI Type
+    RwUiMgrYang.YangOutput_RwUiMgr_DeleteUserUiState
+  C Protobuf-C Struct Type
+    RwUiMgr__YangOutput__RwUiMgr__DeleteUserUiState
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_output_DeleteUserUiState
+    RwUiMgr_output_DeleteUserUiState
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_output_DeleteUserUiState
+
+2.3  rw-ui-mgr notification
+
+2.3.1  notification rw-ui-mgr:generic-debug
+  Description
+    generic-debug
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:generic-debug
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug
+    RwUiMgr_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug
+
+2.3.1.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams
+    RwUiMgr_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams
+
+2.3.1.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_DebugDetails
+    RwUiMgr_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.3.1.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_AdditionalData
+    RwUiMgr_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.3.1.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwUiMgr_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.3.1.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-debug/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_SessionParams
+    RwUiMgr_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericDebug_TemplateParams_SessionParams
+
+2.3.2  notification rw-ui-mgr:generic-info
+  Description
+    generic-info
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:generic-info
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo
+    RwUiMgr_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo
+
+2.3.2.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams
+    RwUiMgr_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams
+
+2.3.2.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_DebugDetails
+    RwUiMgr_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.3.2.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_AdditionalData
+    RwUiMgr_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.3.2.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwUiMgr_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.3.2.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-info/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_SessionParams
+    RwUiMgr_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericInfo_TemplateParams_SessionParams
+
+2.3.3  notification rw-ui-mgr:generic-notice
+  Description
+    generic-notice
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:generic-notice
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice
+    RwUiMgr_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice
+
+2.3.3.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams
+    RwUiMgr_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams
+
+2.3.3.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_DebugDetails
+    RwUiMgr_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.3.3.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_AdditionalData
+    RwUiMgr_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.3.3.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwUiMgr_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.3.3.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-notice/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_SessionParams
+    RwUiMgr_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericNotice_TemplateParams_SessionParams
+
+2.3.4  notification rw-ui-mgr:generic-warning
+  Description
+    generic-warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:generic-warning
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning
+    RwUiMgr_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning
+
+2.3.4.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams
+    RwUiMgr_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams
+
+2.3.4.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_DebugDetails
+    RwUiMgr_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.3.4.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_AdditionalData
+    RwUiMgr_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.3.4.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwUiMgr_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.3.4.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:generic-warning/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_SessionParams
+    RwUiMgr_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GenericWarning_TemplateParams_SessionParams
+
+2.3.5  notification rw-ui-mgr:init-error
+  Description
+    uimgr specific init-error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:init-error
+  XPath Keyed Path
+    /rw-ui-mgr:init-error
+  RW.REST URI Path
+    /rw-ui-mgr:init-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError
+    RwUiMgr_notif_InitError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError
+
+2.3.5.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:init-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError_TemplateParams
+    RwUiMgr_notif_InitError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError_TemplateParams
+
+2.3.5.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:init-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_DebugDetails
+    RwUiMgr_notif_InitError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_DebugDetails
+
+2.3.5.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:init-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_AdditionalData
+    RwUiMgr_notif_InitError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_AdditionalData
+
+2.3.5.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:init-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_InitError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_CallIdentifier
+
+2.3.5.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:init-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:init-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.InitError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_InitError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__InitError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_SessionParams
+    RwUiMgr_notif_InitError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_InitError_TemplateParams_SessionParams
+
+2.3.6  notification rw-ui-mgr:user-state-error
+  Description
+    user state error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:user-state-error
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError
+    RwUiMgr_notif_UserStateError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError
+
+2.3.6.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams
+    RwUiMgr_notif_UserStateError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams
+
+2.3.6.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_DebugDetails
+    RwUiMgr_notif_UserStateError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_DebugDetails
+
+2.3.6.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_AdditionalData
+    RwUiMgr_notif_UserStateError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_AdditionalData
+
+2.3.6.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_UserStateError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_CallIdentifier
+
+2.3.6.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:user-state-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:user-state-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UserStateError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UserStateError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UserStateError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_SessionParams
+    RwUiMgr_notif_UserStateError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UserStateError_TemplateParams_SessionParams
+
+2.3.7  notification rw-ui-mgr:stop-error
+  Description
+    stop error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:stop-error
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError
+    RwUiMgr_notif_StopError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError
+
+2.3.7.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError_TemplateParams
+    RwUiMgr_notif_StopError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError_TemplateParams
+
+2.3.7.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_DebugDetails
+    RwUiMgr_notif_StopError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_DebugDetails
+
+2.3.7.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_AdditionalData
+    RwUiMgr_notif_StopError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_AdditionalData
+
+2.3.7.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_StopError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_CallIdentifier
+
+2.3.7.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:stop-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:stop-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.StopError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_StopError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__StopError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_SessionParams
+    RwUiMgr_notif_StopError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_StopError_TemplateParams_SessionParams
+
+2.3.8  notification rw-ui-mgr:ui-start-error
+  Description
+    ui start error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:ui-start-error
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError
+    RwUiMgr_notif_UiStartError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError
+
+2.3.8.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams
+    RwUiMgr_notif_UiStartError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams
+
+2.3.8.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_DebugDetails
+    RwUiMgr_notif_UiStartError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_DebugDetails
+
+2.3.8.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_AdditionalData
+    RwUiMgr_notif_UiStartError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_AdditionalData
+
+2.3.8.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_UiStartError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_CallIdentifier
+
+2.3.8.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:ui-start-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:ui-start-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.UiStartError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_UiStartError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__UiStartError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_SessionParams
+    RwUiMgr_notif_UiStartError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_UiStartError_TemplateParams_SessionParams
+
+2.3.9  notification rw-ui-mgr:nodejs-error
+  Description
+    nodejs error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:nodejs-error
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError
+    RwUiMgr_notif_NodejsError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError
+
+2.3.9.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams
+    RwUiMgr_notif_NodejsError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams
+
+2.3.9.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_DebugDetails
+    RwUiMgr_notif_NodejsError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_DebugDetails
+
+2.3.9.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_AdditionalData
+    RwUiMgr_notif_NodejsError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_AdditionalData
+
+2.3.9.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_NodejsError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_CallIdentifier
+
+2.3.9.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:nodejs-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:nodejs-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.NodejsError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_NodejsError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__NodejsError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_SessionParams
+    RwUiMgr_notif_NodejsError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_NodejsError_TemplateParams_SessionParams
+
+2.3.10  notification rw-ui-mgr:graphql-error
+  Description
+    graphql error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-ui-mgr:graphql-error
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError
+    RwUiMgr_notif_GraphqlError
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError
+
+2.3.10.1  container rw-ui-mgr:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError.TemplateParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError_TemplateParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError__TemplateParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams
+    RwUiMgr_notif_GraphqlError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams
+
+2.3.10.1.1  list rw-ui-mgr:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:debug-details[rw-ui-mgr:type='generic-debug-detail']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_DebugDetails
+    RwUiMgr_notif_GraphqlError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_DebugDetails
+
+2.3.10.1.2  list rw-ui-mgr:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:additional-data[rw-ui-mgr:attribute='STRING']
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_AdditionalData
+    RwUiMgr_notif_GraphqlError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_AdditionalData
+
+2.3.10.1.3  container rw-ui-mgr:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:call-identifier
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_CallIdentifier
+    RwUiMgr_notif_GraphqlError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_CallIdentifier
+
+2.3.10.1.4  container rw-ui-mgr:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  XPath Keyed Path
+    /rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW.REST URI Path
+    /rw-ui-mgr:graphql-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-ui-mgr:graphql-error/rw-ui-mgr:template_params/rw-ui-mgr:session-params
+  Protobuf Type
+    .rw_ui_mgr.YangNotif.RwUiMgr.GraphqlError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwUiMgrYang.YangNotif_RwUiMgr_GraphqlError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwUiMgr__YangNotif__RwUiMgr__GraphqlError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_SessionParams
+    RwUiMgr_notif_GraphqlError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwUiMgr_RwUiMgr_notif_GraphqlError_TemplateParams_SessionParams
+

@@ -1,0 +1,364 @@
+Programmer's API documentation for yang module rw-auth-pam.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-authentication                                                     2
+  rw-authentication data                                                   2.1
+    container rw-authentication:authentication-config                    2.1.1
+      list rw-authentication:domain                                    2.1.1.1
+        container rw-auth-pam:pam-localhost                          2.1.1.1.1
+      container rw-authentication:default-domain                       2.1.1.2
+      container rw-authentication:policy                               2.1.1.3
+        container rw-authentication:ui-account-lockout               2.1.1.3.1
+        container rw-authentication:password-policy                  2.1.1.3.2
+    container rw-authentication:authentication-state                     2.1.2
+      list rw-authentication:domain                                    2.1.2.1
+module rw-auth-pam                                                           3
+  rw-auth-pam rpc input                                                    3.1
+    rpc input rw-auth-pam:authenticate-pam-user                          3.1.1
+  rw-auth-pam rpc output                                                   3.2
+    rpc output rw-auth-pam:authenticate-pam-user                         3.2.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwAuthPam_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwAuthPam_g_schema
+2  module rw-authentication
+
+2.1  rw-authentication data
+  Description
+    RIFT.ware Unified Authentication model. RIFT.ware supports multiple
+    protocols for authentication and all these authentication related yang data
+    are available within this hierarchy.
+
+2.1.1  container rw-authentication:authentication-config
+  Description
+    Unified authentication configuration.
+  XPath Path
+    /rw-authentication:authentication-config
+  XPath Keyed Path
+    /rw-authentication:authentication-config
+  RW.REST URI Path
+    /rw-authentication:authentication-config
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config
+  Protobuf Type
+    .rw_auth_pam.YangData.RwAuthentication.AuthenticationConfig
+  Python Proto-GI Type
+    RwAuthPamYang.YangData_RwAuthentication_AuthenticationConfig
+  C Protobuf-C Struct Type
+    RwAuthPam__YangData__RwAuthentication__AuthenticationConfig
+  C RWPB Identifiers
+    RwAuthPam_RwAuthentication_data_AuthenticationConfig
+  YPBC Base Identifier
+    rw_ypbc_RwAuthPam_RwAuthentication_data_AuthenticationConfig
+
+2.1.1.1  list rw-authentication:domain
+  Description
+    Authentication config details are specific to domain. Each domain can
+    use a specific protocol for authentication, details of which are
+    specified as a case within the protocol choice.
+  Leaves
+    name: name, type: STRING, description: Domain name for which the authentication configuration is
+    applicable.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:domain
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']
+  RW.REST URI Path
+    /rw-authentication:authentication-config/domain/STRING
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']
+  Protobuf Type
+    .rw_auth_pam.YangData.RwAuthentication.AuthenticationConfig.Domain
+  Python Proto-GI Type
+    RwAuthPamYang.YangData_RwAuthentication_AuthenticationConfig_Domain
+  C Protobuf-C Struct Type
+    RwAuthPam__YangData__RwAuthentication__AuthenticationConfig__Domain
+  C RWPB Identifiers
+    RwAuthPam_RwAuthentication_data_AuthenticationConfig_Domain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthPam_RwAuthentication_data_AuthenticationConfig_Domain
+
+2.1.1.1.1  container rw-auth-pam:pam-localhost
+  Description
+    Configuration settings for Linux PAM
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:domain/rw-auth-pam:pam-localhost
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-pam:pam-localhost
+  RW.REST URI Path
+    /rw-authentication:authentication-config/domain/STRING/rw-auth-pam:pam-localhost
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain/rw-auth-pam:pam-localhost
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-pam:pam-localhost
+  Protobuf Type
+    .rw_auth_pam.YangData.RwAuthentication.AuthenticationConfig.Domain.PamLocalhost
+  Python Proto-GI Type
+    RwAuthPamYang.YangData_RwAuthentication_AuthenticationConfig_Domain_PamLocalhost
+  C Protobuf-C Struct Type
+    RwAuthPam__YangData__RwAuthentication__AuthenticationConfig__Domain__PamLocalhost
+  C RWPB Identifiers
+    RwAuthPam_RwAuthentication_data_AuthenticationConfig_Domain_PamLocalhost
+  YPBC Base Identifier
+    rw_ypbc_RwAuthPam_RwAuthentication_data_AuthenticationConfig_Domain_PamLocalhost
+
+2.1.1.2  container rw-authentication:default-domain
+  Leaves
+    name: name, type: LEAFREF, description: Default domain and thereby the default authentication protocol to be
+    used.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:default-domain
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:default-domain
+  RW.REST URI Path
+    /rw-authentication:authentication-config/default-domain
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:default-domain
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:default-domain
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.DefaultDomain
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_DefaultDomain
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__DefaultDomain
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_DefaultDomain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_DefaultDomain
+
+2.1.1.3  container rw-authentication:policy
+  Description
+    Configuration related to authentication policies.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy
+
+2.1.1.3.1  container rw-authentication:ui-account-lockout
+  Description
+    Account Lockout policy for UI Login, when using OpenID Connect.
+    Not applicable for SAML.
+  Leaves
+    name: disable-lockout, type: BOOLEAN, description: When set to true the UI account login lockout will be disabled.
+    Lockout, by default is enabled.
+    name: lockout-count, type: UINT8, description: Number of invalid password attempts after which the login
+    lockout will be effected.'
+    name: lockout-duration, type: UINT16, description: When locked-out, duration in minutes, after which valid login is
+    allowed. Previous invalid attempts count is not reset. An invalid
+    attempt after this will again lead to a lockout.
+    name: lockout-expiry, type: UINT16, description: Minutes after which an invalid attempt expire. Until the invalid
+    attempts reduces below the lockout-count, valid logins will not be
+    allowed.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy/ui-account-lockout
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy.UiAccountLockout
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy_UiAccountLockout
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy__UiAccountLockout
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_UiAccountLockout
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_UiAccountLockout
+
+2.1.1.3.2  container rw-authentication:password-policy
+  Description
+    Configuration parameters to enforce a strong password policy for
+    system domain users. If PAM auth is enabled, this policy also applies
+    for PAM users.
+
+    If the policy is enabled, the following checks are performed on the
+    new password.
+    - Minimum number of character (as per min-password-len).
+    - Combination of charatacter classes (as per min-character-classes).
+    - Checks if the new password is a dictionary word
+      (based on check-dictionary-word).
+    - If the new password contains username in some form (always).
+    - Checks if the new password is a palindrome. (always)
+    - Checks if the new password is similar to old one. (always)
+    - Checks if the new passowrd is a rotated version of old one. (always)
+  Leaves
+    name: disable-password-policy, type: BOOLEAN, description: Disable the password policy. If disabled, no password restrictions
+    will be enforced.
+    name: min-password-len, type: UINT8, description: Minimum acceptable size for the new password.
+    name: min-character-classes, type: UINT8, description: Minimum number of allowed character classes. There are four
+    character classes - lowercase, uppercase, numeric and special
+    (e.g, !, @, #, $, %, ^, etc...). If this config is set to 3, it
+    means that combination of atleast 3 classes mentioned above must
+    be present in the password.
+    name: check-dictionary-word, type: BOOLEAN, description: Reject the password if it is based on dictionary word.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy/password-policy
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy.PasswordPolicy
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy_PasswordPolicy
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy__PasswordPolicy
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_PasswordPolicy
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_PasswordPolicy
+
+2.1.2  container rw-authentication:authentication-state
+  Description
+    Operation state for Unified authentication configuration.
+  XPath Path
+    /rw-authentication:authentication-state
+  XPath Keyed Path
+    /rw-authentication:authentication-state
+  RW.REST URI Path
+    /rw-authentication:authentication-state
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationState
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationState
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationState
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationState
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationState
+
+2.1.2.1  list rw-authentication:domain
+  Description
+    Like authentication config data, the state data is also available per
+    domain. Protocol specific operational data are augmented as a case
+    within the protocol choice.
+  Leaves
+    name: name, type: STRING, description: Domain name for which the authentication state data is
+    applicable.
+  XPath Path
+    /rw-authentication:authentication-state/rw-authentication:domain
+  XPath Keyed Path
+    /rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']
+  RW.REST URI Path
+    /rw-authentication:authentication-state/domain/STRING
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationState.Domain
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationState_Domain
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationState__Domain
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationState_Domain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationState_Domain
+
+3  module rw-auth-pam
+
+3.1  rw-auth-pam rpc input
+  Description
+    This module defines how RIFT.ware manages configuration parameters for
+    Linux PAM authentication for users.
+
+3.1.1  rpc input rw-auth-pam:authenticate-pam-user
+  Leaves
+    name: user-name, type: STRING, description: username to be authenticated
+    name: user-domain, type: STRING, description: Domain for the user
+    name: password, type: STRING, description: Password for the user
+  XPath Path
+    /rw-auth-pam:authenticate-pam-user
+  XPath Keyed Path
+    /rw-auth-pam:authenticate-pam-user
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-auth-pam:authenticate-pam-user
+  RW Keyspec XPath Keyed Path
+    I,/rw-auth-pam:authenticate-pam-user
+  Protobuf Type
+    .rw_auth_pam.YangInput.RwAuthPam.AuthenticatePamUser
+  Python Proto-GI Type
+    RwAuthPamYang.YangInput_RwAuthPam_AuthenticatePamUser
+  C Protobuf-C Struct Type
+    RwAuthPam__YangInput__RwAuthPam__AuthenticatePamUser
+  C RWPB Identifiers
+    RwAuthPam_RwAuthPam_input_AuthenticatePamUser
+    RwAuthPam_input_AuthenticatePamUser
+  YPBC Base Identifier
+    rw_ypbc_RwAuthPam_RwAuthPam_input_AuthenticatePamUser
+
+3.2  rw-auth-pam rpc output
+  Description
+    This module defines how RIFT.ware manages configuration parameters for
+    Linux PAM authentication for users.
+
+3.2.1  rpc output rw-auth-pam:authenticate-pam-user
+  Leaves
+    name: status, type: STRING, description: success or failure
+  XPath Path
+    /rw-auth-pam:authenticate-pam-user
+  XPath Keyed Path
+    /rw-auth-pam:authenticate-pam-user
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-auth-pam:authenticate-pam-user
+  RW Keyspec XPath Keyed Path
+    O,/rw-auth-pam:authenticate-pam-user
+  Protobuf Type
+    .rw_auth_pam.YangOutput.RwAuthPam.AuthenticatePamUser
+  Python Proto-GI Type
+    RwAuthPamYang.AuthResult
+  C Protobuf-C Struct Type
+    RwAuthPam__YangOutput__RwAuthPam__AuthenticatePamUser
+  C RWPB Identifiers
+    RwAuthPam_RwAuthPam_output_AuthenticatePamUser
+    RwAuthPam_output_AuthenticatePamUser
+    RwAuthPam_AuthResult
+  YPBC Base Identifier
+    rw_ypbc_RwAuthPam_RwAuthPam_output_AuthenticatePamUser
+

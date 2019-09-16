@@ -1,0 +1,1368 @@
+Programmer's API documentation for yang module rwlog-mgmt.yang
+
+
+
+Schema Globals                                                               1
+
+module rwlog-mgmt                                                            2
+  rwlog-mgmt data                                                          2.1
+    container rwlog-mgmt:logging                                         2.1.1
+      list rwlog-mgmt:default-severity                                 2.1.1.1
+      container rwlog-mgmt:deny                                        2.1.1.2
+        list rwlog-mgmt:event                                        2.1.1.2.1
+      container rwlog-mgmt:allow                                       2.1.1.3
+      container rwlog-mgmt:console                                     2.1.1.4
+        container rwlog-mgmt:filter                                  2.1.1.4.1
+          list rwlog-mgmt:category                                 2.1.1.4.1.1
+            list rwlog-mgmt:attribute                            2.1.1.4.1.1.1
+            container rwlog-mgmt:packet                          2.1.1.4.1.1.2
+          container rwlog-mgmt:session-params                      2.1.1.4.1.2
+      list rwlog-mgmt:sink                                             2.1.1.5
+        container rwlog-mgmt:filter                                  2.1.1.5.1
+          list rwlog-mgmt:category                                 2.1.1.5.1.1
+            list rwlog-mgmt:attribute                            2.1.1.5.1.1.1
+            container rwlog-mgmt:packet                          2.1.1.5.1.1.2
+          container rwlog-mgmt:session-params                      2.1.1.5.1.2
+      container rwlog-mgmt:categories                                  2.1.1.6
+        leaf-list rwlog-mgmt:category                                2.1.1.6.1
+      container rwlog-mgmt:internal-log-sink                           2.1.1.7
+        list rwlog-mgmt:sink                                         2.1.1.7.1
+          leaf-list rwlog-mgmt:category                            2.1.1.7.1.1
+      container rwlog-mgmt:events-database                             2.1.1.8
+        container rwlog-mgmt:event-expiry-time                       2.1.1.8.1
+        container rwlog-mgmt:ha-sink                                 2.1.1.8.2
+    container rwlog-mgmt:logd-state                                      2.1.2
+  rwlog-mgmt rpc input                                                     2.2
+    rpc input rwlog-mgmt:show-logs                                       2.2.1
+      container rwlog-mgmt:debug                                       2.2.1.1
+      container rwlog-mgmt:filter                                      2.2.1.2
+        list rwlog-mgmt:category                                     2.2.1.2.1
+          list rwlog-mgmt:attribute                                2.2.1.2.1.1
+        container rwlog-mgmt:session-params                          2.2.1.2.2
+        container rwlog-mgmt:binary-events                           2.2.1.2.3
+    rpc input rwlog-mgmt:log-event                                       2.2.2
+      container rwlog-mgmt:filter                                      2.2.2.1
+        list rwlog-mgmt:category                                     2.2.2.1.1
+          list rwlog-mgmt:attribute                                2.2.2.1.1.1
+          container rwlog-mgmt:packet                              2.2.2.1.1.2
+        container rwlog-mgmt:session-params                          2.2.2.1.2
+        container rwlog-mgmt:deny                                    2.2.2.1.3
+          list rwlog-mgmt:event                                    2.2.2.1.3.1
+  rwlog-mgmt rpc output                                                    2.3
+    rpc output rwlog-mgmt:show-logs                                      2.3.1
+      list rwlog-mgmt:logs                                             2.3.1.1
+      list rwlog-mgmt:log-summary                                      2.3.1.2
+      list rwlog-mgmt:severity-output                                  2.3.1.3
+    rpc output rwlog-mgmt:log-event                                      2.3.2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwlogMgmt_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwlogMgmt_g_schema
+2  module rwlog-mgmt
+
+2.1  rwlog-mgmt data
+
+2.1.1  container rwlog-mgmt:logging
+  Description
+    Riftware Logging
+  Leaves
+    name: syslog-viewer, type: STRING, description: URL for syslog viewer used by UI
+  XPath Path
+    /rwlog-mgmt:logging
+  XPath Keyed Path
+    /rwlog-mgmt:logging
+  RW.REST URI Path
+    /rwlog-mgmt:logging
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging
+    RwlogMgmt_data_Logging
+    RwlogMgmt_Logging
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging
+
+2.1.1.1  list rwlog-mgmt:default-severity
+  Description
+    Default severity settings
+  Leaves
+    name: category, type: STRING
+    name: severity, type: ENUM
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:default-severity
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:default-severity[rwlog-mgmt:category='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/default-severity/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:default-severity
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:default-severity[rwlog-mgmt:category='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.DefaultSeverity
+  Python Proto-GI Type
+    RwlogMgmtYang.LoggingDefaultSeverity
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__DefaultSeverity
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_DefaultSeverity
+    RwlogMgmt_data_Logging_DefaultSeverity
+    RwlogMgmt_LoggingDefaultSeverity
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_DefaultSeverity
+
+2.1.1.2  container rwlog-mgmt:deny
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:deny
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:deny
+  RW.REST URI Path
+    /rwlog-mgmt:logging/deny
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:deny
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:deny
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Deny
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Deny
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Deny
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Deny
+    RwlogMgmt_data_Logging_Deny
+    RwlogMgmt_Logging_Deny
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Deny
+
+2.1.1.2.1  list rwlog-mgmt:event
+  Description
+    event symbolic name
+  Leaves
+    name: event-Id, type: UINT64, description: event Id
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:deny/rwlog-mgmt:event
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:deny/rwlog-mgmt:event[rwlog-mgmt:event-Id='0']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/deny/event/0
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:deny/rwlog-mgmt:event
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:deny/rwlog-mgmt:event[rwlog-mgmt:event-Id='0']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Deny.Event
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Deny_Event
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Deny__Event
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Deny_Event
+    RwlogMgmt_data_Logging_Deny_Event
+    RwlogMgmt_Logging_Deny_Event
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Deny_Event
+
+2.1.1.3  container rwlog-mgmt:allow
+  Leaves
+    name: duplicate, type: ENUM, description: disables duplicate event suppression feature
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:allow
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:allow
+  RW.REST URI Path
+    /rwlog-mgmt:logging/allow
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:allow
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:allow
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Allow
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Allow
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Allow
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Allow
+    RwlogMgmt_data_Logging_Allow
+    RwlogMgmt_Logging_Allow
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Allow
+
+2.1.1.4  container rwlog-mgmt:console
+  Leaves
+    name: on, type: EMPTY
+    name: off, type: EMPTY
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console
+    RwlogMgmt_data_Logging_Console
+    RwlogMgmt_Logging_Console
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console
+
+2.1.1.4.1  container rwlog-mgmt:filter
+  Description
+    rwlog filter settings
+  Leaves
+    name: callid, type: UINT64
+    name: groupcallid, type: UINT64
+    name: protocol, type: ENUM
+    name: failed-call-recording, type: ENUM
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console/filter
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console.Filter
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console_Filter
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console__Filter
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter
+    RwlogMgmt_data_Logging_Console_Filter
+    RwlogMgmt_Logging_Console_Filter
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter
+
+2.1.1.4.1.1  list rwlog-mgmt:category
+  Leaves
+    name: name, type: STRING, description: Log Category name
+    name: severity, type: ENUM, description: level symbolic name
+    name: critical-info, type: ENUM, description: Disable critical info logs
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console/filter/category/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console.Filter.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console_Filter_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console__Filter__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category
+    RwlogMgmt_data_Logging_Console_Filter_Category
+    RwlogMgmt_Logging_Console_Filter_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category
+
+2.1.1.4.1.1.1  list rwlog-mgmt:attribute
+  Description
+    attribute name, value pair for filter
+  Leaves
+    name: name, type: STRING, description: Filter Attribute Name
+    name: value, type: STRING, description: Filter Attribute Value
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console/filter/category/STRING/attribute/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console.Filter.Category.Attribute
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console_Filter_Category_Attribute
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console__Filter__Category__Attribute
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category_Attribute
+    RwlogMgmt_data_Logging_Console_Filter_Category_Attribute
+    RwlogMgmt_Logging_Console_Filter_Category_Attribute
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category_Attribute
+
+2.1.1.4.1.1.2  container rwlog-mgmt:packet
+  Leaves
+    name: protocol, type: STRING, description: Protocol
+    name: src-port, type: INT32, description: Source port number
+    name: dst-port, type: INT32, description: Destination port number
+    name: src-net, type: UNION, description: Source net address
+    name: dst-net, type: UNION, description: Destination net address
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console/filter/category/STRING/packet
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console.Filter.Category.Packet
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console_Filter_Category_Packet
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console__Filter__Category__Packet
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category_Packet
+    RwlogMgmt_data_Logging_Console_Filter_Category_Packet
+    RwlogMgmt_Logging_Console_Filter_Category_Packet
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_Category_Packet
+
+2.1.1.4.1.2  container rwlog-mgmt:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW.REST URI Path
+    /rwlog-mgmt:logging/console/filter/session-params
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:console/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Console.Filter.SessionParams
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Console_Filter_SessionParams
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Console__Filter__SessionParams
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_SessionParams
+    RwlogMgmt_data_Logging_Console_Filter_SessionParams
+    RwlogMgmt_Logging_Console_Filter_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Console_Filter_SessionParams
+
+2.1.1.5  list rwlog-mgmt:sink
+  Leaves
+    name: name, type: STRING, description: name of syslog sink
+    name: server-address, type: UNION, description: Server IP address
+    name: port, type: UINT32, description: Server port
+    name: filename, type: STRING
+    name: pcap-file, type: STRING
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink
+    RwlogMgmt_data_Logging_Sink
+    RwlogMgmt_Logging_Sink
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink
+
+2.1.1.5.1  container rwlog-mgmt:filter
+  Description
+    rwlog filter settings
+  Leaves
+    name: callid, type: UINT64
+    name: groupcallid, type: UINT64
+    name: protocol, type: ENUM
+    name: failed-call-recording, type: ENUM
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING/filter
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink.Filter
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink_Filter
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink__Filter
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter
+    RwlogMgmt_data_Logging_Sink_Filter
+    RwlogMgmt_Logging_Sink_Filter
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter
+
+2.1.1.5.1.1  list rwlog-mgmt:category
+  Leaves
+    name: name, type: STRING, description: Log Category name
+    name: severity, type: ENUM, description: level symbolic name
+    name: critical-info, type: ENUM, description: Disable critical info logs
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING/filter/category/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink.Filter.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink_Filter_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink__Filter__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category
+    RwlogMgmt_data_Logging_Sink_Filter_Category
+    RwlogMgmt_Logging_Sink_Filter_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category
+
+2.1.1.5.1.1.1  list rwlog-mgmt:attribute
+  Description
+    attribute name, value pair for filter
+  Leaves
+    name: name, type: STRING, description: Filter Attribute Name
+    name: value, type: STRING, description: Filter Attribute Value
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING/filter/category/STRING/attribute/STRING
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink.Filter.Category.Attribute
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink_Filter_Category_Attribute
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink__Filter__Category__Attribute
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category_Attribute
+    RwlogMgmt_data_Logging_Sink_Filter_Category_Attribute
+    RwlogMgmt_Logging_Sink_Filter_Category_Attribute
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category_Attribute
+
+2.1.1.5.1.1.2  container rwlog-mgmt:packet
+  Leaves
+    name: protocol, type: STRING, description: Protocol
+    name: src-port, type: INT32, description: Source port number
+    name: dst-port, type: INT32, description: Destination port number
+    name: src-net, type: UNION, description: Source net address
+    name: dst-net, type: UNION, description: Destination net address
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING/filter/category/STRING/packet
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink.Filter.Category.Packet
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink_Filter_Category_Packet
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink__Filter__Category__Packet
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category_Packet
+    RwlogMgmt_data_Logging_Sink_Filter_Category_Packet
+    RwlogMgmt_Logging_Sink_Filter_Category_Packet
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_Category_Packet
+
+2.1.1.5.1.2  container rwlog-mgmt:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW.REST URI Path
+    /rwlog-mgmt:logging/sink/STRING/filter/session-params
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Sink.Filter.SessionParams
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Sink_Filter_SessionParams
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Sink__Filter__SessionParams
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_SessionParams
+    RwlogMgmt_data_Logging_Sink_Filter_SessionParams
+    RwlogMgmt_Logging_Sink_Filter_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Sink_Filter_SessionParams
+
+2.1.1.6  container rwlog-mgmt:categories
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:categories
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:categories
+  RW.REST URI Path
+    /rwlog-mgmt:logging/categories
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:categories
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:categories
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Categories
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Categories
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Categories
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Categories
+    RwlogMgmt_data_Logging_Categories
+    RwlogMgmt_Logging_Categories
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Categories
+
+2.1.1.6.1  leaf-list rwlog-mgmt:category
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:categories/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:categories/rwlog-mgmt:category
+  RW.REST URI Path
+    /rwlog-mgmt:logging/categories/category
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:categories/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:categories/rwlog-mgmt:category
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.Categories.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_Categories_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__Categories__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_Categories_Category
+    RwlogMgmt_data_Logging_Categories_Category
+    RwlogMgmt_Logging_Categories_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_Categories_Category
+
+2.1.1.7  container rwlog-mgmt:internal-log-sink
+  Description
+    Shows  internal log sink for tasklets
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink
+  RW.REST URI Path
+    /rwlog-mgmt:logging/internal-log-sink
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.InternalLogSink
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_InternalLogSink
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__InternalLogSink
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink
+    RwlogMgmt_data_Logging_InternalLogSink
+    RwlogMgmt_Logging_InternalLogSink
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink
+
+2.1.1.7.1  list rwlog-mgmt:sink
+  Leaves
+    name: name, type: STRING, description: name of the sink
+    name: location, type: STRING, description: sink target location
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /rwlog-mgmt:logging/internal-log-sink/sink/STRING
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.InternalLogSink.Sink
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_InternalLogSink_Sink
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__InternalLogSink__Sink
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink_Sink
+    RwlogMgmt_data_Logging_InternalLogSink_Sink
+    RwlogMgmt_Logging_InternalLogSink_Sink
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink_Sink
+
+2.1.1.7.1.1  leaf-list rwlog-mgmt:category
+  Description
+    List of all catogory enabled for this sink
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:category
+  RW.REST URI Path
+    /rwlog-mgmt:logging/internal-log-sink/sink/STRING/category
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logging/rwlog-mgmt:internal-log-sink/rwlog-mgmt:sink[rwlog-mgmt:name='STRING']/rwlog-mgmt:category
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.InternalLogSink.Sink.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_InternalLogSink_Sink_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__InternalLogSink__Sink__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink_Sink_Category
+    RwlogMgmt_data_Logging_InternalLogSink_Sink_Category
+    RwlogMgmt_Logging_InternalLogSink_Sink_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_InternalLogSink_Sink_Category
+
+2.1.1.8  container rwlog-mgmt:events-database
+  Description
+    Configure event data base
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database
+  RW.REST URI Path
+    /rwlog-mgmt:logging/events-database
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.EventsDatabase
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_EventsDatabase
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__EventsDatabase
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase
+    RwlogMgmt_data_Logging_EventsDatabase
+    RwlogMgmt_Logging_EventsDatabase
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase
+
+2.1.1.8.1  container rwlog-mgmt:event-expiry-time
+  Description
+    configure event expiry duration for each severity
+  Leaves
+    name: expiry-time-unit, type: ENUM, description: duration specified in no of expiry time unit
+    name: debug, type: UINT32
+    name: info, type: UINT32
+    name: notice, type: UINT32
+    name: warning, type: UINT32
+    name: error, type: UINT32
+    name: critical, type: UINT32
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:event-expiry-time
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:event-expiry-time
+  RW.REST URI Path
+    /rwlog-mgmt:logging/events-database/event-expiry-time
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:event-expiry-time
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:event-expiry-time
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.EventsDatabase.EventExpiryTime
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_EventsDatabase_EventExpiryTime
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__EventsDatabase__EventExpiryTime
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase_EventExpiryTime
+    RwlogMgmt_data_Logging_EventsDatabase_EventExpiryTime
+    RwlogMgmt_Logging_EventsDatabase_EventExpiryTime
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase_EventExpiryTime
+
+2.1.1.8.2  container rwlog-mgmt:ha-sink
+  Leaves
+    name: checkpoint-db-expiry-time-days, type: UINT32, description: Checkpoint DB entry expiry time in seconds
+    name: enable, type: EMPTY
+    name: disable, type: EMPTY
+  XPath Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:ha-sink
+  XPath Keyed Path
+    /rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:ha-sink
+  RW.REST URI Path
+    /rwlog-mgmt:logging/events-database/ha-sink
+  RW Keyspec XPath Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:ha-sink
+  RW Keyspec XPath Keyed Path
+    C,/rwlog-mgmt:logging/rwlog-mgmt:events-database/rwlog-mgmt:ha-sink
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.Logging.EventsDatabase.HaSink
+  Python Proto-GI Type
+    RwlogMgmtYang.Logging_EventsDatabase_HaSink
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__Logging__EventsDatabase__HaSink
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase_HaSink
+    RwlogMgmt_data_Logging_EventsDatabase_HaSink
+    RwlogMgmt_Logging_EventsDatabase_HaSink
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_Logging_EventsDatabase_HaSink
+
+2.1.2  container rwlog-mgmt:logd-state
+  Description
+    Information pertaining to the state of RW.Log
+  Leaves
+    name: ready, type: BOOLEAN, description: Indicates readiness of logd to service requests.
+    Set to true after dynamic schema loading is completed.
+  XPath Path
+    /rwlog-mgmt:logd-state
+  XPath Keyed Path
+    /rwlog-mgmt:logd-state
+  RW.REST URI Path
+    /rwlog-mgmt:logd-state
+  RW Keyspec XPath Path
+    D,/rwlog-mgmt:logd-state
+  RW Keyspec XPath Keyed Path
+    D,/rwlog-mgmt:logd-state
+  Protobuf Type
+    .rwlog_mgmt.YangData.RwlogMgmt.LogdState
+  Python Proto-GI Type
+    RwlogMgmtYang.YangData_RwlogMgmt_LogdState
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangData__RwlogMgmt__LogdState
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_data_LogdState
+    RwlogMgmt_data_LogdState
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_data_LogdState
+
+2.2  rwlog-mgmt rpc input
+
+2.2.1  rpc input rwlog-mgmt:show-logs
+  Leaves
+    name: all, type: EMPTY
+    name: severity, type: ENUM, description: level symbolic name
+    name: start-time, type: STRING
+    name: end-time, type: STRING
+    name: verbosity, type: INT32, description: PDU Verbosity
+    name: count, type: UINT32, description: Maximum number of Logs to be displayed. Default 100. Range
+    1 to 10000
+    name: inactive, type: ENUM, description: Fetch only checkpointed logs
+    name: tail, type: EMPTY, description: Fetch the last logs
+    name: tv-sec, type: UINT32, description: seconds
+    name: tv-usec, type: UINT32, description: micro seconds
+    name: hostname, type: STRING, description: hostname
+    name: process-id, type: UINT32, description: process id
+    name: thread-id, type: UINT32, description: thread id
+    name: seqno, type: UINT64, description: sequence no
+  XPath Path
+    /rwlog-mgmt:show-logs
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs
+    RwlogMgmt_input_ShowLogs
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs
+
+2.2.1.1  container rwlog-mgmt:debug
+  Description
+    Used for debugging
+  Leaves
+    name: suppress-display, type: EMPTY
+    name: dump-task-info, type: INT32, description: verbosity
+    name: filter-settings, type: EMPTY, description: show logging related severity levels
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:debug
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:debug
+  RW.REST URI Path
+    /input/debug
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:debug
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:debug
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Debug
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Debug
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Debug
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Debug
+    RwlogMgmt_input_ShowLogs_Debug
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Debug
+
+2.2.1.2  container rwlog-mgmt:filter
+  Description
+    rwlog filter settings
+  Leaves
+    name: callid, type: UINT64
+    name: groupcallid, type: UINT64
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter
+  RW.REST URI Path
+    /input/filter
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Filter
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Filter
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Filter
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter
+    RwlogMgmt_input_ShowLogs_Filter
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter
+
+2.2.1.2.1  list rwlog-mgmt:category
+  Leaves
+    name: name, type: STRING, description: Log Category name
+    name: severity, type: ENUM, description: level symbolic name
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /input/filter/category/STRING
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Filter.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Filter_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Filter__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_Category
+    RwlogMgmt_input_ShowLogs_Filter_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_Category
+
+2.2.1.2.1.1  list rwlog-mgmt:attribute
+  Description
+    attribute name, value pair for filter
+  Leaves
+    name: name, type: STRING, description: Filter Attribute Name
+    name: value, type: STRING, description: Filter Attribute Value
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /input/filter/category/STRING/attribute/STRING
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Filter.Category.Attribute
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Filter_Category_Attribute
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Filter__Category__Attribute
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_Category_Attribute
+    RwlogMgmt_input_ShowLogs_Filter_Category_Attribute
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_Category_Attribute
+
+2.2.1.2.2  container rwlog-mgmt:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW.REST URI Path
+    /input/filter/session-params
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Filter.SessionParams
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Filter_SessionParams
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Filter__SessionParams
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_SessionParams
+    RwlogMgmt_input_ShowLogs_Filter_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_SessionParams
+
+2.2.1.2.3  container rwlog-mgmt:binary-events
+  Leaves
+    name: packet-direction, type: ENUM, description: Either inbound or outbound direction
+    name: protocol, type: ENUM, description: Packet protocol type
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:binary-events
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:binary-events
+  RW.REST URI Path
+    /input/filter/binary-events
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:binary-events
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:show-logs/rwlog-mgmt:filter/rwlog-mgmt:binary-events
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.ShowLogs.Filter.BinaryEvents
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_ShowLogs_Filter_BinaryEvents
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__ShowLogs__Filter__BinaryEvents
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_BinaryEvents
+    RwlogMgmt_input_ShowLogs_Filter_BinaryEvents
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_ShowLogs_Filter_BinaryEvents
+
+2.2.2  rpc input rwlog-mgmt:log-event
+  Leaves
+    name: on, type: EMPTY
+    name: off, type: EMPTY
+    name: checkpoint, type: EMPTY, description: checkpoint the current logs in the circular buffer
+  XPath Path
+    /rwlog-mgmt:log-event
+  XPath Keyed Path
+    /rwlog-mgmt:log-event
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent
+    RwlogMgmt_input_LogEvent
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent
+
+2.2.2.1  container rwlog-mgmt:filter
+  Description
+    rwlog filter settings
+  Leaves
+    name: callid, type: UINT64
+    name: groupcallid, type: UINT64
+    name: protocol, type: ENUM
+    name: failed-call-recording, type: ENUM
+    name: next-call, type: ENUM
+    name: next-failed-call, type: ENUM
+    name: hostname, type: STRING, description: apply filter only for this hostname
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter
+  RW.REST URI Path
+    /input/filter
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter
+    RwlogMgmt_input_LogEvent_Filter
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter
+
+2.2.2.1.1  list rwlog-mgmt:category
+  Leaves
+    name: name, type: STRING, description: Log Category name
+    name: severity, type: ENUM, description: level symbolic name
+    name: critical-info, type: ENUM, description: Disable critical info logs
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /input/filter/category/STRING
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.Category
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_Category
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__Category
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category
+    RwlogMgmt_input_LogEvent_Filter_Category
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category
+
+2.2.2.1.1.1  list rwlog-mgmt:attribute
+  Description
+    attribute name, value pair for filter
+  Leaves
+    name: name, type: STRING, description: Filter Attribute Name
+    name: value, type: STRING, description: Filter Attribute Value
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  RW.REST URI Path
+    /input/filter/category/STRING/attribute/STRING
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:attribute
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:attribute[rwlog-mgmt:name='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.Category.Attribute
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_Category_Attribute
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__Category__Attribute
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category_Attribute
+    RwlogMgmt_input_LogEvent_Filter_Category_Attribute
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category_Attribute
+
+2.2.2.1.1.2  container rwlog-mgmt:packet
+  Leaves
+    name: protocol, type: STRING, description: Protocol
+    name: src-port, type: INT32, description: Source port number
+    name: dst-port, type: INT32, description: Destination port number
+    name: src-net, type: UNION, description: Source net address
+    name: dst-net, type: UNION, description: Destination net address
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  RW.REST URI Path
+    /input/filter/category/STRING/packet
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category/rwlog-mgmt:packet
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:category[rwlog-mgmt:name='STRING']/rwlog-mgmt:packet
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.Category.Packet
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_Category_Packet
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__Category__Packet
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category_Packet
+    RwlogMgmt_input_LogEvent_Filter_Category_Packet
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Category_Packet
+
+2.2.2.1.2  container rwlog-mgmt:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW.REST URI Path
+    /input/filter/session-params
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:session-params
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.SessionParams
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_SessionParams
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__SessionParams
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_SessionParams
+    RwlogMgmt_input_LogEvent_Filter_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_SessionParams
+
+2.2.2.1.3  container rwlog-mgmt:deny
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny
+  RW.REST URI Path
+    /input/filter/deny
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.Deny
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_Deny
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__Deny
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Deny
+    RwlogMgmt_input_LogEvent_Filter_Deny
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Deny
+
+2.2.2.1.3.1  list rwlog-mgmt:event
+  Description
+    event symbolic name
+  Leaves
+    name: event-Id, type: STRING, description: event Id
+  XPath Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny/rwlog-mgmt:event
+  XPath Keyed Path
+    /rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny/rwlog-mgmt:event[rwlog-mgmt:event-Id='STRING']
+  RW.REST URI Path
+    /input/filter/deny/event/STRING
+  RW Keyspec XPath Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny/rwlog-mgmt:event
+  RW Keyspec XPath Keyed Path
+    I,/rwlog-mgmt:log-event/rwlog-mgmt:filter/rwlog-mgmt:deny/rwlog-mgmt:event[rwlog-mgmt:event-Id='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangInput.RwlogMgmt.LogEvent.Filter.Deny.Event
+  Python Proto-GI Type
+    RwlogMgmtYang.YangInput_RwlogMgmt_LogEvent_Filter_Deny_Event
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangInput__RwlogMgmt__LogEvent__Filter__Deny__Event
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Deny_Event
+    RwlogMgmt_input_LogEvent_Filter_Deny_Event
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_input_LogEvent_Filter_Deny_Event
+
+2.3  rwlog-mgmt rpc output
+
+2.3.1  rpc output rwlog-mgmt:show-logs
+  XPath Path
+    /rwlog-mgmt:show-logs
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rwlog-mgmt:show-logs
+  RW Keyspec XPath Keyed Path
+    O,/rwlog-mgmt:show-logs
+  Protobuf Type
+    .rwlog_mgmt.YangOutput.RwlogMgmt.ShowLogs
+  Python Proto-GI Type
+    RwlogMgmtYang.YangOutput_RwlogMgmt_ShowLogs
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangOutput__RwlogMgmt__ShowLogs
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_output_ShowLogs
+    RwlogMgmt_output_ShowLogs
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_output_ShowLogs
+
+2.3.1.1  list rwlog-mgmt:logs
+  Leaves
+    name: tv-sec, type: UINT32, description: seconds
+    name: tv-usec, type: UINT32, description: micro seconds
+    name: hostname, type: STRING, description: hostname
+    name: process-id, type: UINT32, description: process id
+    name: thread-id, type: UINT32, description: thread id
+    name: seqno, type: UINT64, description: sequence no
+    name: msg, type: STRING, description: Log-String
+    name: pdu-detail, type: STRING, description: PDU detail
+    name: pdu-hex, type: STRING, description: PDU as hex
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:logs
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:logs
+  RW.REST URI Path
+    /output/logs
+  RW Keyspec XPath Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:logs
+  RW Keyspec XPath Keyed Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:logs
+  Protobuf Type
+    .rwlog_mgmt.YangOutput.RwlogMgmt.ShowLogs.Logs
+  Python Proto-GI Type
+    RwlogMgmtYang.YangOutput_RwlogMgmt_ShowLogs_Logs
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangOutput__RwlogMgmt__ShowLogs__Logs
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_output_ShowLogs_Logs
+    RwlogMgmt_output_ShowLogs_Logs
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_output_ShowLogs_Logs
+
+2.3.1.2  list rwlog-mgmt:log-summary
+  Leaves
+    name: hostname, type: STRING, description: Sender's hostname
+    name: log-count, type: UINT32, description: Number of logs printed
+    name: time-spent, type: INT64, description: Time spent in fetching logs in msec
+    name: logs-muted, type: UINT64, description: Number of logs that did not match filter
+    name: tv-sec, type: UINT32, description: seconds
+    name: tv-usec, type: UINT32, description: micro seconds
+    name: process-id, type: UINT32, description: process id
+    name: thread-id, type: UINT32, description: thread id
+    name: seqno, type: UINT64, description: sequence no
+    name: trailing-timestamp, type: STRING, description: Timestamp of last event considered
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:log-summary
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:log-summary
+  RW.REST URI Path
+    /output/log-summary
+  RW Keyspec XPath Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:log-summary
+  RW Keyspec XPath Keyed Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:log-summary
+  Protobuf Type
+    .rwlog_mgmt.YangOutput.RwlogMgmt.ShowLogs.LogSummary
+  Python Proto-GI Type
+    RwlogMgmtYang.YangOutput_RwlogMgmt_ShowLogs_LogSummary
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangOutput__RwlogMgmt__ShowLogs__LogSummary
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_output_ShowLogs_LogSummary
+    RwlogMgmt_output_ShowLogs_LogSummary
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_output_ShowLogs_LogSummary
+
+2.3.1.3  list rwlog-mgmt:severity-output
+  Leaves
+    name: severity-info, type: STRING, description: category:severity information
+  XPath Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:severity-output
+  XPath Keyed Path
+    /rwlog-mgmt:show-logs/rwlog-mgmt:severity-output[rwlog-mgmt:severity-info='STRING']
+  RW.REST URI Path
+    /output/severity-output/STRING
+  RW Keyspec XPath Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:severity-output
+  RW Keyspec XPath Keyed Path
+    O,/rwlog-mgmt:show-logs/rwlog-mgmt:severity-output[rwlog-mgmt:severity-info='STRING']
+  Protobuf Type
+    .rwlog_mgmt.YangOutput.RwlogMgmt.ShowLogs.SeverityOutput
+  Python Proto-GI Type
+    RwlogMgmtYang.YangOutput_RwlogMgmt_ShowLogs_SeverityOutput
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangOutput__RwlogMgmt__ShowLogs__SeverityOutput
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_output_ShowLogs_SeverityOutput
+    RwlogMgmt_output_ShowLogs_SeverityOutput
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_output_ShowLogs_SeverityOutput
+
+2.3.2  rpc output rwlog-mgmt:log-event
+  XPath Path
+    /rwlog-mgmt:log-event
+  XPath Keyed Path
+    /rwlog-mgmt:log-event
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rwlog-mgmt:log-event
+  RW Keyspec XPath Keyed Path
+    O,/rwlog-mgmt:log-event
+  Protobuf Type
+    .rwlog_mgmt.YangOutput.RwlogMgmt.LogEvent
+  Python Proto-GI Type
+    RwlogMgmtYang.YangOutput_RwlogMgmt_LogEvent
+  C Protobuf-C Struct Type
+    RwlogMgmt__YangOutput__RwlogMgmt__LogEvent
+  C RWPB Identifiers
+    RwlogMgmt_RwlogMgmt_output_LogEvent
+    RwlogMgmt_output_LogEvent
+  YPBC Base Identifier
+    rw_ypbc_RwlogMgmt_RwlogMgmt_output_LogEvent
+

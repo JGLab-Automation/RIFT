@@ -1,0 +1,2139 @@
+Programmer's API documentation for yang module vlr-log.yang
+
+
+
+Schema Globals                                                               1
+
+module vlr-log                                                               2
+  vlr-log notification                                                     2.1
+    notification vlr-log:generic-debug                                   2.1.1
+      container vlr-log:template_params                                2.1.1.1
+        list vlr-log:debug-details                                   2.1.1.1.1
+        list vlr-log:additional-data                                 2.1.1.1.2
+        container vlr-log:call-identifier                            2.1.1.1.3
+        container vlr-log:session-params                             2.1.1.1.4
+    notification vlr-log:generic-info                                    2.1.2
+      container vlr-log:template_params                                2.1.2.1
+        list vlr-log:debug-details                                   2.1.2.1.1
+        list vlr-log:additional-data                                 2.1.2.1.2
+        container vlr-log:call-identifier                            2.1.2.1.3
+        container vlr-log:session-params                             2.1.2.1.4
+    notification vlr-log:generic-notice                                  2.1.3
+      container vlr-log:template_params                                2.1.3.1
+        list vlr-log:debug-details                                   2.1.3.1.1
+        list vlr-log:additional-data                                 2.1.3.1.2
+        container vlr-log:call-identifier                            2.1.3.1.3
+        container vlr-log:session-params                             2.1.3.1.4
+    notification vlr-log:generic-warning                                 2.1.4
+      container vlr-log:template_params                                2.1.4.1
+        list vlr-log:debug-details                                   2.1.4.1.1
+        list vlr-log:additional-data                                 2.1.4.1.2
+        container vlr-log:call-identifier                            2.1.4.1.3
+        container vlr-log:session-params                             2.1.4.1.4
+    notification vlr-log:invalid-request                                 2.1.5
+      container vlr-log:template_params                                2.1.5.1
+        list vlr-log:debug-details                                   2.1.5.1.1
+        list vlr-log:additional-data                                 2.1.5.1.2
+        container vlr-log:call-identifier                            2.1.5.1.3
+        container vlr-log:session-params                             2.1.5.1.4
+    notification vlr-log:external-vl-begin-instantiation                 2.1.6
+      container vlr-log:template_params                                2.1.6.1
+        list vlr-log:debug-details                                   2.1.6.1.1
+        list vlr-log:additional-data                                 2.1.6.1.2
+        container vlr-log:call-identifier                            2.1.6.1.3
+        container vlr-log:session-params                             2.1.6.1.4
+    notification vlr-log:external-vl-end-instantiation                   2.1.7
+      container vlr-log:template_params                                2.1.7.1
+        list vlr-log:debug-details                                   2.1.7.1.1
+        list vlr-log:additional-data                                 2.1.7.1.2
+        container vlr-log:call-identifier                            2.1.7.1.3
+        container vlr-log:session-params                             2.1.7.1.4
+    notification vlr-log:external-vl-begin-terminate                     2.1.8
+      container vlr-log:template_params                                2.1.8.1
+        list vlr-log:debug-details                                   2.1.8.1.1
+        list vlr-log:additional-data                                 2.1.8.1.2
+        container vlr-log:call-identifier                            2.1.8.1.3
+        container vlr-log:session-params                             2.1.8.1.4
+    notification vlr-log:external-vl-end-terminate                       2.1.9
+      container vlr-log:template_params                                2.1.9.1
+        list vlr-log:debug-details                                   2.1.9.1.1
+        list vlr-log:additional-data                                 2.1.9.1.2
+        container vlr-log:call-identifier                            2.1.9.1.3
+        container vlr-log:session-params                             2.1.9.1.4
+    notification vlr-log:vlr-debug                                      2.1.10
+      container vlr-log:template_params                               2.1.10.1
+        list vlr-log:debug-details                                  2.1.10.1.1
+        list vlr-log:additional-data                                2.1.10.1.2
+        container vlr-log:call-identifier                           2.1.10.1.3
+        container vlr-log:session-params                            2.1.10.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_VlrLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_VlrLog_g_schema
+2  module vlr-log
+
+2.1  vlr-log notification
+
+2.1.1  notification vlr-log:generic-debug
+  Description
+    Generic Debug
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:generic-debug
+  XPath Keyed Path
+    /vlr-log:generic-debug
+  RW.REST URI Path
+    /vlr-log:generic-debug
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug
+    VlrLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug
+
+2.1.1.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:generic-debug/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:generic-debug/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug_TemplateParams
+    VlrLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug_TemplateParams_DebugDetails
+    VlrLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug_TemplateParams_AdditionalData
+    VlrLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    VlrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:generic-debug/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-debug/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericDebug_TemplateParams_SessionParams
+    VlrLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification vlr-log:generic-info
+  Description
+    Generic Info
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:generic-info
+  XPath Keyed Path
+    /vlr-log:generic-info
+  RW.REST URI Path
+    /vlr-log:generic-info
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo
+    VlrLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo
+
+2.1.2.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:generic-info/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:generic-info/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo_TemplateParams
+    VlrLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo_TemplateParams_DebugDetails
+    VlrLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo_TemplateParams_AdditionalData
+    VlrLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    VlrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:generic-info/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-info/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericInfo_TemplateParams_SessionParams
+    VlrLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification vlr-log:generic-notice
+  Description
+    Generic Notice
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:generic-notice
+  XPath Keyed Path
+    /vlr-log:generic-notice
+  RW.REST URI Path
+    /vlr-log:generic-notice
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice
+    VlrLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice
+
+2.1.3.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:generic-notice/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:generic-notice/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice_TemplateParams
+    VlrLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice_TemplateParams_DebugDetails
+    VlrLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice_TemplateParams_AdditionalData
+    VlrLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    VlrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:generic-notice/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-notice/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericNotice_TemplateParams_SessionParams
+    VlrLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification vlr-log:generic-warning
+  Description
+    Generic Warning
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:generic-warning
+  XPath Keyed Path
+    /vlr-log:generic-warning
+  RW.REST URI Path
+    /vlr-log:generic-warning
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning
+    VlrLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning
+
+2.1.4.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:generic-warning/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:generic-warning/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning_TemplateParams
+    VlrLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning_TemplateParams_DebugDetails
+    VlrLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning_TemplateParams_AdditionalData
+    VlrLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    VlrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:generic-warning/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:generic-warning/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_GenericWarning_TemplateParams_SessionParams
+    VlrLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification vlr-log:invalid-request
+  Description
+    Invalid Request
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:invalid-request
+  XPath Keyed Path
+    /vlr-log:invalid-request
+  RW.REST URI Path
+    /vlr-log:invalid-request
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest
+    VlrLog_notif_InvalidRequest
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest
+
+2.1.5.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:invalid-request/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:invalid-request/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:invalid-request/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest_TemplateParams
+    VlrLog_notif_InvalidRequest_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest_TemplateParams
+
+2.1.5.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:invalid-request/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_DebugDetails
+    VlrLog_notif_InvalidRequest_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_DebugDetails
+
+2.1.5.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:invalid-request/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_AdditionalData
+    VlrLog_notif_InvalidRequest_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_AdditionalData
+
+2.1.5.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:invalid-request/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_CallIdentifier
+    VlrLog_notif_InvalidRequest_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:invalid-request/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:invalid-request/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:invalid-request/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.InvalidRequest.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_InvalidRequest_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__InvalidRequest__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_SessionParams
+    VlrLog_notif_InvalidRequest_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_InvalidRequest_TemplateParams_SessionParams
+
+2.1.6  notification vlr-log:external-vl-begin-instantiation
+  Description
+    External vl begin instantiation
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation
+    VlrLog_notif_ExternalVlBeginInstantiation
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation
+
+2.1.6.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams
+    VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams
+
+2.1.6.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_DebugDetails
+    VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_DebugDetails
+
+2.1.6.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_AdditionalData
+    VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_AdditionalData
+
+2.1.6.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_CallIdentifier
+    VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-instantiation/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-instantiation/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginInstantiation.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginInstantiation_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginInstantiation__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_SessionParams
+    VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginInstantiation_TemplateParams_SessionParams
+
+2.1.7  notification vlr-log:external-vl-end-instantiation
+  Description
+    External vl end instantiation
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:external-vl-end-instantiation
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation
+    VlrLog_notif_ExternalVlEndInstantiation
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation
+
+2.1.7.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams
+    VlrLog_notif_ExternalVlEndInstantiation_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams
+
+2.1.7.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_DebugDetails
+    VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_DebugDetails
+
+2.1.7.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_AdditionalData
+    VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_AdditionalData
+
+2.1.7.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_CallIdentifier
+    VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:external-vl-end-instantiation/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-instantiation/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndInstantiation.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndInstantiation_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndInstantiation__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_SessionParams
+    VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndInstantiation_TemplateParams_SessionParams
+
+2.1.8  notification vlr-log:external-vl-begin-terminate
+  Description
+    External vl begin termination
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:external-vl-begin-terminate
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate
+    VlrLog_notif_ExternalVlBeginTerminate
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate
+
+2.1.8.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams
+    VlrLog_notif_ExternalVlBeginTerminate_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams
+
+2.1.8.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_DebugDetails
+    VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_DebugDetails
+
+2.1.8.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_AdditionalData
+    VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_AdditionalData
+
+2.1.8.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_CallIdentifier
+    VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:external-vl-begin-terminate/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-begin-terminate/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlBeginTerminate.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlBeginTerminate_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlBeginTerminate__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_SessionParams
+    VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlBeginTerminate_TemplateParams_SessionParams
+
+2.1.9  notification vlr-log:external-vl-end-terminate
+  Description
+    External vl end termination
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:external-vl-end-terminate
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate
+    VlrLog_notif_ExternalVlEndTerminate
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate
+
+2.1.9.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams
+    VlrLog_notif_ExternalVlEndTerminate_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams
+
+2.1.9.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_DebugDetails
+    VlrLog_notif_ExternalVlEndTerminate_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_DebugDetails
+
+2.1.9.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_AdditionalData
+    VlrLog_notif_ExternalVlEndTerminate_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_AdditionalData
+
+2.1.9.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_CallIdentifier
+    VlrLog_notif_ExternalVlEndTerminate_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:external-vl-end-terminate/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:external-vl-end-terminate/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.ExternalVlEndTerminate.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_ExternalVlEndTerminate_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__ExternalVlEndTerminate__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_SessionParams
+    VlrLog_notif_ExternalVlEndTerminate_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_ExternalVlEndTerminate_TemplateParams_SessionParams
+
+2.1.10  notification vlr-log:vlr-debug
+  Description
+    VLR Debug
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vlr-log:vlr-debug
+  XPath Keyed Path
+    /vlr-log:vlr-debug
+  RW.REST URI Path
+    /vlr-log:vlr-debug
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug
+    VlrLog_notif_VlrDebug
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug
+
+2.1.10.1  container vlr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vlr-log:vlr-debug/vlr-log:template_params
+  XPath Keyed Path
+    /vlr-log:vlr-debug/vlr-log:template_params
+  RW.REST URI Path
+    /vlr-log:vlr-debug/template_params
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug.TemplateParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug__TemplateParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug_TemplateParams
+    VlrLog_notif_VlrDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug_TemplateParams
+
+2.1.10.1.1  list vlr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:debug-details
+  XPath Keyed Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vlr-log:vlr-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:debug-details[vlr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug_TemplateParams_DebugDetails
+    VlrLog_notif_VlrDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug_TemplateParams_DebugDetails
+
+2.1.10.1.2  list vlr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:additional-data
+  XPath Keyed Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  RW.REST URI Path
+    /vlr-log:vlr-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:additional-data[vlr-log:attribute='STRING']
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug_TemplateParams_AdditionalData
+    VlrLog_notif_VlrDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug_TemplateParams_AdditionalData
+
+2.1.10.1.3  container vlr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:call-identifier
+  XPath Keyed Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:call-identifier
+  RW.REST URI Path
+    /vlr-log:vlr-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:call-identifier
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug_TemplateParams_CallIdentifier
+    VlrLog_notif_VlrDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container vlr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:session-params
+  XPath Keyed Path
+    /vlr-log:vlr-debug/vlr-log:template_params/vlr-log:session-params
+  RW.REST URI Path
+    /vlr-log:vlr-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vlr-log:vlr-debug/vlr-log:template_params/vlr-log:session-params
+  Protobuf Type
+    .vlr_log.YangNotif.VlrLog.VlrDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VlrLogYang.YangNotif_VlrLog_VlrDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VlrLog__YangNotif__VlrLog__VlrDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VlrLog_VlrLog_notif_VlrDebug_TemplateParams_SessionParams
+    VlrLog_notif_VlrDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VlrLog_VlrLog_notif_VlrDebug_TemplateParams_SessionParams
+

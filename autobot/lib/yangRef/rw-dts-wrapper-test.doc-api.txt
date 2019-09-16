@@ -1,0 +1,254 @@
+Programmer's API documentation for yang module rw-dts-wrapper-test.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-dts-wrapper-test                                                   2
+  rw-dts-wrapper-test data                                                 2.1
+    container rw-dts-wrapper-test:simple-op-data                         2.1.1
+    container rw-dts-wrapper-test:simple-op-member-data                  2.1.2
+    container rw-dts-wrapper-test:complex-op-data                        2.1.3
+      list rw-dts-wrapper-test:mirror                                  2.1.3.1
+        container rw-dts-wrapper-test:container_in_list              2.1.3.1.1
+          list rw-dts-wrapper-test:inner_list                      2.1.3.1.1.1
+    container rw-dts-wrapper-test:simple-config-data                     2.1.4
+    container rw-dts-wrapper-test:complex-config-data                    2.1.5
+      list rw-dts-wrapper-test:actual                                  2.1.5.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwDtsWrapperTest_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwDtsWrapperTest_g_schema
+2  module rw-dts-wrapper-test
+
+2.1  rw-dts-wrapper-test data
+
+2.1.1  container rw-dts-wrapper-test:simple-op-data
+  Leaves
+    name: toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:simple-op-data
+  XPath Keyed Path
+    /rw-dts-wrapper-test:simple-op-data
+  RW.REST URI Path
+    /rw-dts-wrapper-test:simple-op-data
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:simple-op-data
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:simple-op-data
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.SimpleOpData
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_SimpleOpData
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__SimpleOpData
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleOpData
+    RwDtsWrapperTest_data_SimpleOpData
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleOpData
+
+2.1.2  container rw-dts-wrapper-test:simple-op-member-data
+  Leaves
+    name: toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:simple-op-member-data
+  XPath Keyed Path
+    /rw-dts-wrapper-test:simple-op-member-data
+  RW.REST URI Path
+    /rw-dts-wrapper-test:simple-op-member-data
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:simple-op-member-data
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:simple-op-member-data
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.SimpleOpMemberData
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_SimpleOpMemberData
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__SimpleOpMemberData
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleOpMemberData
+    RwDtsWrapperTest_data_SimpleOpMemberData
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleOpMemberData
+
+2.1.3  container rw-dts-wrapper-test:complex-op-data
+  XPath Path
+    /rw-dts-wrapper-test:complex-op-data
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-op-data
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-op-data
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:complex-op-data
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:complex-op-data
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexOpData
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexOpData
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexOpData
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData
+    RwDtsWrapperTest_data_ComplexOpData
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData
+
+2.1.3.1  list rw-dts-wrapper-test:mirror
+  Leaves
+    name: key-1, type: STRING
+    name: key-2, type: UINT8
+    name: toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-op-data/mirror/STRING,0
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexOpData.Mirror
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexOpData_Mirror
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexOpData__Mirror
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror
+    RwDtsWrapperTest_data_ComplexOpData_Mirror
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror
+
+2.1.3.1.1  container rw-dts-wrapper-test:container_in_list
+  Leaves
+    name: incontainer_toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror/rw-dts-wrapper-test:container_in_list
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']/rw-dts-wrapper-test:container_in_list
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-op-data/mirror/STRING,0/container_in_list
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror/rw-dts-wrapper-test:container_in_list
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']/rw-dts-wrapper-test:container_in_list
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexOpData.Mirror.ContainerInList
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexOpData_Mirror_ContainerInList
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexOpData__Mirror__ContainerInList
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList
+    RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList
+
+2.1.3.1.1.1  list rw-dts-wrapper-test:inner_list
+  Leaves
+    name: inkey-1, type: STRING
+    name: inlist_toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror/rw-dts-wrapper-test:container_in_list/rw-dts-wrapper-test:inner_list
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']/rw-dts-wrapper-test:container_in_list/rw-dts-wrapper-test:inner_list[rw-dts-wrapper-test:inkey-1='STRING']
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-op-data/mirror/STRING,0/container_in_list/inner_list/STRING
+  RW Keyspec XPath Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror/rw-dts-wrapper-test:container_in_list/rw-dts-wrapper-test:inner_list
+  RW Keyspec XPath Keyed Path
+    D,/rw-dts-wrapper-test:complex-op-data/rw-dts-wrapper-test:mirror[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']/rw-dts-wrapper-test:container_in_list/rw-dts-wrapper-test:inner_list[rw-dts-wrapper-test:inkey-1='STRING']
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexOpData.Mirror.ContainerInList.InnerList
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexOpData_Mirror_ContainerInList_InnerList
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexOpData__Mirror__ContainerInList__InnerList
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList_InnerList
+    RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList_InnerList
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexOpData_Mirror_ContainerInList_InnerList
+
+2.1.4  container rw-dts-wrapper-test:simple-config-data
+  Leaves
+    name: toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:simple-config-data
+  XPath Keyed Path
+    /rw-dts-wrapper-test:simple-config-data
+  RW.REST URI Path
+    /rw-dts-wrapper-test:simple-config-data
+  RW Keyspec XPath Path
+    C,/rw-dts-wrapper-test:simple-config-data
+  RW Keyspec XPath Keyed Path
+    C,/rw-dts-wrapper-test:simple-config-data
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.SimpleConfigData
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_SimpleConfigData
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__SimpleConfigData
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleConfigData
+    RwDtsWrapperTest_data_SimpleConfigData
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_SimpleConfigData
+
+2.1.5  container rw-dts-wrapper-test:complex-config-data
+  XPath Path
+    /rw-dts-wrapper-test:complex-config-data
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-config-data
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-config-data
+  RW Keyspec XPath Path
+    C,/rw-dts-wrapper-test:complex-config-data
+  RW Keyspec XPath Keyed Path
+    C,/rw-dts-wrapper-test:complex-config-data
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexConfigData
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexConfigData
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexConfigData
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexConfigData
+    RwDtsWrapperTest_data_ComplexConfigData
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexConfigData
+
+2.1.5.1  list rw-dts-wrapper-test:actual
+  Leaves
+    name: key-1, type: STRING
+    name: key-2, type: UINT8
+    name: toggle, type: BOOLEAN
+  XPath Path
+    /rw-dts-wrapper-test:complex-config-data/rw-dts-wrapper-test:actual
+  XPath Keyed Path
+    /rw-dts-wrapper-test:complex-config-data/rw-dts-wrapper-test:actual[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']
+  RW.REST URI Path
+    /rw-dts-wrapper-test:complex-config-data/actual/STRING,0
+  RW Keyspec XPath Path
+    C,/rw-dts-wrapper-test:complex-config-data/rw-dts-wrapper-test:actual
+  RW Keyspec XPath Keyed Path
+    C,/rw-dts-wrapper-test:complex-config-data/rw-dts-wrapper-test:actual[rw-dts-wrapper-test:key-1='STRING'][rw-dts-wrapper-test:key-2='0']
+  Protobuf Type
+    .rw_dts_wrapper_test.YangData.RwDtsWrapperTest.ComplexConfigData.Actual
+  Python Proto-GI Type
+    RwDtsWrapperTestYang.YangData_RwDtsWrapperTest_ComplexConfigData_Actual
+  C Protobuf-C Struct Type
+    RwDtsWrapperTest__YangData__RwDtsWrapperTest__ComplexConfigData__Actual
+  C RWPB Identifiers
+    RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexConfigData_Actual
+    RwDtsWrapperTest_data_ComplexConfigData_Actual
+  YPBC Base Identifier
+    rw_ypbc_RwDtsWrapperTest_RwDtsWrapperTest_data_ComplexConfigData_Actual
+

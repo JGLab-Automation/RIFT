@@ -1,0 +1,2540 @@
+Programmer's API documentation for yang module rw-certificate.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-certificate                                                        2
+  rw-certificate data                                                      2.1
+    container rw-certificate:certificate-config                          2.1.1
+      list rw-certificate:certificate                                  2.1.1.1
+      container rw-certificate:ca-bundle                               2.1.1.2
+        list rw-certificate:certificate                              2.1.1.2.1
+    container rw-certificate:certificate-state                           2.1.2
+      container rw-certificate:install-status                          2.1.2.1
+      list rw-certificate:installed-certificate                        2.1.2.2
+        container rw-certificate:serv-cert                           2.1.2.2.1
+          container rw-certificate:issuer                          2.1.2.2.1.1
+          container rw-certificate:subject                         2.1.2.2.1.2
+        container rw-certificate:ca-cert                             2.1.2.2.2
+          container rw-certificate:issuer                          2.1.2.2.2.1
+          container rw-certificate:subject                         2.1.2.2.2.2
+      list rw-certificate:installed-ca-bundle                          2.1.2.3
+        container rw-certificate:ca-cert                             2.1.2.3.1
+          container rw-certificate:issuer                          2.1.2.3.1.1
+          container rw-certificate:subject                         2.1.2.3.1.2
+  rw-certificate notification                                              2.2
+    notification rw-certificate:certificate-change-event                 2.2.1
+    notification rw-certificate:generic-debug                            2.2.2
+      container rw-certificate:template_params                         2.2.2.1
+        list rw-certificate:debug-details                            2.2.2.1.1
+        list rw-certificate:additional-data                          2.2.2.1.2
+        container rw-certificate:call-identifier                     2.2.2.1.3
+        container rw-certificate:session-params                      2.2.2.1.4
+    notification rw-certificate:generic-info                             2.2.3
+      container rw-certificate:template_params                         2.2.3.1
+        list rw-certificate:debug-details                            2.2.3.1.1
+        list rw-certificate:additional-data                          2.2.3.1.2
+        container rw-certificate:call-identifier                     2.2.3.1.3
+        container rw-certificate:session-params                      2.2.3.1.4
+    notification rw-certificate:generic-notice                           2.2.4
+      container rw-certificate:template_params                         2.2.4.1
+        list rw-certificate:debug-details                            2.2.4.1.1
+        list rw-certificate:additional-data                          2.2.4.1.2
+        container rw-certificate:call-identifier                     2.2.4.1.3
+        container rw-certificate:session-params                      2.2.4.1.4
+    notification rw-certificate:generic-warning                          2.2.5
+      container rw-certificate:template_params                         2.2.5.1
+        list rw-certificate:debug-details                            2.2.5.1.1
+        list rw-certificate:additional-data                          2.2.5.1.2
+        container rw-certificate:call-identifier                     2.2.5.1.3
+        container rw-certificate:session-params                      2.2.5.1.4
+    notification rw-certificate:internal-error                           2.2.6
+      container rw-certificate:template_params                         2.2.6.1
+        list rw-certificate:debug-details                            2.2.6.1.1
+        list rw-certificate:additional-data                          2.2.6.1.2
+        container rw-certificate:call-identifier                     2.2.6.1.3
+        container rw-certificate:session-params                      2.2.6.1.4
+    notification rw-certificate:certificate-info                         2.2.7
+      container rw-certificate:template_params                         2.2.7.1
+        list rw-certificate:debug-details                            2.2.7.1.1
+        list rw-certificate:additional-data                          2.2.7.1.2
+        container rw-certificate:call-identifier                     2.2.7.1.3
+        container rw-certificate:session-params                      2.2.7.1.4
+    notification rw-certificate:certificate-change                       2.2.8
+      container rw-certificate:template_params                         2.2.8.1
+        list rw-certificate:debug-details                            2.2.8.1.1
+        list rw-certificate:additional-data                          2.2.8.1.2
+        container rw-certificate:call-identifier                     2.2.8.1.3
+        container rw-certificate:session-params                      2.2.8.1.4
+    notification rw-certificate:certificate-error                        2.2.9
+      container rw-certificate:template_params                         2.2.9.1
+        list rw-certificate:debug-details                            2.2.9.1.1
+        list rw-certificate:additional-data                          2.2.9.1.2
+        container rw-certificate:call-identifier                     2.2.9.1.3
+        container rw-certificate:session-params                      2.2.9.1.4
+    notification rw-certificate:certificate-added                       2.2.10
+      container rw-certificate:template_params                        2.2.10.1
+        list rw-certificate:debug-details                           2.2.10.1.1
+        list rw-certificate:additional-data                         2.2.10.1.2
+        container rw-certificate:call-identifier                    2.2.10.1.3
+        container rw-certificate:session-params                     2.2.10.1.4
+    notification rw-certificate:certificate-removed                     2.2.11
+      container rw-certificate:template_params                        2.2.11.1
+        list rw-certificate:debug-details                           2.2.11.1.1
+        list rw-certificate:additional-data                         2.2.11.1.2
+        container rw-certificate:call-identifier                    2.2.11.1.3
+        container rw-certificate:session-params                     2.2.11.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwCertificate_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwCertificate_g_schema
+2  module rw-certificate
+
+2.1  rw-certificate data
+  Description
+    This module defines the RIFT.ware certificate management.
+
+2.1.1  container rw-certificate:certificate-config
+  Description
+    Riftware certificate configuration
+  XPath Path
+    /rw-certificate:certificate-config
+  XPath Keyed Path
+    /rw-certificate:certificate-config
+  RW.REST URI Path
+    /rw-certificate:certificate-config
+  RW Keyspec XPath Path
+    C,/rw-certificate:certificate-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-certificate:certificate-config
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateConfig
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateConfig
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateConfig
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateConfig
+    RwCertificate_data_CertificateConfig
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateConfig
+
+2.1.1.1  list rw-certificate:certificate
+  Description
+    Server certificate configuration. If this certificate is also
+    used as client certificate for client authentication, then the certificate
+    must have been created with that key usage.
+  Leaves
+    name: name, type: STRING, description: An identifier for the certificate
+    name: certificate-type, type: ENUM, description: The type of certificate, Internal/External.
+    Internal certificates are strictly for internal Riftware services which
+    are not exposed.
+    External certificates are for services which are exposed to Northbound.
+    name: server-certificate, type: STRING, description: The server certificate to be installed. Only PEM format accepted.
+    name: private-key, type: STRING, description: Private key for the corresponding server certificate. Only PEM format
+    accepted. The private key must be unencrypted.
+    name: ca-certificate, type: STRING, description: The CA certificate or certificate chain for the corresponding
+    server certificate. Only PEM format accepted.
+    NOTE: The CA installed here is Rift specific hence not installed
+    on the system CA bundle path.
+  XPath Path
+    /rw-certificate:certificate-config/rw-certificate:certificate
+  XPath Keyed Path
+    /rw-certificate:certificate-config/rw-certificate:certificate[rw-certificate:name='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-config/certificate/STRING
+  RW Keyspec XPath Path
+    C,/rw-certificate:certificate-config/rw-certificate:certificate
+  RW Keyspec XPath Keyed Path
+    C,/rw-certificate:certificate-config/rw-certificate:certificate[rw-certificate:name='STRING']
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateConfig.Certificate
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateConfig_Certificate
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateConfig__Certificate
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateConfig_Certificate
+    RwCertificate_data_CertificateConfig_Certificate
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateConfig_Certificate
+
+2.1.1.2  container rw-certificate:ca-bundle
+  Description
+    The CA certificate or certiticate chain to be installed
+    on the system CA bundle path
+  XPath Path
+    /rw-certificate:certificate-config/rw-certificate:ca-bundle
+  XPath Keyed Path
+    /rw-certificate:certificate-config/rw-certificate:ca-bundle
+  RW.REST URI Path
+    /rw-certificate:certificate-config/ca-bundle
+  RW Keyspec XPath Path
+    C,/rw-certificate:certificate-config/rw-certificate:ca-bundle
+  RW Keyspec XPath Keyed Path
+    C,/rw-certificate:certificate-config/rw-certificate:ca-bundle
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateConfig.CaBundle
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateConfig_CaBundle
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateConfig__CaBundle
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateConfig_CaBundle
+    RwCertificate_data_CertificateConfig_CaBundle
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateConfig_CaBundle
+
+2.1.1.2.1  list rw-certificate:certificate
+  Description
+    The CA certificate or certificate chain
+  Leaves
+    name: bundle-name, type: STRING, description: An identifier for the CA bundle.
+    name: ca-certificate, type: STRING, description: The CA certificate or the certificate chain
+  XPath Path
+    /rw-certificate:certificate-config/rw-certificate:ca-bundle/rw-certificate:certificate
+  XPath Keyed Path
+    /rw-certificate:certificate-config/rw-certificate:ca-bundle/rw-certificate:certificate[rw-certificate:bundle-name='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-config/ca-bundle/certificate/STRING
+  RW Keyspec XPath Path
+    C,/rw-certificate:certificate-config/rw-certificate:ca-bundle/rw-certificate:certificate
+  RW Keyspec XPath Keyed Path
+    C,/rw-certificate:certificate-config/rw-certificate:ca-bundle/rw-certificate:certificate[rw-certificate:bundle-name='STRING']
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateConfig.CaBundle.Certificate
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateConfig_CaBundle_Certificate
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateConfig__CaBundle__Certificate
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateConfig_CaBundle_Certificate
+    RwCertificate_data_CertificateConfig_CaBundle_Certificate
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateConfig_CaBundle_Certificate
+
+2.1.2  container rw-certificate:certificate-state
+  Description
+    The certificate install state
+  XPath Path
+    /rw-certificate:certificate-state
+  XPath Keyed Path
+    /rw-certificate:certificate-state
+  RW.REST URI Path
+    /rw-certificate:certificate-state
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState
+    RwCertificate_data_CertificateState
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState
+
+2.1.2.1  container rw-certificate:install-status
+  Description
+    Status of the recent certificate installation.
+    Purpose is to report any errors seen during installation.
+  Leaves
+    name: name, type: STRING, description: An identifier for the certificate
+    name: certificate-type, type: ENUM, description: The type of certificate, Internal/External.
+    Internal certificates are strictly for internal Riftware services which
+    are not exposed.
+    External certificates are for services which are exposed to Northbound.
+    name: status, type: ENUM, description: State of the certificate.
+    name: fail-reason, type: STRING, description: The reason why certificate is in not installed state.
+    name: install-time, type: STRING, description: Installation attempt time
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:install-status
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:install-status
+  RW.REST URI Path
+    /rw-certificate:certificate-state/install-status
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:install-status
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:install-status
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstallStatus
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstallStatus
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstallStatus
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstallStatus
+    RwCertificate_data_CertificateState_InstallStatus
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstallStatus
+
+2.1.2.2  list rw-certificate:installed-certificate
+  Leaves
+    name: name, type: STRING, description: An identifier for the certificate
+    name: certificate-type, type: ENUM, description: The type of certificate, Internal/External.
+    Internal certificates are strictly for internal Riftware services which
+    are not exposed.
+    External certificates are for services which are exposed to Northbound.
+    name: status, type: ENUM, description: State of the certificate.
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate
+    RwCertificate_data_CertificateState_InstalledCertificate
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate
+
+2.1.2.2.1  container rw-certificate:serv-cert
+  Description
+    details of the certificate.
+  Leaves
+    name: not-after, type: STRING, description: when this cerificate expires
+    name: digest_sha1, type: STRING, description: sha1 digest of the certificate
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/serv-cert
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.ServCert
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_ServCert
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__ServCert
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert
+    RwCertificate_data_CertificateState_InstalledCertificate_ServCert
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert
+
+2.1.2.2.1.1  container rw-certificate:issuer
+  Description
+    issuer of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert/rw-certificate:issuer
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert/rw-certificate:issuer
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/serv-cert/issuer
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert/rw-certificate:issuer
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert/rw-certificate:issuer
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.ServCert.Issuer
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_ServCert_Issuer
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__ServCert__Issuer
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Issuer
+    RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Issuer
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Issuer
+
+2.1.2.2.1.2  container rw-certificate:subject
+  Description
+    subject of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert/rw-certificate:subject
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert/rw-certificate:subject
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/serv-cert/subject
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:serv-cert/rw-certificate:subject
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:serv-cert/rw-certificate:subject
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.ServCert.Subject
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_ServCert_Subject
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__ServCert__Subject
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Subject
+    RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Subject
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_ServCert_Subject
+
+2.1.2.2.2  container rw-certificate:ca-cert
+  Description
+    details of the certificate.
+  Leaves
+    name: not-after, type: STRING, description: when this cerificate expires
+    name: digest_sha1, type: STRING, description: sha1 digest of the certificate
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/ca-cert
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.CaCert
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_CaCert
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__CaCert
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert
+    RwCertificate_data_CertificateState_InstalledCertificate_CaCert
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert
+
+2.1.2.2.2.1  container rw-certificate:issuer
+  Description
+    issuer of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert/rw-certificate:issuer
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert/rw-certificate:issuer
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/ca-cert/issuer
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert/rw-certificate:issuer
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert/rw-certificate:issuer
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.CaCert.Issuer
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_CaCert_Issuer
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__CaCert__Issuer
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Issuer
+    RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Issuer
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Issuer
+
+2.1.2.2.2.2  container rw-certificate:subject
+  Description
+    subject of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert/rw-certificate:subject
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert/rw-certificate:subject
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-certificate/STRING/ca-cert/subject
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate/rw-certificate:ca-cert/rw-certificate:subject
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-certificate[rw-certificate:name='STRING']/rw-certificate:ca-cert/rw-certificate:subject
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCertificate.CaCert.Subject
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCertificate_CaCert_Subject
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCertificate__CaCert__Subject
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Subject
+    RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Subject
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCertificate_CaCert_Subject
+
+2.1.2.3  list rw-certificate:installed-ca-bundle
+  Leaves
+    name: bundle-name, type: STRING, description: An identifier for the CA bundle.
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-ca-bundle/STRING
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCaBundle
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCaBundle
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCaBundle
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle
+    RwCertificate_data_CertificateState_InstalledCaBundle
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle
+
+2.1.2.3.1  container rw-certificate:ca-cert
+  Description
+    details of the certificate.
+  Leaves
+    name: not-after, type: STRING, description: when this cerificate expires
+    name: digest_sha1, type: STRING, description: sha1 digest of the certificate
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-ca-bundle/STRING/ca-cert
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCaBundle.CaCert
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCaBundle_CaCert
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCaBundle__CaCert
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert
+    RwCertificate_data_CertificateState_InstalledCaBundle_CaCert
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert
+
+2.1.2.3.1.1  container rw-certificate:issuer
+  Description
+    issuer of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert/rw-certificate:issuer
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert/rw-certificate:issuer
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-ca-bundle/STRING/ca-cert/issuer
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert/rw-certificate:issuer
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert/rw-certificate:issuer
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCaBundle.CaCert.Issuer
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCaBundle_CaCert_Issuer
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCaBundle__CaCert__Issuer
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Issuer
+    RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Issuer
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Issuer
+
+2.1.2.3.1.2  container rw-certificate:subject
+  Description
+    subject of the certificate
+  Leaves
+    name: commonname, type: STRING, description: commonname
+    name: country, type: STRING, description: country
+    name: stateorprovince, type: STRING, description: stateorprovince
+    name: locality, type: STRING, description: locality
+    name: organization, type: STRING, description: organization
+    name: organizationunit, type: STRING, description: organizationunit
+    name: email, type: STRING, description: email
+  XPath Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert/rw-certificate:subject
+  XPath Keyed Path
+    /rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert/rw-certificate:subject
+  RW.REST URI Path
+    /rw-certificate:certificate-state/installed-ca-bundle/STRING/ca-cert/subject
+  RW Keyspec XPath Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle/rw-certificate:ca-cert/rw-certificate:subject
+  RW Keyspec XPath Keyed Path
+    D,/rw-certificate:certificate-state/rw-certificate:installed-ca-bundle[rw-certificate:bundle-name='STRING']/rw-certificate:ca-cert/rw-certificate:subject
+  Protobuf Type
+    .rw_certificate.YangData.RwCertificate.CertificateState.InstalledCaBundle.CaCert.Subject
+  Python Proto-GI Type
+    RwCertificateYang.YangData_RwCertificate_CertificateState_InstalledCaBundle_CaCert_Subject
+  C Protobuf-C Struct Type
+    RwCertificate__YangData__RwCertificate__CertificateState__InstalledCaBundle__CaCert__Subject
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Subject
+    RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Subject
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_data_CertificateState_InstalledCaBundle_CaCert_Subject
+
+2.2  rw-certificate notification
+  Description
+    This module defines the RIFT.ware certificate management.
+
+2.2.1  notification rw-certificate:certificate-change-event
+  Description
+    Notification about certificate change
+  Leaves
+    name: certificate-type, type: ENUM, description: The type of certificate, Internal/External
+    name: status, type: ENUM, description: State of the certificate.
+  XPath Path
+    /rw-certificate:certificate-change-event
+  XPath Keyed Path
+    /rw-certificate:certificate-change-event
+  RW.REST URI Path
+    /rw-certificate:certificate-change-event
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change-event
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change-event
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChangeEvent
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChangeEvent
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChangeEvent
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChangeEvent
+    RwCertificate_notif_CertificateChangeEvent
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChangeEvent
+
+2.2.2  notification rw-certificate:generic-debug
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:generic-debug
+  XPath Keyed Path
+    /rw-certificate:generic-debug
+  RW.REST URI Path
+    /rw-certificate:generic-debug
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug
+    RwCertificate_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug
+
+2.2.2.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:generic-debug/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:generic-debug/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams
+    RwCertificate_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams
+
+2.2.2.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_DebugDetails
+    RwCertificate_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.2.2.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_AdditionalData
+    RwCertificate_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.2.2.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_CallIdentifier
+    RwCertificate_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.2.2.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-debug/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_SessionParams
+    RwCertificate_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericDebug_TemplateParams_SessionParams
+
+2.2.3  notification rw-certificate:generic-info
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:generic-info
+  XPath Keyed Path
+    /rw-certificate:generic-info
+  RW.REST URI Path
+    /rw-certificate:generic-info
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo
+    RwCertificate_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo
+
+2.2.3.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:generic-info/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:generic-info/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams
+    RwCertificate_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams
+
+2.2.3.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_DebugDetails
+    RwCertificate_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.2.3.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_AdditionalData
+    RwCertificate_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.2.3.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_CallIdentifier
+    RwCertificate_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.2.3.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-info/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_SessionParams
+    RwCertificate_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericInfo_TemplateParams_SessionParams
+
+2.2.4  notification rw-certificate:generic-notice
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:generic-notice
+  XPath Keyed Path
+    /rw-certificate:generic-notice
+  RW.REST URI Path
+    /rw-certificate:generic-notice
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice
+    RwCertificate_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice
+
+2.2.4.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:generic-notice/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:generic-notice/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams
+    RwCertificate_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams
+
+2.2.4.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_DebugDetails
+    RwCertificate_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.2.4.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_AdditionalData
+    RwCertificate_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.2.4.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_CallIdentifier
+    RwCertificate_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.2.4.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-notice/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_SessionParams
+    RwCertificate_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericNotice_TemplateParams_SessionParams
+
+2.2.5  notification rw-certificate:generic-warning
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:generic-warning
+  XPath Keyed Path
+    /rw-certificate:generic-warning
+  RW.REST URI Path
+    /rw-certificate:generic-warning
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning
+    RwCertificate_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning
+
+2.2.5.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:generic-warning/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:generic-warning/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams
+    RwCertificate_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams
+
+2.2.5.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_DebugDetails
+    RwCertificate_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.2.5.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_AdditionalData
+    RwCertificate_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.2.5.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_CallIdentifier
+    RwCertificate_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.2.5.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:generic-warning/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_SessionParams
+    RwCertificate_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_GenericWarning_TemplateParams_SessionParams
+
+2.2.6  notification rw-certificate:internal-error
+  Description
+    Internal error in certificate manager.
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:internal-error
+  XPath Keyed Path
+    /rw-certificate:internal-error
+  RW.REST URI Path
+    /rw-certificate:internal-error
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError
+    RwCertificate_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError
+
+2.2.6.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:internal-error/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:internal-error/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError_TemplateParams
+    RwCertificate_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError_TemplateParams
+
+2.2.6.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError_TemplateParams_DebugDetails
+    RwCertificate_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError_TemplateParams_DebugDetails
+
+2.2.6.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError_TemplateParams_AdditionalData
+    RwCertificate_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError_TemplateParams_AdditionalData
+
+2.2.6.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError_TemplateParams_CallIdentifier
+    RwCertificate_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError_TemplateParams_CallIdentifier
+
+2.2.6.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:internal-error/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_InternalError_TemplateParams_SessionParams
+    RwCertificate_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_InternalError_TemplateParams_SessionParams
+
+2.2.7  notification rw-certificate:certificate-info
+  Description
+    Certificate event. Normal operation
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:certificate-info
+  XPath Keyed Path
+    /rw-certificate:certificate-info
+  RW.REST URI Path
+    /rw-certificate:certificate-info
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo
+    RwCertificate_notif_CertificateInfo
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo
+
+2.2.7.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:certificate-info/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:certificate-info/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:certificate-info/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams
+    RwCertificate_notif_CertificateInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams
+
+2.2.7.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:certificate-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_DebugDetails
+    RwCertificate_notif_CertificateInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_DebugDetails
+
+2.2.7.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_AdditionalData
+    RwCertificate_notif_CertificateInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_AdditionalData
+
+2.2.7.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:certificate-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_CallIdentifier
+    RwCertificate_notif_CertificateInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_CallIdentifier
+
+2.2.7.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:certificate-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-info/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_SessionParams
+    RwCertificate_notif_CertificateInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateInfo_TemplateParams_SessionParams
+
+2.2.8  notification rw-certificate:certificate-change
+  Description
+    Change in certificate configuration
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:certificate-change
+  XPath Keyed Path
+    /rw-certificate:certificate-change
+  RW.REST URI Path
+    /rw-certificate:certificate-change
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange
+    RwCertificate_notif_CertificateChange
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange
+
+2.2.8.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:certificate-change/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:certificate-change/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:certificate-change/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams
+    RwCertificate_notif_CertificateChange_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams
+
+2.2.8.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:certificate-change/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_DebugDetails
+    RwCertificate_notif_CertificateChange_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_DebugDetails
+
+2.2.8.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-change/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_AdditionalData
+    RwCertificate_notif_CertificateChange_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_AdditionalData
+
+2.2.8.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:certificate-change/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_CallIdentifier
+    RwCertificate_notif_CertificateChange_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_CallIdentifier
+
+2.2.8.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:certificate-change/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-change/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateChange.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateChange_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateChange__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_SessionParams
+    RwCertificate_notif_CertificateChange_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateChange_TemplateParams_SessionParams
+
+2.2.9  notification rw-certificate:certificate-error
+  Description
+    Error while installing certificate
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:certificate-error
+  XPath Keyed Path
+    /rw-certificate:certificate-error
+  RW.REST URI Path
+    /rw-certificate:certificate-error
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError
+    RwCertificate_notif_CertificateError
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError
+
+2.2.9.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:certificate-error/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:certificate-error/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:certificate-error/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError_TemplateParams
+    RwCertificate_notif_CertificateError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError_TemplateParams
+
+2.2.9.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:certificate-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_DebugDetails
+    RwCertificate_notif_CertificateError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_DebugDetails
+
+2.2.9.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_AdditionalData
+    RwCertificate_notif_CertificateError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_AdditionalData
+
+2.2.9.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:certificate-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_CallIdentifier
+    RwCertificate_notif_CertificateError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_CallIdentifier
+
+2.2.9.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:certificate-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-error/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_SessionParams
+    RwCertificate_notif_CertificateError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateError_TemplateParams_SessionParams
+
+2.2.10  notification rw-certificate:certificate-added
+  Description
+    Certificate added message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:certificate-added
+  XPath Keyed Path
+    /rw-certificate:certificate-added
+  RW.REST URI Path
+    /rw-certificate:certificate-added
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded
+    RwCertificate_notif_CertificateAdded
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded
+
+2.2.10.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:certificate-added/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:certificate-added/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:certificate-added/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams
+    RwCertificate_notif_CertificateAdded_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams
+
+2.2.10.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:certificate-added/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_DebugDetails
+    RwCertificate_notif_CertificateAdded_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_DebugDetails
+
+2.2.10.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-added/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_AdditionalData
+    RwCertificate_notif_CertificateAdded_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_AdditionalData
+
+2.2.10.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:certificate-added/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_CallIdentifier
+    RwCertificate_notif_CertificateAdded_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_CallIdentifier
+
+2.2.10.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:certificate-added/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-added/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateAdded.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateAdded_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateAdded__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_SessionParams
+    RwCertificate_notif_CertificateAdded_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateAdded_TemplateParams_SessionParams
+
+2.2.11  notification rw-certificate:certificate-removed
+  Description
+    Certificate removed message
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /rw-certificate:certificate-removed
+  XPath Keyed Path
+    /rw-certificate:certificate-removed
+  RW.REST URI Path
+    /rw-certificate:certificate-removed
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved
+    RwCertificate_notif_CertificateRemoved
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved
+
+2.2.11.1  container rw-certificate:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params
+  XPath Keyed Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params
+  RW.REST URI Path
+    /rw-certificate:certificate-removed/template_params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved.TemplateParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved_TemplateParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved__TemplateParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams
+    RwCertificate_notif_CertificateRemoved_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams
+
+2.2.11.1.1  list rw-certificate:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:debug-details
+  XPath Keyed Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  RW.REST URI Path
+    /rw-certificate:certificate-removed/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:debug-details[rw-certificate:type='generic-debug-detail']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_DebugDetails
+    RwCertificate_notif_CertificateRemoved_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_DebugDetails
+
+2.2.11.1.2  list rw-certificate:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:additional-data
+  XPath Keyed Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  RW.REST URI Path
+    /rw-certificate:certificate-removed/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:additional-data[rw-certificate:attribute='STRING']
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_AdditionalData
+    RwCertificate_notif_CertificateRemoved_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_AdditionalData
+
+2.2.11.1.3  container rw-certificate:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:call-identifier
+  XPath Keyed Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:call-identifier
+  RW.REST URI Path
+    /rw-certificate:certificate-removed/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:call-identifier
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_CallIdentifier
+    RwCertificate_notif_CertificateRemoved_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_CallIdentifier
+
+2.2.11.1.4  container rw-certificate:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:session-params
+  XPath Keyed Path
+    /rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:session-params
+  RW.REST URI Path
+    /rw-certificate:certificate-removed/template_params/session-params
+  RW Keyspec XPath Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:session-params
+  RW Keyspec XPath Keyed Path
+    N,/rw-certificate:certificate-removed/rw-certificate:template_params/rw-certificate:session-params
+  Protobuf Type
+    .rw_certificate.YangNotif.RwCertificate.CertificateRemoved.TemplateParams.SessionParams
+  Python Proto-GI Type
+    RwCertificateYang.YangNotif_RwCertificate_CertificateRemoved_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    RwCertificate__YangNotif__RwCertificate__CertificateRemoved__TemplateParams__SessionParams
+  C RWPB Identifiers
+    RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_SessionParams
+    RwCertificate_notif_CertificateRemoved_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_RwCertificate_RwCertificate_notif_CertificateRemoved_TemplateParams_SessionParams
+

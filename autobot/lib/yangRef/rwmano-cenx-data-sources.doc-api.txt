@@ -1,0 +1,13 @@
+Programmer's API documentation for yang module rwmano-cenx-data-sources.yang
+
+
+
+Schema Globals                                                               1
+
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwmanoCenxDataSources_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwmanoCenxDataSources_g_schema

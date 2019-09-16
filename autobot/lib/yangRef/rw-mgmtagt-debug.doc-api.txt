@@ -1,0 +1,335 @@
+Programmer's API documentation for yang module rw-mgmtagt-debug.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-mgmtagt-debug                                                      2
+  rw-mgmtagt-debug rpc input                                               2.1
+    rpc input rw-mgmtagt-debug:test-user-crud                            2.1.1
+      container rw-mgmtagt-debug:add-user                              2.1.1.1
+      container rw-mgmtagt-debug:delete-user                           2.1.1.2
+      container rw-mgmtagt-debug:set-password                          2.1.1.3
+    rpc input rw-mgmtagt-debug:test-nacm-crud                            2.1.2
+      container rw-mgmtagt-debug:create-role-inst                      2.1.2.1
+        list rw-mgmtagt-debug:authorization                          2.1.2.1.1
+      container rw-mgmtagt-debug:delete-role-inst                      2.1.2.2
+      container rw-mgmtagt-debug:assign-user-to-role-inst              2.1.2.3
+      container rw-mgmtagt-debug:revoke-user-from-role-inst            2.1.2.4
+  rw-mgmtagt-debug rpc output                                              2.2
+    rpc output rw-mgmtagt-debug:test-user-crud                           2.2.1
+    rpc output rw-mgmtagt-debug:test-nacm-crud                           2.2.2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwMgmtagtDebug_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwMgmtagtDebug_g_schema
+2  module rw-mgmtagt-debug
+
+2.1  rw-mgmtagt-debug rpc input
+
+2.1.1  rpc input rw-mgmtagt-debug:test-user-crud
+  XPath Path
+    /rw-mgmtagt-debug:test-user-crud
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-user-crud
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-user-crud
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-user-crud
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestUserCrud
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestUserCrud
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestUserCrud
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud
+    RwMgmtagtDebug_input_TestUserCrud
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud
+
+2.1.1.1  container rw-mgmtagt-debug:add-user
+  Leaves
+    name: username, type: STRING, description: Name of the user to be added
+    name: password, type: STRING, description: Password for the user
+  XPath Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:add-user
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:add-user
+  RW.REST URI Path
+    /input/add-user
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:add-user
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:add-user
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestUserCrud.AddUser
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestUserCrud_AddUser
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestUserCrud__AddUser
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_AddUser
+    RwMgmtagtDebug_input_TestUserCrud_AddUser
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_AddUser
+
+2.1.1.2  container rw-mgmtagt-debug:delete-user
+  Leaves
+    name: username, type: STRING, description: Name of the user to be deleted
+  XPath Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:delete-user
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:delete-user
+  RW.REST URI Path
+    /input/delete-user
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:delete-user
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:delete-user
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestUserCrud.DeleteUser
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestUserCrud_DeleteUser
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestUserCrud__DeleteUser
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_DeleteUser
+    RwMgmtagtDebug_input_TestUserCrud_DeleteUser
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_DeleteUser
+
+2.1.1.3  container rw-mgmtagt-debug:set-password
+  Leaves
+    name: username, type: STRING, description: Name of the user for whom password to be changed
+    name: password, type: STRING, description: Password for the user
+  XPath Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:set-password
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:set-password
+  RW.REST URI Path
+    /input/set-password
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:set-password
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-user-crud/rw-mgmtagt-debug:set-password
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestUserCrud.SetPassword
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestUserCrud_SetPassword
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestUserCrud__SetPassword
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_SetPassword
+    RwMgmtagtDebug_input_TestUserCrud_SetPassword
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestUserCrud_SetPassword
+
+2.1.2  rpc input rw-mgmtagt-debug:test-nacm-crud
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud
+    RwMgmtagtDebug_input_TestNacmCrud
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud
+
+2.1.2.1  container rw-mgmtagt-debug:create-role-inst
+  Leaves
+    name: role-name, type: STRING
+    name: keyvals, type: STRING
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst
+  RW.REST URI Path
+    /input/create-role-inst
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud.CreateRoleInst
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud_CreateRoleInst
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud__CreateRoleInst
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst
+    RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst
+
+2.1.2.1.1  list rw-mgmtagt-debug:authorization
+  Leaves
+    name: path, type: STRING
+    name: perms, type: STRING
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst/rw-mgmtagt-debug:authorization
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst/rw-mgmtagt-debug:authorization[rw-mgmtagt-debug:path='STRING']
+  RW.REST URI Path
+    /input/create-role-inst/authorization/STRING
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst/rw-mgmtagt-debug:authorization
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:create-role-inst/rw-mgmtagt-debug:authorization[rw-mgmtagt-debug:path='STRING']
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud.CreateRoleInst.Authorization
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud_CreateRoleInst_Authorization
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud__CreateRoleInst__Authorization
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst_Authorization
+    RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst_Authorization
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_CreateRoleInst_Authorization
+
+2.1.2.2  container rw-mgmtagt-debug:delete-role-inst
+  Leaves
+    name: role-name, type: STRING
+    name: keyvals, type: STRING
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:delete-role-inst
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:delete-role-inst
+  RW.REST URI Path
+    /input/delete-role-inst
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:delete-role-inst
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:delete-role-inst
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud.DeleteRoleInst
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud_DeleteRoleInst
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud__DeleteRoleInst
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_DeleteRoleInst
+    RwMgmtagtDebug_input_TestNacmCrud_DeleteRoleInst
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_DeleteRoleInst
+
+2.1.2.3  container rw-mgmtagt-debug:assign-user-to-role-inst
+  Leaves
+    name: role-name, type: STRING
+    name: keyvals, type: STRING
+    name: username, type: STRING
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:assign-user-to-role-inst
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:assign-user-to-role-inst
+  RW.REST URI Path
+    /input/assign-user-to-role-inst
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:assign-user-to-role-inst
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:assign-user-to-role-inst
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud.AssignUserToRoleInst
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud_AssignUserToRoleInst
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud__AssignUserToRoleInst
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_AssignUserToRoleInst
+    RwMgmtagtDebug_input_TestNacmCrud_AssignUserToRoleInst
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_AssignUserToRoleInst
+
+2.1.2.4  container rw-mgmtagt-debug:revoke-user-from-role-inst
+  Leaves
+    name: role-name, type: STRING
+    name: keyvals, type: STRING
+    name: username, type: STRING
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:revoke-user-from-role-inst
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:revoke-user-from-role-inst
+  RW.REST URI Path
+    /input/revoke-user-from-role-inst
+  RW Keyspec XPath Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:revoke-user-from-role-inst
+  RW Keyspec XPath Keyed Path
+    I,/rw-mgmtagt-debug:test-nacm-crud/rw-mgmtagt-debug:revoke-user-from-role-inst
+  Protobuf Type
+    .rw_mgmtagt_debug.YangInput.RwMgmtagtDebug.TestNacmCrud.RevokeUserFromRoleInst
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangInput_RwMgmtagtDebug_TestNacmCrud_RevokeUserFromRoleInst
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangInput__RwMgmtagtDebug__TestNacmCrud__RevokeUserFromRoleInst
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_RevokeUserFromRoleInst
+    RwMgmtagtDebug_input_TestNacmCrud_RevokeUserFromRoleInst
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_input_TestNacmCrud_RevokeUserFromRoleInst
+
+2.2  rw-mgmtagt-debug rpc output
+
+2.2.1  rpc output rw-mgmtagt-debug:test-user-crud
+  XPath Path
+    /rw-mgmtagt-debug:test-user-crud
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-user-crud
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt-debug:test-user-crud
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt-debug:test-user-crud
+  Protobuf Type
+    .rw_mgmtagt_debug.YangOutput.RwMgmtagtDebug.TestUserCrud
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangOutput_RwMgmtagtDebug_TestUserCrud
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangOutput__RwMgmtagtDebug__TestUserCrud
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_output_TestUserCrud
+    RwMgmtagtDebug_output_TestUserCrud
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_output_TestUserCrud
+
+2.2.2  rpc output rw-mgmtagt-debug:test-nacm-crud
+  XPath Path
+    /rw-mgmtagt-debug:test-nacm-crud
+  XPath Keyed Path
+    /rw-mgmtagt-debug:test-nacm-crud
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-mgmtagt-debug:test-nacm-crud
+  RW Keyspec XPath Keyed Path
+    O,/rw-mgmtagt-debug:test-nacm-crud
+  Protobuf Type
+    .rw_mgmtagt_debug.YangOutput.RwMgmtagtDebug.TestNacmCrud
+  Python Proto-GI Type
+    RwMgmtagtDebugYang.YangOutput_RwMgmtagtDebug_TestNacmCrud
+  C Protobuf-C Struct Type
+    RwMgmtagtDebug__YangOutput__RwMgmtagtDebug__TestNacmCrud
+  C RWPB Identifiers
+    RwMgmtagtDebug_RwMgmtagtDebug_output_TestNacmCrud
+    RwMgmtagtDebug_output_TestNacmCrud
+  YPBC Base Identifier
+    rw_ypbc_RwMgmtagtDebug_RwMgmtagtDebug_output_TestNacmCrud
+

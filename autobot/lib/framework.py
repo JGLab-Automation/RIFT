@@ -5,6 +5,7 @@ from autobot.lib import restAPIs as rapi
 from autobot.config import payloads as pl
 import time
 
+
 def proj_add(lp_addr, header, proj_name, proj_desc):
     try:
         api = rapi.proj_add()
@@ -173,10 +174,11 @@ def cloud_acct_status(lp_addr, header, proj_name, cloud_acct_name):
         payload = ""
 
         status = util.get_config(url, header, payload)
-        #return status["status"]
-        state = list(status.values())
         time.sleep(10)
-        return state[0]
+        return status["rw-cloud:oper-state"]["status"]
+
+        #state = list(status.values())
+        #return state[0]
     except BaseException as e:
         util.log_info(e)
         raise
@@ -523,6 +525,39 @@ def get_ns_instance_config(lp_addr, header, proj_name, nsr_id, value=None):
     except BaseException as e:
         util.log_info(e)
         raise
+
+
+def vim_resource_discover(lp_addr, header, proj_name, cloud_acct_name):
+    try:
+        api = rapi.vim_resource_discover()
+        url = util.create_url_operations(lp_addr, api)
+        payload = pl.vim_resource_discover(proj_name, cloud_acct_name)
+
+        util.log_info("Discovering VIM resources.")
+        status = util.add_config(url, header, payload)
+        util.log_info("Please wait while resource-discovery is in progress.")
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+        time.sleep(180)
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def vim_discover_status(lp_addr, header, proj_name, cloud_acct_name):
+    try:
+        api = rapi.cloud_acct_status(proj_name, cloud_acct_name)
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+
+        status = util.get_config(url, header, payload)
+        time.sleep(10)
+        return status["rw-cloud:oper-state"]["disc-status"]
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
 
 """
     try:

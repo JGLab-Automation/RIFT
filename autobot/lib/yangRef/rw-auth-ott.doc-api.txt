@@ -1,0 +1,538 @@
+Programmer's API documentation for yang module rw-auth-ott.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-authentication                                                     2
+  rw-authentication data                                                   2.1
+    container rw-authentication:authentication-config                    2.1.1
+      list rw-authentication:domain                                    2.1.1.1
+      container rw-authentication:default-domain                       2.1.1.2
+      container rw-authentication:policy                               2.1.1.3
+        container rw-authentication:ui-account-lockout               2.1.1.3.1
+        container rw-authentication:password-policy                  2.1.1.3.2
+    container rw-authentication:authentication-state                     2.1.2
+      list rw-authentication:domain                                    2.1.2.1
+        container rw-auth-ott:one-time-token-table                   2.1.2.1.1
+          list rw-auth-ott:active-tokens                           2.1.2.1.1.1
+module rw-auth-ott                                                           3
+  rw-auth-ott rpc input                                                    3.1
+    rpc input rw-auth-ott:create-one-time-token                          3.1.1
+    rpc input rw-auth-ott:show-one-time-token                            3.1.2
+    rpc input rw-auth-ott:authorize-ott-user                             3.1.3
+  rw-auth-ott rpc output                                                   3.2
+    rpc output rw-auth-ott:create-one-time-token                         3.2.1
+    rpc output rw-auth-ott:show-one-time-token                           3.2.2
+      list rw-auth-ott:tokenid-list                                    3.2.2.1
+    rpc output rw-auth-ott:authorize-ott-user                            3.2.3
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwAuthOtt_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwAuthOtt_g_schema
+2  module rw-authentication
+
+2.1  rw-authentication data
+  Description
+    RIFT.ware Unified Authentication model. RIFT.ware supports multiple
+    protocols for authentication and all these authentication related yang data
+    are available within this hierarchy.
+
+2.1.1  container rw-authentication:authentication-config
+  Description
+    Unified authentication configuration.
+  XPath Path
+    /rw-authentication:authentication-config
+  XPath Keyed Path
+    /rw-authentication:authentication-config
+  RW.REST URI Path
+    /rw-authentication:authentication-config
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig
+
+2.1.1.1  list rw-authentication:domain
+  Description
+    Authentication config details are specific to domain. Each domain can
+    use a specific protocol for authentication, details of which are
+    specified as a case within the protocol choice.
+  Leaves
+    name: name, type: STRING, description: Domain name for which the authentication configuration is
+    applicable.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:domain
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']
+  RW.REST URI Path
+    /rw-authentication:authentication-config/domain/STRING
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:domain[rw-authentication:name='STRING']
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Domain
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Domain
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Domain
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Domain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Domain
+
+2.1.1.2  container rw-authentication:default-domain
+  Leaves
+    name: name, type: LEAFREF, description: Default domain and thereby the default authentication protocol to be
+    used.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:default-domain
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:default-domain
+  RW.REST URI Path
+    /rw-authentication:authentication-config/default-domain
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:default-domain
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:default-domain
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.DefaultDomain
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_DefaultDomain
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__DefaultDomain
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_DefaultDomain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_DefaultDomain
+
+2.1.1.3  container rw-authentication:policy
+  Description
+    Configuration related to authentication policies.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy
+
+2.1.1.3.1  container rw-authentication:ui-account-lockout
+  Description
+    Account Lockout policy for UI Login, when using OpenID Connect.
+    Not applicable for SAML.
+  Leaves
+    name: disable-lockout, type: BOOLEAN, description: When set to true the UI account login lockout will be disabled.
+    Lockout, by default is enabled.
+    name: lockout-count, type: UINT8, description: Number of invalid password attempts after which the login
+    lockout will be effected.'
+    name: lockout-duration, type: UINT16, description: When locked-out, duration in minutes, after which valid login is
+    allowed. Previous invalid attempts count is not reset. An invalid
+    attempt after this will again lead to a lockout.
+    name: lockout-expiry, type: UINT16, description: Minutes after which an invalid attempt expire. Until the invalid
+    attempts reduces below the lockout-count, valid logins will not be
+    allowed.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy/ui-account-lockout
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:ui-account-lockout
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy.UiAccountLockout
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy_UiAccountLockout
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy__UiAccountLockout
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_UiAccountLockout
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_UiAccountLockout
+
+2.1.1.3.2  container rw-authentication:password-policy
+  Description
+    Configuration parameters to enforce a strong password policy for
+    system domain users. If PAM auth is enabled, this policy also applies
+    for PAM users.
+
+    If the policy is enabled, the following checks are performed on the
+    new password.
+    - Minimum number of character (as per min-password-len).
+    - Combination of charatacter classes (as per min-character-classes).
+    - Checks if the new password is a dictionary word
+      (based on check-dictionary-word).
+    - If the new password contains username in some form (always).
+    - Checks if the new password is a palindrome. (always)
+    - Checks if the new password is similar to old one. (always)
+    - Checks if the new passowrd is a rotated version of old one. (always)
+  Leaves
+    name: disable-password-policy, type: BOOLEAN, description: Disable the password policy. If disabled, no password restrictions
+    will be enforced.
+    name: min-password-len, type: UINT8, description: Minimum acceptable size for the new password.
+    name: min-character-classes, type: UINT8, description: Minimum number of allowed character classes. There are four
+    character classes - lowercase, uppercase, numeric and special
+    (e.g, !, @, #, $, %, ^, etc...). If this config is set to 3, it
+    means that combination of atleast 3 classes mentioned above must
+    be present in the password.
+    name: check-dictionary-word, type: BOOLEAN, description: Reject the password if it is based on dictionary word.
+  XPath Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  XPath Keyed Path
+    /rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  RW.REST URI Path
+    /rw-authentication:authentication-config/policy/password-policy
+  RW Keyspec XPath Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  RW Keyspec XPath Keyed Path
+    C,/rw-authentication:authentication-config/rw-authentication:policy/rw-authentication:password-policy
+  Protobuf Type
+    .rw_authentication.YangData.RwAuthentication.AuthenticationConfig.Policy.PasswordPolicy
+  Python Proto-GI Type
+    RwAuthenticationYang.YangData_RwAuthentication_AuthenticationConfig_Policy_PasswordPolicy
+  C Protobuf-C Struct Type
+    RwAuthentication__YangData__RwAuthentication__AuthenticationConfig__Policy__PasswordPolicy
+  C RWPB Identifiers
+    RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_PasswordPolicy
+  YPBC Base Identifier
+    rw_ypbc_RwAuthentication_RwAuthentication_data_AuthenticationConfig_Policy_PasswordPolicy
+
+2.1.2  container rw-authentication:authentication-state
+  Description
+    Operation state for Unified authentication configuration.
+  XPath Path
+    /rw-authentication:authentication-state
+  XPath Keyed Path
+    /rw-authentication:authentication-state
+  RW.REST URI Path
+    /rw-authentication:authentication-state
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state
+  Protobuf Type
+    .rw_auth_ott.YangData.RwAuthentication.AuthenticationState
+  Python Proto-GI Type
+    RwAuthOttYang.YangData_RwAuthentication_AuthenticationState
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangData__RwAuthentication__AuthenticationState
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthentication_data_AuthenticationState
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthentication_data_AuthenticationState
+
+2.1.2.1  list rw-authentication:domain
+  Description
+    Like authentication config data, the state data is also available per
+    domain. Protocol specific operational data are augmented as a case
+    within the protocol choice.
+  Leaves
+    name: name, type: STRING, description: Domain name for which the authentication state data is
+    applicable.
+  XPath Path
+    /rw-authentication:authentication-state/rw-authentication:domain
+  XPath Keyed Path
+    /rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']
+  RW.REST URI Path
+    /rw-authentication:authentication-state/domain/STRING
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']
+  Protobuf Type
+    .rw_auth_ott.YangData.RwAuthentication.AuthenticationState.Domain
+  Python Proto-GI Type
+    RwAuthOttYang.YangData_RwAuthentication_AuthenticationState_Domain
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangData__RwAuthentication__AuthenticationState__Domain
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain
+
+2.1.2.1.1  container rw-auth-ott:one-time-token-table
+  Description
+    Table of active tokens.
+  XPath Path
+    /rw-authentication:authentication-state/rw-authentication:domain/rw-auth-ott:one-time-token-table
+  XPath Keyed Path
+    /rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-ott:one-time-token-table
+  RW.REST URI Path
+    /rw-authentication:authentication-state/domain/STRING/rw-auth-ott:one-time-token-table
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain/rw-auth-ott:one-time-token-table
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-ott:one-time-token-table
+  Protobuf Type
+    .rw_auth_ott.YangData.RwAuthentication.AuthenticationState.Domain.OneTimeTokenTable
+  Python Proto-GI Type
+    RwAuthOttYang.YangData_RwAuthentication_AuthenticationState_Domain_OneTimeTokenTable
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangData__RwAuthentication__AuthenticationState__Domain__OneTimeTokenTable
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain_OneTimeTokenTable
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain_OneTimeTokenTable
+
+2.1.2.1.1.1  list rw-auth-ott:active-tokens
+  Description
+    List of currently active tokenids.
+  Leaves
+    name: access-token, type: STRING, description: The access-token issued by OTT tasklet.
+    name: user-id, type: STRING, description: User of the transaction that triggerred the OTT.
+  XPath Path
+    /rw-authentication:authentication-state/rw-authentication:domain/rw-auth-ott:one-time-token-table/rw-auth-ott:active-tokens
+  XPath Keyed Path
+    /rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-ott:one-time-token-table/rw-auth-ott:active-tokens[rw-auth-ott:access-token='STRING']
+  RW.REST URI Path
+    /rw-authentication:authentication-state/domain/STRING/rw-auth-ott:one-time-token-table/active-tokens/STRING
+  RW Keyspec XPath Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain/rw-auth-ott:one-time-token-table/rw-auth-ott:active-tokens
+  RW Keyspec XPath Keyed Path
+    D,/rw-authentication:authentication-state/rw-authentication:domain[rw-authentication:name='STRING']/rw-auth-ott:one-time-token-table/rw-auth-ott:active-tokens[rw-auth-ott:access-token='STRING']
+  Protobuf Type
+    .rw_auth_ott.YangData.RwAuthentication.AuthenticationState.Domain.OneTimeTokenTable.ActiveTokens
+  Python Proto-GI Type
+    RwAuthOttYang.YangData_RwAuthentication_AuthenticationState_Domain_OneTimeTokenTable_ActiveTokens
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangData__RwAuthentication__AuthenticationState__Domain__OneTimeTokenTable__ActiveTokens
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain_OneTimeTokenTable_ActiveTokens
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthentication_data_AuthenticationState_Domain_OneTimeTokenTable_ActiveTokens
+
+3  module rw-auth-ott
+
+3.1  rw-auth-ott rpc input
+  Description
+    This module defines how RIFT.ware manages configuration parameters for
+    One Time Token authentication for users.
+
+3.1.1  rpc input rw-auth-ott:create-one-time-token
+  Leaves
+    name: request, type: EMPTY, description: request for getting new token
+    name: user-id, type: STRING, description: User of the transaction that triggerred the OTT.
+  XPath Path
+    /rw-auth-ott:create-one-time-token
+  XPath Keyed Path
+    /rw-auth-ott:create-one-time-token
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-auth-ott:create-one-time-token
+  RW Keyspec XPath Keyed Path
+    I,/rw-auth-ott:create-one-time-token
+  Protobuf Type
+    .rw_auth_ott.YangInput.RwAuthOtt.CreateOneTimeToken
+  Python Proto-GI Type
+    RwAuthOttYang.TokenIn
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangInput__RwAuthOtt__CreateOneTimeToken
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_input_CreateOneTimeToken
+    RwAuthOtt_input_CreateOneTimeToken
+    RwAuthOtt_TokenIn
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_input_CreateOneTimeToken
+
+3.1.2  rpc input rw-auth-ott:show-one-time-token
+  Leaves
+    name: details, type: EMPTY, description: show the current token details
+  XPath Path
+    /rw-auth-ott:show-one-time-token
+  XPath Keyed Path
+    /rw-auth-ott:show-one-time-token
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-auth-ott:show-one-time-token
+  RW Keyspec XPath Keyed Path
+    I,/rw-auth-ott:show-one-time-token
+  Protobuf Type
+    .rw_auth_ott.YangInput.RwAuthOtt.ShowOneTimeToken
+  Python Proto-GI Type
+    RwAuthOttYang.TokenInfoReq
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangInput__RwAuthOtt__ShowOneTimeToken
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_input_ShowOneTimeToken
+    RwAuthOtt_input_ShowOneTimeToken
+    RwAuthOtt_TokenInfoReq
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_input_ShowOneTimeToken
+
+3.1.3  rpc input rw-auth-ott:authorize-ott-user
+  Leaves
+    name: user-domain, type: LEAFREF, description: The user domain.  This is the source of the user identity.
+    Different domains may duplicate a user-name, but such users
+    would be considered distinct by RIFT.ware.
+    name: user-name, type: STRING, description: The user name.  The syntax of this name depends on the domain.
+    For example, if the domain is a login name, it might be limited
+    to alphanumeric characters.  However, if the domain is some
+    kind of email address, the syntax could include assitional
+    characters, such as the at sign.
+    name: password, type: STRING, description: password for this user
+  XPath Path
+    /rw-auth-ott:authorize-ott-user
+  XPath Keyed Path
+    /rw-auth-ott:authorize-ott-user
+  RW.REST URI Path
+    /input
+  RW Keyspec XPath Path
+    I,/rw-auth-ott:authorize-ott-user
+  RW Keyspec XPath Keyed Path
+    I,/rw-auth-ott:authorize-ott-user
+  Protobuf Type
+    .rw_auth_ott.YangInput.RwAuthOtt.AuthorizeOttUser
+  Python Proto-GI Type
+    RwAuthOttYang.AuthReq
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangInput__RwAuthOtt__AuthorizeOttUser
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_input_AuthorizeOttUser
+    RwAuthOtt_input_AuthorizeOttUser
+    RwAuthOtt_AuthReq
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_input_AuthorizeOttUser
+
+3.2  rw-auth-ott rpc output
+  Description
+    This module defines how RIFT.ware manages configuration parameters for
+    One Time Token authentication for users.
+
+3.2.1  rpc output rw-auth-ott:create-one-time-token
+  Leaves
+    name: one-time-access-token, type: STRING, description: One time access token for user
+  XPath Path
+    /rw-auth-ott:create-one-time-token
+  XPath Keyed Path
+    /rw-auth-ott:create-one-time-token
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-auth-ott:create-one-time-token
+  RW Keyspec XPath Keyed Path
+    O,/rw-auth-ott:create-one-time-token
+  Protobuf Type
+    .rw_auth_ott.YangOutput.RwAuthOtt.CreateOneTimeToken
+  Python Proto-GI Type
+    RwAuthOttYang.TokenOut
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangOutput__RwAuthOtt__CreateOneTimeToken
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_output_CreateOneTimeToken
+    RwAuthOtt_output_CreateOneTimeToken
+    RwAuthOtt_TokenOut
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_output_CreateOneTimeToken
+
+3.2.2  rpc output rw-auth-ott:show-one-time-token
+  XPath Path
+    /rw-auth-ott:show-one-time-token
+  XPath Keyed Path
+    /rw-auth-ott:show-one-time-token
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-auth-ott:show-one-time-token
+  RW Keyspec XPath Keyed Path
+    O,/rw-auth-ott:show-one-time-token
+  Protobuf Type
+    .rw_auth_ott.YangOutput.RwAuthOtt.ShowOneTimeToken
+  Python Proto-GI Type
+    RwAuthOttYang.TokenInfoResp
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangOutput__RwAuthOtt__ShowOneTimeToken
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_output_ShowOneTimeToken
+    RwAuthOtt_output_ShowOneTimeToken
+    RwAuthOtt_TokenInfoResp
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_output_ShowOneTimeToken
+
+3.2.2.1  list rw-auth-ott:tokenid-list
+  Leaves
+    name: tokenid, type: STRING, description: currently active tokenid
+    name: validity, type: STRING, description: total time this tokenid is valid
+    name: remaining, type: STRING, description: remaining time for this tokenid to expire
+    name: issuer-id, type: STRING, description: issuer who owns this token
+    name: user-id, type: STRING, description: user-id who owns this token
+  XPath Path
+    /rw-auth-ott:show-one-time-token/rw-auth-ott:tokenid-list
+  XPath Keyed Path
+    /rw-auth-ott:show-one-time-token/rw-auth-ott:tokenid-list[rw-auth-ott:tokenid='STRING']
+  RW.REST URI Path
+    /output/tokenid-list/STRING
+  RW Keyspec XPath Path
+    O,/rw-auth-ott:show-one-time-token/rw-auth-ott:tokenid-list
+  RW Keyspec XPath Keyed Path
+    O,/rw-auth-ott:show-one-time-token/rw-auth-ott:tokenid-list[rw-auth-ott:tokenid='STRING']
+  Protobuf Type
+    .rw_auth_ott.YangOutput.RwAuthOtt.ShowOneTimeToken.TokenidList
+  Python Proto-GI Type
+    RwAuthOttYang.TokenInfoResp_TokenidList
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangOutput__RwAuthOtt__ShowOneTimeToken__TokenidList
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_output_ShowOneTimeToken_TokenidList
+    RwAuthOtt_output_ShowOneTimeToken_TokenidList
+    RwAuthOtt_TokenInfoResp_TokenidList
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_output_ShowOneTimeToken_TokenidList
+
+3.2.3  rpc output rw-auth-ott:authorize-ott-user
+  Leaves
+    name: status, type: STRING, description: Authentication result success or failure
+    name: user-id, type: STRING, description: User of the transaction that triggerred the OTT.
+  XPath Path
+    /rw-auth-ott:authorize-ott-user
+  XPath Keyed Path
+    /rw-auth-ott:authorize-ott-user
+  RW.REST URI Path
+    /output
+  RW Keyspec XPath Path
+    O,/rw-auth-ott:authorize-ott-user
+  RW Keyspec XPath Keyed Path
+    O,/rw-auth-ott:authorize-ott-user
+  Protobuf Type
+    .rw_auth_ott.YangOutput.RwAuthOtt.AuthorizeOttUser
+  Python Proto-GI Type
+    RwAuthOttYang.AuthResp
+  C Protobuf-C Struct Type
+    RwAuthOtt__YangOutput__RwAuthOtt__AuthorizeOttUser
+  C RWPB Identifiers
+    RwAuthOtt_RwAuthOtt_output_AuthorizeOttUser
+    RwAuthOtt_output_AuthorizeOttUser
+    RwAuthOtt_AuthResp
+  YPBC Base Identifier
+    rw_ypbc_RwAuthOtt_RwAuthOtt_output_AuthorizeOttUser
+

@@ -1,0 +1,1393 @@
+Programmer's API documentation for yang module demo-redis-log.yang
+
+
+
+Schema Globals                                                               1
+
+module demo-redis-log                                                        2
+  demo-redis-log notification                                              2.1
+    notification demo-redis-log:demo-redis-tasklet-state                 2.1.1
+      container demo-redis-log:template_params                         2.1.1.1
+        list demo-redis-log:debug-details                            2.1.1.1.1
+        list demo-redis-log:additional-data                          2.1.1.1.2
+        container demo-redis-log:call-identifier                     2.1.1.1.3
+        container demo-redis-log:session-params                      2.1.1.1.4
+    notification demo-redis-log:demo-redis-dts-state                     2.1.2
+      container demo-redis-log:template_params                         2.1.2.1
+        list demo-redis-log:debug-details                            2.1.2.1.1
+        list demo-redis-log:additional-data                          2.1.2.1.2
+        container demo-redis-log:call-identifier                     2.1.2.1.3
+        container demo-redis-log:session-params                      2.1.2.1.4
+    notification demo-redis-log:internal-error                           2.1.3
+      container demo-redis-log:template_params                         2.1.3.1
+        list demo-redis-log:debug-details                            2.1.3.1.1
+        list demo-redis-log:additional-data                          2.1.3.1.2
+        container demo-redis-log:call-identifier                     2.1.3.1.3
+        container demo-redis-log:session-params                      2.1.3.1.4
+    notification demo-redis-log:demo-redis-operation                     2.1.4
+      container demo-redis-log:template_params                         2.1.4.1
+        list demo-redis-log:debug-details                            2.1.4.1.1
+        list demo-redis-log:additional-data                          2.1.4.1.2
+        container demo-redis-log:call-identifier                     2.1.4.1.3
+        container demo-redis-log:session-params                      2.1.4.1.4
+    notification demo-redis-log:demo-datastore-operation                 2.1.5
+      container demo-redis-log:template_params                         2.1.5.1
+        list demo-redis-log:debug-details                            2.1.5.1.1
+        list demo-redis-log:additional-data                          2.1.5.1.2
+        container demo-redis-log:call-identifier                     2.1.5.1.3
+        container demo-redis-log:session-params                      2.1.5.1.4
+    notification demo-redis-log:datastore-event                          2.1.6
+      container demo-redis-log:template_params                         2.1.6.1
+        list demo-redis-log:debug-details                            2.1.6.1.1
+        list demo-redis-log:additional-data                          2.1.6.1.2
+        container demo-redis-log:call-identifier                     2.1.6.1.3
+        container demo-redis-log:session-params                      2.1.6.1.4
+    notification demo-redis-log:datastore-error                          2.1.7
+      container demo-redis-log:template_params                         2.1.7.1
+        list demo-redis-log:debug-details                            2.1.7.1.1
+        list demo-redis-log:additional-data                          2.1.7.1.2
+        container demo-redis-log:call-identifier                     2.1.7.1.3
+        container demo-redis-log:session-params                      2.1.7.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_DemoRedisLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_DemoRedisLog_g_schema
+2  module demo-redis-log
+
+2.1  demo-redis-log notification
+
+2.1.1  notification demo-redis-log:demo-redis-tasklet-state
+  Description
+    tasklet state in demo redis
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState
+    DemoRedisLog_notif_DemoRedisTaskletState
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState
+
+2.1.1.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams
+    DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams
+
+2.1.1.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_DebugDetails
+
+2.1.1.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_AdditionalData
+
+2.1.1.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-tasklet-state/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-tasklet-state/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisTaskletState.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisTaskletState_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisTaskletState__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_SessionParams
+    DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisTaskletState_TemplateParams_SessionParams
+
+2.1.2  notification demo-redis-log:demo-redis-dts-state
+  Description
+    dts state in demo redis
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState
+    DemoRedisLog_notif_DemoRedisDtsState
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState
+
+2.1.2.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams
+    DemoRedisLog_notif_DemoRedisDtsState_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams
+
+2.1.2.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_DebugDetails
+
+2.1.2.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_AdditionalData
+
+2.1.2.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-dts-state/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-dts-state/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisDtsState.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisDtsState_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisDtsState__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_SessionParams
+    DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisDtsState_TemplateParams_SessionParams
+
+2.1.3  notification demo-redis-log:internal-error
+  Description
+    error internal to demo redis tasklet
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /demo-redis-log:internal-error
+  XPath Keyed Path
+    /demo-redis-log:internal-error
+  RW.REST URI Path
+    /demo-redis-log:internal-error
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError
+    DemoRedisLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError
+
+2.1.3.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams
+    DemoRedisLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams
+
+2.1.3.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_DebugDetails
+    DemoRedisLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.3.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_AdditionalData
+    DemoRedisLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.3.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:internal-error/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_SessionParams
+    DemoRedisLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.4  notification demo-redis-log:demo-redis-operation
+  Description
+    demo redis operation
+  Leaves
+    name: message, type: STRING
+    name: operation, type: STRING
+  XPath Path
+    /demo-redis-log:demo-redis-operation
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation
+    DemoRedisLog_notif_DemoRedisOperation
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation
+
+2.1.4.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams
+    DemoRedisLog_notif_DemoRedisOperation_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams
+
+2.1.4.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DemoRedisOperation_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_DebugDetails
+
+2.1.4.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DemoRedisOperation_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_AdditionalData
+
+2.1.4.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DemoRedisOperation_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:demo-redis-operation/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-redis-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoRedisOperation.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoRedisOperation_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoRedisOperation__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_SessionParams
+    DemoRedisLog_notif_DemoRedisOperation_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoRedisOperation_TemplateParams_SessionParams
+
+2.1.5  notification demo-redis-log:demo-datastore-operation
+  Description
+    demo datastore operation
+  Leaves
+    name: message, type: STRING
+    name: operation, type: STRING
+  XPath Path
+    /demo-redis-log:demo-datastore-operation
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation
+    DemoRedisLog_notif_DemoDatastoreOperation
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation
+
+2.1.5.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams
+    DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams
+
+2.1.5.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_DebugDetails
+
+2.1.5.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_AdditionalData
+
+2.1.5.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:demo-datastore-operation/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:demo-datastore-operation/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DemoDatastoreOperation.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DemoDatastoreOperation_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DemoDatastoreOperation__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_SessionParams
+    DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DemoDatastoreOperation_TemplateParams_SessionParams
+
+2.1.6  notification demo-redis-log:datastore-event
+  Description
+    demonstrate datastore operation
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /demo-redis-log:datastore-event
+  XPath Keyed Path
+    /demo-redis-log:datastore-event
+  RW.REST URI Path
+    /demo-redis-log:datastore-event
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent
+    DemoRedisLog_notif_DatastoreEvent
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent
+
+2.1.6.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:datastore-event/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams
+    DemoRedisLog_notif_DatastoreEvent_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams
+
+2.1.6.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:datastore-event/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_DebugDetails
+
+2.1.6.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:datastore-event/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_AdditionalData
+
+2.1.6.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:datastore-event/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:datastore-event/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-event/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreEvent.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreEvent_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreEvent__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_SessionParams
+    DemoRedisLog_notif_DatastoreEvent_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreEvent_TemplateParams_SessionParams
+
+2.1.7  notification demo-redis-log:datastore-error
+  Description
+    datastore error
+  Leaves
+    name: message, type: STRING
+  XPath Path
+    /demo-redis-log:datastore-error
+  XPath Keyed Path
+    /demo-redis-log:datastore-error
+  RW.REST URI Path
+    /demo-redis-log:datastore-error
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError
+    DemoRedisLog_notif_DatastoreError
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError
+
+2.1.7.1  container demo-redis-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params
+  XPath Keyed Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params
+  RW.REST URI Path
+    /demo-redis-log:datastore-error/template_params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError.TemplateParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError_TemplateParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError__TemplateParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams
+    DemoRedisLog_notif_DatastoreError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams
+
+2.1.7.1.1  list demo-redis-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:debug-details
+  XPath Keyed Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /demo-redis-log:datastore-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:debug-details[demo-redis-log:type='generic-debug-detail']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_DebugDetails
+    DemoRedisLog_notif_DatastoreError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_DebugDetails
+
+2.1.7.1.2  list demo-redis-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:additional-data
+  XPath Keyed Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  RW.REST URI Path
+    /demo-redis-log:datastore-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:additional-data[demo-redis-log:attribute='STRING']
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_AdditionalData
+    DemoRedisLog_notif_DatastoreError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_AdditionalData
+
+2.1.7.1.3  container demo-redis-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  XPath Keyed Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW.REST URI Path
+    /demo-redis-log:datastore-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:call-identifier
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_CallIdentifier
+    DemoRedisLog_notif_DatastoreError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container demo-redis-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:session-params
+  XPath Keyed Path
+    /demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:session-params
+  RW.REST URI Path
+    /demo-redis-log:datastore-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/demo-redis-log:datastore-error/demo-redis-log:template_params/demo-redis-log:session-params
+  Protobuf Type
+    .demo_redis_log.YangNotif.DemoRedisLog.DatastoreError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    DemoRedisLogYang.YangNotif_DemoRedisLog_DatastoreError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    DemoRedisLog__YangNotif__DemoRedisLog__DatastoreError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_SessionParams
+    DemoRedisLog_notif_DatastoreError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_DemoRedisLog_DemoRedisLog_notif_DatastoreError_TemplateParams_SessionParams
+

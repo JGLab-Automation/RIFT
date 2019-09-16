@@ -1,0 +1,16 @@
+Programmer's API documentation for yang module nsd-base.yang
+
+
+
+Schema Globals                                                               1
+
+module nsd-base                                                              2
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_NsdBase_t_schema
+  Global Schema Pointer
+    rw_ypbc_NsdBase_g_schema
+2  module nsd-base
+

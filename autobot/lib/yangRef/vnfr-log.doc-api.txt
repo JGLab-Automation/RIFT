@@ -1,0 +1,2564 @@
+Programmer's API documentation for yang module vnfr-log.yang
+
+
+
+Schema Globals                                                               1
+
+module vnfr-log                                                              2
+  vnfr-log notification                                                    2.1
+    notification vnfr-log:generic-debug                                  2.1.1
+      container vnfr-log:template_params                               2.1.1.1
+        list vnfr-log:debug-details                                  2.1.1.1.1
+        list vnfr-log:additional-data                                2.1.1.1.2
+        container vnfr-log:call-identifier                           2.1.1.1.3
+        container vnfr-log:session-params                            2.1.1.1.4
+    notification vnfr-log:generic-info                                   2.1.2
+      container vnfr-log:template_params                               2.1.2.1
+        list vnfr-log:debug-details                                  2.1.2.1.1
+        list vnfr-log:additional-data                                2.1.2.1.2
+        container vnfr-log:call-identifier                           2.1.2.1.3
+        container vnfr-log:session-params                            2.1.2.1.4
+    notification vnfr-log:generic-notice                                 2.1.3
+      container vnfr-log:template_params                               2.1.3.1
+        list vnfr-log:debug-details                                  2.1.3.1.1
+        list vnfr-log:additional-data                                2.1.3.1.2
+        container vnfr-log:call-identifier                           2.1.3.1.3
+        container vnfr-log:session-params                            2.1.3.1.4
+    notification vnfr-log:generic-warning                                2.1.4
+      container vnfr-log:template_params                               2.1.4.1
+        list vnfr-log:debug-details                                  2.1.4.1.1
+        list vnfr-log:additional-data                                2.1.4.1.2
+        container vnfr-log:call-identifier                           2.1.4.1.3
+        container vnfr-log:session-params                            2.1.4.1.4
+    notification vnfr-log:internal-error                                 2.1.5
+      container vnfr-log:template_params                               2.1.5.1
+        list vnfr-log:debug-details                                  2.1.5.1.1
+        list vnfr-log:additional-data                                2.1.5.1.2
+        container vnfr-log:call-identifier                           2.1.5.1.3
+        container vnfr-log:session-params                            2.1.5.1.4
+    notification vnfr-log:vnfm-update-error                              2.1.6
+      container vnfr-log:template_params                               2.1.6.1
+        list vnfr-log:debug-details                                  2.1.6.1.1
+        list vnfr-log:additional-data                                2.1.6.1.2
+        container vnfr-log:call-identifier                           2.1.6.1.3
+        container vnfr-log:session-params                            2.1.6.1.4
+    notification vnfr-log:vnfr-update-error                              2.1.7
+      container vnfr-log:template_params                               2.1.7.1
+        list vnfr-log:debug-details                                  2.1.7.1.1
+        list vnfr-log:additional-data                                2.1.7.1.2
+        container vnfr-log:call-identifier                           2.1.7.1.3
+        container vnfr-log:session-params                            2.1.7.1.4
+    notification vnfr-log:vnfr-begin-instantiation                       2.1.8
+      container vnfr-log:template_params                               2.1.8.1
+        list vnfr-log:debug-details                                  2.1.8.1.1
+        list vnfr-log:additional-data                                2.1.8.1.2
+        container vnfr-log:call-identifier                           2.1.8.1.3
+        container vnfr-log:session-params                            2.1.8.1.4
+    notification vnfr-log:vnfr-instantiation-failed                      2.1.9
+      container vnfr-log:template_params                               2.1.9.1
+        list vnfr-log:debug-details                                  2.1.9.1.1
+        list vnfr-log:additional-data                                2.1.9.1.2
+        container vnfr-log:call-identifier                           2.1.9.1.3
+        container vnfr-log:session-params                            2.1.9.1.4
+    notification vnfr-log:vnfr-instantiating                            2.1.10
+      container vnfr-log:template_params                              2.1.10.1
+        list vnfr-log:debug-details                                 2.1.10.1.1
+        list vnfr-log:additional-data                               2.1.10.1.2
+        container vnfr-log:call-identifier                          2.1.10.1.3
+        container vnfr-log:session-params                           2.1.10.1.4
+    notification vnfr-log:vnfr-begin-terminate                          2.1.11
+      container vnfr-log:template_params                              2.1.11.1
+        list vnfr-log:debug-details                                 2.1.11.1.1
+        list vnfr-log:additional-data                               2.1.11.1.2
+        container vnfr-log:call-identifier                          2.1.11.1.3
+        container vnfr-log:session-params                           2.1.11.1.4
+    notification vnfr-log:vnfr-terminating                              2.1.12
+      container vnfr-log:template_params                              2.1.12.1
+        list vnfr-log:debug-details                                 2.1.12.1.1
+        list vnfr-log:additional-data                               2.1.12.1.2
+        container vnfr-log:call-identifier                          2.1.12.1.3
+        container vnfr-log:session-params                           2.1.12.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_VnfrLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_VnfrLog_g_schema
+2  module vnfr-log
+
+2.1  vnfr-log notification
+
+2.1.1  notification vnfr-log:generic-debug
+  Description
+    Generic Debug
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:generic-debug
+  XPath Keyed Path
+    /vnfr-log:generic-debug
+  RW.REST URI Path
+    /vnfr-log:generic-debug
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug
+    VnfrLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug
+
+2.1.1.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:generic-debug/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:generic-debug/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams
+    VnfrLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_DebugDetails
+    VnfrLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_AdditionalData
+    VnfrLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    VnfrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-debug/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_SessionParams
+    VnfrLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification vnfr-log:generic-info
+  Description
+    Generic Info
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:generic-info
+  XPath Keyed Path
+    /vnfr-log:generic-info
+  RW.REST URI Path
+    /vnfr-log:generic-info
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo
+    VnfrLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo
+
+2.1.2.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:generic-info/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:generic-info/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams
+    VnfrLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_DebugDetails
+    VnfrLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_AdditionalData
+    VnfrLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    VnfrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-info/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_SessionParams
+    VnfrLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification vnfr-log:generic-notice
+  Description
+    Generic Notice
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:generic-notice
+  XPath Keyed Path
+    /vnfr-log:generic-notice
+  RW.REST URI Path
+    /vnfr-log:generic-notice
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice
+    VnfrLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice
+
+2.1.3.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:generic-notice/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:generic-notice/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams
+    VnfrLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_DebugDetails
+    VnfrLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_AdditionalData
+    VnfrLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    VnfrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-notice/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_SessionParams
+    VnfrLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification vnfr-log:generic-warning
+  Description
+    Generic Warning
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:generic-warning
+  XPath Keyed Path
+    /vnfr-log:generic-warning
+  RW.REST URI Path
+    /vnfr-log:generic-warning
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning
+    VnfrLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning
+
+2.1.4.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:generic-warning/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:generic-warning/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams
+    VnfrLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_DebugDetails
+    VnfrLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_AdditionalData
+    VnfrLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    VnfrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:generic-warning/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_SessionParams
+    VnfrLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification vnfr-log:internal-error
+  Description
+    Internal Error
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:internal-error
+  XPath Keyed Path
+    /vnfr-log:internal-error
+  RW.REST URI Path
+    /vnfr-log:internal-error
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError
+    VnfrLog_notif_InternalError
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError
+
+2.1.5.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:internal-error/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:internal-error/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:internal-error/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError_TemplateParams
+    VnfrLog_notif_InternalError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError_TemplateParams
+
+2.1.5.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:internal-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError_TemplateParams_DebugDetails
+    VnfrLog_notif_InternalError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError_TemplateParams_DebugDetails
+
+2.1.5.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:internal-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError_TemplateParams_AdditionalData
+    VnfrLog_notif_InternalError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError_TemplateParams_AdditionalData
+
+2.1.5.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:internal-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError_TemplateParams_CallIdentifier
+    VnfrLog_notif_InternalError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:internal-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:internal-error/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.InternalError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_InternalError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__InternalError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_InternalError_TemplateParams_SessionParams
+    VnfrLog_notif_InternalError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_InternalError_TemplateParams_SessionParams
+
+2.1.6  notification vnfr-log:vnfm-update-error
+  Description
+    VNFM update error
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+    name: config-status, type: STRING
+  XPath Path
+    /vnfr-log:vnfm-update-error
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError
+    VnfrLog_notif_VnfmUpdateError
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError
+
+2.1.6.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams
+    VnfrLog_notif_VnfmUpdateError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams
+
+2.1.6.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfmUpdateError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_DebugDetails
+
+2.1.6.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfmUpdateError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_AdditionalData
+
+2.1.6.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfmUpdateError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_CallIdentifier
+
+2.1.6.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfm-update-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfm-update-error/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfmUpdateError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfmUpdateError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfmUpdateError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_SessionParams
+    VnfrLog_notif_VnfmUpdateError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfmUpdateError_TemplateParams_SessionParams
+
+2.1.7  notification vnfr-log:vnfr-update-error
+  Description
+    VNFR update error
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-update-error
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError
+    VnfrLog_notif_VnfrUpdateError
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError
+
+2.1.7.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams
+    VnfrLog_notif_VnfrUpdateError_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams
+
+2.1.7.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrUpdateError_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_DebugDetails
+
+2.1.7.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrUpdateError_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_AdditionalData
+
+2.1.7.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrUpdateError_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_CallIdentifier
+
+2.1.7.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-update-error/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-update-error/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrUpdateError.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrUpdateError_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrUpdateError__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrUpdateError_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrUpdateError_TemplateParams_SessionParams
+
+2.1.8  notification vnfr-log:vnfr-begin-instantiation
+  Description
+    VNFR begin instantiation
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation
+    VnfrLog_notif_VnfrBeginInstantiation
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation
+
+2.1.8.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams
+    VnfrLog_notif_VnfrBeginInstantiation_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams
+
+2.1.8.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_DebugDetails
+
+2.1.8.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_AdditionalData
+
+2.1.8.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_CallIdentifier
+
+2.1.8.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-instantiation/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-instantiation/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginInstantiation.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginInstantiation_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginInstantiation__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginInstantiation_TemplateParams_SessionParams
+
+2.1.9  notification vnfr-log:vnfr-instantiation-failed
+  Description
+    VNFR instantiation failed
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed
+    VnfrLog_notif_VnfrInstantiationFailed
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed
+
+2.1.9.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams
+    VnfrLog_notif_VnfrInstantiationFailed_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams
+
+2.1.9.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_DebugDetails
+
+2.1.9.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_AdditionalData
+
+2.1.9.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_CallIdentifier
+
+2.1.9.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiation-failed/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiation-failed/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiationFailed.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiationFailed_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiationFailed__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiationFailed_TemplateParams_SessionParams
+
+2.1.10  notification vnfr-log:vnfr-instantiating
+  Description
+    VNFR instantiating
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-instantiating
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating
+    VnfrLog_notif_VnfrInstantiating
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating
+
+2.1.10.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams
+    VnfrLog_notif_VnfrInstantiating_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams
+
+2.1.10.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrInstantiating_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_DebugDetails
+
+2.1.10.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrInstantiating_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_AdditionalData
+
+2.1.10.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrInstantiating_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_CallIdentifier
+
+2.1.10.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-instantiating/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-instantiating/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrInstantiating.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrInstantiating_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrInstantiating__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrInstantiating_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrInstantiating_TemplateParams_SessionParams
+
+2.1.11  notification vnfr-log:vnfr-begin-terminate
+  Description
+    VNFR begin terminate
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate
+    VnfrLog_notif_VnfrBeginTerminate
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate
+
+2.1.11.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams
+    VnfrLog_notif_VnfrBeginTerminate_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams
+
+2.1.11.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrBeginTerminate_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_DebugDetails
+
+2.1.11.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrBeginTerminate_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_AdditionalData
+
+2.1.11.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrBeginTerminate_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_CallIdentifier
+
+2.1.11.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-begin-terminate/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-begin-terminate/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrBeginTerminate.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrBeginTerminate_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrBeginTerminate__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrBeginTerminate_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrBeginTerminate_TemplateParams_SessionParams
+
+2.1.12  notification vnfr-log:vnfr-terminating
+  Description
+    VNFR end terminate
+  Leaves
+    name: project-name, type: STRING
+    name: nsr-id, type: STRING
+    name: nsr-name, type: STRING
+    name: nsd-id, type: STRING
+    name: nsd-name, type: STRING
+    name: resource-orchestrator, type: STRING
+    name: datacenter, type: STRING
+    name: vnfm-account-name, type: STRING
+    name: sdn-account, type: STRING
+    name: user-id, type: STRING, description: User who initiated the log event
+    name: vnfr-id, type: STRING
+    name: vnfr-name, type: STRING
+    name: vnfd-id, type: STRING
+    name: vnfd-name, type: STRING
+    name: vnffgr-id, type: STRING
+    name: vlr-id, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /vnfr-log:vnfr-terminating
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating
+    VnfrLog_notif_VnfrTerminating
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating
+
+2.1.12.1  container vnfr-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating/template_params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating.TemplateParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating_TemplateParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating__TemplateParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams
+    VnfrLog_notif_VnfrTerminating_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams
+
+2.1.12.1.1  list vnfr-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:debug-details
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:debug-details[vnfr-log:type='generic-debug-detail']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_DebugDetails
+    VnfrLog_notif_VnfrTerminating_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_DebugDetails
+
+2.1.12.1.2  list vnfr-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:additional-data
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:additional-data[vnfr-log:attribute='STRING']
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_AdditionalData
+    VnfrLog_notif_VnfrTerminating_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_AdditionalData
+
+2.1.12.1.3  container vnfr-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:call-identifier
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:call-identifier
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:call-identifier
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_CallIdentifier
+    VnfrLog_notif_VnfrTerminating_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_CallIdentifier
+
+2.1.12.1.4  container vnfr-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:session-params
+  XPath Keyed Path
+    /vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:session-params
+  RW.REST URI Path
+    /vnfr-log:vnfr-terminating/template_params/session-params
+  RW Keyspec XPath Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/vnfr-log:vnfr-terminating/vnfr-log:template_params/vnfr-log:session-params
+  Protobuf Type
+    .vnfr_log.YangNotif.VnfrLog.VnfrTerminating.TemplateParams.SessionParams
+  Python Proto-GI Type
+    VnfrLogYang.YangNotif_VnfrLog_VnfrTerminating_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    VnfrLog__YangNotif__VnfrLog__VnfrTerminating__TemplateParams__SessionParams
+  C RWPB Identifiers
+    VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_SessionParams
+    VnfrLog_notif_VnfrTerminating_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_VnfrLog_VnfrLog_notif_VnfrTerminating_TemplateParams_SessionParams
+

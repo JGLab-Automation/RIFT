@@ -1,0 +1,1010 @@
+Programmer's API documentation for yang module scale-group-log.yang
+
+
+
+Schema Globals                                                               1
+
+module scale-group-log                                                       2
+  scale-group-log notification                                             2.1
+    notification scale-group-log:generic-debug                           2.1.1
+      container scale-group-log:template_params                        2.1.1.1
+        list scale-group-log:debug-details                           2.1.1.1.1
+        list scale-group-log:additional-data                         2.1.1.1.2
+        container scale-group-log:call-identifier                    2.1.1.1.3
+        container scale-group-log:session-params                     2.1.1.1.4
+    notification scale-group-log:generic-info                            2.1.2
+      container scale-group-log:template_params                        2.1.2.1
+        list scale-group-log:debug-details                           2.1.2.1.1
+        list scale-group-log:additional-data                         2.1.2.1.2
+        container scale-group-log:call-identifier                    2.1.2.1.3
+        container scale-group-log:session-params                     2.1.2.1.4
+    notification scale-group-log:generic-notice                          2.1.3
+      container scale-group-log:template_params                        2.1.3.1
+        list scale-group-log:debug-details                           2.1.3.1.1
+        list scale-group-log:additional-data                         2.1.3.1.2
+        container scale-group-log:call-identifier                    2.1.3.1.3
+        container scale-group-log:session-params                     2.1.3.1.4
+    notification scale-group-log:generic-warning                         2.1.4
+      container scale-group-log:template_params                        2.1.4.1
+        list scale-group-log:debug-details                           2.1.4.1.1
+        list scale-group-log:additional-data                         2.1.4.1.2
+        container scale-group-log:call-identifier                    2.1.4.1.3
+        container scale-group-log:session-params                     2.1.4.1.4
+    notification scale-group-log:unknown-trigger                         2.1.5
+      container scale-group-log:template_params                        2.1.5.1
+        list scale-group-log:debug-details                           2.1.5.1.1
+        list scale-group-log:additional-data                         2.1.5.1.2
+        container scale-group-log:call-identifier                    2.1.5.1.3
+        container scale-group-log:session-params                     2.1.5.1.4
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_ScaleGroupLog_t_schema
+  Global Schema Pointer
+    rw_ypbc_ScaleGroupLog_g_schema
+2  module scale-group-log
+
+2.1  scale-group-log notification
+
+2.1.1  notification scale-group-log:generic-debug
+  Description
+    Generic Debug
+  Leaves
+    name: project-name, type: STRING
+    name: scale-group-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /scale-group-log:generic-debug
+  XPath Keyed Path
+    /scale-group-log:generic-debug
+  RW.REST URI Path
+    /scale-group-log:generic-debug
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug
+    ScaleGroupLog_notif_GenericDebug
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug
+
+2.1.1.1  container scale-group-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /scale-group-log:generic-debug/scale-group-log:template_params
+  XPath Keyed Path
+    /scale-group-log:generic-debug/scale-group-log:template_params
+  RW.REST URI Path
+    /scale-group-log:generic-debug/template_params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug.TemplateParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug_TemplateParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug__TemplateParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams
+    ScaleGroupLog_notif_GenericDebug_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams
+
+2.1.1.1.1  list scale-group-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:debug-details
+  XPath Keyed Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /scale-group-log:generic-debug/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_DebugDetails
+    ScaleGroupLog_notif_GenericDebug_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_DebugDetails
+
+2.1.1.1.2  list scale-group-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:additional-data
+  XPath Keyed Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  RW.REST URI Path
+    /scale-group-log:generic-debug/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_AdditionalData
+    ScaleGroupLog_notif_GenericDebug_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_AdditionalData
+
+2.1.1.1.3  container scale-group-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:call-identifier
+  XPath Keyed Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:call-identifier
+  RW.REST URI Path
+    /scale-group-log:generic-debug/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:call-identifier
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_CallIdentifier
+    ScaleGroupLog_notif_GenericDebug_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_CallIdentifier
+
+2.1.1.1.4  container scale-group-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:session-params
+  XPath Keyed Path
+    /scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:session-params
+  RW.REST URI Path
+    /scale-group-log:generic-debug/template_params/session-params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-debug/scale-group-log:template_params/scale-group-log:session-params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericDebug.TemplateParams.SessionParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericDebug_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericDebug__TemplateParams__SessionParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_SessionParams
+    ScaleGroupLog_notif_GenericDebug_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericDebug_TemplateParams_SessionParams
+
+2.1.2  notification scale-group-log:generic-info
+  Description
+    Generic Info
+  Leaves
+    name: project-name, type: STRING
+    name: scale-group-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /scale-group-log:generic-info
+  XPath Keyed Path
+    /scale-group-log:generic-info
+  RW.REST URI Path
+    /scale-group-log:generic-info
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo
+    ScaleGroupLog_notif_GenericInfo
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo
+
+2.1.2.1  container scale-group-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /scale-group-log:generic-info/scale-group-log:template_params
+  XPath Keyed Path
+    /scale-group-log:generic-info/scale-group-log:template_params
+  RW.REST URI Path
+    /scale-group-log:generic-info/template_params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo.TemplateParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo_TemplateParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo__TemplateParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams
+    ScaleGroupLog_notif_GenericInfo_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams
+
+2.1.2.1.1  list scale-group-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:debug-details
+  XPath Keyed Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /scale-group-log:generic-info/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_DebugDetails
+    ScaleGroupLog_notif_GenericInfo_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_DebugDetails
+
+2.1.2.1.2  list scale-group-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:additional-data
+  XPath Keyed Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  RW.REST URI Path
+    /scale-group-log:generic-info/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_AdditionalData
+    ScaleGroupLog_notif_GenericInfo_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_AdditionalData
+
+2.1.2.1.3  container scale-group-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:call-identifier
+  XPath Keyed Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:call-identifier
+  RW.REST URI Path
+    /scale-group-log:generic-info/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:call-identifier
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_CallIdentifier
+    ScaleGroupLog_notif_GenericInfo_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_CallIdentifier
+
+2.1.2.1.4  container scale-group-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:session-params
+  XPath Keyed Path
+    /scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:session-params
+  RW.REST URI Path
+    /scale-group-log:generic-info/template_params/session-params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-info/scale-group-log:template_params/scale-group-log:session-params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericInfo.TemplateParams.SessionParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericInfo_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericInfo__TemplateParams__SessionParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_SessionParams
+    ScaleGroupLog_notif_GenericInfo_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericInfo_TemplateParams_SessionParams
+
+2.1.3  notification scale-group-log:generic-notice
+  Description
+    Generic Notice
+  Leaves
+    name: project-name, type: STRING
+    name: scale-group-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /scale-group-log:generic-notice
+  XPath Keyed Path
+    /scale-group-log:generic-notice
+  RW.REST URI Path
+    /scale-group-log:generic-notice
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice
+    ScaleGroupLog_notif_GenericNotice
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice
+
+2.1.3.1  container scale-group-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /scale-group-log:generic-notice/scale-group-log:template_params
+  XPath Keyed Path
+    /scale-group-log:generic-notice/scale-group-log:template_params
+  RW.REST URI Path
+    /scale-group-log:generic-notice/template_params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice.TemplateParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice_TemplateParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice__TemplateParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams
+    ScaleGroupLog_notif_GenericNotice_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams
+
+2.1.3.1.1  list scale-group-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:debug-details
+  XPath Keyed Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /scale-group-log:generic-notice/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_DebugDetails
+    ScaleGroupLog_notif_GenericNotice_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_DebugDetails
+
+2.1.3.1.2  list scale-group-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:additional-data
+  XPath Keyed Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  RW.REST URI Path
+    /scale-group-log:generic-notice/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_AdditionalData
+    ScaleGroupLog_notif_GenericNotice_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_AdditionalData
+
+2.1.3.1.3  container scale-group-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:call-identifier
+  XPath Keyed Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:call-identifier
+  RW.REST URI Path
+    /scale-group-log:generic-notice/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:call-identifier
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_CallIdentifier
+    ScaleGroupLog_notif_GenericNotice_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_CallIdentifier
+
+2.1.3.1.4  container scale-group-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:session-params
+  XPath Keyed Path
+    /scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:session-params
+  RW.REST URI Path
+    /scale-group-log:generic-notice/template_params/session-params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-notice/scale-group-log:template_params/scale-group-log:session-params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericNotice.TemplateParams.SessionParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericNotice_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericNotice__TemplateParams__SessionParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_SessionParams
+    ScaleGroupLog_notif_GenericNotice_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericNotice_TemplateParams_SessionParams
+
+2.1.4  notification scale-group-log:generic-warning
+  Description
+    Generic Warning
+  Leaves
+    name: project-name, type: STRING
+    name: scale-group-name, type: STRING
+    name: message, type: STRING
+  XPath Path
+    /scale-group-log:generic-warning
+  XPath Keyed Path
+    /scale-group-log:generic-warning
+  RW.REST URI Path
+    /scale-group-log:generic-warning
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning
+    ScaleGroupLog_notif_GenericWarning
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning
+
+2.1.4.1  container scale-group-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /scale-group-log:generic-warning/scale-group-log:template_params
+  XPath Keyed Path
+    /scale-group-log:generic-warning/scale-group-log:template_params
+  RW.REST URI Path
+    /scale-group-log:generic-warning/template_params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning.TemplateParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning_TemplateParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning__TemplateParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams
+    ScaleGroupLog_notif_GenericWarning_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams
+
+2.1.4.1.1  list scale-group-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:debug-details
+  XPath Keyed Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /scale-group-log:generic-warning/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_DebugDetails
+    ScaleGroupLog_notif_GenericWarning_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_DebugDetails
+
+2.1.4.1.2  list scale-group-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:additional-data
+  XPath Keyed Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  RW.REST URI Path
+    /scale-group-log:generic-warning/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_AdditionalData
+    ScaleGroupLog_notif_GenericWarning_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_AdditionalData
+
+2.1.4.1.3  container scale-group-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:call-identifier
+  XPath Keyed Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:call-identifier
+  RW.REST URI Path
+    /scale-group-log:generic-warning/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:call-identifier
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_CallIdentifier
+    ScaleGroupLog_notif_GenericWarning_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_CallIdentifier
+
+2.1.4.1.4  container scale-group-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:session-params
+  XPath Keyed Path
+    /scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:session-params
+  RW.REST URI Path
+    /scale-group-log:generic-warning/template_params/session-params
+  RW Keyspec XPath Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:generic-warning/scale-group-log:template_params/scale-group-log:session-params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.GenericWarning.TemplateParams.SessionParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_GenericWarning_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__GenericWarning__TemplateParams__SessionParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_SessionParams
+    ScaleGroupLog_notif_GenericWarning_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_GenericWarning_TemplateParams_SessionParams
+
+2.1.5  notification scale-group-log:unknown-trigger
+  Description
+    Unknown Trigger
+  Leaves
+    name: project-name, type: STRING
+    name: scale-group-name, type: STRING
+    name: message, type: STRING
+    name: trigger, type: STRING
+  XPath Path
+    /scale-group-log:unknown-trigger
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger
+    ScaleGroupLog_notif_UnknownTrigger
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger
+
+2.1.5.1  container scale-group-log:template_params
+  Leaves
+    name: event-id, type: UINT32
+    name: version, type: STRING
+    name: sequence, type: UINT64
+    name: sec, type: UINT32
+    name: usec, type: UINT32
+    name: system-id, type: STRING
+    name: system-name, type: STRING
+    name: hostname, type: STRING
+    name: appname, type: STRING
+    name: processid, type: UINT32
+    name: threadid, type: UINT32
+    name: filename, type: STRING
+    name: linenumber, type: UINT32
+    name: severity, type: ENUM
+    name: crit-info, type: ENUM
+    name: call-arrived-time, type: UINT32, description: Call arrived time
+    name: call-failure, type: BOOLEAN, description: Call failure status
+  XPath Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger/template_params
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger.TemplateParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger_TemplateParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger__TemplateParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams
+    ScaleGroupLog_notif_UnknownTrigger_TemplateParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams
+
+2.1.5.1.1  list scale-group-log:debug-details
+  Leaves
+    name: type, type: IDREF, description: Kind of debug data.
+    name: details, type: STRING, description: Detailed debug information for the event, such as stack trace.
+    This information is intended for detailed debugging and might
+    not contain end-user relevant information.
+  XPath Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:debug-details
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger/template_params/debug-details/generic-debug-detail
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:debug-details
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:debug-details[scale-group-log:type='generic-debug-detail']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger.TemplateParams.DebugDetails
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger_TemplateParams_DebugDetails
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger__TemplateParams__DebugDetails
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_DebugDetails
+    ScaleGroupLog_notif_UnknownTrigger_TemplateParams_DebugDetails
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_DebugDetails
+
+2.1.5.1.2  list scale-group-log:additional-data
+  Leaves
+    name: attribute, type: STRING, description: The name of the attribute
+    name: value, type: STRING, description: Additional data that could not be captured according to the
+    schema.  This information may contain debugging details
+    relevant to the end-user.
+  XPath Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:additional-data
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger/template_params/additional-data/STRING
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:additional-data
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:additional-data[scale-group-log:attribute='STRING']
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger.TemplateParams.AdditionalData
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger_TemplateParams_AdditionalData
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger__TemplateParams__AdditionalData
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_AdditionalData
+    ScaleGroupLog_notif_UnknownTrigger_TemplateParams_AdditionalData
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_AdditionalData
+
+2.1.5.1.3  container scale-group-log:call-identifier
+  Description
+    Each call in Riftware is assigned a callid which is unique
+    in the context of the entity making the assignment. The
+    same call-id could be assigned by different entities - in
+    which case, the group-call-id is used in conjunction with
+    call id to provide uniqueness
+  Leaves
+    name: callid, type: UINT64, description: The callid is defined as a grouping with a leaf that represents
+    the callid. This helps in RIFTWARE use a common tag for call-id
+    in all further uses of this grouping.
+    name: groupcallid, type: UINT64, description: The group call id is used to uniquely identify the assigner of
+    a call id. Each entity generating call id within RIFTWARE uses
+    group ids that are different from each other. A single entity
+    could use multiple group ids - The caveat being that none of
+    these group ids should be avaialble for other entities to use
+  XPath Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:call-identifier
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:call-identifier
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger/template_params/call-identifier
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:call-identifier
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:call-identifier
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger.TemplateParams.CallIdentifier
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger_TemplateParams_CallIdentifier
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger__TemplateParams__CallIdentifier
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_CallIdentifier
+    ScaleGroupLog_notif_UnknownTrigger_TemplateParams_CallIdentifier
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_CallIdentifier
+
+2.1.5.1.4  container scale-group-log:session-params
+  Description
+    Session parametes
+  Leaves
+    name: imsi, type: STRING, description: IMSI for the session
+    name: ip-address, type: UNION, description: IP Address for the session
+  XPath Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:session-params
+  XPath Keyed Path
+    /scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:session-params
+  RW.REST URI Path
+    /scale-group-log:unknown-trigger/template_params/session-params
+  RW Keyspec XPath Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:session-params
+  RW Keyspec XPath Keyed Path
+    N,/scale-group-log:unknown-trigger/scale-group-log:template_params/scale-group-log:session-params
+  Protobuf Type
+    .scale_group_log.YangNotif.ScaleGroupLog.UnknownTrigger.TemplateParams.SessionParams
+  Python Proto-GI Type
+    ScaleGroupLogYang.YangNotif_ScaleGroupLog_UnknownTrigger_TemplateParams_SessionParams
+  C Protobuf-C Struct Type
+    ScaleGroupLog__YangNotif__ScaleGroupLog__UnknownTrigger__TemplateParams__SessionParams
+  C RWPB Identifiers
+    ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_SessionParams
+    ScaleGroupLog_notif_UnknownTrigger_TemplateParams_SessionParams
+  YPBC Base Identifier
+    rw_ypbc_ScaleGroupLog_ScaleGroupLog_notif_UnknownTrigger_TemplateParams_SessionParams
+

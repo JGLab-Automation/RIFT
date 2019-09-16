@@ -1,0 +1,300 @@
+Programmer's API documentation for yang module rw-keyspec-stats.yang
+
+
+
+Schema Globals                                                               1
+
+module rw-keyspec-stats                                                      2
+  rw-keyspec-stats data                                                    2.1
+    container rwks:keyspec-stats                                         2.1.1
+      list rwks:member                                                 2.1.1.1
+        container rwks:fcall-stats                                   2.1.1.1.1
+          container rwks:path-spec                                 2.1.1.1.1.1
+          container rwks:path-entry                                2.1.1.1.1.2
+        container rwks:error-stats                                   2.1.1.1.2
+    container rwks:keyspec-ebuf                                          2.1.2
+      list rwks:tasklet                                                2.1.2.1
+        list rwks:error-records                                      2.1.2.1.1
+
+
+1  Schema Globals
+  Global Schema Type
+    rw_ypbc_RwKeyspecStats_t_schema
+  Global Schema Pointer
+    rw_ypbc_RwKeyspecStats_g_schema
+2  module rw-keyspec-stats
+
+2.1  rw-keyspec-stats data
+  Description
+    Data model for keyspec API, error and related statistics
+
+2.1.1  container rwks:keyspec-stats
+  Description
+    Container for keyspec api stats
+  XPath Path
+    /rwks:keyspec-stats
+  XPath Keyed Path
+    /rwks:keyspec-stats
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats
+    RwKeyspecStats_data_KeyspecStats
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats
+
+2.1.1.1  list rwks:member
+  Description
+    List of dts members
+  Leaves
+    name: name, type: STRING, description: Name of the member
+  XPath Path
+    /rwks:keyspec-stats/rwks:member
+  XPath Keyed Path
+    /rwks:keyspec-stats/rwks:member[rwks:name='STRING']
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats/member/STRING
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats/rwks:member
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats/rwks:member[rwks:name='STRING']
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats.Member
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats_Member
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats__Member
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member
+    RwKeyspecStats_data_KeyspecStats_Member
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member
+
+2.1.1.1.1  container rwks:fcall-stats
+  Description
+    Container for fcall-stats
+  XPath Path
+    /rwks:keyspec-stats/rwks:member/rwks:fcall-stats
+  XPath Keyed Path
+    /rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats/member/STRING/fcall-stats
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats/rwks:member/rwks:fcall-stats
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats.Member.FcallStats
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats_Member_FcallStats
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats__Member__FcallStats
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats
+    RwKeyspecStats_data_KeyspecStats_Member_FcallStats
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats
+
+2.1.1.1.1.1  container rwks:path-spec
+  Description
+    Container for path-spec API stats
+  Leaves
+    name: create-dup, type: UINT64
+    name: create-dup-type, type: UINT64
+    name: create-dup-type-trunc, type: UINT64
+    name: find-spec-ks, type: UINT64
+    name: get-binpath, type: UINT64
+    name: set-category, type: UINT64
+    name: has-entry, type: UINT64
+    name: is-equal, type: UINT64
+    name: is-equal-detail, type: UINT64
+    name: is-match-detail, type: UINT64
+    name: is-path-detail, type: UINT64
+    name: is-branch-detail, type: UINT64
+    name: append-entry, type: UINT64
+    name: trunc-suffix, type: UINT64
+    name: pack-dompath, type: UINT64
+    name: create-with-binpath, type: UINT64
+    name: create-with-dompath, type: UINT64
+    name: free, type: UINT64
+    name: find-mdesc, type: UINT64
+    name: is-sub-ks, type: UINT64
+    name: reroot, type: UINT64
+    name: reroot-iter, type: UINT64
+    name: reroot-and-merge, type: UINT64
+    name: reroot-and-merge-op, type: UINT64
+    name: add-keys, type: UINT64
+    name: delete-proto-field, type: UINT64
+    name: get-print-buff, type: UINT64
+    name: from-xpath, type: UINT64
+    name: matches-msg, type: UINT64
+  XPath Path
+    /rwks:keyspec-stats/rwks:member/rwks:fcall-stats/rwks:path-spec
+  XPath Keyed Path
+    /rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats/rwks:path-spec
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats/member/STRING/fcall-stats/path-spec
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats/rwks:member/rwks:fcall-stats/rwks:path-spec
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats/rwks:path-spec
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats.Member.FcallStats.PathSpec
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats_Member_FcallStats_PathSpec
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats__Member__FcallStats__PathSpec
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathSpec
+    RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathSpec
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathSpec
+
+2.1.1.1.1.2  container rwks:path-entry
+  Description
+    Container for path-entry API stats
+  Leaves
+    name: create-from-proto, type: UINT64
+    name: create-dup, type: UINT64
+    name: create-dup-type, type: UINT64
+    name: pack, type: UINT64
+    name: unpack, type: UINT64
+  XPath Path
+    /rwks:keyspec-stats/rwks:member/rwks:fcall-stats/rwks:path-entry
+  XPath Keyed Path
+    /rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats/rwks:path-entry
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats/member/STRING/fcall-stats/path-entry
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats/rwks:member/rwks:fcall-stats/rwks:path-entry
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:fcall-stats/rwks:path-entry
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats.Member.FcallStats.PathEntry
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats_Member_FcallStats_PathEntry
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats__Member__FcallStats__PathEntry
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathEntry
+    RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathEntry
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_FcallStats_PathEntry
+
+2.1.1.1.2  container rwks:error-stats
+  Description
+    Container for error statistics
+  Leaves
+    name: total-errors, type: UINT64
+  XPath Path
+    /rwks:keyspec-stats/rwks:member/rwks:error-stats
+  XPath Keyed Path
+    /rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:error-stats
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-stats/member/STRING/error-stats
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-stats/rwks:member/rwks:error-stats
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-stats/rwks:member[rwks:name='STRING']/rwks:error-stats
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecStats.Member.ErrorStats
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecStats_Member_ErrorStats
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecStats__Member__ErrorStats
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_ErrorStats
+    RwKeyspecStats_data_KeyspecStats_Member_ErrorStats
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecStats_Member_ErrorStats
+
+2.1.2  container rwks:keyspec-ebuf
+  Description
+    Container to export ks error buffers from all the process
+  XPath Path
+    /rwks:keyspec-ebuf
+  XPath Keyed Path
+    /rwks:keyspec-ebuf
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-ebuf
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-ebuf
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-ebuf
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecEbuf
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecEbuf
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecEbuf
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf
+    RwKeyspecStats_data_KeyspecEbuf
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf
+
+2.1.2.1  list rwks:tasklet
+  Description
+    List to export per process global keyspec error buffer
+  Leaves
+    name: name, type: STRING
+  XPath Path
+    /rwks:keyspec-ebuf/rwks:tasklet
+  XPath Keyed Path
+    /rwks:keyspec-ebuf/rwks:tasklet[rwks:name='STRING']
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-ebuf/tasklet/STRING
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-ebuf/rwks:tasklet
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-ebuf/rwks:tasklet[rwks:name='STRING']
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecEbuf.Tasklet
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecEbuf_Tasklet
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecEbuf__Tasklet
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf_Tasklet
+    RwKeyspecStats_data_KeyspecEbuf_Tasklet
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf_Tasklet
+
+2.1.2.1.1  list rwks:error-records
+  Description
+    keyspec error records stored by time
+  Leaves
+    name: time-stamp, type: STRING
+    name: error-str, type: STRING
+  XPath Path
+    /rwks:keyspec-ebuf/rwks:tasklet/rwks:error-records
+  XPath Keyed Path
+    /rwks:keyspec-ebuf/rwks:tasklet[rwks:name='STRING']/rwks:error-records
+  RW.REST URI Path
+    /rw-keyspec-stats:keyspec-ebuf/tasklet/STRING/error-records
+  RW Keyspec XPath Path
+    D,/rwks:keyspec-ebuf/rwks:tasklet/rwks:error-records
+  RW Keyspec XPath Keyed Path
+    D,/rwks:keyspec-ebuf/rwks:tasklet[rwks:name='STRING']/rwks:error-records
+  Protobuf Type
+    .rw_keyspec_stats.YangData.RwKeyspecStats.KeyspecEbuf.Tasklet.ErrorRecords
+  Python Proto-GI Type
+    RwKeyspecStatsYang.YangData_RwKeyspecStats_KeyspecEbuf_Tasklet_ErrorRecords
+  C Protobuf-C Struct Type
+    RwKeyspecStats__YangData__RwKeyspecStats__KeyspecEbuf__Tasklet__ErrorRecords
+  C RWPB Identifiers
+    RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf_Tasklet_ErrorRecords
+    RwKeyspecStats_data_KeyspecEbuf_Tasklet_ErrorRecords
+  YPBC Base Identifier
+    rw_ypbc_RwKeyspecStats_RwKeyspecStats_data_KeyspecEbuf_Tasklet_ErrorRecords
+

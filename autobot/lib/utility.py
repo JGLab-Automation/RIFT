@@ -180,18 +180,19 @@ def get_transac_id(status):
     id = val2[0]
     return id
 
+
 def get_nsr_id(status):
     val1 = list(status.values())
     val2 = list(val1[0].values())
     id = val2[0]
     return id
 
+
 def get_ns_transac_status(status):
     val1 = list(status.values())
     val2 = list(val1[1].values())
     state = val2[0]
     return state
-
 
 
 

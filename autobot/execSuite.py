@@ -12,7 +12,7 @@ from autobot.testcases import test00_ping_pong_life_cycle as tc0
 from autobot.testcases import test01_resource_discovery_openstack as tc1
 
 
-logging.basicConfig(filename='traces/exec.log', format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
+logging.basicConfig(filename='artifacts/traces/exec.log', format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
 
 suite = unittest.TestSuite()
 suite.addTest(unittest.makeSuite(tc0.PingPongLifeCycle))

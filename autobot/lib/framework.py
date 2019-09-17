@@ -1,9 +1,21 @@
 __author__ = "JG"
 
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
+from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium import webdriver
+import time
+import sys
+import inspect
+from datetime import datetime
+
 from autobot.lib import utility as util
 from autobot.lib import restAPIs as rapi
 from autobot.config import payloads as pl
-import time
+from autobot.config import constants as const
+
 
 
 def proj_add(lp_addr, header, proj_name, proj_desc):
@@ -150,12 +162,34 @@ def get_cloud_acct_type(lp_addr, header, proj_name, acct_name):
         raise
 
 
-def cloud_acct_config_openstack(lp_addr, header, proj_name, cloud_acct_name, key, secret, auth_url, tenant, user_domain="eng", proj_domain="eng", region="RegionOne", mgmt_net="private", float_ip_pool_net="public"):
+def cloud_acct_config_openstack(lp_addr, header, proj_name, cloud_acct_name, key, secret, auth_url, tenant,
+                                user_domain="eng", proj_domain="eng", region="RegionOne", mgmt_net="private",
+                                float_ip_pool_net="public"):
     try:
         api = rapi.cloud_acct_config_openstack(proj_name, cloud_acct_name)
         url = util.create_url_running(lp_addr, api)
-        payload = pl.cloud_acct_config_openstack(key, secret, auth_url, user_domain, proj_domain, tenant, region, mgmt_net, float_ip_pool_net)
+        payload = pl.cloud_acct_config_openstack(key, secret, auth_url, user_domain, proj_domain, tenant, region,
+                                                 mgmt_net, float_ip_pool_net)
 
+        util.log_info(f"Adding configuration to cloud-account- {cloud_acct_name}.")
+        status = util.edit_config(url, header, payload)
+        time.sleep(20)
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def cloud_acct_config_vcd(lp_addr, header, proj_name, cloud_acct_name, user, passwd, auth_url, tenant, mgmt_net, org,
+                          admin_user, admin_passwd, nsx_auth_url, nsx_user, nsx_passwd,
+                          vc_host, vc_port, vc_user, vc_passwd):
+    try:
+        api = rapi.cloud_acct_config_vcd(proj_name, cloud_acct_name)
+        url = util.create_url_running(lp_addr, api)
+        payload = pl.cloud_acct_config_vcd(user, passwd, auth_url, tenant, mgmt_net, org, admin_user, admin_passwd,
+                                           nsx_auth_url, nsx_user, nsx_passwd, vc_host, vc_port, vc_user, vc_passwd)
         util.log_info(f"Adding configuration to cloud-account- {cloud_acct_name}.")
         status = util.edit_config(url, header, payload)
         time.sleep(20)
@@ -560,9 +594,398 @@ def vim_discover_status(lp_addr, header, proj_name, cloud_acct_name):
 
 
 """
-    try:
-        pass
-    except BaseException as e:
-        util.log_info(e)
-        raise 
+#-----------------------------------------------------------------------------------------------------------------------
+Framework for WebUI support.
+#-----------------------------------------------------------------------------------------------------------------------
 """
+
+
+class BrowserTests(object):
+
+    @classmethod
+    def setup_browser(cls):
+        if const.browser_type.lower() == 'firefox':
+            #cls.browser = webdriver.Remote(desired_capabilities=webdriver.DesiredCapabilities.FIREFOX)
+            cls.browser = webdriver.Firefox()
+            cls.browser.maximize_window()
+        elif const.browser_type.lower() == 'ie':
+            cls.browser = webdriver.Ie()
+        elif const.browser_type.lower() == 'chrome':
+            #driver = webdriver.Chrome("/Library/Python/2.7/site-packages/selenium/webdriver/chrome/chromedriver")
+            options = webdriver.ChromeOptions()
+            options.add_argument('--ignore-certificate-errors')
+            options.add_argument("--start-maximized")
+            cls.browser = webdriver.Chrome(chrome_options=options)
+#            cls.browser = webdriver.Chrome()
+            cls.browser.maximize_window()
+        elif const.browser_type.lower() == 'safari':
+            cls.browser = webdriver.Remote(desired_capabilities=webdriver.DesiredCapabilities.SAFARI)
+        else:
+            cls.browser = ''
+            sys.exit(f"Unrecognized browser {const.browser_type}.")
+        #go_to_url(cls.browser, const.BASE_URL)
+        if const.browser_type.lower() == 'ie':
+            cls.browser.get('javascript:document.getElementById("overridelink").click();')
+        # if not os.path.exists(const.REPORT_PATH):
+        #     os.mkdir(const.REPORT_PATH)
+        # if os.path.exists(const.scr_shot):
+        #     os.popen('rm -rf '+const.scr_shot)
+        # os.mkdir(const.scr_shot)
+
+
+def go_to_url(browser, url):
+    util.log_info(f"Navigating to- {url}.")
+    browser.get(url)
+    wait_for_ajax_to_complete(browser)
+    time.sleep(1)
+
+
+def click_by_id(browser, id_):
+    try:
+        find_element_by_id(browser, id_).click()
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def click_by_xpath(browser, xpath):
+    try:
+        find_element_by_xpath(browser, xpath).click()
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def click_by_class_name(browser, class_name):
+    try:
+        find_element_by_class_name(browser, class_name).click()
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def input_by_id(browser, id_, value):
+    try:
+        find_element_by_id(browser, id_).send_keys(value)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def input_by_xpath(browser, xpath, value):
+    try:
+        find_element_by_xpath(browser, xpath).send_keys(value)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def input_by_class_name(browser, class_name, value):
+    try:
+        find_element_by_class_name(browser, class_name).send_keys(value)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_element_by_id(browser, id_):
+    try:
+        return browser.find_element_by_id(id_)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_element_by_xpath(browser, xpath):
+    try:
+        return browser.find_element_by_xpath(xpath)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_element_by_class_name(browser, class_name):
+    try:
+        return browser.find_element_by_class_name(class_name)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_elements_by_id(browser, id_):
+    try:
+        return browser.find_elements_by_id(id_)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_elements_by_xpath(browser, xpath):
+    try:
+        return browser.find_elements_by_xpath(xpath)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def get_element_by_id(browser, id_):
+    try:
+        wait_for_ajax_to_complete(browser)
+        return find_element_by_id(browser, id_).text
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def find_elements_by_class_name(browser, class_name):
+    try:
+        return browser.find_elements_by_class_name(class_name)
+    except BaseException:
+        capture_screenshot(browser)
+        raise
+
+
+def capture_screenshot(browser,file_name=None):
+    if not file_name:
+        browser.get_screenshot_as_file(const.scr_shot+inspect.stack()[3][3] + '_' + inspect.stack()[2][3]
+                                       + '_' + inspect.stack()[1][3] + '.png')
+        print('<a href="' + '../' + const.scr_shot + inspect.stack()[3][3] + '_'+inspect.stack()[2][3] + '_' + \
+              inspect.stack()[1][3] + '.png' + '">Screenshot</a>')
+    else:
+        browser.get_screenshot_as_file(const.scr_shot + file_name + '.png')
+        print('<a href="' + '../' + const.scr_shot + file_name + '.png' + '">Screenshot</a>')
+
+
+def get_links(browser):
+    #return browser.find_elements_by_tag_name('a')
+    links = []
+    for element in browser.find_elements_by_xpath('//a'):
+        links.append(element.get_attribute('href'))
+    return links
+
+
+def scroll_to(browser, x, y):
+    browser.execute_script("window.scrollTo("+str(x)+","+str(y)+")")
+
+
+def assert_true(actual, expected, message):
+    try:
+        assert actual == expected, message
+    except AssertionError as e:
+        util.log_info(e)
+        raise
+    return True
+
+
+def assert_false(actual, expected, message):
+    try:
+        assert not actual == expected, message
+    except AssertionError as e:
+        util.log_info(e)
+        raise
+    return True
+
+
+def start_time():
+    try:
+        return datetime.now()
+    except BaseException:
+        raise
+
+
+def run_time(start_time):
+    try:
+        run_time = datetime.now() - start_time
+        return run_time
+    except BaseException:
+        raise
+
+
+def explicit_wait(browser, xpath, wait=60, arg='presence'):
+    if arg == 'presence':
+        WebDriverWait(browser, wait).until(EC.presence_of_element_located((By.XPATH, xpath)))
+    if arg == 'visibility':
+        WebDriverWait(browser, wait).until(EC.visibility_of_element_located((By.XPATH, xpath)))
+
+
+def implicit_wait(browser, wait=60):
+    browser.implicitly_wait(wait)
+
+
+def get_attribute_by_xpath(browser, xpath, value):
+    wait_for_ajax_to_complete(browser)
+    return find_element_by_xpath(browser, xpath).get_attribute(value)
+
+
+def get_text_by_xpath(browser, xpath):
+    try:
+        wait_for_ajax_to_complete(browser)
+        return browser.find_element_by_xpath(xpath).text
+    except BaseException:
+        raise
+
+
+def set_attribute_by_xpath(browser, xpath, value):
+    try:
+        output = browser.find_element_by_xpath(xpath)
+        output.value = value
+    except BaseException:
+        raise
+
+
+def send_key_strokes(browser, xpath, value):
+    try:
+        browser.find_element_by_xpath(xpath).clear()
+        browser.find_element_by_xpath(xpath).send_keys(value)
+    except BaseException:
+        raise
+
+
+def clear(browser, xpath):
+    try:
+        browser.find_element_by_xpath(xpath).clear()
+    except BaseException:
+        raise
+
+
+def maximize(browser):
+    try:
+        util.log_info("Maximizing Window")
+        browser.maximize_window()
+    except BaseException:
+        raise
+
+
+def accept_alert(browser):
+    try:
+        util.log_info("Accepting Alert")
+        browser.switch_to_alert().accept()
+    except BaseException:
+        raise
+
+
+def dismiss_alert(browser):
+    try:
+        util.log_info("Dismissing Alert")
+        browser.switch_to_alert().dismiss()
+    except BaseException:
+        raise
+
+
+def checkbox_is_selected(browser, xpath):
+    return find_element_by_xpath(browser, xpath).is_selected()
+
+
+def checkbox_is_selected_old(browser, xpath):
+    return browser.find_element_by_xpath(xpath).is_selected()
+
+
+def refresh(browser):
+    try:
+        browser.refresh()
+        time.sleep(2)
+    except BaseException:
+        raise
+
+
+def close(browser):
+    try:
+        browser.close()
+    except BaseException:
+        raise
+
+
+def clear_field(browser, xpath):
+    """
+        return successful if clear
+    """
+    for c in range(120):
+        find_element_by_xpath(browser, xpath).clear()
+        if find_element_by_xpath(browser, xpath).get_attribute('value') == '':
+            return True
+    capture_screenshot(browser)
+    raise Exception("Input field is not cleared {elem}".format(elem=xpath))
+
+
+def clear_field_id(browser, id):
+    """
+        return successful if clear
+    """
+    for c in range(120):
+        find_element_by_id(browser, id).clear()
+        if find_element_by_id(browser, id).get_attribute('value') == '':
+            return True
+
+    capture_screenshot(browser)
+    raise Exception("Input field is not cleared {elem}".format(elem=id))
+
+
+def write_text(browser, xpath, value):
+    """
+        Ensure text box is clear then write
+    """
+    if clear_field(browser, xpath):
+        find_element_by_xpath(browser, xpath).send_keys(str(value))
+
+
+def click_button(browser, xpath):
+    """
+        Click button by sending ENTER key
+    """
+    find_element_by_xpath(browser, xpath).send_keys(Keys.ENTER)
+
+
+def wait_for_ajax_to_complete(browser):
+    """
+        Wait for Ajax by checking jQuery activation
+    """
+    wait = WebDriverWait(browser, 30)
+    wait.until(lambda driver: browser.execute_script("return jQuery.active == 0"))
+
+
+def get_action_message(browser, xpath):
+    """
+        wait for action to complete and return message
+    """
+    wait_for_ajax_to_complete(browser)
+    return get_text_by_xpath(browser, xpath)
+
+
+def check_radio_button(browser, xpath):
+    """
+        check radio button
+    """
+    is_checked = None
+    try:
+        is_checked = find_element_by_xpath(browser, xpath).get_attribute("checked")
+    except:
+        pass
+
+    if not is_checked:
+
+        ActionChains(browser).move_to_element(find_element_by_xpath(browser, xpath)).click().perform()
+
+
+def scroll_page(browser, position):
+    """
+        Scroll page on the y-axis at given position
+    """
+    browser.execute_script("scroll(0, {position})".format(position=position))
+
+
+def check_box(browser, xpath, check):
+    is_checked = None
+    try:
+        is_checked = find_element_by_xpath(browser, xpath).get_attribute("checked")
+    except:
+        pass
+
+    if not is_checked and check:
+        ActionChains(browser).move_to_element(find_element_by_xpath(browser, xpath)).click().perform()
+
+    if is_checked and not check:
+        ActionChains(browser).move_to_element(find_element_by_xpath(browser, xpath)).click().perform()
+
+
+
+

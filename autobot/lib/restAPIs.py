@@ -47,6 +47,11 @@ def cloud_acct_config_openstack(proj_name, cloud_acct_name):
     return api
 
 
+def cloud_acct_config_vcd(proj_name, cloud_acct_name):
+    api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/vmware-vcd"
+    return api
+
+
 def cloud_acct_status(proj_name, cloud_acct_name):
     api = f"rw-project:project/{proj_name}/rw-cloud:cloud/account/{cloud_acct_name}/oper-state"
     return api

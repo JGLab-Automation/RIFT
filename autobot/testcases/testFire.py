@@ -62,3 +62,15 @@ import os
 #
 # if __name__ == '__main__':
 #     unittest.main()
+
+# user, passwd, auth_url, tenant, mgmt_net, org,
+#                           admin_user, admin_passwd, nsx_auth_url, nsx_user, nsx_passwd,
+#                           vc_host, vc_port, vc_user, vc_passwd
+
+fw.cloud_acct_add(const.lp_addr, const.header, "default", "VCD_Test", "VMware-VCD", "500")
+fw.cloud_acct_config_vcd(const.lp_addr, const.header, "default", "VCD_Test", const.vim_vcd91_user, const.vim_vcd91_passwd,
+                         const.vim_vcd91_auth_url,const.vim_vcd91_tenant, const.vim_vcd91_mgmt_net, const.vim_vcd91_org,
+                         const.vim_vcd91_admin_user, const.vim_vcd91_admin_passwd,
+                         const.vim_vcd91_nsx_auth_url, const.vim_vcd91_nsx_user, const.vim_vcd91_nsx_passwd,
+                         const.vim_vcd91_vc_host, const.vim_vcd91_vc_port, const.vim_vcd91_vc_user, const.vim_vcd91_vc_passwd)
+

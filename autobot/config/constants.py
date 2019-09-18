@@ -15,7 +15,7 @@ header = \
         'cache-control': "no-cache"
     }
 
-proj_name = ""
+proj_name = "test00"
 proj_desc = ""
 
 proj_name_default = "Autobot"

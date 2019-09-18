@@ -130,3 +130,8 @@ def ns_oper_status(proj_name, nsr_id):
 def vim_resource_discover():
     api = "discover-cloud-resources"
     return api
+
+
+def input_parameter_xpath(proj_name, nsr_id):
+    api = f"rw-project:project/{proj_name}/nsr:ns-instance-config/nsr/{nsr_id}/nsd/input-parameter-xpath"
+    return api

@@ -584,14 +584,62 @@ def vim_discover_status(lp_addr, header, proj_name, cloud_acct_name):
         api = rapi.cloud_acct_status(proj_name, cloud_acct_name)
         url = util.create_url_operational(lp_addr, api)
         payload = ""
-
+        print(api)
         status = util.get_config(url, header, payload)
-        time.sleep(10)
+        time.sleep(5)
         return status["rw-cloud:oper-state"]["disc-status"]
     except BaseException as e:
         util.log_info(e)
         raise
 
+
+def vim_discovered_details(lp_addr, header, proj_name, cloud_acct_name):
+    try:
+        api = rapi.cloud_acct_status(proj_name, cloud_acct_name)
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+        print(api)
+        status = util.get_config(url, header, payload)
+        time.sleep(5)
+        return status["rw-cloud:oper-state"]
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def add_input_param_xpath(lp_addr, header, proj_name, nsr_id, xpath, value):
+    try:
+        api = rapi.input_parameter_xpath(proj_name, nsr_id)
+        url = util.create_url_running(lp_addr, api)
+        payload = pl.input_parameter_xpath(xpath, value)
+
+        util.log_info(f"Adding xPath- {xpath} with value- {value} to NSR ID- {nsr_id}.")
+        status = util.add_config(url, header, payload)
+        time.sleep(20)
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_input_param_xpath(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.input_parameter_xpath(proj_name, nsr_id)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        print(api)
+        print(url)
+
+        util.log_info(f"Fetching xPaths from NSR ID- {nsr_id}.")
+        status = util.get_config(url, header, payload)
+        print(status)
+        return status["nsr:input-parameter-xpath"]
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 """
 #-----------------------------------------------------------------------------------------------------------------------

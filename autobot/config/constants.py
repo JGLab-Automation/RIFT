@@ -1,7 +1,7 @@
 __author__ = 'JG'
 
-lp_addr = "10.110.5.3"
-lp_addr_web = "http://10.110."
+lp_addr = "10.110.5.4"
+lp_addr_web = f"http://{lp_addr}"
 
 header = \
     {

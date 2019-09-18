@@ -259,5 +259,17 @@ def vim_resource_discover(proj_name, cloud_acct_name):
     return payload
 
 
-
+def input_parameter_xpath(xpath, default_value):
+    payload = \
+        {
+            "nsr:input-parameter-xpath":
+                [
+                    {
+                        "xpath": {xpath},
+                        "default-value": {default_value}
+                    }
+                ]
+        }
+    payload = json.loads(payload)
+    return payload
 

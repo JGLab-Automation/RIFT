@@ -7,6 +7,11 @@ Correct:    rw-project:project
 Wrong:      /rw-project:project/
 '''
 
+def lp_version():
+    api = "rw-base:version"
+    return api
+
+
 def proj_add():
     api = "rw-project:project"
     return str(api)
@@ -132,6 +137,20 @@ def vim_resource_discover():
     return api
 
 
-def input_parameter_xpath(proj_name, nsr_id):
+def input_parameter_xpath_nsd(proj_name, nsd_id):
+    api = f"rw-project:project/{proj_name}/project-nsd:nsd-catalog/nsd/{nsd_id}/input-parameter-xpath"
+    return api
+
+
+def input_parameter_xpath_nsr(proj_name, nsr_id):
     api = f"rw-project:project/{proj_name}/nsr:ns-instance-config/nsr/{nsr_id}/nsd/input-parameter-xpath"
+    return api
+
+
+def vnfr_catalog(proj_name):
+    api = f"rw-project:project/{proj_name}/vnfr:vnfr-catalog/vnfr"
+    return api
+
+def vdur_detail(proj_name, vnfr_id):
+    api = f"rw-project:project/{proj_name}/vnfr:vnfr-catalog/vnfr/{vnfr_id}/vdur"
     return api

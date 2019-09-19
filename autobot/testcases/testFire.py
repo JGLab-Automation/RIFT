@@ -85,7 +85,7 @@ proj_name=["default"]
 #fw.vim_resource_discover(const.lp_addr, const.header, proj_name[0], const.cloud_acct_name)
 # status = fw.vim_discovered_details(const.lp_addr, const.header, proj_name[0], const.cloud_acct_name)
 #
-# disc_details = {"server": [], "interface": [], "network": []}
+# discovered_data = {"server": [], "interface": [], "network": []}
 # util.log_info("Adding server details.")
 # server_details = status["server"]
 # util.log_info("Adding interface details.")
@@ -94,15 +94,21 @@ proj_name=["default"]
 # network_details = status["network"]
 #
 # for items in server_details:
-#     disc_details["server"].append(items["name"])
+#     discovered_data["server"].append(items["name"])
 # for items in interface_details:
-#     disc_details["interface"].append(items["name"])
+#     discovered_data["interface"].append(items["name"])
 # for items in network_details:
-#     disc_details["network"].append(items["name"])
+#     discovered_data["network"].append(items["name"])
 #
-# print(disc_details)
+# print(discovered_data)
 #
 
-x = fw.get_input_param_xpath(const.lp_addr, const.header, "Automation", "e70d3746-2738-424d-9792-564ca8663153")
+# vdur_id = []
+# vnfr = fw.get_vnfr_id(const.lp_addr, const.header, "auto")
+# for ids in vnfr:
+#     ids = fw.get_vdur_vim_id(const.lp_addr, const.header, "auto", ids)
+#     for id in ids:
+#         vdur_id.append(id)
+
+x = fw.get_vdu_name_id(const.lp_addr, const.header, "auto")
 print(x)
-print(len(x))

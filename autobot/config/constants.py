@@ -1,7 +1,7 @@
 __author__ = 'JG'
 
-lp_addr = "10.110.5.4"
-lp_addr_web = f"http://{lp_addr}"
+lp_addr = ["0"]
+lp_addr_web = f"http://{lp_addr[0]}"
 
 header = \
     {
@@ -9,14 +9,25 @@ header = \
         'Authorization': "Basic YWRtaW46YWRtaW4=",
         'Accept': "*/*",
         'Cache-Control': "no-cache",
-        'Host': f"{lp_addr}:8008",
+        'Host': f"{lp_addr[0]}:8008",
         'Accept-Encoding': "gzip, deflate",
         'Connection': "keep-alive",
         'cache-control': "no-cache"
     }
 
-proj_name = "test00"
-proj_desc = ""
+lp_addr_default = ["10.110.5.2"]
+header_default = \
+    {
+        'Content-Type': "application/json",
+        'Authorization': "Basic YWRtaW46YWRtaW4=",
+        'Accept': "*/*",
+        'Cache-Control': "no-cache",
+        'Host': f"{lp_addr_default[0]}:8008",
+        'Accept-Encoding': "gzip, deflate",
+        'Connection': "keep-alive",
+        'cache-control': "no-cache"
+    }
+web_addr_default = f"http://{lp_addr_default[0]}"
 
 proj_name_default = "Autobot"
 proj_desc_default = "Automation Project"
@@ -26,10 +37,10 @@ proj_user_domain = "system"
 proj_role = "rw-project:project-admin"
 proj_event_publish = False
 
-cloud_acct_name = "OS"
-cloud_acct_type = "OpenStack"
-#cloud_acct_type = "vmware-vcd"
-cloud_acct_timeout = 500
+
+cloud_acct_name = ["OS", "Autobot_VCD"]
+cloud_acct_type = ["OpenStack", "VMWare-VCD"]
+cloud_acct_timeout = [300, 1000]
 
 vim_os_key = "jghosh"
 vim_os_secret = "mypasswd"

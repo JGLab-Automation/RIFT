@@ -16,6 +16,20 @@ from autobot.lib import restAPIs as rapi
 from autobot.config import payloads as pl
 from autobot.config import constants as const
 
+def get_lp_version(lp_addr, header):
+    try:
+        api = rapi.lp_version()
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+
+        util.log_info("Fetching build-version of the LP.")
+        version = util.get_config(url, header, payload)
+        lp_version = version["rw-base:version"]["version"]
+        time.sleep(5)
+        return lp_version
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
 def proj_add(lp_addr, header, proj_name, proj_desc):
@@ -284,6 +298,7 @@ def get_vnfd_id(lp_addr, header, proj_name):
         vnfd_catalog = status['project-vnfd:vnfd']
         for i in range(0, len(vnfd_catalog)):
             vnfd_id.append(vnfd_catalog[i]['id'])
+        time.sleep(5)
         return vnfd_id
     except BaseException as e:
         util.log_info(e)
@@ -303,6 +318,7 @@ def get_vnfd_name(lp_addr, header, proj_name):
         vnfd_catalog = status['project-vnfd:vnfd']
         for i in range(len(vnfd_catalog)):
             vnfd_name.append(vnfd_catalog[i]['name'])
+        time.sleep(5)
         return vnfd_name
     except BaseException as e:
         util.log_info(e)
@@ -317,7 +333,7 @@ def get_nsd_id(lp_addr, header, proj_name):
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        util.log_info(f"Fetching NSD ID(s) from project- {proj_name}.")
+        util.log_info(f"Fetching NSD-ID(s) from project- {proj_name}.")
         status = util.get_config(url, header, payload)
         if status is not None:
             nsd_catalog = status['project-nsd:nsd']
@@ -354,14 +370,105 @@ def get_nsd_name(lp_addr, header, proj_name):
 
 
 def get_nsd_name_id(lp_addr, header, proj_name):
-    nsd_id = get_nsd_id(lp_addr, header, proj_name)
-    nsd_name = get_nsd_name(lp_addr, header, proj_name)
-    if nsd_id and nsd_name:
-        nsd = dict(zip(nsd_name, nsd_id))
-        util.log_info(f"Available NSD(s)- {list(nsd.keys())}.")
-        return nsd
-    else:
-        util.log_info("NSD ID & Name couldn't map.")
+    try:
+        nsd_id = get_nsd_id(lp_addr, header, proj_name)
+        nsd_name = get_nsd_name(lp_addr, header, proj_name)
+        if nsd_id and nsd_name:
+            nsd = dict(zip(nsd_name, nsd_id))
+            util.log_info(f"Available NSD(s)- {list(nsd.keys())}.")
+            return nsd
+        else:
+            util.log_info("NSD ID & Name couldn't map.")
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_vnfr_id(lp_addr, header, proj_name):
+    try:
+        vnfr_id = []
+
+        api = rapi.vnfr_catalog(proj_name)
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching VNFR details.")
+        status = util.get_config(url, header, payload)
+        if status is not None:
+            vnfr_catalog = status["vnfr:vnfr"]
+            for items in vnfr_catalog:
+                vnfr_id.append(items["id"])
+            return vnfr_id
+        else:
+            assert status, "VNFR details not available."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_vnfr_name(lp_addr, header, proj_name):
+    try:
+        vnfr_id = []
+
+        api = rapi.vnfr_catalog(proj_name)
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching VNFR details.")
+        status = util.get_config(url, header, payload)
+        if status is not None:
+            vnfr_catalog = status["vnfr:vnfr"]
+            for items in vnfr_catalog:
+                vnfr_id.append(items["short-name"])
+            return vnfr_id
+        else:
+            assert status, "VNFR details not available."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_vdur_vim_id(lp_addr, header, proj_name, vnfr_id):
+    try:
+        vdur_vim_id = []
+
+        api = rapi.vdur_detail(proj_name, vnfr_id)
+        url = util.create_url_operational(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching VDUR details.")
+        status = util.get_config(url, header, payload)
+        if status is not None:
+            vdur_catalog = status["vnfr:vdur"]
+            for items in vdur_catalog:
+                vdur_vim_id.append(items["vim-id"])
+            return vdur_vim_id
+        else:
+            assert status, "VDUR details not available."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_vdu_name_id(lp_addr, header, proj_name):
+    try:
+        vdur_vim_id = []
+        util.log_info("Mapping VDUR VIM-ID with VNFR-Name.")
+        vnfr_ids = get_vnfr_id(lp_addr, header, proj_name)
+        for ids in vnfr_ids:
+            vdu_vim_ids = get_vdur_vim_id(lp_addr, header, proj_name, ids)
+            for ids in vdu_vim_ids:
+                vdur_vim_id.append(ids)
+        vnfr_name = get_vnfd_name(lp_addr, header, proj_name)
+        if vdur_vim_id and vnfr_name:
+            vdu = dict(zip(vnfr_name, vdur_vim_id))
+            util.log_info(f"Available VDUR(s)- {list(vdu.keys())}.")
+            return vdu
+        else:
+            util.log_info("VDUR VIM-ID & VNFR-Name couldn't map.")
+    except BaseException as e:
+        util.log_info(e)
+        raise
 
 
 def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
@@ -567,13 +674,13 @@ def vim_resource_discover(lp_addr, header, proj_name, cloud_acct_name):
         url = util.create_url_operations(lp_addr, api)
         payload = pl.vim_resource_discover(proj_name, cloud_acct_name)
 
-        util.log_info("Discovering VIM resources.")
+        util.log_info(f"Discovering resources for VIM account- {cloud_acct_name}.")
         status = util.add_config(url, header, payload)
         util.log_info("Please wait while resource-discovery is in progress.")
         state = util.get_rpc_state(status).upper()
         if state != "OK":
             assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
-        time.sleep(180)
+        time.sleep(120)
     except BaseException as e:
         util.log_info(e)
         raise
@@ -584,7 +691,7 @@ def vim_discover_status(lp_addr, header, proj_name, cloud_acct_name):
         api = rapi.cloud_acct_status(proj_name, cloud_acct_name)
         url = util.create_url_operational(lp_addr, api)
         payload = ""
-        print(api)
+
         status = util.get_config(url, header, payload)
         time.sleep(5)
         return status["rw-cloud:oper-state"]["disc-status"]
@@ -598,7 +705,7 @@ def vim_discovered_details(lp_addr, header, proj_name, cloud_acct_name):
         api = rapi.cloud_acct_status(proj_name, cloud_acct_name)
         url = util.create_url_operational(lp_addr, api)
         payload = ""
-        print(api)
+
         status = util.get_config(url, header, payload)
         time.sleep(5)
         return status["rw-cloud:oper-state"]
@@ -607,15 +714,15 @@ def vim_discovered_details(lp_addr, header, proj_name, cloud_acct_name):
         raise
 
 
-def add_input_param_xpath(lp_addr, header, proj_name, nsr_id, xpath, value):
+def add_input_param_xpath_nsd(lp_addr, header, proj_name, nsd_id, xpath, value):
     try:
-        api = rapi.input_parameter_xpath(proj_name, nsr_id)
+        api = rapi.input_parameter_xpath_nsd(proj_name, nsd_id)
         url = util.create_url_running(lp_addr, api)
-        payload = pl.input_parameter_xpath(xpath, value)
+        payload = pl.input_parameter_xpath_nsd(xpath, value)
 
-        util.log_info(f"Adding xPath- {xpath} with value- {value} to NSR ID- {nsr_id}.")
+        util.log_info(f"Adding xPath- \"{xpath}\" with value- \"{value}\" to NSD- \"{nsd_id}\".")
         status = util.add_config(url, header, payload)
-        time.sleep(20)
+        time.sleep(10)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
             assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
@@ -624,22 +731,54 @@ def add_input_param_xpath(lp_addr, header, proj_name, nsr_id, xpath, value):
         raise
 
 
-def get_input_param_xpath(lp_addr, header, proj_name, nsr_id):
+def get_input_param_xpath_nsd(lp_addr, header, proj_name, nsd_id):
     try:
-        api = rapi.input_parameter_xpath(proj_name, nsr_id)
+        api = rapi.input_parameter_xpath_nsd(proj_name, nsd_id)
         url = util.create_url_running(lp_addr, api)
         payload = ""
 
-        print(api)
-        print(url)
-
-        util.log_info(f"Fetching xPaths from NSR ID- {nsr_id}.")
+        util.log_info(f"Fetching xPaths from NSD- {nsd_id}.")
         status = util.get_config(url, header, payload)
-        print(status)
+        return status["project-nsd:input-parameter-xpath"]
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def add_input_param_xpath_nsr(lp_addr, header, proj_name, nsr_id, xpath, value):
+    try:
+        api = rapi.input_parameter_xpath_nsr(proj_name, nsr_id)
+        url = util.create_url_running(lp_addr, api)
+        payload = pl.input_parameter_xpath_nsd(xpath, value)
+
+        util.log_info(f"Adding xPath- \"{xpath}\" with value- \"{value}\" to NSR ID- \"{nsr_id}\".")
+        status = util.add_config(url, header, payload)
+        time.sleep(10)
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def get_input_param_xpath_nsr(lp_addr, header, proj_name, nsr_id):
+    try:
+        api = rapi.input_parameter_xpath_nsd(proj_name, nsr_id)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Fetching xPaths from NSD- {nsr_id}.")
+        status = util.get_config(url, header, payload)
         return status["nsr:input-parameter-xpath"]
     except BaseException as e:
         util.log_info(e)
         raise
+
+
+
+
+
 
 """
 #-----------------------------------------------------------------------------------------------------------------------

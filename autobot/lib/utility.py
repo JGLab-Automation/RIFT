@@ -88,7 +88,6 @@ def create_http_basic_auth(uname, passwd):
 def get_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        # log_info("Fetching configuration.")
         response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 200:         # Code for successful response.
             data = response.json()
@@ -109,11 +108,9 @@ def get_config(url, header, payload=""):
 def add_config(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        # log_info("Adding configuration")
         response = requests.request("POST", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            # log_info(f"Data received: {data}.")
             return data
         else:
             data = response.json()
@@ -126,11 +123,9 @@ def add_config(url, header, payload):
 def edit_config(url, header, payload):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        # log_info("Editing configuration.")
         response = requests.request("PUT", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            # log_info(f"Data received: {data}")
             return data
         else:
             data = response.json()
@@ -143,11 +138,9 @@ def edit_config(url, header, payload):
 def delete_config(url, header, payload=""):
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        # log_info("Deleting configuration.")
         response = requests.request("DELETE", url=url, headers=header, data=payload, verify=False)
         if response.status_code == 201:
             data = response.json()
-            # log_info(f"Data received: {data}")
             return data
         else:
             data = response.json()

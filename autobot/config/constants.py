@@ -1,6 +1,6 @@
 __author__ = 'JG'
 
-lp_addr = ["0"]
+lp_addr = ["10.110.5.1"]
 lp_addr_web = f"http://{lp_addr[0]}"
 
 header = \
@@ -15,7 +15,7 @@ header = \
         'cache-control': "no-cache"
     }
 
-lp_addr_default = ["10.110.5.2"]
+lp_addr_default = ["10.68.100.175", "10.68.104.86"]
 header_default = \
     {
         'Content-Type': "application/json",
@@ -47,7 +47,7 @@ vim_os_secret = "mypasswd"
 vim_os_auth_url = "https://keystone.es2.eng.riftio.com:5000/v3"
 vim_os_user_domain = "eng"
 vim_os_proj_domain = "eng"
-vim_os_tenant = "jghosh"
+vim_os_tenant = "jghosh_automation"
 vim_os_region = "RegionOne"
 vim_os_mgmt_net = "private"
 vim_os_float_ip_pool_net = "public"

@@ -42,7 +42,7 @@ def proj_add(lp_addr, header, proj_name, proj_desc):
         status = util.add_config(url, header, payload)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
         time.sleep(15)
     except BaseException as e:
         util.log_info(e)
@@ -74,7 +74,7 @@ def proj_config(lp_addr, header, proj_name, user_name, user_domain, role, event_
         status = util.add_config(url, header, payload)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
         time.sleep(20)
     except BaseException as e:
         util.log_info(e)
@@ -108,7 +108,7 @@ def proj_delete(lp_addr, header, proj_name):
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -140,7 +140,7 @@ def cloud_acct_add(lp_addr, header, proj_name, acct_name, acct_type, timeout):
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -190,7 +190,7 @@ def cloud_acct_config_openstack(lp_addr, header, proj_name, cloud_acct_name, key
         time.sleep(20)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -209,7 +209,7 @@ def cloud_acct_config_vcd(lp_addr, header, proj_name, cloud_acct_name, user, pas
         time.sleep(20)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -242,7 +242,7 @@ def cloud_acct_delete(lp_addr, header, proj_name, cloud_acct_name):
         time.sleep(15)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -502,7 +502,7 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
             if state != "OK":
-                assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+                assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
         elif pkg_type.upper() == "NSD":
             api = rapi.nsd_delete(proj_name, pkg[pkg_name])
             url = util.create_url_running(lp_addr, api)
@@ -512,7 +512,7 @@ def pkg_delete(lp_addr, header, proj_name, pkg_type, pkg_name):
             time.sleep(20)
             state = util.get_rpc_state(status).upper()
             if state != "OK":
-                assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+                assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -679,7 +679,7 @@ def vim_resource_discover(lp_addr, header, proj_name, cloud_acct_name):
         util.log_info("Please wait while resource-discovery is in progress.")
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
         time.sleep(120)
     except BaseException as e:
         util.log_info(e)
@@ -725,7 +725,7 @@ def add_input_param_xpath_nsd(lp_addr, header, proj_name, nsd_id, xpath, value):
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise
@@ -756,7 +756,7 @@ def add_input_param_xpath_nsr(lp_addr, header, proj_name, nsr_id, xpath, value):
         time.sleep(10)
         state = util.get_rpc_state(status).upper()
         if state != "OK":
-            assert state == "OK", f"RPC response: Expected - OK, Received- {state}."
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
     except BaseException as e:
         util.log_info(e)
         raise

@@ -1,0 +1,381 @@
+2019-09-20 17:34:19,765:INFO:Fetching build-version of the LP.
+2019-09-20 17:34:29,818:INFO:LP under-test is running on v7.1.1.0.106185.
+2019-09-20 17:34:29,819:INFO:Executing test01_Project_Add.
+2019-09-20 17:34:29,819:INFO:Adding project with name- test00.
+2019-09-20 17:34:51,562:INFO:Fetching project name.
+2019-09-20 17:35:00,006:INFO:Project- test00, added successfully. Test-case Pass.
+2019-09-20 17:35:00,007:INFO:Executing test02_Project_Configure.
+2019-09-20 17:35:00,007:INFO:Configuring project- test00.
+2019-09-20 17:35:05,133:INFO:Response: 503 | Data received: {'error': 'Session closed'}.
+2019-09-20 17:35:05,133:INFO:Response: 503 | Data received: {'error': 'Session closed'}.
+2019-09-20 17:35:05,134:INFO:Executing test03_Cloud_Account_Add.
+2019-09-20 17:35:05,134:INFO:Adding cloud account- OpenStack with name- OS to project- test00.
+2019-09-20 17:35:40,113:INFO:Fetching account-type for cloud-account- OS.
+2019-09-20 17:35:46,364:INFO:Account- OS added for account-type openstack. Test-case Pass.
+2019-09-20 17:35:46,364:INFO:Executing test04_Cloud_Account_Configure.
+2019-09-20 17:35:46,364:INFO:Adding configuration to cloud-account- OS.
+2019-09-20 17:36:19,606:INFO:Cloud-account OS added successfully. Test-case Pass.
+2019-09-20 17:36:19,607:INFO:Executing test05_Package_Onboard.
+2019-09-20 17:36:19,607:INFO:Adding package to project- test00.
+2019-09-20 17:36:23,418:INFO:TransactionID for uploaded package- b7586381-a4b7-409f-8e6e-4be7dab9192d.
+2019-09-20 17:36:43,438:INFO:Checking status of uploaded package in project- test00.
+2019-09-20 17:36:44,506:INFO:Package upload status- COMPLETED.
+2019-09-20 17:36:49,512:INFO:Adding package to project- test00.
+2019-09-20 17:36:51,683:INFO:TransactionID for uploaded package- f675e2bb-4f1a-4107-a268-cbc8eb7f1914.
+2019-09-20 17:37:11,688:INFO:Checking status of uploaded package in project- test00.
+2019-09-20 17:37:13,011:INFO:Package upload status- COMPLETED.
+2019-09-20 17:37:18,016:INFO:Adding package to project- test00.
+2019-09-20 17:37:20,104:INFO:TransactionID for uploaded package- 7cadd571-e0f5-4eba-8d52-ab4676907882.
+2019-09-20 17:37:40,123:INFO:Checking status of uploaded package in project- test00.
+2019-09-20 17:37:41,338:INFO:Package upload status- COMPLETED.
+2019-09-20 17:37:46,343:INFO:Ping VNFD, Pong VNFD & Ping_Pong NSD are uploaded in project- test00. Test-case Pass.
+2019-09-20 17:37:46,343:INFO:Executing test06_NS_Create.
+2019-09-20 17:37:46,343:INFO:Fetching NSD-ID(s) from project- test00.
+2019-09-20 17:37:47,556:INFO:Fetching NSD name(s) from project- test00.
+2019-09-20 17:37:48,561:INFO:Available NSD(s)- ['ping_pong_nsd'].
+2019-09-20 17:37:48,561:INFO:Creating NS with name- AutoTest and NSD ID- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 17:37:49,609:INFO:Generated NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:38:09,613:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:38:10,799:INFO:Fetching NS name.
+2019-09-20 17:38:15,804:INFO:NS instance name- AutoTest.
+2019-09-20 17:38:15,804:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:38:17,001:INFO:Fetching NS admin status.
+2019-09-20 17:38:22,007:INFO:NS instance status- DISABLED.
+2019-09-20 17:38:22,007:INFO:NS is created with name- AutoTest and current state is- DISABLED. Test-case Pass.
+2019-09-20 17:38:22,007:INFO:Executing test07_NS_Instantiate.
+2019-09-20 17:38:22,007:INFO:Instantiating NS with NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:38:23,417:INFO:Please wait while for a few minutes while instantiation is in progress.
+2019-09-20 17:44:23,517:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:44:24,661:INFO:Fetching NS admin status.
+2019-09-20 17:44:29,667:INFO:NS instance status- ENABLED.
+2019-09-20 17:44:29,667:INFO:Fetching operational-status of NS with NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:44:30,860:INFO:Current state of NS is- running.
+2019-09-20 17:44:35,862:INFO:NS with ID- 72a2bd95-ec52-4951-a67f-767488eab724 instantiated successfully and is- running. Test-case Pass.
+2019-09-20 17:44:35,863:INFO:Executing test08_NS_Terminate.
+2019-09-20 17:44:35,863:INFO:Fetching operational-status of NS with NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:44:37,063:INFO:Current state of NS is- running.
+2019-09-20 17:44:42,069:INFO:Terminating NS with NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:44:43,293:INFO:Please wait while terminating NS.
+2019-09-20 17:46:43,393:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:46:44,590:INFO:Fetching NS admin status.
+2019-09-20 17:46:49,595:INFO:NS instance status- DISABLED.
+2019-09-20 17:46:49,595:INFO:Fetching operational-status of NS with NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:46:50,713:INFO:Current state of NS is- terminated.
+2019-09-20 17:46:55,718:INFO:NS with NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724 terminated successfully. Test-case Pass.
+2019-09-20 17:46:55,718:INFO:Executing test09_NS_Delete.
+2019-09-20 17:46:55,719:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:46:56,945:INFO:Fetching NS admin status.
+2019-09-20 17:47:01,947:INFO:NS instance status- DISABLED.
+2019-09-20 17:47:01,947:INFO:Fetching operational-status of NS with NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:47:03,139:INFO:Current state of NS is- terminated.
+2019-09-20 17:47:08,141:INFO:Deleting NS with NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:47:09,260:INFO:Please wait while deleting NS.
+2019-09-20 17:47:24,275:INFO:Fetching NS config for NSR ID: 72a2bd95-ec52-4951-a67f-767488eab724.
+2019-09-20 17:47:25,429:INFO:Checking NS config.
+2019-09-20 17:47:30,430:INFO:NS instance name- [].
+2019-09-20 17:47:30,430:INFO:NS with NSR ID- 72a2bd95-ec52-4951-a67f-767488eab724 deleted successfully. Test-case Pass.
+2019-09-20 17:47:30,430:INFO:Executing test10_Package_Delete.
+2019-09-20 17:47:31,660:INFO:Collecting VNFD ID.
+2019-09-20 17:47:31,660:INFO:Fetching VNFD ID(s) from project- test00.
+2019-09-20 17:47:37,794:INFO:Collecting VNFD Name.
+2019-09-20 17:47:37,794:INFO:Fetching VNFD name(s) from project- test00.
+2019-09-20 17:47:44,006:INFO:Collecting NSD ID.
+2019-09-20 17:47:44,007:INFO:Fetching NSD-ID(s) from project- test00.
+2019-09-20 17:47:45,199:INFO:Collecting NSD Name.
+2019-09-20 17:47:45,199:INFO:Fetching NSD name(s) from project- test00.
+2019-09-20 17:47:46,208:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'ping_pong_nsd': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 17:47:46,208:INFO:Deleting package: ping_pong_nsd with ID: cc12e5cc-a650-11e9-b8ce-02420a40cc02
+2019-09-20 17:48:08,767:INFO:Collecting VNFD ID.
+2019-09-20 17:48:08,768:INFO:Fetching VNFD ID(s) from project- test00.
+2019-09-20 17:48:14,836:INFO:Collecting VNFD Name.
+2019-09-20 17:48:14,837:INFO:Fetching VNFD name(s) from project- test00.
+2019-09-20 17:48:20,947:INFO:Collecting NSD ID.
+2019-09-20 17:48:20,947:INFO:Fetching NSD-ID(s) from project- test00.
+2019-09-20 17:48:22,020:INFO:NSD package(s) not available.
+2019-09-20 17:48:22,020:INFO:Collecting NSD Name.
+2019-09-20 17:48:22,020:INFO:Fetching NSD name(s) from project- test00.
+2019-09-20 17:48:23,019:INFO:NSD package(s) not available.
+2019-09-20 17:48:23,019:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 17:48:23,019:INFO:Deleting package: pong_vnfd with ID: cc12969e-a650-11e9-b8ce-02420a40cc02
+2019-09-20 17:48:45,083:INFO:Collecting VNFD ID.
+2019-09-20 17:48:45,083:INFO:Fetching VNFD ID(s) from project- test00.
+2019-09-20 17:48:51,150:INFO:Collecting VNFD Name.
+2019-09-20 17:48:51,150:INFO:Fetching VNFD name(s) from project- test00.
+2019-09-20 17:48:57,162:INFO:Collecting NSD ID.
+2019-09-20 17:48:57,162:INFO:Fetching NSD-ID(s) from project- test00.
+2019-09-20 17:48:58,232:INFO:NSD package(s) not available.
+2019-09-20 17:48:58,232:INFO:Collecting NSD Name.
+2019-09-20 17:48:58,232:INFO:Fetching NSD name(s) from project- test00.
+2019-09-20 17:48:59,337:INFO:NSD package(s) not available.
+2019-09-20 17:48:59,337:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 17:48:59,337:INFO:Deleting package: ping_vnfd with ID: cc1202ce-a650-11e9-b8ce-02420a40cc02
+2019-09-20 17:49:31,065:INFO:Packages deleted successfully. Test-case Pass.
+2019-09-20 17:49:31,066:INFO:Executing test11_Cloud_Account_Delete.
+2019-09-20 17:49:31,066:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 17:49:56,174:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 17:50:02,420:INFO:Cloud account with name- OS deleted successfully. Test-case Pass.
+2019-09-20 17:50:02,421:INFO:Executing test12_Project_Delete.
+2019-09-20 17:50:02,421:INFO:Fetching project details for project- test00.
+2019-09-20 17:50:08,537:INFO:Deleting project with name- test00.
+2019-09-20 17:50:20,582:INFO:Fetching project details for project- test00.
+2019-09-20 17:50:29,914:INFO:Project with name- test00 deleted successfully. Test-case Pass.
+2019-09-20 17:50:29,914:INFO:Executing test01_Project_Add.
+2019-09-20 17:50:29,915:INFO:Adding project with name- test01.
+2019-09-20 17:50:47,905:INFO:Fetching project name.
+2019-09-20 17:50:54,083:INFO:Project- test01, added successfully. Test-case Pass.
+2019-09-20 17:50:54,083:INFO:Executing test02_Project_Configure.
+2019-09-20 17:50:54,083:INFO:Configuring project- test01.
+2019-09-20 17:51:15,937:INFO:Fetching user-role for project- test01.
+2019-09-20 17:51:30,222:INFO:Project- test01 configured with user-role- rw-project:project-admin. Test-case Pass.
+2019-09-20 17:51:30,222:INFO:Executing test03_Cloud_Account_Add.
+2019-09-20 17:51:30,222:INFO:Adding cloud account- OpenStack with name- OS to project- test01.
+2019-09-20 17:51:41,528:INFO:Fetching account-type for cloud-account- OS.
+2019-09-20 17:51:47,754:INFO:Account- OS added for account-type openstack. Test-case Pass.
+2019-09-20 17:51:47,754:INFO:Executing test04_Cloud_Account_Configure.
+2019-09-20 17:51:47,754:INFO:Adding configuration to cloud-account- OS.
+2019-09-20 17:52:20,215:INFO:Cloud-account OS added successfully. Test-case Pass.
+2019-09-20 17:52:20,216:INFO:Executing test05_Discover_Resource.
+2019-09-20 17:52:20,216:INFO:Discovering resources for VIM account- OS.
+2019-09-20 17:52:21,447:INFO:Please wait while resource-discovery is in progress.
+2019-09-20 17:54:28,075:INFO:Resource discovery on account-name- OS is successful. Test-case Pass.
+2019-09-20 17:54:28,076:INFO:Executing test06_Cloud_Account_Delete.
+2019-09-20 17:54:28,076:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 17:54:51,969:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 17:54:58,181:INFO:Cloud account with name- OS deleted successfully. Test-case Pass.
+2019-09-20 17:54:58,181:INFO:Executing test07_Project_Delete.
+2019-09-20 17:54:58,181:INFO:Fetching project details for project- test01.
+2019-09-20 17:55:04,331:INFO:Deleting project with name- test01.
+2019-09-20 17:55:20,324:INFO:Fetching project details for project- test01.
+2019-09-20 17:55:29,848:INFO:Project with name- test01 deleted successfully. Test-case Pass.
+2019-09-20 17:55:29,849:INFO:Executing test01_Project1_Add.
+2019-09-20 17:55:29,849:INFO:Adding project with name- test02_1.
+2019-09-20 17:55:48,549:INFO:Fetching project name.
+2019-09-20 17:55:54,632:INFO:Project- test02_1, added successfully. Test-case Pass.
+2019-09-20 17:55:54,632:INFO:Executing test02_Project1_Configure.
+2019-09-20 17:55:54,632:INFO:Configuring project- test02_1.
+2019-09-20 17:56:16,287:INFO:Fetching user-role for project- test02_1.
+2019-09-20 17:56:30,824:INFO:Project- test02_1 configured with user-role- rw-project:project-admin. Test-case Pass.
+2019-09-20 17:56:30,824:INFO:Executing test03_Cloud_Account_Add.
+2019-09-20 17:56:30,824:INFO:Adding cloud account- OpenStack with name- OS to project- test02_1.
+2019-09-20 17:56:43,215:INFO:Fetching account-type for cloud-account- OS.
+2019-09-20 17:56:49,390:INFO:Account- OS added for account-type openstack. Test-case Pass.
+2019-09-20 17:56:49,391:INFO:Executing test04_Cloud_Account_Configure.
+2019-09-20 17:56:49,391:INFO:Adding configuration to cloud-account- OS.
+2019-09-20 17:57:22,568:INFO:Cloud-account OS added successfully. Test-case Pass.
+2019-09-20 17:57:22,568:INFO:Executing test05_Package_Onboard.
+2019-09-20 17:57:22,568:INFO:Adding package to project- test02_1.
+2019-09-20 17:57:24,593:INFO:TransactionID for uploaded package- 141b6ef2-cd0a-4d5f-b885-291c94662b35.
+2019-09-20 17:57:44,597:INFO:Checking status of uploaded package in project- test02_1.
+2019-09-20 17:57:45,730:INFO:Package upload status- COMPLETED.
+2019-09-20 17:57:50,735:INFO:Adding package to project- test02_1.
+2019-09-20 17:57:52,857:INFO:TransactionID for uploaded package- f6018ee5-aeb9-4e51-935b-85a516cfdb2d.
+2019-09-20 17:58:12,874:INFO:Checking status of uploaded package in project- test02_1.
+2019-09-20 17:58:14,004:INFO:Package upload status- COMPLETED.
+2019-09-20 17:58:19,009:INFO:Adding package to project- test02_1.
+2019-09-20 17:58:21,257:INFO:TransactionID for uploaded package- fd6ef65c-44b3-4d1f-8999-fdd02aa1f459.
+2019-09-20 17:58:41,269:INFO:Checking status of uploaded package in project- test02_1.
+2019-09-20 17:58:42,381:INFO:Package upload status- COMPLETED.
+2019-09-20 17:58:47,382:INFO:Ping VNFD, Pong VNFD & Ping_Pong NSD are uploaded in project- test02_1. Test-case Pass.
+2019-09-20 17:58:47,383:INFO:Executing test06_NS_Create.
+2019-09-20 17:58:47,383:INFO:Fetching NSD-ID(s) from project- test02_1.
+2019-09-20 17:58:48,507:INFO:Fetching NSD name(s) from project- test02_1.
+2019-09-20 17:58:49,491:INFO:Available NSD(s)- ['ping_pong_nsd'].
+2019-09-20 17:58:49,491:INFO:Creating NS with name- Auto_Orig_NS and NSD ID- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 17:58:50,638:INFO:Generated NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 17:59:10,639:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 17:59:11,831:INFO:Fetching NS name.
+2019-09-20 17:59:16,836:INFO:NS instance name- Auto_Orig_NS.
+2019-09-20 17:59:16,836:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 17:59:17,887:INFO:Fetching NS admin status.
+2019-09-20 17:59:22,892:INFO:NS instance status- DISABLED.
+2019-09-20 17:59:22,892:INFO:NS is created with name- Auto_Orig_NS and current state is- DISABLED. Test-case Pass.
+2019-09-20 17:59:22,892:INFO:Executing test07_NS_Instantiate.
+2019-09-20 17:59:22,892:INFO:Instantiating NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 17:59:24,090:INFO:Please wait while for a few minutes while instantiation is in progress.
+2019-09-20 18:05:24,162:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:05:25,652:INFO:Fetching NS admin status.
+2019-09-20 18:05:30,658:INFO:NS instance status- ENABLED.
+2019-09-20 18:05:30,658:INFO:Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:05:31,895:INFO:Current state of NS is- running.
+2019-09-20 18:05:36,897:INFO:NS with ID- b83f5a53-850b-4c0f-b9b0-c388290697dd instantiated successfully and is- running. Test-case Pass.
+2019-09-20 18:05:36,897:INFO:Executing test08_Project2_Add.
+2019-09-20 18:05:36,897:INFO:Adding project with name- test02_2.
+2019-09-20 18:05:57,838:INFO:Fetching project name.
+2019-09-20 18:06:03,940:INFO:Project- test02_2, added successfully. Test-case Pass.
+2019-09-20 18:06:03,940:INFO:Executing test09_Project2_Configure.
+2019-09-20 18:06:03,941:INFO:Configuring project- test02_2.
+2019-09-20 18:06:25,566:INFO:Fetching user-role for project- test02_2.
+2019-09-20 18:06:39,916:INFO:Project- test02_2 configured with user-role- rw-project:project-admin. Test-case Pass.
+2019-09-20 18:06:39,916:INFO:Executing test10_Cloud_Account_Add.
+2019-09-20 18:06:39,916:INFO:Adding cloud account- OpenStack with name- OS to project- test02_2.
+2019-09-20 18:06:51,187:INFO:Fetching account-type for cloud-account- OS.
+2019-09-20 18:06:57,376:INFO:Account- OS added for account-type openstack. Test-case Pass.
+2019-09-20 18:06:57,377:INFO:Executing test11_Cloud_Account_Configure.
+2019-09-20 18:06:57,377:INFO:Adding configuration to cloud-account- OS.
+2019-09-20 18:07:29,745:INFO:Cloud-account OS added successfully. Test-case Pass.
+2019-09-20 18:07:29,745:INFO:Executing test12_Package_Onboard.
+2019-09-20 18:07:29,745:INFO:Adding package to project- test02_2.
+2019-09-20 18:07:31,691:INFO:TransactionID for uploaded package- ecbe9634-7aed-46ae-81e4-8abd25efecf6.
+2019-09-20 18:07:51,711:INFO:Checking status of uploaded package in project- test02_2.
+2019-09-20 18:07:52,855:INFO:Package upload status- COMPLETED.
+2019-09-20 18:07:57,857:INFO:Adding package to project- test02_2.
+2019-09-20 18:07:59,874:INFO:TransactionID for uploaded package- 69ae89c9-5746-49a2-8e85-b7d65965402a.
+2019-09-20 18:08:19,882:INFO:Checking status of uploaded package in project- test02_2.
+2019-09-20 18:08:21,032:INFO:Package upload status- COMPLETED.
+2019-09-20 18:08:26,034:INFO:Adding package to project- test02_2.
+2019-09-20 18:08:28,203:INFO:TransactionID for uploaded package- 6c6ef6c7-0d67-4a1e-9ec0-a22b0b0b7361.
+2019-09-20 18:08:48,223:INFO:Checking status of uploaded package in project- test02_2.
+2019-09-20 18:08:49,291:INFO:Package upload status- COMPLETED.
+2019-09-20 18:08:54,295:INFO:Ping VNFD, Pong VNFD & Ping_Pong NSD are uploaded in project- test02_2. Test-case Pass.
+2019-09-20 18:08:54,296:INFO:Executing test13_Discover_Resource.
+2019-09-20 18:08:54,296:INFO:Discovering resources for VIM account- OS.
+2019-09-20 18:08:55,434:INFO:Please wait while resource-discovery is in progress.
+2019-09-20 18:11:02,091:INFO:Resource discovery on account-name- OS is successful. Test-case Pass.
+2019-09-20 18:11:02,091:INFO:Executing test14_Collect_Discovered_Details.
+2019-09-20 18:11:02,091:INFO:Collecting Server, Interface & Network details from discovered-resource.
+2019-09-20 18:11:08,772:INFO:Adding server details.
+2019-09-20 18:11:08,772:INFO:Adding interface details.
+2019-09-20 18:11:08,772:INFO:Adding network details.
+2019-09-20 18:11:08,773:INFO:Executing test15_Add_Discovered_Resources.
+2019-09-20 18:11:08,773:INFO:Collecting NSR-VNFR 
+2019-09-20 18:11:08,773:INFO:Mapping VDUR VIM-ID with VNFR-Name.
+2019-09-20 18:11:08,773:INFO:Fetching VNFR details.
+2019-09-20 18:11:10,427:INFO:Fetching VDUR details.
+2019-09-20 18:11:11,595:INFO:Fetching VDUR details.
+2019-09-20 18:11:12,712:INFO:Fetching VNFD name(s) from project- test02_1.
+2019-09-20 18:11:18,798:INFO:Available VDUR(s)- ['ping_vnfd', 'pong_vnfd'].
+2019-09-20 18:11:18,798:INFO:Fetching NSD-ID(s) from project- test02_2.
+2019-09-20 18:11:20,003:INFO:Adding discovered values to xPaths in NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 18:11:20,003:INFO:Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/preexisting-resource-name" with value- "AutoOrigNS-HuukfM6Bg-iovdu0" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:11:32,799:INFO:Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/preexisting-resource-name" with value- "AutoOrigNS-HQjTJu84E-iovdu0" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:11:46,505:INFO:Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:11:58,099:INFO:Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:12:11,708:INFO:Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:12:27,036:INFO:Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:12:39,521:INFO:Adding xPath- "/nsd/vld[id='ping_pong_vld1']/vim-network-name" with value- "test02_1.Auto_Orig_NS.ping_pong_vld1" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+2019-09-20 18:12:51,885:INFO:Checking if xPaths are added to NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 18:12:51,885:INFO:Fetching xPaths from NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 18:12:52,948:INFO:Total 8 xPaths are available.
+2019-09-20 18:12:52,949:INFO:Executing test16_NS_Create.
+2019-09-20 18:12:52,949:INFO:Fetching NSD-ID(s) from project- test02_2.
+2019-09-20 18:12:54,050:INFO:Fetching NSD name(s) from project- test02_2.
+2019-09-20 18:12:55,267:INFO:Available NSD(s)- ['ping_pong_nsd'].
+2019-09-20 18:12:55,268:INFO:Creating NS with name- Auto_Adopted_NS and NSD ID- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
+2019-09-20 18:12:56,362:INFO:Generated NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:13:16,378:INFO:Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:13:17,613:INFO:Fetching NS name.
+2019-09-20 18:13:22,613:INFO:NS instance name- Auto_Adopted_NS.
+2019-09-20 18:13:22,614:INFO:Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:13:23,938:INFO:Fetching NS admin status.
+2019-09-20 18:13:28,944:INFO:NS instance status- DISABLED.
+2019-09-20 18:13:28,944:INFO:NS is created with name- Auto_Adopted_NS and current state is- DISABLED. Test-case Pass.
+2019-09-20 18:13:28,944:INFO:Executing test17_NS_Instantiate.
+2019-09-20 18:13:28,944:INFO:Instantiating NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:13:30,154:INFO:Please wait while for a few minutes while instantiation is in progress.
+2019-09-20 18:19:30,249:INFO:Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:19:31,362:INFO:Fetching NS admin status.
+2019-09-20 18:19:36,367:INFO:NS instance status- ENABLED.
+2019-09-20 18:19:36,367:INFO:Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:19:37,444:INFO:Current state of NS is- failed.
+2019-09-20 18:19:42,449:INFO:Expected state- running, Current state- failed. Test-case Fail.
+2019-09-20 18:19:42,450:INFO:Executing test18_NS_Terminate.
+2019-09-20 18:19:42,450:INFO:Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:19:43,558:INFO:Current state of NS is- failed.
+2019-09-20 18:19:48,559:INFO:Current state- failed. Test-case Fail.
+2019-09-20 18:19:48,560:INFO:Executing test19_NS_Delete.
+2019-09-20 18:19:48,560:INFO:Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:19:49,684:INFO:Fetching NS admin status.
+2019-09-20 18:19:54,689:INFO:NS instance status- ENABLED.
+2019-09-20 18:19:54,690:INFO:Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+2019-09-20 18:19:55,889:INFO:Current state of NS is- failed.
+2019-09-20 18:20:00,892:INFO:NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not terminated. Current state- failed. Test-case Fail.
+2019-09-20 18:20:00,893:INFO:Executing test20_Package_Delete.
+2019-09-20 18:20:01,921:INFO:Collecting VNFD ID.
+2019-09-20 18:20:01,921:INFO:Fetching VNFD ID(s) from project- test02_2.
+2019-09-20 18:20:07,956:INFO:Collecting VNFD Name.
+2019-09-20 18:20:07,956:INFO:Fetching VNFD name(s) from project- test02_2.
+2019-09-20 18:20:14,328:INFO:Collecting NSD ID.
+2019-09-20 18:20:14,329:INFO:Fetching NSD-ID(s) from project- test02_2.
+2019-09-20 18:20:15,471:INFO:Collecting NSD Name.
+2019-09-20 18:20:15,471:INFO:Fetching NSD name(s) from project- test02_2.
+2019-09-20 18:20:16,665:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'ping_pong_nsd': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 18:20:16,665:INFO:Deleting package: ping_pong_nsd with ID: cc12e5cc-a650-11e9-b8ce-02420a40cc02
+2019-09-20 18:20:17,784:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
+2019-09-20 18:20:17,784:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
+2019-09-20 18:20:17,784:INFO:Executing test21_Cloud_Account_Delete.
+2019-09-20 18:20:17,784:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 18:20:25,156:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/rw-cloud:cloud/rw-cloud:account[rw-cloud:name='OS'] : Cannot delete cloud which is currently in use\n"}}}.
+2019-09-20 18:20:25,156:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/rw-cloud:cloud/rw-cloud:account[rw-cloud:name='OS'] : Cannot delete cloud which is currently in use\n"}}}.
+2019-09-20 18:20:25,156:INFO:Executing test22_Project2_Delete.
+2019-09-20 18:20:25,156:INFO:Fetching project details for project- test02_2.
+2019-09-20 18:20:31,803:INFO:Deleting project with name- test02_2.
+2019-09-20 18:20:33,650:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
+2019-09-20 18:20:33,650:INFO:Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
+2019-09-20 18:20:33,650:INFO:Executing test23_NS_Terminate.
+2019-09-20 18:20:33,650:INFO:Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:20:34,782:INFO:Current state of NS is- running.
+2019-09-20 18:20:39,787:INFO:Terminating NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:20:40,945:INFO:Please wait while terminating NS.
+2019-09-20 18:22:41,045:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:22:42,101:INFO:Fetching NS admin status.
+2019-09-20 18:22:47,106:INFO:NS instance status- DISABLED.
+2019-09-20 18:22:47,106:INFO:Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:22:48,257:INFO:Current state of NS is- terminated.
+2019-09-20 18:22:53,260:INFO:NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 terminated successfully. Test-case Pass.
+2019-09-20 18:22:53,260:INFO:Executing test24_NS_Delete.
+2019-09-20 18:22:53,260:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:22:54,384:INFO:Fetching NS admin status.
+2019-09-20 18:22:59,389:INFO:NS instance status- DISABLED.
+2019-09-20 18:22:59,390:INFO:Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:23:00,587:INFO:Current state of NS is- terminated.
+2019-09-20 18:23:05,588:INFO:Deleting NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:23:06,743:INFO:Please wait while deleting NS.
+2019-09-20 18:23:21,744:INFO:Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+2019-09-20 18:23:22,769:INFO:Checking NS config.
+2019-09-20 18:23:27,769:INFO:NS instance name- [].
+2019-09-20 18:23:27,769:INFO:NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd deleted successfully. Test-case Pass.
+2019-09-20 18:23:27,770:INFO:Executing test25_Package_Delete.
+2019-09-20 18:23:28,859:INFO:Collecting VNFD ID.
+2019-09-20 18:23:28,859:INFO:Fetching VNFD ID(s) from project- test02_1.
+2019-09-20 18:23:35,048:INFO:Collecting VNFD Name.
+2019-09-20 18:23:35,048:INFO:Fetching VNFD name(s) from project- test02_1.
+2019-09-20 18:23:41,197:INFO:Collecting NSD ID.
+2019-09-20 18:23:41,197:INFO:Fetching NSD-ID(s) from project- test02_1.
+2019-09-20 18:23:42,459:INFO:Collecting NSD Name.
+2019-09-20 18:23:42,459:INFO:Fetching NSD name(s) from project- test02_1.
+2019-09-20 18:23:43,662:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02', 'ping_pong_nsd': 'cc12e5cc-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 18:23:43,662:INFO:Deleting package: ping_pong_nsd with ID: cc12e5cc-a650-11e9-b8ce-02420a40cc02
+2019-09-20 18:24:05,438:INFO:Collecting VNFD ID.
+2019-09-20 18:24:05,438:INFO:Fetching VNFD ID(s) from project- test02_1.
+2019-09-20 18:24:11,607:INFO:Collecting VNFD Name.
+2019-09-20 18:24:11,607:INFO:Fetching VNFD name(s) from project- test02_1.
+2019-09-20 18:24:17,834:INFO:Collecting NSD ID.
+2019-09-20 18:24:17,834:INFO:Fetching NSD-ID(s) from project- test02_1.
+2019-09-20 18:24:18,987:INFO:NSD package(s) not available.
+2019-09-20 18:24:18,988:INFO:Collecting NSD Name.
+2019-09-20 18:24:18,988:INFO:Fetching NSD name(s) from project- test02_1.
+2019-09-20 18:24:20,113:INFO:NSD package(s) not available.
+2019-09-20 18:24:20,113:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02', 'pong_vnfd': 'cc12969e-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 18:24:20,114:INFO:Deleting package: pong_vnfd with ID: cc12969e-a650-11e9-b8ce-02420a40cc02
+2019-09-20 18:24:42,897:INFO:Collecting VNFD ID.
+2019-09-20 18:24:42,897:INFO:Fetching VNFD ID(s) from project- test02_1.
+2019-09-20 18:24:49,036:INFO:Collecting VNFD Name.
+2019-09-20 18:24:49,036:INFO:Fetching VNFD name(s) from project- test02_1.
+2019-09-20 18:24:55,134:INFO:Collecting NSD ID.
+2019-09-20 18:24:55,135:INFO:Fetching NSD-ID(s) from project- test02_1.
+2019-09-20 18:24:56,220:INFO:NSD package(s) not available.
+2019-09-20 18:24:56,220:INFO:Collecting NSD Name.
+2019-09-20 18:24:56,220:INFO:Fetching NSD name(s) from project- test02_1.
+2019-09-20 18:24:57,319:INFO:NSD package(s) not available.
+2019-09-20 18:24:57,319:INFO:Available packages: {'ping_vnfd': 'cc1202ce-a650-11e9-b8ce-02420a40cc02'}.
+2019-09-20 18:24:57,319:INFO:Deleting package: ping_vnfd with ID: cc1202ce-a650-11e9-b8ce-02420a40cc02
+2019-09-20 18:25:19,753:INFO:Packages deleted successfully. Test-case Pass.
+2019-09-20 18:25:19,753:INFO:Executing test26_Cloud_Account_Delete.
+2019-09-20 18:25:19,753:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 18:25:44,306:INFO:Fetching cloud-account details for account with name- OS.
+2019-09-20 18:25:50,473:INFO:Cloud account with name- OS deleted successfully. Test-case Pass.
+2019-09-20 18:25:50,474:INFO:Executing test27_Project1_Delete.
+2019-09-20 18:25:50,474:INFO:Fetching project details for project- test02_1.
+2019-09-20 18:25:56,597:INFO:Deleting project with name- test02_1.
+2019-09-20 18:26:09,582:INFO:Fetching project details for project- test02_1.
+2019-09-20 18:26:18,923:INFO:Project with name- test02_1 deleted successfully. Test-case Pass.

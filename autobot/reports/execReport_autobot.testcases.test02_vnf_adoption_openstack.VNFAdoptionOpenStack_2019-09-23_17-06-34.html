@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Execution Report: 7.1.1.0.106185</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-09-20 17:34:29</p>
-                <p class='attribute'><strong>Duration: </strong>1849.07 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 27, Pass: 21, Fail: 6</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-09-23 17:06:34</p>
+                <p class='attribute'><strong>Duration: </strong>1811.71 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 27, Pass: 20, Fail: 7</p>
             </div>
         </div>
         <div class="row">
@@ -106,15 +106,15 @@ Cloud-account OS added successfully. Test-case Pass.
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test05_Package_Onboard.
 Adding package to project- test02_1.
-TransactionID for uploaded package- 141b6ef2-cd0a-4d5f-b885-291c94662b35.
+TransactionID for uploaded package- 9b1ebd38-f4df-4696-b403-d4db8735e339.
 Checking status of uploaded package in project- test02_1.
 Package upload status- COMPLETED.
 Adding package to project- test02_1.
-TransactionID for uploaded package- f6018ee5-aeb9-4e51-935b-85a516cfdb2d.
+TransactionID for uploaded package- a894d70f-837f-4e98-9d12-81475a8f2b10.
 Checking status of uploaded package in project- test02_1.
 Package upload status- COMPLETED.
 Adding package to project- test02_1.
-TransactionID for uploaded package- fd6ef65c-44b3-4d1f-8999-fdd02aa1f459.
+TransactionID for uploaded package- bb5c582d-d13a-4e18-a602-5eb1812e5ace.
 Checking status of uploaded package in project- test02_1.
 Package upload status- COMPLETED.
 Ping VNFD, Pong VNFD & Ping_Pong NSD are uploaded in project- test02_1. Test-case Pass.
@@ -136,11 +136,11 @@ Fetching NSD-ID(s) from project- test02_1.
 Fetching NSD name(s) from project- test02_1.
 Available NSD(s)- ['ping_pong_nsd'].
 Creating NS with name- Auto_Orig_NS and NSD ID- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
-Generated NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Generated NSR ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Fetching NS name.
 NS instance name- Auto_Orig_NS.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Fetching NS admin status.
 NS instance status- DISABLED.
 NS is created with name- Auto_Orig_NS and current state is- DISABLED. Test-case Pass.
@@ -158,14 +158,14 @@ NS is created with name- Auto_Orig_NS and current state is- DISABLED. Test-case 
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test07_NS_Instantiate.
-Instantiating NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Instantiating NS with NSR ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Please wait while for a few minutes while instantiation is in progress.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Fetching NS admin status.
 NS instance status- ENABLED.
-Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching operational-status of NS with NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Current state of NS is- running.
-NS with ID- b83f5a53-850b-4c0f-b9b0-c388290697dd instantiated successfully and is- running. Test-case Pass.
+NS with ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b instantiated successfully and is- running. Test-case Pass.
 </p>
                             </td>
                         </tr>
@@ -186,10 +186,10 @@ Project- test02_2, added successfully. Test-case Pass.
 </p>
                             </td>
                         </tr>
-                        <tr class='success'>
+                        <tr class='danger'>
                             <td class="col-xs-10">test09_Project2_Configure</td>
                             <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
                             </td>
                             <td class="col-xs-1">
                                 <button class="btn btn-default btn-xs">View</button>
@@ -198,8 +198,16 @@ Project- test02_2, added successfully. Test-case Pass.
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test09_Project2_Configure.
 Configuring project- test02_2.
-Fetching user-role for project- test02_2.
-Project- test02_2 configured with user-role- rw-project:project-admin. Test-case Pass.
+Response: 503 | Data received: {'error': 'Session closed'}.
+Response: 503 | Data received: {'error': 'Session closed'}.
+</p><p style="color:maroon;">AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 144, in test09_Project2_Configure
+    const.proj_user_domain, const.proj_role, const.proj_event_publish)
+  File "/home/JG/Documents/automation/RIFT/autobot/lib/framework.py", line 74, in proj_config
+    status = util.add_config(url, header, payload)
+  File "/home/JG/Documents/automation/RIFT/autobot/lib/utility.py", line 117, in add_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.
 </p>
                             </td>
                         </tr>
@@ -248,15 +256,15 @@ Cloud-account OS added successfully. Test-case Pass.
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test12_Package_Onboard.
 Adding package to project- test02_2.
-TransactionID for uploaded package- ecbe9634-7aed-46ae-81e4-8abd25efecf6.
+TransactionID for uploaded package- d5ff26ba-97a7-4f4b-8e54-e517f3f829fb.
 Checking status of uploaded package in project- test02_2.
 Package upload status- COMPLETED.
 Adding package to project- test02_2.
-TransactionID for uploaded package- 69ae89c9-5746-49a2-8e85-b7d65965402a.
+TransactionID for uploaded package- 7b11b7c0-9a04-4e79-92df-b64db2ba7731.
 Checking status of uploaded package in project- test02_2.
 Package upload status- COMPLETED.
 Adding package to project- test02_2.
-TransactionID for uploaded package- 6c6ef6c7-0d67-4a1e-9ec0-a22b0b0b7361.
+TransactionID for uploaded package- 764b329d-d608-48ef-b9c7-5274db738c66.
 Checking status of uploaded package in project- test02_2.
 Package upload status- COMPLETED.
 Ping VNFD, Pong VNFD & Ping_Pong NSD are uploaded in project- test02_2. Test-case Pass.
@@ -295,6 +303,18 @@ Collecting Server, Interface & Network details from discovered-resource.
 Adding server details.
 Adding interface details.
 Adding network details.
+Discovered resources- {'server': ['AutoOrigNS-HQjTJu84E-iovdu0', 'AutoOrigNS-HuukfM6Bg-iovdu0', 'Autobot2', 'Autobot1'], 'server_id': ['3b2084bc-7760-4881-91f2-416f8b3872e7', '8a460f70-5ed6-478a-a8dc-5e78006b438c', 'bd738d31-f6d0-4a52-906c-c48589870824', 'd88fe864-4f14-4bcb-907d-c1635ffe126c'], 'interface': ['test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4', '', 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3', 'test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3', '', 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4'], 'network': ['test02_1.Auto_Orig_NS.ping_pong_vld1', 'esc-net', 'PaloAlto HA Link', 'private', 'ribbon-private', 'public']}.
+Collecting NSR-VNFR details.
+Mapping VDUR VIM-ID with VNFR-Name.
+Fetching VNFR details.
+Fetching VDUR details.
+Fetching VDUR details.
+Fetching VNFD name(s) from project- test02_1.
+Available VDUR(s)- ['ping_vnfd', 'pong_vnfd'].
+Mapping server details.
+Mapping connection-points details.
+Mapping network details.
+xPath mappings- {'server': {'ping': 'AutoOrigNS-HuukfM6Bg-iovdu0', 'pong': 'AutoOrigNS-HQjTJu84E-iovdu0'}, 'interface': {'ping_ens3': 'test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3', 'ping_ens4': 'test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4', 'pong_ens3': 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3', 'pong_ens4': 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4'}, 'network': {'ping_pong': 'test02_1.Auto_Orig_NS.ping_pong_vld1'}}.
 </p>
                             </td>
                         </tr>
@@ -309,21 +329,14 @@ Adding network details.
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test15_Add_Discovered_Resources.
-Collecting NSR-VNFR 
-Mapping VDUR VIM-ID with VNFR-Name.
-Fetching VNFR details.
-Fetching VDUR details.
-Fetching VDUR details.
-Fetching VNFD name(s) from project- test02_1.
-Available VDUR(s)- ['ping_vnfd', 'pong_vnfd'].
 Fetching NSD-ID(s) from project- test02_2.
 Adding discovered values to xPaths in NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
 Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/preexisting-resource-name" with value- "AutoOrigNS-HuukfM6Bg-iovdu0" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
 Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/preexisting-resource-name" with value- "AutoOrigNS-HQjTJu84E-iovdu0" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
-Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
-Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
-Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
-Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+Adding xPath- "/connect-vnf[1]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
+Adding xPath- "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name" with value- "test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
 Adding xPath- "/nsd/vld[id='ping_pong_vld1']/vim-network-name" with value- "test02_1.Auto_Orig_NS.ping_pong_vld1" to NSD- "cc12e5cc-a650-11e9-b8ce-02420a40cc02".
 Checking if xPaths are added to NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
 Fetching xPaths from NSD- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
@@ -346,11 +359,11 @@ Fetching NSD-ID(s) from project- test02_2.
 Fetching NSD name(s) from project- test02_2.
 Available NSD(s)- ['ping_pong_nsd'].
 Creating NS with name- Auto_Adopted_NS and NSD ID- cc12e5cc-a650-11e9-b8ce-02420a40cc02.
-Generated NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620.
-Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Generated NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6.
+Fetching NS config for NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Fetching NS name.
 NS instance name- Auto_Adopted_NS.
-Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching NS config for NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Fetching NS admin status.
 NS instance status- DISABLED.
 NS is created with name- Auto_Adopted_NS and current state is- DISABLED. Test-case Pass.
@@ -368,16 +381,16 @@ NS is created with name- Auto_Adopted_NS and current state is- DISABLED. Test-ca
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test17_NS_Instantiate.
-Instantiating NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Instantiating NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Please wait while for a few minutes while instantiation is in progress.
-Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching NS config for NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Fetching NS admin status.
 NS instance status- ENABLED.
-Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching operational-status of NS with NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Current state of NS is- failed.
 Expected state- running, Current state- failed. Test-case Fail.
 </p><p style="color:maroon;">AssertionError: Expected state- running, Current state- failed. Test-case Fail.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 328, in test17_NS_Instantiate
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 353, in test17_NS_Instantiate
     f"Expected state- running, Current state- {state}. Test-case Fail."
 AssertionError: Expected state- running, Current state- failed. Test-case Fail.
 </p>
@@ -394,13 +407,13 @@ AssertionError: Expected state- running, Current state- failed. Test-case Fail.
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test18_NS_Terminate.
-Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching operational-status of NS with NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Current state of NS is- failed.
 Current state- failed. Test-case Fail.
-</p><p style="color:maroon;">AssertionError: NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not running. Current state- failed. Test-case Fail.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 348, in test18_NS_Terminate
+</p><p style="color:maroon;">AssertionError: NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 is not running. Current state- failed. Test-case Fail.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 373, in test18_NS_Terminate
     assert state == "running", f"NS with NSR ID- {self.nsr_id[1]} is not running. " \
-AssertionError: NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not running. Current state- failed. Test-case Fail.
+AssertionError: NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 is not running. Current state- failed. Test-case Fail.
 </p>
                             </td>
                         </tr>
@@ -415,16 +428,16 @@ AssertionError: NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not runn
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test19_NS_Delete.
-Fetching NS config for NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching NS config for NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Fetching NS admin status.
 NS instance status- ENABLED.
-Fetching operational-status of NS with NSR ID: 22a965cb-ebe6-496c-bfb5-213ac9e45620.
+Fetching operational-status of NS with NSR ID: 7d681d9b-393c-48a6-ae32-97803d9f86e6.
 Current state of NS is- failed.
-NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not terminated. Current state- failed. Test-case Fail.
-</p><p style="color:maroon;">AssertionError: NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not terminated. Current state- failed. Test-case Fail.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 372, in test19_NS_Delete
+NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 is not terminated. Current state- failed. Test-case Fail.
+</p><p style="color:maroon;">AssertionError: NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 is not terminated. Current state- failed. Test-case Fail.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 397, in test19_NS_Delete
     f"NS with NSR ID- {self.nsr_id[1]} is not terminated. Current state- {state}. Test-case Fail."
-AssertionError: NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 is not terminated. Current state- failed. Test-case Fail.
+AssertionError: NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 is not terminated. Current state- failed. Test-case Fail.
 </p>
                             </td>
                         </tr>
@@ -452,7 +465,7 @@ Deleting package: ping_pong_nsd with ID: cc12e5cc-a650-11e9-b8ce-02420a40cc02
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.
 </p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/project-nsd:nsd-catalog/project-nsd:nsd[project-nsd:id='cc12e5cc-a650-11e9-b8ce-02420a40cc02'] : NSD in use\n"}}}.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 379, in test20_Package_Delete
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 404, in test20_Package_Delete
     fw.pkg_delete(const.lp_addr_default[0], const.header_default, self.proj_name[1], "nsd", "ping_pong_nsd")
   File "/home/JG/Documents/automation/RIFT/autobot/lib/framework.py", line 511, in pkg_delete
     status = util.delete_config(url, header, payload)
@@ -477,7 +490,7 @@ Fetching cloud-account details for account with name- OS.
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/rw-cloud:cloud/rw-cloud:account[rw-cloud:name='OS'] : Cannot delete cloud which is currently in use\n"}}}.
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/rw-cloud:cloud/rw-cloud:account[rw-cloud:name='OS'] : Cannot delete cloud which is currently in use\n"}}}.
 </p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': " /rw-project:project[rw-project:name='test02_2']/rw-cloud:cloud/rw-cloud:account[rw-cloud:name='OS'] : Cannot delete cloud which is currently in use\n"}}}.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 400, in test21_Cloud_Account_Delete
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 425, in test21_Cloud_Account_Delete
     const.cloud_acct_name[0])
   File "/home/JG/Documents/automation/RIFT/autobot/lib/framework.py", line 241, in cloud_acct_delete
     status = util.delete_config(url, header, payload)
@@ -503,7 +516,7 @@ Deleting project with name- test02_2.
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
 Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.
 </p><p style="color:maroon;">AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'error-type': 'application', 'error-tag': 'operation-failed', 'error-severity': 'error', 'error-message': ' /rw-project:project/rw-project:project-config : Project has NSR associated with it. Delete all Project NSR and try again.\n'}}}.</p><p style="color:maroon;">Traceback (most recent call last):
-  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 420, in test22_Project2_Delete
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test02_vnf_adoption_openstack.py", line 445, in test22_Project2_Delete
     fw.proj_delete(const.lp_addr_default[0], const.header_default, self.proj_name[1])
   File "/home/JG/Documents/automation/RIFT/autobot/lib/framework.py", line 107, in proj_delete
     status = util.delete_config(url, header, payload)
@@ -524,16 +537,16 @@ AssertionError: Response: 405 | Data received: {'rpc-reply': {'rpc-error': {'err
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test23_NS_Terminate.
-Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching operational-status of NS with NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Current state of NS is- running.
-Terminating NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Terminating NS with NSR ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Please wait while terminating NS.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Fetching NS admin status.
 NS instance status- DISABLED.
-Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching operational-status of NS with NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Current state of NS is- terminated.
-NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 terminated successfully. Test-case Pass.
+NS with NSR ID- 7d681d9b-393c-48a6-ae32-97803d9f86e6 terminated successfully. Test-case Pass.
 </p>
                             </td>
                         </tr>
@@ -548,17 +561,17 @@ NS with NSR ID- 22a965cb-ebe6-496c-bfb5-213ac9e45620 terminated successfully. Te
                         </tr>
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test24_NS_Delete.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Fetching NS admin status.
 NS instance status- DISABLED.
-Fetching operational-status of NS with NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching operational-status of NS with NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Current state of NS is- terminated.
-Deleting NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Deleting NS with NSR ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Please wait while deleting NS.
-Fetching NS config for NSR ID: b83f5a53-850b-4c0f-b9b0-c388290697dd.
+Fetching NS config for NSR ID: 1cc64558-bf8d-49ed-8c59-63aaa506bf1b.
 Checking NS config.
 NS instance name- [].
-NS with NSR ID- b83f5a53-850b-4c0f-b9b0-c388290697dd deleted successfully. Test-case Pass.
+NS with NSR ID- 1cc64558-bf8d-49ed-8c59-63aaa506bf1b deleted successfully. Test-case Pass.
 </p>
                             </td>
                         </tr>
@@ -648,7 +661,7 @@ Project with name- test02_1 deleted successfully. Test-case Pass.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 27, Pass: 21, Fail: 6 -- Duration: 1849.07 s
+                                Total: 27, Pass: 20, Fail: 7 -- Duration: 1811.71 s
                             </td>
                         </tr>
                     </tbody>

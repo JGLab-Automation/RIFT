@@ -12,6 +12,9 @@ class VNFAdoptionOpenStack(unittest.TestCase):
     proj_desc = "test02_vnf_adoption_openstack"
     nsr_id = []
     discovered_data = {"server": [], "server_id": [], "interface": [], "network": []}
+    xpath_values = {"server": {"ping": "", "pong": ""},
+                    "interface": {"ping_ens3": "", "ping_ens4": "", "pong_ens3": "", "pong_ens4": ""},
+                    "network": {"ping_pong": ""}}
 
     def test01_Project1_Add(self):
         util.log_info(f"Executing {self.test01_Project1_Add.__name__}.")
@@ -35,9 +38,9 @@ class VNFAdoptionOpenStack(unittest.TestCase):
         if config["role"] == "rw-project:project-admin":
             util.log_info(f"Project- {self.proj_name[0]} configured with user-role- {config['role']}. Test-case Pass.")
         else:
-            util.log_info(f"Expected- rw-project:project-admin, Actual- {config['role']}. Test-case Fail.")
+            util.log_info(f"Expected- rw-project:project-admin, Configured- {config['role']}. Test-case Fail.")
             assert config["role"] == "rw-project:project-admin", \
-                f"Expected- rw-project:project-admin, Actual- {config['role']}. Test-case Fail."
+                f"Expected- rw-project:project-admin, Configured- {config['role']}. Test-case Fail."
 
     def test03_Cloud_Account_Add(self):
         util.log_info(f"Executing {self.test03_Cloud_Account_Add.__name__}.")
@@ -144,9 +147,9 @@ class VNFAdoptionOpenStack(unittest.TestCase):
         if config["role"] == "rw-project:project-admin":
             util.log_info(f"Project- {self.proj_name[1]} configured with user-role- {config['role']}. Test-case Pass.")
         else:
-            util.log_info(f"Expected- rw-project:project-admin, Actual- {config['role']}. Test-case Fail.")
+            util.log_info(f"Expected- rw-project:project-admin, Configured- {config['role']}. Test-case Fail.")
             assert config["role"] == "rw-project:project-admin", \
-                f"Expected- rw-project:project-admin, Actual- {config['role']}. Test-case Fail."
+                f"Expected- rw-project:project-admin, Configured- {config['role']}. Test-case Fail."
 
     def test10_Cloud_Account_Add(self):
         util.log_info(f"Executing {self.test10_Cloud_Account_Add.__name__}.")
@@ -231,6 +234,46 @@ class VNFAdoptionOpenStack(unittest.TestCase):
                 self.discovered_data["interface"].append(items["name"])
             for items in network_details:
                 self.discovered_data["network"].append(items["name"])
+            util.log_info(f"Discovered resources- {self.discovered_data}.")
+
+            util.log_info("Collecting NSR-VNFR details.")
+            vdu = fw.get_vdu_name_id(const.lp_addr_default[0], const.header_default, self.proj_name[0])
+
+            util.log_info("Mapping server details.")
+            for items in self.discovered_data["server_id"]:
+                if vdu["ping_vnfd"] == self.discovered_data["server_id"][0] and vdu["ping_vnfd"] == items:
+                    self.xpath_values["server"].update({"ping": self.discovered_data["server"][0]})
+                if vdu["ping_vnfd"] == self.discovered_data["server_id"][1] and vdu["ping_vnfd"] == items:
+                    self.xpath_values["server"].update({"ping": self.discovered_data["server"][1]})
+                if vdu["pong_vnfd"] == self.discovered_data["server_id"][0] and vdu["pong_vnfd"] == items:
+                    self.xpath_values["server"].update({"pong": self.discovered_data["server"][0]})
+                if vdu["pong_vnfd"] == self.discovered_data["server_id"][1] and vdu["pong_vnfd"] == items:
+                    self.xpath_values["server"].update({"ping": self.discovered_data["server"][1]})
+
+            util.log_info("Mapping connection-points details.")
+            for items in self.discovered_data["interface"]:
+                cps = items.split("_")
+                for vnfd in cps:
+                    for cp in cps:
+                        if vnfd == "ping" and cp == "ens3":
+                            self.xpath_values["interface"].update({"ping_ens3": items})
+                        if vnfd == "ping" and cp == "ens4":
+                            self.xpath_values["interface"].update({"ping_ens4": items})
+                        if vnfd == "pong" and cp == "ens3":
+                            self.xpath_values["interface"].update({"pong_ens3": items})
+                        if vnfd == "pong" and cp == "ens4":
+                            self.xpath_values["interface"].update({"pong_ens4": items})
+            
+            util.log_info("Mapping network details.")
+            for items in self.discovered_data["network"]:
+                networks = items.split(".")
+                for proj in networks:
+                    for net2 in networks:
+                        if proj == self.proj_name[0] and net2 == "ping_pong_vld1":
+                            self.xpath_values["network"].update({"ping_pong": items})
+
+            util.log_info(f"xPath mappings- {self.xpath_values}.")
+
         else:
             util.log_info(f"Status is {status}. Test-case Fail.")
             assert status, f"Status is {status}. Test-case Fail."
@@ -246,43 +289,25 @@ class VNFAdoptionOpenStack(unittest.TestCase):
         xp6 = "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name"
         xp7 = "/nsd/vld[id='ping_pong_vld1']/vim-network-name"
 
-        util.log_info("Collecting NSR-VNFR ")
-        vdu = fw.get_vdu_name_id(const.lp_addr_default[0], const.header_default, self.proj_name[0])
-
         nsd_id = fw.get_nsd_id(const.lp_addr_default[0], const.header_default, self.proj_name[1])
         util.log_info(f"Adding discovered values to xPaths in NSD- {nsd_id[0]}.")
 
-        if vdu["ping_vnfd"] == self.discovered_data["server_id"][0]:
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp1, self.discovered_data["server"][0])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp2, self.discovered_data["server"][1])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp3, self.discovered_data["interface"][2])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp4, self.discovered_data["interface"][0])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp5, self.discovered_data["interface"][3])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp6, self.discovered_data["interface"][1])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp7, self.discovered_data["network"][0])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp1, self.xpath_values["server"]["ping"])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp2, self.xpath_values["server"]["pong"])
 
-        elif vdu["ping_vnfd"] == self.discovered_data["server_id"][1]:
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp1, self.discovered_data["server"][1])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp2, self.discovered_data["server"][0])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp3, self.discovered_data["interface"][2])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp4, self.discovered_data["interface"][0])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp5, self.discovered_data["interface"][3])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp6, self.discovered_data["interface"][1])
-            fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
-                                         xp7, self.discovered_data["network"][0])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp3, self.xpath_values["interface"]["ping_ens3"])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp4, self.xpath_values["interface"]["ping_ens4"])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp5, self.xpath_values["interface"]["pong_ens3"])
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp6, self.xpath_values["interface"]["pong_ens4"])
+
+        fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp7, self.xpath_values["network"]["ping_pong"])
 
         util.log_info(f"Checking if xPaths are added to NSD- {nsd_id[0]}.")
         xps = fw.get_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0])

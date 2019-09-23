@@ -15,7 +15,7 @@ header = \
         'cache-control': "no-cache"
     }
 
-lp_addr_default = ["10.68.100.175", "10.68.104.86"]
+lp_addr_default = ["10.68.102.219", "10.68.102.228"]
 header_default = \
     {
         'Content-Type': "application/json",

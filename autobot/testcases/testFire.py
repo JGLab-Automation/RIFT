@@ -110,5 +110,16 @@ proj_name=["default"]
 #     for id in ids:
 #         vdur_id.append(id)
 
-x = fw.get_vdu_name_id(const.lp_addr, const.header, "auto")
-print(x)
+# x = fw.get_vdu_name_id(const.lp_addr, const.header, "auto")
+# print(x)
+
+x = {'server': ['AutoOrigNS-HQjTJu84E-iovdu0', 'AutoOrigNS-HuukfM6Bg-iovdu0', 'Autobot2', 'Autobot1'], 'server_id': ['51512b6d-93b7-4253-9fdf-fa79ce6ecb9d', '5182662d-4a52-4670-bde1-f688c5101950', 'bd738d31-f6d0-4a52-906c-c48589870824', 'd88fe864-4f14-4bcb-907d-c1635ffe126c'], 'interface': ['test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp1__ens4', 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp1__ens4', '', 'test02_1__Auto_Orig_NS__pong_vnfd__2__pong_vnfd/cp0__ens3', '', 'test02_1__Auto_Orig_NS__ping_vnfd__1__ping_vnfd/cp0__ens3'], 'network': ['test02_1.Auto_Orig_NS.ping_pong_vld1', 'esc-net', 'PaloAlto HA Link', 'private', 'ribbon-private', 'public']}
+# for items in x["server_id"]:
+#     print(items)
+# discovered_data = {"server": [], "server_id": [], "interface": [], "network": []}
+# y = fw.get_vdu_name_id("10.110.5.2", const.header_default, "default")
+# print(y)
+
+a = fw.vim_discovered_details("10.110.5.2", const.header_default, "default", const.cloud_acct_name[0])
+
+print(a)

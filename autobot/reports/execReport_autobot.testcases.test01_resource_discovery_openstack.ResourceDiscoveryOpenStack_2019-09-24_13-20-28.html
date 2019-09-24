@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Execution Report: 7.1.1.0.106185</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-09-23 17:06:34</p>
-                <p class='attribute'><strong>Duration: </strong>295.56 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 7, Pass: 7</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-09-24 13:20:28</p>
+                <p class='attribute'><strong>Duration: </strong>271.38 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 7, Pass: 6, Fail: 1</p>
             </div>
         </div>
         <div class="row">
@@ -44,10 +44,10 @@ Project- test01, added successfully. Test-case Pass.
 </p>
                             </td>
                         </tr>
-                        <tr class='success'>
+                        <tr class='danger'>
                             <td class="col-xs-10">test02_Project_Configure</td>
                             <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
                             </td>
                             <td class="col-xs-1">
                                 <button class="btn btn-default btn-xs">View</button>
@@ -56,8 +56,16 @@ Project- test01, added successfully. Test-case Pass.
                         <tr style="display:none;">
                             <td class="col-xs-9" colspan="3"><p>Executing test02_Project_Configure.
 Configuring project- test01.
-Fetching user-role for project- test01.
-Project- test01 configured with user-role- rw-project:project-admin. Test-case Pass.
+Response: 503 | Data received: {'error': 'Session closed'}.
+Response: 503 | Data received: {'error': 'Session closed'}.
+</p><p style="color:maroon;">AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/home/JG/Documents/automation/RIFT/autobot/testcases/test01_resource_discovery_openstack.py", line 30, in test02_Project_Configure
+    const.proj_user_domain, const.proj_role, const.proj_event_publish)
+  File "/home/JG/Documents/automation/RIFT/autobot/lib/framework.py", line 74, in proj_config
+    status = util.add_config(url, header, payload)
+  File "/home/JG/Documents/automation/RIFT/autobot/lib/utility.py", line 127, in add_config
+    assert response.status_code == 201, f"Response: {response.status_code} | Data received: {data}."
+AssertionError: Response: 503 | Data received: {'error': 'Session closed'}.
 </p>
                             </td>
                         </tr>
@@ -148,7 +156,7 @@ Project with name- test01 deleted successfully. Test-case Pass.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 295.56 s
+                                Total: 7, Pass: 6, Fail: 1 -- Duration: 271.38 s
                             </td>
                         </tr>
                     </tbody>

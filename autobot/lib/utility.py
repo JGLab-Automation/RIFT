@@ -2,6 +2,7 @@ __author__ = 'JG'
 
 import logging
 import urllib3
+import urllib.parse
 import requests
 from requests.auth import HTTPBasicAuth
 import json
@@ -80,6 +81,15 @@ def create_http_basic_auth(uname, passwd):
     try:
         auth = HTTPBasicAuth(uname, passwd)
         return auth
+    except BaseException as e:
+        log_info(e)
+        raise
+
+
+def get_encoded_url(value):
+    try:
+        query = urllib.parse.quote(value, safe='')
+        return query
     except BaseException as e:
         log_info(e)
         raise

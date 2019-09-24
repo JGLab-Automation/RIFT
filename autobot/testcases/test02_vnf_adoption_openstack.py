@@ -288,6 +288,7 @@ class VNFAdoptionOpenStack(unittest.TestCase):
         xp5 = "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens3']/preexisting-resource-name"
         xp6 = "/connect-vnf[2]/vdur[vdu-id-ref='iovdu_0']/interface[name='ens4']/preexisting-resource-name"
         xp7 = "/nsd/vld[id='ping_pong_vld1']/vim-network-name"
+        xp8 = "/nsd/vendor"
 
         nsd_id = fw.get_nsd_id(const.lp_addr_default[0], const.header_default, self.proj_name[1])
         util.log_info(f"Adding discovered values to xPaths in NSD- {nsd_id[0]}.")
@@ -308,6 +309,10 @@ class VNFAdoptionOpenStack(unittest.TestCase):
 
         fw.add_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
                                      xp7, self.xpath_values["network"]["ping_pong"])
+
+        util.log_info("Deleting unwanted xPath(s) for this feature.")
+        fw.delete_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0],
+                                     xp8)
 
         util.log_info(f"Checking if xPaths are added to NSD- {nsd_id[0]}.")
         xps = fw.get_input_param_xpath_nsd(const.lp_addr_default[0], const.header_default, self.proj_name[1], nsd_id[0])

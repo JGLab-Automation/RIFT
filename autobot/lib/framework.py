@@ -745,6 +745,26 @@ def get_input_param_xpath_nsd(lp_addr, header, proj_name, nsd_id):
         raise
 
 
+def delete_input_param_xpath_nsd(lp_addr, header, proj_name, nsd_id, xpath):
+    try:
+        api = rapi.input_parameter_xpath_nsd(proj_name, nsd_id)
+        url = util.create_url_running(lp_addr, api)
+        payload = ""
+
+        util.log_info(f"Deleting xPath- {xpath} from NSD- {nsd_id}.")
+        encoded_uri = util.get_encoded_url(xpath)
+        url = f"{url}/{encoded_uri}"
+        print(url)
+        status = util.delete_config(url, header, payload)
+        time.sleep(10)
+        state = util.get_rpc_state(status).upper()
+        if state != "OK":
+            assert state == "OK", f"RPC response: Expected- OK, Received- {state}."
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
 def add_input_param_xpath_nsr(lp_addr, header, proj_name, nsr_id, xpath, value):
     try:
         api = rapi.input_parameter_xpath_nsr(proj_name, nsr_id)

@@ -32,6 +32,42 @@ def get_lp_version(lp_addr, header):
         raise
 
 
+def generate_system_log(lp_addr, header):
+    try:
+        api = rapi.gen_log()
+        url = util.api_url(lp_addr, api)
+        payload = ""
+
+        util.log_info("Generating system logs.")
+        status = util.generate_log(url, header, payload)
+        if status == "Download initiated":
+            util.log_info("Log file is ready to be downloaded.")
+        else:
+            util.log_info(f"RPC response: Expected- Download initiated, Received- {status}.")
+            assert status == "Download initiated", f"RPC response: Expected- Download initiated, Received- {status}."
+        time.sleep(15)
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
+def download_system_log(lp_addr, header):
+    try:
+        api = rapi.get_log()
+        url = util.api_url(lp_addr, api)
+        payload = ""
+
+        util.log_info("Fetching system logs.")
+        #status = util.generate_log(url, header, payload)
+        abs_path = f"{const.running_dir[0]}/artifacts/traces/system.log"
+        with open(abs_path, "w+") as log_file:
+            log_file.write(util.generate_log(url, header, payload))
+        time.sleep(15)
+    except BaseException as e:
+        util.log_info(e)
+        raise
+
+
 def proj_add(lp_addr, header, proj_name, proj_desc):
     try:
         api = rapi.proj_add()

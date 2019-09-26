@@ -7,8 +7,19 @@ Correct:    rw-project:project
 Wrong:      /rw-project:project/
 '''
 
+
 def lp_version():
     api = "rw-base:version"
+    return api
+
+
+def gen_log():
+    api = "logs/rift.log"
+    return api
+
+
+def get_log():
+    api = "logdownload/rift.log"
     return api
 
 

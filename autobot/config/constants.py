@@ -15,7 +15,7 @@ header = \
         'cache-control': "no-cache"
     }
 
-lp_addr_default = ["10.68.102.219", "10.68.102.228"]
+lp_addr_default = ["10.110.5.0", "10.68.102.219", "10.68.102.228"]
 header_default = \
     {
         'Content-Type': "application/json",
@@ -69,15 +69,12 @@ vim_vcd91_vc_user = "administrator@vsphere.local"
 vim_vcd91_vc_passwd = "riftIO18!"
 
 
+running_dir = []
 
-
-
-
-
-
-ping_vnfd_ext_url = "http://10.110.0.2/descriptors/rel71/ping_vnfd.tar.gz"
-pong_vnfd_ext_url = "http://10.110.0.2/descriptors/rel71/pong_vnfd.tar.gz"
-ping_pong_nsd_ext_url = "http://10.110.0.2/descriptors/rel71/ping_pong_nsd.tar.gz"
+release = ["rel72"]
+ping_vnfd_ext_url = f"http://10.110.0.2/descriptors/{release[0]}/ping_vnfd.tar.gz"
+pong_vnfd_ext_url = f"http://10.110.0.2/descriptors/{release[0]}/pong_vnfd.tar.gz"
+ping_pong_nsd_ext_url = f"http://10.110.0.2/descriptors/{release[0]}/ping_pong_nsd.tar.gz"
 
 """
 #-----------------------------------------------------------------------------------------------------------------------

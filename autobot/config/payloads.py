@@ -122,7 +122,7 @@ def pkg_upload(proj_name, ext_url):
             "input":
                 {
                     "external-url": f"{ext_url}",
-                    "overwrite": "false",
+                    "overwrite": "true",
                     "project-name": f"{proj_name}"
                 }
         }

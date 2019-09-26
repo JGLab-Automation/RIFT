@@ -3,6 +3,7 @@ __author__ = 'JG'
 import logging
 import urllib3
 import urllib.parse
+import urllib.request
 import requests
 from requests.auth import HTTPBasicAuth
 import json
@@ -50,6 +51,40 @@ def log_debug(text):
 
 def log_error(text):
     log(text, 'error')
+
+
+def api_url(lp_addr, api):
+    try:
+        url = f'https://{lp_addr}:8008/{api}'
+        return str(url).strip()
+    except BaseException as e:
+        log_info(e)
+
+
+def generate_log(url, header, payload=""):
+    try:
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        response = requests.request("GET", url=url, headers=header, data=payload, verify=False)
+        if response.status_code == 200:         # Code for successful response.
+            data = response.text
+            return data
+        else:
+            data = response.text
+            assert response.status_code == 200, f"Response: {response.status_code} | Data received: {data}."
+    except BaseException as e:
+        log_info(e)
+        raise
+
+
+def download_file(url, filename="autobot/artifacts/traces/rift.log"):
+    try:
+        #filename = "autobot/artifacts/traces/rift.log"
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        x = urllib.request.urlretrieve(url, filename)
+        print(x)
+    except BaseException as e:
+        log_info(e)
+        raise
 
 
 def create_url_running(lp_addr, api):

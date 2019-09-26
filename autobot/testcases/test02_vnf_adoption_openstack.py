@@ -263,7 +263,7 @@ class VNFAdoptionOpenStack(unittest.TestCase):
                             self.xpath_values["interface"].update({"pong_ens3": items})
                         if vnfd == "pong" and cp == "ens4":
                             self.xpath_values["interface"].update({"pong_ens4": items})
-            
+
             util.log_info("Mapping network details.")
             for items in self.discovered_data["network"]:
                 networks = items.split(".")

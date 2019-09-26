@@ -6,6 +6,7 @@ from autobot.config import payloads as pl
 import unittest
 import json
 import os
+import urllib.request
 
 
 
@@ -80,7 +81,7 @@ import os
 # for xp in range(len(x)):
 #     print(x[xp]["xpath"])
 
-proj_name=["default"]
+#proj_name=["default"]
 
 #fw.vim_resource_discover(const.lp_addr, const.header, proj_name[0], const.cloud_acct_name)
 # status = fw.vim_discovered_details(const.lp_addr, const.header, proj_name[0], const.cloud_acct_name)
@@ -123,7 +124,7 @@ proj_name=["default"]
 # a = fw.vim_discovered_details("10.110.5.2", const.header_default, "default", const.cloud_acct_name[0])
 #
 # print(a)
-
+import urllib3
 header = \
     {
         'Content-Type': "application/json",
@@ -136,4 +137,7 @@ header = \
         'cache-control': "no-cache"
     }
 
-fw.delete_input_param_xpath_nsd("10.110.5.2", header, "default", "88326c98-d8fe-11e9-8541-02420a40cc02", "/nsd/vendor")
+
+import os
+
+
